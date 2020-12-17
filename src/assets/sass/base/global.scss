@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: $color-dark;
+}
+
+a {
+	color: $color-white;
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	width: 100%;
+}

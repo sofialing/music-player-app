@@ -1,0 +1,29 @@
+@import-normalize; /* bring in normalize.css styles */
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: canada-type-gibson, sans-serif;
+}
+
+/* Utilities */
+@import 'utilities/variables';
+@import 'utilities/functions';
+@import 'utilities/mixins';
+
+/* Base */
+@import 'base/reset';
+@import 'base/global';
+@import 'base/typography';
+
+/* Layout */
+// @import 'layout/';
+
+/* Components */
+// @import 'components/';
+
+/* Pages */
+// @import 'pages/';
+
+/* Themes */
+// @import 'themes/';
