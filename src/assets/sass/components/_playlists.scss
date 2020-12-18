@@ -1,4 +1,4 @@
-.playlists__list {
+.playlists {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -31,15 +31,104 @@
 	}
 	.playlist__details {
 		margin-left: 1rem;
-		span {
-			display: block;
-			line-height: 1.3;
+		h2, p {
+			font-size: 1rem;
+			line-height: 1.4;
 			margin: 0;
 			letter-spacing: .05em;
+		}
+		h2 {
+			font-weight: 600;
+		}
+		p {
 			font-weight: 300;
-			&:first-of-type {
-				font-weight: 600;
+		}
+	}
+}
+
+.track-list {
+	@extend .playlists;
+	padding-top: 2.5rem;
+	padding-bottom: 6.5rem;
+	&__item {
+		@extend .playlist__item;
+		&:hover svg {
+			transform: initial !important;
+		}
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+	&__image {
+		@extend .playlist__image;
+	}
+	&__details {
+		@extend .playlist__details;
+	}
+}
+
+.playlist {
+	&__header {
+		background-color: $color-medium;
+		position: relative;
+		&__inner {
+			@extend .container;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
+			text-align: center;
+			position: relative;
+			img {
+				box-shadow: 1px 4px 12px #00000072;
+				max-width: 75%;
+				margin: 0 auto 2rem;
 			}
+			h1 {
+				font-size: 1.333rem;
+				letter-spacing: .075em;
+				margin: 0;
+			}
+			p {
+				font-weight: 300;
+				letter-spacing: .025em;
+				margin-bottom: 0;
+			}
+			svg {
+				position: absolute;
+				top: 1.5rem;
+				left: 1.5rem;
+			}
+		}
+	}
+	&__play-btn {
+		background: $color-primary;
+		border: none;
+		border-radius: 30rem;
+		color: $color-white;
+		display: flex;
+		align-items: center;
+		font-size: .875rem;
+		letter-spacing: .1em;
+		line-height: 1;
+		padding: .75rem 2.75rem .75rem;
+		position: absolute;
+		bottom: -1.5rem;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		text-transform: uppercase;
+		transition: transform .3s ease-in-out;
+		span {
+			margin-left: .5rem;
+		}
+		&:hover {
+			transform: scale(1.1);
+			cursor: pointer;
+		}
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 0 1px $color-white;
 		}
 	}
 }

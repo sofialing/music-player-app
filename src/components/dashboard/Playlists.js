@@ -8,8 +8,8 @@ const Playlists = () => {
 	return (
 		<>
 			<h2>Playlists</h2>
-			<ul className="playlists__list">
-				{playlists && playlists.items.map(playlist => <PlaylistItem playlist={playlist} />)}
+			<ul className="playlists">
+				{playlists && playlists.items.map((playlist, index) => <PlaylistItem key={index} playlist={playlist} />)}
 			</ul>
 		</>
 	)

@@ -4,6 +4,7 @@ import PlayerContextProvider from './contexts/PlayerContext'
 import Dashboard from './components/pages/Dashboard';
 import Login from './components/pages/Login';
 import Redirect from './components/pages/Redirect';
+import Playlist from './components/pages/Playlist';
 import './assets/sass/main.scss';
 // import { getTokenFromResponse } from './spotify/auth';
 
@@ -32,6 +33,9 @@ const App = () => {
 					</Route>
 					<Route path="/redirect" >
 						<Redirect />
+					</Route>
+					<Route path="/playlist/:playlistId" >
+						<Playlist />
 					</Route>
 				</Routes>
 			</PlayerContextProvider>
