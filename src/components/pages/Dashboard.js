@@ -1,11 +1,22 @@
+import { useEffect } from 'react';
 import { usePlayer } from '../../contexts/PlayerContext';
+import Playlists from '../dashboard/Playlists';
+import Navbar from '../Navbar'
+import NowPlayingBar from '../NowPlayingBar';
+import NowPlayingModal from '../NowPlayingModal';
 
 const Dashboard = () => {
-	const { state } = usePlayer();
+	const { } = usePlayer();
+	useEffect(() => {
+	}, [])
 
 	return (
-		<div>
-			<h1>Dashboard - {state.user.display_name}</h1>
+		<div className="container">
+			<h1>Your music</h1>
+			<Playlists />
+			{/* <NowPlayingModal /> */}
+			<NowPlayingBar />
+			<Navbar />
 		</div>);
 }
 

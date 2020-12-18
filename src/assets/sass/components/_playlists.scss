@@ -1,0 +1,45 @@
+.playlists__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	.playlist__item {
+		background: transparent;
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid $color-light;
+		padding: .5rem .5rem;
+		transition: background .3s ease-in-out;
+
+		&:hover {
+			background: $color-dark;
+			svg {
+				transform: translateX(.25rem)
+			}
+		}
+
+		svg {
+			margin-left: auto;
+			margin-right: .5rem;
+			color: $color-light;
+			transition: transform .3s ease-in-out;
+		}
+	}
+	.playlist__image {
+		width: 45px;
+		height: 45px;
+	}
+	.playlist__details {
+		margin-left: 1rem;
+		span {
+			display: block;
+			line-height: 1.3;
+			margin: 0;
+			letter-spacing: .05em;
+			font-weight: 300;
+			&:first-of-type {
+				font-weight: 600;
+			}
+		}
+	}
+}

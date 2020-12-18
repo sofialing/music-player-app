@@ -23,19 +23,17 @@ const App = () => {
 	return (
 		<Router>
 			<PlayerContextProvider>
-				<div className="container">
-					<Routes>
-						<Route path="/" >
-							<Login />
-						</Route>
-						<Route path="/dashboard" >
-							<Dashboard />
-						</Route>
-						<Route path="/redirect" >
-							<Redirect />
-						</Route>
-					</Routes>
-				</div>
+				<Routes>
+					<Route path="/" >
+						<Login />
+					</Route>
+					<Route path="/dashboard" >
+						<Dashboard />
+					</Route>
+					<Route path="/redirect" >
+						<Redirect />
+					</Route>
+				</Routes>
 			</PlayerContextProvider>
 		</Router>
 	);

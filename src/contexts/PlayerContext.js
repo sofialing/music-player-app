@@ -10,7 +10,7 @@ const PlayerContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(playerReducer, initialState);
 
 	return (
-		<PlayerContext.Provider value={{ state, dispatch }}>
+		<PlayerContext.Provider value={{ ...state, dispatch }}>
 			{children}
 		</PlayerContext.Provider>
 	)

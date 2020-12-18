@@ -20,10 +20,15 @@ body {
 // @import 'layout/';
 
 /* Components */
-// @import 'components/';
+@import 'components/buttons';
+@import 'components/container';
+@import 'components/navbar';
+@import 'components/now-playing-bar';
+@import 'components/now-playing-modal';
+@import 'components/playlists';
 
 /* Pages */
-// @import 'pages/';
+@import 'pages/login';
 
 /* Themes */
 // @import 'themes/';

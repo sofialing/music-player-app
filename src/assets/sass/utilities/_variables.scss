@@ -19,3 +19,21 @@ $color-dark: #313131;
 $color-medium: #414141;
 $color-light: #525252;
 $color-white: #ffff;
+
+// Breakpoints
+$sm-screen: 640px;
+$md-screen: 768px;
+$lg-screen: 1024px;
+$xl-screen: 1280px;
+
+// Widths
+$width-site: 1366px;
+
+// A map of breakpoints.
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);
+

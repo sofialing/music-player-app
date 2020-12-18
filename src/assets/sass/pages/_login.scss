@@ -1,0 +1,17 @@
+.login {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	text-align: center;
+	padding-bottom: 20vh;
+	p {
+		margin-bottom: 2rem;
+	}
+	a {
+		text-transform: uppercase;
+	}
+}
