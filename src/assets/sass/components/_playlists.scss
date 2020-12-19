@@ -7,13 +7,14 @@
 		background: transparent;
 		display: flex;
 		align-items: center;
-		border-bottom: 1px solid $color-light;
+		border-bottom: 1px solid $color-darkergrey;
 		padding: .5rem .5rem;
-		transition: background .3s ease-in-out;
+		transition: background .5s ease-in-out;
 
 		&:hover {
-			background: $color-dark;
+			background: $color-darkergrey;
 			svg {
+				color: $color-white;
 				transform: translateX(.25rem)
 			}
 		}
@@ -21,8 +22,8 @@
 		svg {
 			margin-left: auto;
 			margin-right: .5rem;
-			color: $color-light;
-			transition: transform .3s ease-in-out;
+			color: $color-darkgrey;
+			transition: transform .5s ease-in-out, color .5s ease-in-out;
 		}
 	}
 	.playlist__image {
@@ -69,7 +70,7 @@
 
 .playlist {
 	&__header {
-		background-color: $color-medium;
+		background-color: $color-darkergrey;
 		position: relative;
 		&__inner {
 			@extend .container;
@@ -93,6 +94,7 @@
 				margin-bottom: 0;
 			}
 			svg {
+				color: $color-white;
 				position: absolute;
 				top: 1.5rem;
 				left: 1.5rem;
@@ -100,35 +102,12 @@
 		}
 	}
 	&__play-btn {
-		background: $color-primary;
-		border: none;
-		border-radius: 30rem;
-		color: $color-white;
-		display: flex;
-		align-items: center;
-		font-size: .875rem;
-		letter-spacing: .1em;
-		line-height: 1;
-		padding: .75rem 2.75rem .75rem;
+		@extend .btn;
 		position: absolute;
 		bottom: -1.5rem;
 		left: 0;
 		right: 0;
 		margin-left: auto;
 		margin-right: auto;
-		text-align: center;
-		text-transform: uppercase;
-		transition: transform .3s ease-in-out;
-		span {
-			margin-left: .5rem;
-		}
-		&:hover {
-			transform: scale(1.1);
-			cursor: pointer;
-		}
-		&:focus {
-			outline: none;
-			box-shadow: 0 0 0 1px $color-white;
-		}
 	}
 }

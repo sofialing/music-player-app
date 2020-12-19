@@ -1,7 +1,6 @@
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 const TrackListItem = ({ track }) => {
-	console.log(track);
 	return (
 		<li className="track-list__item">
 			<img className="track-list__image" src={track.album.images.length ? track.album.images[track.album.images.length - 1]['url'] : ''} alt="" />
@@ -9,7 +8,7 @@ const TrackListItem = ({ track }) => {
 				<h2>{track.name}</h2>
 				<p>{track.artists.map((artist) => artist.name).join(', ')} &middot; {track.album.name}</p>
 			</div>
-			<FavoriteBorderIcon />
+			<PlayArrowIcon />
 		</li>
 	)
 }

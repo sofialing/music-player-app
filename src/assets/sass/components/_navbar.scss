@@ -1,13 +1,13 @@
 .navbar {
+	background: $color-darkergrey;
+	border-top: 1px solid $color-black;
+	height: 80px;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 	position: fixed;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: $color-dark;
-	height: 80px;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	border-top: 1px solid #212121;
 
 	ul {
 		display: flex;
@@ -16,16 +16,25 @@
 		margin: 0;
 		justify-content: space-between;
 		a {
+			color: $color-white;
 			display: flex;
-			flex-direction: column;
-			justify-content: center;
 			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			svg {
+				color: $color-white;
+				transition: color .5s ease-in-out, transform .5s ease-in-out;
+			}
 			small {
 				font-size: .75rem;
 				letter-spacing: .1em;
 				font-weight: 300;
 				margin-top: .5rem;
 				text-transform: uppercase;
+			}
+			&:hover svg {
+				color: $color-primary;
+				transform: scale(1.1);
 			}
 		}
 	}

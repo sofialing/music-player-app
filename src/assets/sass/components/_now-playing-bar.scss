@@ -3,13 +3,13 @@
 	right: 0;
 	bottom: 80px;
 	left: 0;
-	background: $color-dark;
-	border-top: 1px solid #212121;
+	background: $color-darkgrey;
+	border-top: 1px solid $color-black;
 
 	.progress-bar {
 		height: 3px;
 		flex-basis: 100%;
-		background-color: $color-light;
+		background-color: $color-grey;
 		&__wrapper {
 			width:100%;
 			overflow: hidden;
@@ -35,6 +35,7 @@
 	.current-track {
 		margin-left: 1rem;
 		small {
+			color: $color-white;
 			display: block;
 			line-height: 1.5;
 			letter-spacing: .05em;
@@ -44,6 +45,7 @@
 		}
 	}
 	.icons {
+		color: $color-white;
 		margin-left: auto;
 		> * {
 			margin-left: 1rem;
