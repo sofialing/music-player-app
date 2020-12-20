@@ -1,26 +1,14 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PlayerContextProvider from './contexts/PlayerContext'
 import Dashboard from './components/pages/Dashboard';
 import Login from './components/pages/Login';
 import Redirect from './components/pages/Redirect';
 import Playlist from './components/pages/Playlist';
+import Search from './components/pages/Search';
 import './assets/sass/main.scss';
-// import { getTokenFromResponse } from './spotify/auth';
 
 
 const App = () => {
-	// const [token, setToken] = useState(null);
-	// useEffect(() => {
-	// 	const hash = getTokenFromResponse();
-	// 	window.location.hash = "";
-	// 	let _token = hash.access_token;
-
-	// 	if (_token) {
-	// 		setToken(_token);
-	// 	}
-
-	// }, [token])
 	return (
 		<Router>
 			<PlayerContextProvider>
@@ -28,7 +16,7 @@ const App = () => {
 					<Route path="/" >
 						<Login />
 					</Route>
-					<Route path="/dashboard" >
+					<Route path="/library" >
 						<Dashboard />
 					</Route>
 					<Route path="/redirect" >
@@ -36,6 +24,9 @@ const App = () => {
 					</Route>
 					<Route path="/playlist/:playlistId" >
 						<Playlist />
+					</Route>
+					<Route path="/search/" >
+						<Search />
 					</Route>
 				</Routes>
 			</PlayerContextProvider>

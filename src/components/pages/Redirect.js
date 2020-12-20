@@ -28,8 +28,6 @@ const Redirect = () => {
 			spotify.getMe().then(user => {
 				dispatch({ type: 'SET_USER', user });
 
-				// navigate to dashboard
-				navigate('/dashboard');
 			});
 
 			// get and store users playlists
@@ -37,7 +35,7 @@ const Redirect = () => {
 				dispatch({ type: 'SET_PLAYLISTS', playlists });
 
 				// navigate to dashboard
-				navigate('/dashboard');
+				navigate('/library');
 			});
 
 

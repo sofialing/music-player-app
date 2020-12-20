@@ -1,0 +1,97 @@
+.search-page {
+	.search-box {
+		position: relative;
+		&__field {
+			color: $color-black;
+			font-family: $font-family;
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .025em;
+			padding: .375rem 3rem;
+			height: 40px;
+			width: 100%;
+			border: 0;
+			border-radius: 30rem;
+			text-overflow: ellipsis;
+			&::placeholder {
+				color: $color-black;
+				font-family: $font-family;
+				font-size: .875rem;
+				font-weight: 300;
+				letter-spacing: .025em;
+			}
+			&:focus {
+				outline: none;
+				box-shadow: 0 0 0 2px $color-lightgrey;
+			}
+		}
+		&__icon {
+			display: flex;
+			align-items: center;
+			height: 40px;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			right: .75rem;
+			bottom: 0;
+			left: .75rem;
+			svg {
+				color: $color-darkgrey;
+			}
+		}
+	}
+
+	.search-results {
+		margin: 3rem 0;
+		section {
+			margin: 2rem 0;
+		}
+		h3 {
+			@extend h5;
+			margin: 0 0 .5rem;
+		}
+		ul {
+			@extend .playlists;
+			.list-item {
+				@extend .playlist__item;
+				&__image {
+					@extend .playlist__image;
+				}
+				&__details {
+					@extend .playlist__details;
+				}
+			}
+		}
+		.search-results__artist img {
+			border-radius: 50%;
+		}
+		footer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem .5rem 0;
+			a {
+				font-size: .875rem;
+				// font-weight: 300;
+				letter-spacing: .1em;
+				text-transform: uppercase;
+				transition: color .5s ease-in-out;
+			}
+			svg {
+				color: $color-darkgrey;
+				margin-right: .5rem;
+				transition: transform .5s ease-in-out, color .5s ease-in-out;
+			}
+			&:hover {
+				a {
+					color: $color-white;
+				}
+				svg {
+					color: $color-white;
+					transform: translateX(.25rem);
+				}
+			}
+		}
+	}
+
+}
