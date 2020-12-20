@@ -1,11 +1,12 @@
 export const initialState = {
-	user: null,
-	token: null,
+	isPlaying: false,
+	playlists: null,
 	spotify: null,
-	playlists: null
+	token: null,
+	user: null,
 }
 
-export const playerReducer = (state, action) => {
+export const musicPlayerReducer = (state, action) => {
 	console.log('action', action);
 	switch (action.type) {
 		case 'SET_TOKEN':

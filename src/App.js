@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PlayerContextProvider from './contexts/PlayerContext'
+import AuthRoute from './components/AuthRoute'
 import Dashboard from './components/pages/Dashboard';
 import Login from './components/pages/Login';
 import Redirect from './components/pages/Redirect';
 import Playlist from './components/pages/Playlist';
 import Search from './components/pages/Search';
+import NowPlayingBar from './components/NowPlayingBar';
+import Navbar from './components/Navbar';
 import './assets/sass/main.scss';
-
 
 const App = () => {
 	return (
@@ -16,19 +18,21 @@ const App = () => {
 					<Route path="/" >
 						<Login />
 					</Route>
-					<Route path="/library" >
+					<AuthRoute path="/library" >
 						<Dashboard />
-					</Route>
+					</AuthRoute>
 					<Route path="/redirect" >
 						<Redirect />
 					</Route>
-					<Route path="/playlist/:playlistId" >
+					<AuthRoute path="/playlist/:playlistId" >
 						<Playlist />
-					</Route>
-					<Route path="/search/" >
+					</AuthRoute>
+					<AuthRoute path="/search/" >
 						<Search />
-					</Route>
+					</AuthRoute>
 				</Routes>
+				<NowPlayingBar />
+				<Navbar />
 			</PlayerContextProvider>
 		</Router>
 	);

@@ -4,7 +4,6 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import TrackListItem from '../playlist/TrackListItem';
 import { usePlayer } from '../../contexts/PlayerContext';
-import Navbar from '../Navbar'
 
 const Playlist = () => {
 	const { playlistId } = useParams();
@@ -39,7 +38,6 @@ const Playlist = () => {
 					{playlist.tracks.items.map((item, index) => <TrackListItem key={index} track={item.track} />)}
 				</ul>
 			</div>
-			<Navbar />
 		</div>
 	)
 }

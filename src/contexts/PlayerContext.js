@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-import { playerReducer, initialState } from '../reducers/playerReducer';
+import { musicPlayerReducer, initialState } from '../reducers/musicPlayerReducer';
 
 const PlayerContext = createContext();
 const usePlayer = () => {
@@ -7,7 +7,7 @@ const usePlayer = () => {
 }
 
 const PlayerContextProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(playerReducer, initialState);
+	const [state, dispatch] = useReducer(musicPlayerReducer, initialState);
 
 	return (
 		<PlayerContext.Provider value={{ ...state, dispatch }}>

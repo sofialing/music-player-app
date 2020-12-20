@@ -39,7 +39,6 @@ const Search = () => {
 				</div>
 			</form>
 			{searchResults && <SearchResults searchResults={searchResults} search={searchRef.current.value} />}
-			<Navbar />
 		</div>
 	)
 }

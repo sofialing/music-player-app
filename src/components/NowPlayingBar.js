@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import PauseIcon from '@material-ui/icons/Pause';
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
@@ -9,28 +9,28 @@ const Navbar = () => {
 		<nav className="navbar container">
 			<ul>
 				<li>
-					<Link to="/library">
+					<NavLink to="/library">
 						<LibraryMusicIcon />
 						<small>Library</small>
-					</Link>
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/discovery">
+					<NavLink to="/discovery">
 						<AlbumIcon />
 						<small>Discover</small>
-					</Link>
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/favorites">
+					<NavLink to="/favorites">
 						<FavoriteBorderIcon />
 						<small>Favorites</small>
-					</Link>
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/search">
+					<NavLink to="/search">
 						<SearchIcon />
 						<small>Search</small>
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 		</nav>

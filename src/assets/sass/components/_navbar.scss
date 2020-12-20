@@ -16,7 +16,7 @@
 		margin: 0;
 		justify-content: space-between;
 		a {
-			color: $color-white;
+			color: $color-lightgrey;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -31,6 +31,12 @@
 				font-weight: 300;
 				margin-top: .5rem;
 				text-transform: uppercase;
+			}
+			&.active {
+				small {
+					color: $color-white;
+					font-weight: 500;
+				}
 			}
 			&:hover svg {
 				color: $color-primary;
