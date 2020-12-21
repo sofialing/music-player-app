@@ -1,0 +1,145 @@
+.artist-page {
+	padding-bottom: 6.5rem;
+	&__header {
+		@extend .playlist__header;
+		&__inner {
+			@extend .playlist__header__inner;
+		}
+	}
+	h2 {
+		@extend h5;
+		font-weight: 600;
+		margin: 0;
+		letter-spacing: .05em;
+	}
+
+	section {
+		@extend .container;
+		margin: 2.5rem 0;
+		padding-bottom: 0;
+		header {
+			margin-bottom: .5rem;
+		}
+	}
+	.discography header,
+	.related-artists header {
+		display: flex;
+		align-items: center;
+		svg {
+			margin-left: .5rem;
+			transition: transform .3s ease-in-out, color .3s ease-in-out;
+		}
+		a:hover + svg {
+			color: $color-white;
+			transform: translateX(.25rem);
+		}
+	}
+	.track-list {
+		padding: 0;
+	}
+	.discography-list,
+	.related-artists-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		list-style: none;
+		padding: .75rem 0 0;
+		margin: 0;
+
+		&__item {
+			img {
+				margin-bottom: 1rem;
+			}
+			h3 {
+				font-size: 1rem;
+				margin: 0;
+			}
+			p {
+				font-size: .875rem;
+				font-weight: 300;
+				letter-spacing: .05em;
+				margin: 0;
+				text-transform: capitalize;
+			}
+		}
+	}
+	.discography-list__item {
+		background: $color-darkergrey;
+		padding-bottom: 1rem;
+		transition: background .5s ease-in-out;
+		&:hover {
+			background: $color-darkgrey;
+		}
+		img {
+			margin-bottom: 1rem;
+		}
+		h3, p {
+			margin: 0 1rem;
+		}
+	}
+	.related-artists-list {
+		grid-template-columns: repeat(3, 1fr);
+		text-align: center;
+		img {
+			border-radius: 50%;
+			width: 100%;
+			transition: box-shadow .5s ease-in-out;
+		}
+		&__item:hover {
+			img {
+				box-shadow: 0 0 0 4px $color-white;
+			}
+		}
+	}
+}
+
+.discography-page {
+	padding-top: 3.25rem;
+	padding-bottom: 6.5rem;
+	&__header {
+		background-color: $color-darkergrey;
+		display: flex;
+		align-items: center;
+		margin-bottom: 1.5rem;
+		padding: 1rem 1.5rem;
+		position: fixed;
+		top: 0;
+		right:0;
+		left: 0;
+		h1 {
+			font-size: 1rem;
+			letter-spacing: .05em;
+			margin: 0;
+			text-transform: capitalize;
+		}
+		svg {
+			font-size: 1rem;
+			margin-right: 1rem;
+			margin-left: .5rem;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	section {
+		@extend .container;
+		margin: 2rem 0;
+		h2 {
+			@extend h5;
+			margin: 0 0 1rem;
+		}
+		.discography-list {
+			@extend .playlists;
+			.list-item {
+				@extend .playlist__item;
+				&__image {
+					@extend .playlist__image;
+				}
+				&__details {
+					@extend .playlist__details;
+				}
+			}
+		}
+	}
+
+}

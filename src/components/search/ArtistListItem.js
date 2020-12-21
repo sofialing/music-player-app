@@ -6,7 +6,7 @@ import noImg from '../../assets/images/no-image.png'
 const ArtistListItem = ({ artist }) => {
 	const image = artist.images.length ? artist.images[artist.images.length - 1]['url'] : noImg;
 	return (
-		<Link to={`/artist/${artist.id}`}>
+		<Link to={`/artists/${artist.id}`}>
 			<li className="list-item">
 				<img className="list-item__image" src={image} alt="" />
 				<div className="list-item__details">
