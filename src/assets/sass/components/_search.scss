@@ -1,4 +1,7 @@
 .search-page {
+	h1 {
+		@extend h3;
+	}
 	.search-box {
 		position: relative;
 		&__field {
@@ -42,7 +45,8 @@
 	}
 
 	.search-results {
-		margin: 3rem 0;
+		margin: 3rem 0 3rem;
+		padding-bottom: 6.5rem;
 		section {
 			margin: 2rem 0;
 		}
@@ -64,6 +68,24 @@
 		}
 		.search-results__artist img {
 			border-radius: 50%;
+		}
+		&__header {
+			background-color: $color-darkergrey;
+			display: flex;
+			align-items: center;
+			padding: 1rem;
+			margin-bottom: 1.5rem;
+			h1 {
+				@extend h5;
+				letter-spacing: .05em;
+				margin: 0;
+			}
+			svg {
+				margin-right: 1.5rem;
+				&:hover {
+					cursor: pointer;
+				}
+			}
 		}
 		footer {
 			display: flex;

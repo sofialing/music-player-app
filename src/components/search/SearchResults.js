@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AlbumListItem from './AlbumListItem';
 import ArtistListItem from './ArtistListItem';
@@ -19,7 +20,7 @@ const SearchResults = ({ searchResults, search }) => {
 				) : <p>No artists found for '{search}'.</p>}
 				{artists.next ? (
 					<footer>
-						<a href="/">View all artists</a>
+						<Link to={`artists`}>View all artists</Link>
 						<ChevronRightIcon />
 					</footer>
 				) : ''}
@@ -35,7 +36,7 @@ const SearchResults = ({ searchResults, search }) => {
 				) : <p>No albums found for '{search}'.</p>}
 				{albums.next ? (
 					<footer>
-						<a href="/">View all albums</a>
+						<Link to={`albums`}>View all albums</Link>
 						<ChevronRightIcon />
 					</footer>
 
@@ -52,12 +53,12 @@ const SearchResults = ({ searchResults, search }) => {
 				) : <p>No tracks found for '{search}'.</p>}
 				{tracks.next ? (
 					<footer>
-						<a href="/">View all tracks</a>
+						<Link to={`tracks`}>View all tracks</Link>
 						<ChevronRightIcon />
 					</footer>
 				) : ''}
 			</section>
-		</div>
+		</div >
 	)
 }
 

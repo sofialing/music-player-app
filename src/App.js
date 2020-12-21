@@ -9,29 +9,36 @@ import Search from './components/pages/Search';
 import NowPlayingBar from './components/NowPlayingBar';
 import Navbar from './components/Navbar';
 import './assets/sass/main.scss';
+import AllAlbums from './components/search/AllAlbums';
+import AllArtists from './components/search/AllArtists';
+import AllTracks from './components/search/AllTracks';
 
 const App = () => {
 	return (
 		<Router>
 			<PlayerContextProvider>
 				<Routes>
-					<Route path="/" >
+					<Route path='/' >
 						<Login />
 					</Route>
-					<AuthRoute path="/library" >
+					<AuthRoute path='library' >
 						<Dashboard />
 					</AuthRoute>
-					<Route path="/redirect" >
+					<Route path='redirect' >
 						<Redirect />
 					</Route>
-					<AuthRoute path="/playlist/:playlistId" >
+					<AuthRoute path='playlist/:playlistId' >
 						<Playlist />
 					</AuthRoute>
-					<AuthRoute path="/search/" >
-						<Search />
+					<AuthRoute path='search' >
+						<Route path='/' element={<Search />} />
+						<Route path='/:searchQuery' element={<Search />} />
+						<Route path='/:searchQuery/albums' element={<AllAlbums />} />
+						<Route path='/:searchQuery/artists' element={<AllArtists />} />
+						<Route path='/:searchQuery/tracks' element={<AllTracks />} />
 					</AuthRoute>
 				</Routes>
-				<NowPlayingBar />
+				{/* <NowPlayingBar /> */}
 				<Navbar />
 			</PlayerContextProvider>
 		</Router>
