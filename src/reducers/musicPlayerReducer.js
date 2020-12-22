@@ -29,6 +29,21 @@ export const musicPlayerReducer = (state, action) => {
 				...state,
 				playlists: action.playlists
 			};
+		case 'SET_TOP_ARTISTS':
+			return {
+				...state,
+				top_artists: action.artists
+			};
+		case 'SET_TOP_TRACKS':
+			return {
+				...state,
+				top_tracks: action.tracks
+			};
+		case 'SET_DISCOVER_WEEKLY':
+			return {
+				...state,
+				discover_weekly: action.playlist
+			};
 		default:
 			return state;
 	}

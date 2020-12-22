@@ -11,7 +11,7 @@ const ArtistListItem = ({ artist }) => {
 				<img className="list-item__image" src={image} alt="" />
 				<div className="list-item__details">
 					<h2>{artist.name}</h2>
-					<p>{artist.followers.total} fans</p>
+					<p>{parseInt(artist.followers.total).toLocaleString()} fans</p>
 				</div>
 				<ChevronRightIcon />
 			</li>

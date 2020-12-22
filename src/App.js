@@ -16,6 +16,9 @@ import AllArtists from './components/search/AllArtists';
 import AllTracks from './components/search/AllTracks';
 import ArtistDiscography from './components/artists/discography/ArtistDiscography';
 import ArtistRelatedArtists from './components/artists/related-artists/RelatedArtists';
+import TopArtistsAll from './components/dashboard/TopArtistsAll';
+import TopTracksAll from './components/dashboard/TopTracksAll';
+import PlaylistsAll from './components/dashboard/PlaylistsAll';
 
 const App = () => {
 	return (
@@ -26,8 +29,12 @@ const App = () => {
 					<Route path='/' >
 						<Login />
 					</Route>
-					<AuthRoute path='library' >
-						<Dashboard />
+					<AuthRoute path='dashboard' >
+						<Route path='/:userId' element={<Dashboard />} />
+						<Route path='/:userId/playlists' element={<PlaylistsAll />} />
+						<Route path='/:userId/top-artists' element={<TopArtistsAll />} />
+						<Route path='/:userId/top-tracks' element={<TopTracksAll />} />
+
 					</AuthRoute>
 					<Route path='redirect' >
 						<Redirect />

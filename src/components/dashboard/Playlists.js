@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { usePlayer } from '../../contexts/PlayerContext';
 import PlaylistItem from './PlaylistItem';
 
@@ -6,12 +7,17 @@ const Playlists = () => {
 	const { playlists } = usePlayer();
 
 	return (
-		<>
-			<h2>Playlists</h2>
-			<ul className="playlists">
-				{playlists && playlists.items.map((playlist, index) => <PlaylistItem key={index} playlist={playlist} />)}
+		<section className="playlists">
+			<header>
+				<Link to='playlists'>
+					<h2>Playlists</h2>
+				</Link>
+				<ChevronRightIcon />
+			</header>
+			<ul className="playlists-list">
+				{playlists && playlists.items.slice(0, 5).map((playlist, index) => <PlaylistItem playlist={playlist} key={index} />)}
 			</ul>
-		</>
+		</section>
 	)
 }
 

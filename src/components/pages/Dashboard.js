@@ -1,18 +1,22 @@
-import { useEffect } from 'react';
-import { usePlayer } from '../../contexts/PlayerContext';
+import DiscoverWeekly from '../dashboard/DiscoverWeekly';
 import Playlists from '../dashboard/Playlists';
-import Navbar from '../Navbar'
+import TopArtists from '../dashboard/TopArtists';
+import TopTracks from '../dashboard/TopTracks';
+import { usePlayer } from '../../contexts/PlayerContext';
+
 
 const Dashboard = () => {
-	const { } = usePlayer();
-	useEffect(() => {
-	}, [])
-
+	const { discover_weekly } = usePlayer();
 	return (
-		<div className="container">
-			<h1>Your music</h1>
+		<main className="dashboard-page">
+			<header className="container">
+				<h1>Your Music</h1>
+			</header>
+			{discover_weekly && <DiscoverWeekly />}
+			<TopArtists />
+			<TopTracks />
 			<Playlists />
-		</div>);
+		</main>);
 }
 
 export default Dashboard;

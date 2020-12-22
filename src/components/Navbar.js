@@ -3,15 +3,17 @@ import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import SearchIcon from '@material-ui/icons/Search';
+import { usePlayer } from '../contexts/PlayerContext';
 
 const Navbar = () => {
+	const { user } = usePlayer();
 	return (
 		<nav className="navbar container">
 			<ul>
 				<li>
-					<NavLink to="/library">
+					<NavLink to={`/dashboard/${user && user.id}`}>
 						<LibraryMusicIcon />
-						<small>Library</small>
+						<small>Home</small>
 					</NavLink>
 				</li>
 				<li>
