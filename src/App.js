@@ -6,7 +6,7 @@ import Login from './components/pages/Login';
 import Redirect from './components/pages/Redirect';
 import Playlist from './components/pages/Playlist';
 import Search from './components/pages/Search';
-import Artist from './components/pages/Artist';
+import SingleArtist from './components/pages/SingleArtist';
 import NowPlayingBar from './components/NowPlayingBar';
 import Navbar from './components/Navbar';
 import './assets/sass/main.scss';
@@ -42,7 +42,7 @@ const App = () => {
 						<Route path='/:searchQuery/tracks' element={<AllTracks />} />
 					</AuthRoute>
 					<AuthRoute path='artists' >
-						<Route path='/:artistId' element={<Artist />} />
+						<Route path='/:artistId' element={<SingleArtist />} />
 						<Route path='/:artistId/discography' element={<ArtistDiscography />} />
 						<Route path='/:artistId/related' element={<ArtistRelatedArtists />} />
 					</AuthRoute>

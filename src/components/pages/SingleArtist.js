@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { usePlayer } from '../../contexts/PlayerContext'
-import TopTracks from '../artists/TopTracks';
+import TopTracksList from '../artists/TopTracksList';
 import DiscographyList from '../artists/DiscographyList';
-import RelatedArtists from '../artists/RelatedArtists';
+import RelatedArtistsList from '../artists/RelatedArtistsList';
 import ArtistHeader from '../artists/ArtistHeader';
 
-const Artist = () => {
+const SingleArtist = () => {
 	const { artistId } = useParams();
 	const { spotify } = usePlayer();
 	const [artist, setArtist] = useState(null);
 	const [topTracks, setTopTracks] = useState(null);
-	const [albums, setAlbums] = useState(null);
+	const [discography, setDiscography] = useState(null);
 	const [relatedArtists, setRelatedArtists] = useState(null);
 
 	useEffect(() => {
@@ -22,7 +22,7 @@ const Artist = () => {
 			.then(data => setTopTracks(data.tracks.slice(0, 5)))
 			.catch(error => console.log(error))
 		spotify.getArtistAlbums(artistId, { limit: 4 })
-			.then(data => setAlbums(data))
+			.then(data => setDiscography(data))
 			.catch(error => console.log(error))
 		spotify.getArtistRelatedArtists(artistId)
 			.then(data => setRelatedArtists(data.artists.slice(0, 6)))
@@ -30,17 +30,17 @@ const Artist = () => {
 	}, [artistId, spotify])
 
 	return (
-		<main className="artist-page">
-			{artist && topTracks && albums && relatedArtists && (
+		<main className="single-artist-page">
+			{artist && topTracks && discography && relatedArtists && (
 				<>
 					<ArtistHeader artist={artist} />
-					<TopTracks tracks={topTracks} />
-					<DiscographyList albums={albums} />
-					<RelatedArtists artists={relatedArtists} />
+					<TopTracksList topTracks={topTracks} />
+					<DiscographyList discography={discography} />
+					<RelatedArtistsList relatedArtists={relatedArtists} />
 				</>
 			)}
 		</main>
 	)
 }
 
-export default Artist
+export default SingleArtist

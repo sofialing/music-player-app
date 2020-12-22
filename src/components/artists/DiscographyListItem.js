@@ -1,7 +1,6 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-const AlbumListItem = ({ album }) => {
+const DiscographyListItem = ({ album }) => {
 	return (
 		<Link to={`/albums/${album.id}`}>
 			<li className="discography-list__item">
@@ -13,4 +12,4 @@ const AlbumListItem = ({ album }) => {
 	)
 }
 
-export default AlbumListItem
+export default DiscographyListItem
