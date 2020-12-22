@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../contexts/PlayerContext';
-import AlbumListItem from './AlbumListItem';
+import AlbumListItem from '../elements/AlbumListItem';
 
 const AllAlbums = () => {
 	const navigate = useNavigate();
@@ -23,7 +23,7 @@ const AllAlbums = () => {
 					<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} />
 					<h1>All albums for '{searchQuery}'</h1>
 				</header>
-				<ul className="search-results__albums">
+				<ul>
 					{albums && albums.map((album, index) => <AlbumListItem album={album} key={index} />)}
 				</ul>
 			</div>

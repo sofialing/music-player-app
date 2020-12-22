@@ -48,7 +48,7 @@ const Search = () => {
 	}, [searchQuery])
 
 	return (
-		<div className="search-page container">
+		<main className="search-page container">
 			<h1>Search</h1>
 			<form className="search-box" role="search" onSubmit={onSubmit}>
 				<input className="search-box__field" type="text" placeholder="Search for artists, songs and more" autoComplete="off" ref={searchRef} />
@@ -57,7 +57,7 @@ const Search = () => {
 				</div>
 			</form>
 			{searchResults && <SearchResults searchResults={searchResults} search={searchRef.current.value} />}
-		</div>
+		</main>
 	)
 }
 

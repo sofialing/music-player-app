@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../contexts/PlayerContext';
-import PlaylistItem from './PlaylistItem';
+import PlaylistItem from '../elements/PlaylistItem';
 
 const PlaylistsAll = () => {
 	const navigate = useNavigate();

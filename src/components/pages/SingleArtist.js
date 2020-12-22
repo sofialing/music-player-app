@@ -25,7 +25,7 @@ const SingleArtist = () => {
 			.then(data => setDiscography(data))
 			.catch(error => console.log(error))
 		spotify.getArtistRelatedArtists(artistId)
-			.then(data => setRelatedArtists(data.artists.slice(0, 6)))
+			.then(data => setRelatedArtists(data.artists.slice(0, 4)))
 			.catch(error => console.log(error))
 	}, [artistId, spotify])
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { usePlayer } from '../../contexts/PlayerContext';
-import TrackListItem from '../search/TrackListItem';
+import TrackListItem from '../elements/TrackListItem';
 
 const TopTracks = () => {
 	const { top_tracks } = usePlayer();
@@ -14,8 +14,8 @@ const TopTracks = () => {
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul className="top-tracks-list">
-				{top_tracks && top_tracks.items.slice(0, 5).map((track, index) => <TrackListItem track={track} key={index} />)}
+			<ul>
+				{top_tracks && top_tracks.items.slice(0, 5).map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 			</ul>
 		</section>
 	)

@@ -1,0 +1,41 @@
+.album-list-item {
+	background: transparent;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid $color-darkergrey;
+	padding: .5rem .5rem;
+	transition: background .5s ease-in-out;
+	&__image {
+		width: 45px;
+		height: 45px;
+	}
+	&__details {
+		margin-left: 1rem;
+		h2, p {
+			line-height: 1.4;
+			margin: 0 !important;
+			letter-spacing: .05em;
+		}
+		h2 {
+			font-size: 1rem !important;
+			font-weight: 600;
+		}
+		p {
+			font-size: .875rem;
+			font-weight: 300;
+		}
+	}
+	svg {
+		margin-left: auto;
+		margin-right: .5rem;
+		color: $color-darkgrey;
+		transition: color .5s ease-in-out;
+	}
+	&:hover {
+		background: $color-darkergrey;
+		cursor: pointer;
+		svg {
+			color: $color-white;
+		}
+	}
+}

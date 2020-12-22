@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../contexts/PlayerContext';
-import TrackListItem from './TrackListItem';
+import TrackListItem from '../elements/TrackListItem';
 
 const AllTracks = () => {
 	const navigate = useNavigate();
@@ -17,17 +17,17 @@ const AllTracks = () => {
 	}, [searchQuery, spotify])
 
 	return (
-		<div className="search-page container">
-			<div className="search-results">
-				<header className="search-results__header">
-					<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} />
-					<h1>All tracks for '{searchQuery}'</h1>
-				</header>
-				<ul className="search-results__tracks">
-					{tracks && tracks.map((track, index) => <TrackListItem track={track} key={index} />)}
+		<main className="search-results-page">
+			<header className="search-results-page__header">
+				<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} />
+				<h1>All tracks for '{searchQuery}'</h1>
+			</header>
+			<section>
+				<ul>
+					{tracks && tracks.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 				</ul>
-			</div>
-		</div>
+			</section>
+		</main>
 	)
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumListItem from './AlbumListItem';
-import ArtistListItem from './ArtistListItem';
-import TrackListItem from './TrackListItem';
+import AlbumListItem from '../elements/AlbumListItem';
+import ArtistListItem from '../elements/ArtistListItem';
+import TrackListItem from '../elements/TrackListItem';
 
 const SearchResults = ({ searchResults, search }) => {
 	const { albums, artists, tracks } = searchResults;
@@ -14,7 +14,7 @@ const SearchResults = ({ searchResults, search }) => {
 					<h3>Artists</h3>
 				</header>
 				{artists.total ? (
-					<ul className="search-results__artist">
+					<ul>
 						{artists.items.map((artist, index) => <ArtistListItem artist={artist} key={index} />)}
 					</ul>
 				) : <p>No artists found for '{search}'.</p>}
@@ -30,7 +30,7 @@ const SearchResults = ({ searchResults, search }) => {
 					<h3>Albums</h3>
 				</header>
 				{albums.total ? (
-					<ul className="search-results__albums">
+					<ul>
 						{albums.items.map((album, index) => <AlbumListItem album={album} key={index} />)}
 					</ul>
 				) : <p>No albums found for '{search}'.</p>}
@@ -48,7 +48,7 @@ const SearchResults = ({ searchResults, search }) => {
 				</header>
 				{tracks.total ? (
 					<ul className="search-results__tracks">
-						{tracks.items.map((track, index) => <TrackListItem track={track} key={index} />)}
+						{tracks.items.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 					</ul>
 				) : <p>No tracks found for '{search}'.</p>}
 				{tracks.next ? (

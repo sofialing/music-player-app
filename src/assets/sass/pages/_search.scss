@@ -1,0 +1,31 @@
+.search-results-page {
+	&__header {
+		background-color: $color-darkergrey;
+		border-bottom: 1px solid $color-darkgrey;
+		display: flex;
+		align-items: center;
+		margin-bottom: 1.5rem;
+		padding: 1rem 1.5rem;
+		position: fixed;
+		top: 0;
+		right:0;
+		left: 0;
+		h1 {
+			font-size: 1rem;
+			letter-spacing: .05em;
+			margin: 0;
+		}
+		svg {
+			font-size: 1rem;
+			margin-right: 1rem;
+			margin-left: .5rem;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	section {
+		@extend .container;
+		margin-top: 5rem;
+	}
+}

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../contexts/PlayerContext';
-import TrackListItem from '../search/TrackListItem';
+import TrackListItem from '../elements/TrackListItem';
 
 const TopTracksAll = () => {
 	const navigate = useNavigate();
@@ -14,8 +14,8 @@ const TopTracksAll = () => {
 				<h1>Top Tracks</h1>
 			</header>
 			<section>
-				<ul className="top-artists-list">
-					{top_tracks && top_tracks.items.map((track, index) => <TrackListItem track={track} key={index} />)}
+				<ul>
+					{top_tracks && top_tracks.items.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 				</ul>
 			</section>
 		</main>

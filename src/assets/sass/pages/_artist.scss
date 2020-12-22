@@ -37,6 +37,17 @@
 	.track-list {
 		padding: 0;
 	}
+	.related-artists-grid,
+	.discography__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0 0;
+	}
+
+
 	.discography-list,
 	.related-artists-list {
 		display: grid;

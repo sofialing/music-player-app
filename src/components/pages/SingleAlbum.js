@@ -4,7 +4,7 @@ import moment from 'moment';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../contexts/PlayerContext'
-import AlbumTrackListItem from '../album/AlumTrackListItem';
+import TrackListItem from '../elements/TrackListItem';
 
 const SingleAlbum = () => {
 	const navigate = useNavigate();
@@ -40,11 +40,10 @@ const SingleAlbum = () => {
 					<span>Play</span>
 				</button>
 			</header>
-			<section className="container">
-				<ul className="track-list">
-					{tracks.map((track, index) => <AlbumTrackListItem track={track} album={album} key={index} />)}
+			<section>
+				<ul>
+					{tracks.map((track, index) => <TrackListItem track={track} album={album} displayAlbumTitle={false} key={index} />)}
 				</ul>
-
 			</section>
 		</main>
 	)

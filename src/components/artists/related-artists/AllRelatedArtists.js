@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../../contexts/PlayerContext';
-import RelatedArtistListItem from './RelatedArtistListItem';
+import ArtistListItem from '../../elements/ArtistListItem';
 
-const ArtistRelatedArtists = () => {
+const AllRelatedArtists = () => {
 	const navigate = useNavigate();
 	const { artistId } = useParams();
 	const { spotify } = usePlayer();
@@ -27,8 +27,8 @@ const ArtistRelatedArtists = () => {
 				<h1>{artist && `${artist} – related artists`}</h1>
 			</header>
 			<section>
-				<ul className="related-artists-list">
-					{relatedArtists && relatedArtists.map((artist, index) => <RelatedArtistListItem artist={artist} key={index} />)}
+				<ul>
+					{relatedArtists && relatedArtists.map((artist, index) => <ArtistListItem artist={artist} key={index} />)}
 				</ul>
 			</section>
 
@@ -36,4 +36,4 @@ const ArtistRelatedArtists = () => {
 	)
 }
 
-export default ArtistRelatedArtists
+export default AllRelatedArtists

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { usePlayer } from '../../../contexts/PlayerContext';
-import DiscographyListItem from './DiscograpyListItem'
+import AlbumListItem from '../../elements/AlbumListItem'
 
 const ArtistDiscography = () => {
 	const navigate = useNavigate();
@@ -38,7 +38,7 @@ const ArtistDiscography = () => {
 				<section>
 					<h2>Albums</h2>
 					<ul className="discography-list">
-						{albums.map((album, index) => <DiscographyListItem album={album} key={index} />)}
+						{albums.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 					</ul>
 				</section>
 			}
@@ -46,7 +46,7 @@ const ArtistDiscography = () => {
 				<section>
 					<h2>Singles</h2>
 					<ul className="discography-list">
-						{singles.map((album, index) => <DiscographyListItem album={album} key={index} />)}
+						{singles.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 					</ul>
 				</section>
 			}
@@ -54,7 +54,7 @@ const ArtistDiscography = () => {
 				<section>
 					<h2>Compilations</h2>
 					<ul className="discography-list">
-						{compilations.map((album, index) => <DiscographyListItem album={album} key={index} />)}
+						{compilations.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 					</ul>
 				</section>
 			}

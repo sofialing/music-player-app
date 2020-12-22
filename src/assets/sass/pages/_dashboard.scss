@@ -29,38 +29,13 @@
 			}
 		}
 	}
-	.top-artists-list {
+	.top-artists-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
 		list-style: none;
 		padding: 0;
 		margin: 1rem 0 0;
-
-		&__item {
-			background: $color-darkergrey;
-			padding: 1rem;
-			text-align: center;
-			transition: background .5s ease-in-out;
-			&:hover {
-				background: $color-darkgrey;
-			}
-			img {
-				border-radius: 50%;
-				margin-bottom: 1.5rem;
-			}
-			h3 {
-				font-size: 1rem;
-				letter-spacing: .05em;
-				margin: 0;
-			}
-			p {
-				font-size: .875rem;
-				font-weight: 300;
-				letter-spacing: .05em;
-				margin: 0;
-			}
-		}
 	}
 
 	.top-tracks-list {

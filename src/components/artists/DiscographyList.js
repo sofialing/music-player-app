@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import DiscographyListItem from './DiscographyListItem';
+import AlbumCard from '../elements/AlbumCard';
 
 const DiscographyList = ({ discography }) => {
 	return (
@@ -11,8 +11,8 @@ const DiscographyList = ({ discography }) => {
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul className="discography-list">
-				{discography.items.map((album, index) => <DiscographyListItem album={album} key={index} />)}
+			<ul className="discography__grid">
+				{discography.items.map((album, index) => <AlbumCard album={album} key={index} />)}
 			</ul>
 		</section>
 	)
