@@ -14,6 +14,7 @@ import AllAlbums from './components/search/AllAlbums';
 import AllArtists from './components/search/AllArtists';
 import AllTracks from './components/search/AllTracks';
 import ArtistDiscography from './components/artists/discography/ArtistDiscography';
+import ArtistRelatedArtists from './components/artists/related-artists/RelatedArtists';
 
 const App = () => {
 	return (
@@ -43,7 +44,7 @@ const App = () => {
 					<AuthRoute path='artists' >
 						<Route path='/:artistId' element={<Artist />} />
 						<Route path='/:artistId/discography' element={<ArtistDiscography />} />
-						<Route path='/:artistId/related' element={<p>Related artists</p>} />
+						<Route path='/:artistId/related' element={<ArtistRelatedArtists />} />
 					</AuthRoute>
 				</Routes>
 				{/* <NowPlayingBar /> */}

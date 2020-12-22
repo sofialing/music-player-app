@@ -93,11 +93,13 @@
 	}
 }
 
-.discography-page {
+.discography-page,
+.related-artists-page {
 	padding-top: 3.25rem;
 	padding-bottom: 6.5rem;
 	&__header {
 		background-color: $color-darkergrey;
+		border-bottom: 1px solid $color-darkgrey;
 		display: flex;
 		align-items: center;
 		margin-bottom: 1.5rem;
@@ -128,7 +130,8 @@
 			@extend h5;
 			margin: 0 0 1rem;
 		}
-		.discography-list {
+		.discography-list,
+		.related-artists-list {
 			@extend .playlists;
 			.list-item {
 				@extend .playlist__item;
@@ -141,5 +144,8 @@
 			}
 		}
 	}
+}
 
+.related-artists-list img {
+	border-radius: 50%;
 }
