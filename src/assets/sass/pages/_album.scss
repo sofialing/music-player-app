@@ -1,0 +1,9 @@
+.single-album-page {
+	padding-bottom: 6.5rem;
+	&__header {
+		@extend .playlist__header;
+		&__inner {
+			@extend .playlist__header__inner;
+		}
+	}
+}

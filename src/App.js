@@ -6,6 +6,7 @@ import Login from './components/pages/Login';
 import Redirect from './components/pages/Redirect';
 import Playlist from './components/pages/Playlist';
 import Search from './components/pages/Search';
+import SingleAlbum from './components/pages/SingleAlbum';
 import SingleArtist from './components/pages/SingleArtist';
 import NowPlayingBar from './components/NowPlayingBar';
 import Navbar from './components/Navbar';
@@ -45,6 +46,9 @@ const App = () => {
 						<Route path='/:artistId' element={<SingleArtist />} />
 						<Route path='/:artistId/discography' element={<ArtistDiscography />} />
 						<Route path='/:artistId/related' element={<ArtistRelatedArtists />} />
+					</AuthRoute>
+					<AuthRoute path='album' >
+						<Route path='/:albumId' element={<SingleAlbum />} />
 					</AuthRoute>
 				</Routes>
 				{/* <NowPlayingBar /> */}
