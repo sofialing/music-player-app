@@ -5,7 +5,7 @@ const ArtistCard = ({ artist }) => {
 	const imageSrc = artist.images.length ? artist.images[artist.images.length - 1]['url'] : noImage;
 
 	return (
-		<Link to={`/artists/${artist.id}`}>
+		<Link to={`/artist/${artist.id}`} state={{ artist }} >
 			<li className="artist-card">
 				<header className="artist-card__header">
 					<img src={imageSrc} alt={artist.name} />

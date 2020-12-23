@@ -58,7 +58,7 @@ const SearchResults = ({ searchResults, search }) => {
 					</footer>
 				) : ''}
 			</section>
-		</div >
+		</div>
 	)
 }
 

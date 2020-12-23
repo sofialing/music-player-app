@@ -6,7 +6,7 @@ const ArtistListItem = ({ artist }) => {
 	const imageSrc = artist.images.length ? artist.images[artist.images.length - 1]['url'] : noImage;
 
 	return (
-		<Link to={`/artists/${artist.id}`}>
+		<Link to={`/artist/${artist.id}`}>
 			<li className="artist-list-item">
 				<img className="artist-list-item__image" src={imageSrc} alt="" />
 				<div className="artist-list-item__details">

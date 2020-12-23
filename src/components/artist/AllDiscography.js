@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { usePlayer } from '../../../contexts/PlayerContext';
-import AlbumListItem from '../../elements/AlbumListItem'
+import { useParams } from 'react-router-dom'
+import { usePlayer } from '../../contexts/PlayerContext';
+import AlbumListItem from '../elements/AlbumListItem'
+import PageHeader from '../elements/PageHeader'
 
-const ArtistDiscography = () => {
-	const navigate = useNavigate();
+const AllDiscography = () => {
 	const { artistId } = useParams();
 	const { spotify } = usePlayer();
 	const [artist, setArtist] = useState(null);
@@ -18,26 +17,35 @@ const ArtistDiscography = () => {
 			.then(data => setArtist(data.name))
 			.catch(error => console.log(error))
 		spotify.getArtistAlbums(artistId, { include_groups: 'album' })
-			.then(data => setAlbums(data.items))
+			.then(data => {
+				if (data.total) {
+					setAlbums(data.items)
+				}
+			})
 			.catch(error => console.log(error))
 		spotify.getArtistAlbums(artistId, { include_groups: 'single' })
-			.then(data => setSingles(data.items))
+			.then(data => {
+				if (data.total) {
+					setSingles(data.items)
+				}
+			})
 			.catch(error => console.log(error))
 		spotify.getArtistAlbums(artistId, { include_groups: 'compilation' })
-			.then(data => setCompilations(data.items))
+			.then(data => {
+				if (data.total) {
+					setCompilations(data.items)
+				}
+			})
 			.catch(error => console.log(error))
 	}, [artistId, spotify])
 
 	return (
 		<main className="discography-page">
-			<header className="discography-page__header">
-				<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} />
-				<h1>{artist && `${artist} – discography`}</h1>
-			</header>
+			<PageHeader title={`${artist} Discography`} />
 			{albums &&
 				<section>
 					<h2>Albums</h2>
-					<ul className="discography-list">
+					<ul>
 						{albums.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 					</ul>
 				</section>
@@ -45,7 +53,7 @@ const ArtistDiscography = () => {
 			{singles &&
 				<section>
 					<h2>Singles</h2>
-					<ul className="discography-list">
+					<ul>
 						{singles.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 					</ul>
 				</section>
@@ -53,7 +61,7 @@ const ArtistDiscography = () => {
 			{compilations &&
 				<section>
 					<h2>Compilations</h2>
-					<ul className="discography-list">
+					<ul>
 						{compilations.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 					</ul>
 				</section>
@@ -63,4 +71,4 @@ const ArtistDiscography = () => {
 	)
 }
 
-export default ArtistDiscography
+export default AllDiscography

@@ -4,11 +4,28 @@
 	padding: 0;
 }
 
-body, #root {
-	background: $color-black;
-	// background: linear-gradient($color-dark, #212121);
+body {
+	background: $color-darkgrey;
 	width: 100vw;
- 	height: 100vh;
+	height: 100vh;
+}
+
+#app {
+	position: relative;
+	background: $color-black;
+}
+
+@include media(md) {
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#app {
+		box-shadow: 1px 4px 12px #00000072;
+		width: 414px;
+		height: 736px;
+	}
 }
 
 a {
@@ -28,5 +45,13 @@ ul {
 }
 
 main {
+	position: relative;
 	padding-bottom: 8rem;
+	height: 100%;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }

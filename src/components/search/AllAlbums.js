@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { useParams } from 'react-router-dom'
 import { usePlayer } from '../../contexts/PlayerContext';
 import AlbumListItem from '../elements/AlbumListItem';
+import PageHeader from '../elements/PageHeader';
 
 const AllAlbums = () => {
-	const navigate = useNavigate();
 	const { searchQuery } = useParams();
 	const { spotify } = usePlayer();
 	const [albums, setAlbums] = useState(null);
@@ -17,17 +16,14 @@ const AllAlbums = () => {
 	}, [searchQuery, spotify])
 
 	return (
-		<div className="search-page container">
-			<div className="search-results">
-				<header className="search-results__header">
-					<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} />
-					<h1>All albums for '{searchQuery}'</h1>
-				</header>
+		<main className="search-results-page">
+			<PageHeader title={`All albums for '${searchQuery}'`} />
+			<section>
 				<ul>
 					{albums && albums.map((album, index) => <AlbumListItem album={album} key={index} />)}
 				</ul>
-			</div>
-		</div>
+			</section>
+		</main>
 	)
 }
 

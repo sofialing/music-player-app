@@ -12,6 +12,7 @@ const Redirect = () => {
 
 	useEffect(() => {
 		const token = getToken();
+		// const token = "BQBUYAoCyQzqIlyeaFMUGjSFLGQCWv37vBbPZK8J01cHOYVhleZ-l7hSUfi0rA_7H231jot6L99Otw7M3GTwzGaX411huIlZa2WpL4KbW7X_o_Ldh3mjWuN39Ty_RNOLUnfrmkRW2WJ_0We7IhUBO74HA09J1W6Xbactx7s9EQ";
 
 		if (!token) {
 			// navigate to login page

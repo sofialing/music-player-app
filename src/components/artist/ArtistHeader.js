@@ -6,14 +6,14 @@ const ArtistHeader = ({ artist }) => {
 	const navigate = useNavigate();
 
 	return (
-		<header className="single-artist-page__header">
-			<div className="single-artist-page__header__inner">
+		<header className="artist-page__header">
+			<div className="artist-page__header__inner">
 				<ArrowBackIosIcon onClick={() => navigate(-1)} />
 				<img src={artist.images[1]['url']} alt={artist.name} />
 				<h1>{artist.name}</h1>
 				<p>{parseInt(artist.followers.total).toLocaleString()} fans</p>
 			</div>
-			<button className="playlist__play-btn">
+			<button className="play-btn">
 				<PlaylistPlayIcon />
 				<span>Play</span>
 			</button>

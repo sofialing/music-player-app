@@ -1,14 +1,24 @@
 .dashboard-page {
-	padding-bottom: 6.5rem;
-	h1 {
-		@extend h3;
-		letter-spacing: .05em;
+	& > header {
+		@extend .container;
+		margin: 2.5rem 0 2rem;
+		h1 {
+			@extend h3;
+			letter-spacing: .05em;
+			margin: 0;
+		}
 	}
 
 	section {
 		@extend .container;
 		margin: 2.5rem 0;
 		padding-bottom: 0;
+		&:first-of-type {
+			margin-top: 0;
+		}
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 		header {
 			display: flex;
 			align-items: center;
@@ -38,24 +48,10 @@
 		margin: 1rem 0 0;
 	}
 
-	.top-tracks-list {
-		@extend .playlists;
-		.list-item {
-			@extend .playlist__item;
-			&__image {
-				@extend .playlist__image;
-			}
-			&__details {
-				@extend .playlist__details;
-			}
-		}
-	}
-
 	.discover-weekly .card {
 		background: $color-darkergrey;
 		transition: background .5s ease-in-out;
 		margin-top: 1rem;
-
 		&__header {
 			margin-bottom: 0;
 			width: 100%;
@@ -66,7 +62,6 @@
 				transition: transform .5s ease-in-out;
 			}
 		}
-
 		&__body,
 		&__footer {
 			padding: 1.25rem 1.25rem .5rem;
@@ -94,31 +89,8 @@
 	}
 }
 
-.top-artists-page,
-.top-tracks-page,
-.playlists-page {
-	padding-bottom: 6.5rem;
-	&__header {
-		@extend .discography-page__header;
-	}
-	section {
-		@extend .container;
-		margin-top: 5rem;
-	}
-	ul {
-		@extend .playlists;
-		.list-item {
-			@extend .playlist__item;
-			&__image {
-				@extend .playlist__image;
-			}
-			&__details {
-				@extend .playlist__details;
-			}
-		}
-	}
-}
-
-.top-artists-list img {
-	border-radius: 50%;
+.top-artists-page section,
+.top-tracks-page section,
+.playlists-page section {
+	@extend .container;
 }

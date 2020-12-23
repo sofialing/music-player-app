@@ -7,18 +7,18 @@ import Redirect from './components/pages/Redirect';
 import Playlist from './components/pages/Playlist';
 import Search from './components/pages/Search';
 import SingleAlbum from './components/pages/SingleAlbum';
-import SingleArtist from './components/pages/SingleArtist';
+import Artist from './components/pages/Artist';
 import NowPlayingBar from './components/elements/NowPlayingBar';
 import Navbar from './components/elements/Navbar';
 import './assets/sass/main.scss';
 import AllAlbums from './components/search/AllAlbums';
 import AllArtists from './components/search/AllArtists';
 import AllTracks from './components/search/AllTracks';
-import ArtistDiscography from './components/artists/discography/ArtistDiscography';
-import AllRelatedArtists from './components/artists/related-artists/AllRelatedArtists';
-import TopArtistsAll from './components/dashboard/TopArtistsAll';
-import TopTracksAll from './components/dashboard/TopTracksAll';
-import PlaylistsAll from './components/dashboard/PlaylistsAll';
+import AllDiscography from './components/artist/AllDiscography';
+import AllRelatedArtists from './components/artist/AllRelatedArtists';
+import AllTopArtists from './components/dashboard/AllTopArtists';
+import AllTopTracks from './components/dashboard/AllTopTracks';
+import AllPlaylists from './components/dashboard/AllPlaylists';
 
 const App = () => {
 	return (
@@ -31,9 +31,9 @@ const App = () => {
 					</Route>
 					<AuthRoute path='dashboard' >
 						<Route path='/:userId' element={<Dashboard />} />
-						<Route path='/:userId/playlists' element={<PlaylistsAll />} />
-						<Route path='/:userId/top-artists' element={<TopArtistsAll />} />
-						<Route path='/:userId/top-tracks' element={<TopTracksAll />} />
+						<Route path='/:userId/playlists' element={<AllPlaylists />} />
+						<Route path='/:userId/top-artists' element={<AllTopArtists />} />
+						<Route path='/:userId/top-tracks' element={<AllTopTracks />} />
 
 					</AuthRoute>
 					<Route path='redirect' >
@@ -49,9 +49,9 @@ const App = () => {
 						<Route path='/:searchQuery/artists' element={<AllArtists />} />
 						<Route path='/:searchQuery/tracks' element={<AllTracks />} />
 					</AuthRoute>
-					<AuthRoute path='artists' >
-						<Route path='/:artistId' element={<SingleArtist />} />
-						<Route path='/:artistId/discography' element={<ArtistDiscography />} />
+					<AuthRoute path='artist' >
+						<Route path='/:artistId' element={<Artist />} />
+						<Route path='/:artistId/discography' element={<AllDiscography />} />
 						<Route path='/:artistId/related' element={<AllRelatedArtists />} />
 					</AuthRoute>
 					<AuthRoute path='album' >
