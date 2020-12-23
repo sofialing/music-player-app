@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from "spotify-web-api-js";
 import { usePlayer } from '../../contexts/PlayerContext';
-import { getTokenFromResponse } from '../../spotify/auth';
+import { getToken } from '../../auth';
 
 const spotify = new SpotifyWebApi();
 
@@ -11,9 +11,12 @@ const Redirect = () => {
 	const { dispatch } = usePlayer();
 
 	useEffect(() => {
-		const hash = getTokenFromResponse();
-		window.location.hash = "";
-		let token = hash.access_token;
+		const token = getToken();
+
+		if (!token) {
+			// navigate to login page
+			navigate('/');
+		}
 
 		if (token) {
 			// set access token

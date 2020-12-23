@@ -1,4 +1,4 @@
-import { accessUrl } from '../../spotify/auth';
+import { accessUrl } from '../../auth';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import bgImg from '../../assets/images/music-bg.png';
 
