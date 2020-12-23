@@ -1,5 +1,6 @@
 .album-card {
 	background: $color-darkergrey;
+	height: 100%;
 	text-align: center;
 	transition: background .5s ease-in-out;
 	&__header {
