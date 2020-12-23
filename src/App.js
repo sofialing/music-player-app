@@ -58,7 +58,7 @@ const App = () => {
 						<Route path='/:albumId' element={<SingleAlbum />} />
 					</AuthRoute>
 				</Routes>
-				{/* <NowPlayingBar /> */}
+				<NowPlayingBar />
 			</PlayerContextProvider>
 		</Router>
 	);

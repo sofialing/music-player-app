@@ -4,6 +4,11 @@ export const initialState = {
 	spotify: null,
 	token: null,
 	user: null,
+	top_artists: null,
+	top_tracks: null,
+	discover_weekly: null,
+	current_track: null,
+	audio: null,
 }
 
 export const musicPlayerReducer = (state, action) => {
@@ -43,6 +48,21 @@ export const musicPlayerReducer = (state, action) => {
 			return {
 				...state,
 				discover_weekly: action.playlist
+			};
+		case 'SET_CURRENT_TRACK':
+			return {
+				...state,
+				current_track: action.track
+			};
+		case 'SET_AUDIO':
+			return {
+				...state,
+				audio: action.audio
+			};
+		case 'SET_PLAYING':
+			return {
+				...state,
+				isPlaying: action.playing
 			};
 		default:
 			return state;
