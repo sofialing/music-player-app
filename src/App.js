@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PlayerContextProvider from './contexts/PlayerContext'
 import AuthRoute from './components/AuthRoute'
 import Dashboard from './components/pages/Dashboard';
+import Favorites from './components/pages/Favorites';
 import Login from './components/pages/Login';
 import Redirect from './components/pages/Redirect';
 import Playlist from './components/pages/Playlist';
@@ -33,9 +34,11 @@ const App = () => {
 					<AuthRoute path='dashboard' >
 						<Route path='/:userId' element={<Dashboard />} />
 						<Route path='/:userId/playlists' element={<AllPlaylists />} />
+					</AuthRoute>
+					<AuthRoute path='favorites' >
+						<Route path='/:userId' element={<Favorites />} />
 						<Route path='/:userId/top-artists' element={<AllTopArtists />} />
 						<Route path='/:userId/top-tracks' element={<AllTopTracks />} />
-
 					</AuthRoute>
 					<Route path='redirect' >
 						<Redirect />

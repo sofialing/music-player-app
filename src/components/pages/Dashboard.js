@@ -1,7 +1,5 @@
 import DiscoverWeekly from '../dashboard/DiscoverWeekly'
 import Playlists from '../dashboard/Playlists'
-import TopArtists from '../dashboard/TopArtists'
-import TopTracks from '../dashboard/TopTracks'
 import { usePlayer } from '../../contexts/PlayerContext'
 
 
@@ -13,10 +11,9 @@ const Dashboard = () => {
 				<h1>Your Music</h1>
 			</header>
 			{discover_weekly && <DiscoverWeekly />}
-			<TopArtists />
-			<TopTracks />
 			<Playlists />
-		</main>);
+		</main>
+	);
 }
 
 export default Dashboard;

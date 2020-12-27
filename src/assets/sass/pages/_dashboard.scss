@@ -1,4 +1,5 @@
-.dashboard-page {
+.dashboard-page,
+.favorites-page {
 	& > header {
 		@extend .container;
 		margin: 2.5rem 0 2rem;
