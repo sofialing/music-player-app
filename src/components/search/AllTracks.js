@@ -3,25 +3,29 @@ import { useParams } from 'react-router-dom'
 import { usePlayer } from '../../contexts/PlayerContext';
 import TrackListItem from '../elements/TrackListItem';
 import PageHeader from '../elements/PageHeader';
+import Pagination from '../elements/Pagination';
+import usePagination from '../../hooks/usePagination';
 
 const AllTracks = () => {
 	const { searchQuery } = useParams();
 	const { spotify } = usePlayer();
-	const [tracks, setTracks] = useState(null);
+	const [tracks, setTracks] = useState([]);
+	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(tracks);
 
 	useEffect(() => {
-		spotify.searchTracks(searchQuery)
-			.then(({ tracks }) => setTracks(tracks.items))
+		spotify.searchTracks(searchQuery, { limit, market: 'from_token', offset: (currentPage - 1) * limit })
+			.then(({ tracks }) => setTracks(tracks))
 			.catch(error => console.log(error));
-	}, [searchQuery, spotify])
+	}, [searchQuery, spotify, currentPage, limit])
 
 	return (
 		<main className="search-results-page">
 			<PageHeader title={`All tracks for '${searchQuery}'`} />
 			<section>
 				<ul>
-					{tracks && tracks.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
+					{tracks.total && tracks.items.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 				</ul>
+				<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />
 			</section>
 		</main>
 	)
