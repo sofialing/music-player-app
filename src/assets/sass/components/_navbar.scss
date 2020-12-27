@@ -24,7 +24,7 @@
 			flex-direction: column;
 			svg {
 				color: $color-white;
-				transition: color .5s ease-in-out, transform .5s ease-in-out;
+				transition: transform .5s ease-in-out;
 			}
 			small {
 				font-size: .75rem;
@@ -36,11 +36,9 @@
 			&.active {
 				small {
 					color: $color-white;
-					font-weight: 500;
 				}
 			}
 			&:hover svg {
-				color: $color-primary;
 				transform: scale(1.1);
 			}
 		}

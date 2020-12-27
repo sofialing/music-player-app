@@ -13,19 +13,19 @@ const Navbar = () => {
 				<li>
 					<NavLink to={`/dashboard/${user && user.id}`}>
 						<LibraryMusicIcon />
-						<small>Home</small>
+						<small>Library</small>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to={`/favorites/${user && user.id}`}>
+						<FavoriteBorderIcon />
+						<small>Favorites</small>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to="/discovery">
 						<AlbumIcon />
 						<small>Discover</small>
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to="/favorites">
-						<FavoriteBorderIcon />
-						<small>Favorites</small>
 					</NavLink>
 				</li>
 				<li>
