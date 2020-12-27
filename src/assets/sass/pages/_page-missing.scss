@@ -1,0 +1,13 @@
+.page-missing {
+	@extend .container;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	img {
+		margin-bottom: 1.5rem;
+	}
+	p {
+		color: $color-white;
+	}
+}

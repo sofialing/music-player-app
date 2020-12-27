@@ -19,6 +19,7 @@ import AllRelatedArtists from './components/artist/AllRelatedArtists';
 import AllTopArtists from './components/dashboard/AllTopArtists';
 import AllTopTracks from './components/dashboard/AllTopTracks';
 import AllPlaylists from './components/dashboard/AllPlaylists';
+import NotFound from './components/pages/NotFound';
 
 const App = () => {
 	return (
@@ -57,6 +58,7 @@ const App = () => {
 					<AuthRoute path='album' >
 						<Route path='/:albumId' element={<SingleAlbum />} />
 					</AuthRoute>
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 				<NowPlayingBar />
 			</PlayerContextProvider>
