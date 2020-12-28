@@ -21,6 +21,7 @@ import AllTopArtists from './components/dashboard/AllTopArtists';
 import AllTopTracks from './components/dashboard/AllTopTracks';
 import AllPlaylists from './components/dashboard/AllPlaylists';
 import NotFound from './components/pages/NotFound';
+import Discover from './components/pages/Discover';
 
 const App = () => {
 	return (
@@ -34,6 +35,9 @@ const App = () => {
 					<AuthRoute path='dashboard' >
 						<Route path='/:userId' element={<Dashboard />} />
 						<Route path='/:userId/playlists' element={<AllPlaylists />} />
+					</AuthRoute>
+					<AuthRoute path='discover' >
+						<Route path='/' element={<Discover />} />
 					</AuthRoute>
 					<AuthRoute path='favorites' >
 						<Route path='/:userId' element={<Favorites />} />

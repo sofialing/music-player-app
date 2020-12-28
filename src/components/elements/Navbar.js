@@ -23,7 +23,7 @@ const Navbar = () => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/discovery">
+					<NavLink to="/discover">
 						<AlbumIcon />
 						<small>Discover</small>
 					</NavLink>

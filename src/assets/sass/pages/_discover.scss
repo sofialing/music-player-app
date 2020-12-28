@@ -1,0 +1,51 @@
+.discover-page{
+	& > header {
+		@extend .container;
+		margin: 2.5rem 0 2rem;
+		h1 {
+			@extend h3;
+			letter-spacing: .05em;
+			margin: 0;
+		}
+	}
+	section {
+		@extend .container;
+		margin: 2.5rem 0;
+		padding-bottom: 0;
+		&:first-of-type {
+			margin-top: 0;
+		}
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		header {
+			display: flex;
+			align-items: center;
+			margin-bottom: .5rem;
+			h2 {
+				@extend h5;
+				font-weight: 600;
+				margin: 0;
+				letter-spacing: .05em;
+			}
+			svg {
+				margin-left: .5rem;
+				transition: transform .3s ease-in-out, color .3s ease-in-out;
+			}
+			a:hover + svg {
+				color: $color-white;
+				transform: translateX(.25rem);
+			}
+		}
+	}
+	.releases__grid,
+	.categories__grid,
+	.featured-playlists__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0 0;
+	}
+}
