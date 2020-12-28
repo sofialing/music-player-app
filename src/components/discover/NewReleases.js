@@ -9,7 +9,7 @@ const NewReleases = () => {
 	const [releases, setReleases] = useState(null);
 
 	useEffect(() => {
-		const options = { country: 'from_token', timestamp: new Date().toISOString() };
+		const options = { country: 'from_token', limit: 20, timestamp: new Date().toISOString() };
 		spotify.getNewReleases(options)
 			.then(({ albums }) => setReleases(albums))
 			.catch(error => console.log(error))
@@ -19,13 +19,13 @@ const NewReleases = () => {
 	return releases && (
 		<section>
 			<header>
-				<Link to='releases'>
+				<Link to='new-releases' state={{ releases }}>
 					<h2>New Releases</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
 			<ul className="releases__grid">
-				{releases && releases.items.splice(0, 4).map((album, index) => <AlbumCard album={album} key={index} />)}
+				{releases && releases.items.slice(0, 4).map((album, index) => <AlbumCard album={album} key={index} />)}
 			</ul>
 		</section>
 	)

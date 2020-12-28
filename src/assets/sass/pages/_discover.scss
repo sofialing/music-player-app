@@ -49,3 +49,21 @@
 		margin: 1rem 0 0;
 	}
 }
+
+.categories-page section,
+.recommendations-page section,
+.new-releases-page section,
+.featured-playlists-page section {
+	@extend .container;
+}
+
+.categories-page ul,
+.featured-playlists-page ul,
+.new-releases-page ul {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem;
+	list-style: none;
+	padding: 0;
+	margin: 1rem 0 0;
+}

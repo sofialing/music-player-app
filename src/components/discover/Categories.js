@@ -19,13 +19,13 @@ const Categories = () => {
 	return categories && (
 		<section>
 			<header>
-				<Link to='categories'>
-					<h2>Genres and themes</h2>
+				<Link to='categories' state={{ categories }}>
+					<h2>Genres & themes</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
 			<ul className="categories__grid">
-				{categories && categories.items.splice(0, 6).map((category, index) => <CategoryCard category={category} key={index} />)}
+				{categories && categories.items.slice(0, 6).map((category, index) => <CategoryCard category={category} key={index} />)}
 			</ul>
 		</section>
 	)

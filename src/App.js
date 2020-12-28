@@ -22,6 +22,10 @@ import AllTopTracks from './components/dashboard/AllTopTracks';
 import AllPlaylists from './components/dashboard/AllPlaylists';
 import NotFound from './components/pages/NotFound';
 import Discover from './components/pages/Discover';
+import AllRecommendedTracks from './components/discover/AllRecommendedTracks';
+import AllNewReleases from './components/discover/AllNewReleases';
+import AllFeaturedPlaylists from './components/discover/AllFeaturedPlaylists';
+import AllCategories from './components/discover/AllCategories';
 
 const App = () => {
 	return (
@@ -38,6 +42,11 @@ const App = () => {
 					</AuthRoute>
 					<AuthRoute path='discover' >
 						<Route path='/' element={<Discover />} />
+						<Route path='/recommended-tracks' element={<AllRecommendedTracks />} />
+						<Route path='/new-releases' element={<AllNewReleases />} />
+						<Route path='/featured-playlists' element={<AllFeaturedPlaylists />} />
+						<Route path='/categories' element={<AllCategories />} />
+						<Route path='/categories/:categoryId' element={<p>Single category here</p>} />
 					</AuthRoute>
 					<AuthRoute path='favorites' >
 						<Route path='/:userId' element={<Favorites />} />
