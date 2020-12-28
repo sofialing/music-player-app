@@ -27,10 +27,12 @@ import AllNewReleases from './components/discover/AllNewReleases';
 import AllFeaturedPlaylists from './components/discover/AllFeaturedPlaylists';
 import AllCategories from './components/discover/AllCategories';
 import SingleCategory from './components/discover/SingleCategory';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
 	return (
 		<Router>
+			<ScrollToTop />
 			<PlayerContextProvider>
 				<Navbar />
 				<Routes>

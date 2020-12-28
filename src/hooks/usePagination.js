@@ -5,9 +5,11 @@ const usePagination = (data = [], limit = 20) => {
 	const maxPage = Math.ceil(data.total / limit);
 
 	const nextPage = () => {
+		window.scrollTo(0, 0);
 		setCurrentPage((currentPage) => Math.min(currentPage + 1, maxPage));
 	}
 	const prevPage = () => {
+		window.scrollTo(0, 0);
 		setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
 	}
 
