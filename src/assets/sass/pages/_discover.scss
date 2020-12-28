@@ -53,13 +53,15 @@
 .categories-page section,
 .recommendations-page section,
 .new-releases-page section,
-.featured-playlists-page section {
+.featured-playlists-page section,
+.single-category-page section {
 	@extend .container;
 }
 
 .categories-page ul,
 .featured-playlists-page ul,
-.new-releases-page ul {
+.new-releases-page ul,
+.single-category-page ul {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 1.5rem;

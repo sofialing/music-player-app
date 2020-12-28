@@ -18,7 +18,6 @@ const AllCategories = () => {
 		}
 		const options = {
 			country: 'from_token',
-			timestamp: new Date().toISOString(),
 			offset: (currentPage - 1) * limit,
 		};
 		spotify.getCategories(options)

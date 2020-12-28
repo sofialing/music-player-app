@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const CategoryCard = ({ category }) => {
 	return (
-		<Link to={`categories/${category.id}`}>
+		<Link to={`/discover/categories/${category.id}`}>
 			<li className="category-card">
 				<header className="category-card__header">
 					<img src={category.icons[0].url} alt={category.name} />
