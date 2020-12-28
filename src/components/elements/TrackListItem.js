@@ -15,13 +15,10 @@ const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 				album: album.name,
 				images: album.images,
 				duration: track.duration_ms,
-				url: track.preview_url
+				url: track.preview_url,
+				uri: track.uri
 			}
 		});
-		dispatch({ type: 'SET_PLAYING', playing: false })
-		const audio = new Audio(track.preview_url);
-		audio.play();
-		dispatch({ type: 'SET_AUDIO', audio })
 		dispatch({ type: 'SET_PLAYING', playing: true })
 	}
 

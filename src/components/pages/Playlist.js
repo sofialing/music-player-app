@@ -26,7 +26,7 @@ const Playlist = () => {
 					<ArrowBackIosIcon onClick={() => navigate(-1)} />
 					<img src={playlist.images[0]['url']} alt={`album cover for ${playlist.name}`} />
 					<h1>{playlist.name}</h1>
-					<p>by {playlist.owner.display_name} &middot; {playlist.tracks.total} tracks &middot; {playlist.followers.total} followers</p>
+					<p>by {playlist.owner.display_name} &middot; {playlist.tracks.total} tracks &middot; {parseInt(playlist.followers.total).toLocaleString()} followers</p>
 				</div>
 				<button className="playlist-page__play-btn">
 					<PlaylistPlayIcon />

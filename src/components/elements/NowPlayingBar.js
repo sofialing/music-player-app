@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -5,15 +6,22 @@ import noImage from '../../assets/images/no-image.png'
 import { usePlayer } from '../../contexts/PlayerContext';
 
 const NowPlayingBar = () => {
-	const { current_track, isPlaying, audio, dispatch } = usePlayer();
+	const { current_track, isPlaying, spotify } = usePlayer();
 
-	const handlePause = () => {
-		audio.pause();
-		dispatch({ type: 'SET_PLAYING', playing: false })
+	useEffect(() => {
+		if (!current_track) return;
+		console.log('play track', current_track.uri);
+		spotify.play({ uris: [current_track.uri] })
+			.then(res => console.log(res))
+			.catch(error => console.log(error))
+	}, [spotify, current_track])
+
+	const onPauseTrack = () => {
+		console.log('pause')
 	}
-	const handlePlay = () => {
-		audio.play();
-		dispatch({ type: 'SET_PLAYING', playing: true })
+
+	const onPlayTrack = () => {
+		console.log('play')
 	}
 
 	return current_track && (
@@ -31,7 +39,7 @@ const NowPlayingBar = () => {
 				</div>
 				<div className="icons">
 					<FavoriteBorderIcon />
-					{isPlaying ? <PauseCircleOutlineIcon onClick={handlePause} /> : <PlayCircleOutlineIcon onClick={handlePlay} />}
+					{isPlaying ? <PauseCircleOutlineIcon onClick={onPauseTrack} /> : <PlayCircleOutlineIcon onClick={onPlayTrack} />}
 				</div>
 			</div>
 		</div>

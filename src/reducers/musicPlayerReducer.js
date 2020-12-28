@@ -29,6 +29,16 @@ export const musicPlayerReducer = (state, action) => {
 				...state,
 				spotify: action.spotify
 			};
+		case 'SET_PLAYER':
+			return {
+				...state,
+				player: action.player
+			};
+		case 'SET_DEVICE_ID':
+			return {
+				...state,
+				device_id: action.device_id
+			};
 		case 'SET_PLAYLISTS':
 			return {
 				...state,

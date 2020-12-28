@@ -10,6 +10,12 @@ const Redirect = () => {
 	const navigate = useNavigate();
 	const { dispatch } = usePlayer();
 
+	const initSpotifySDK = () => {
+		const script = document.createElement('script');
+		script.src = 'https://sdk.scdn.co/spotify-player.js';
+		document.body.appendChild(script);
+	}
+
 	useEffect(() => {
 		const token = getToken();
 
@@ -21,6 +27,25 @@ const Redirect = () => {
 		if (token) {
 			// set access token
 			spotify.setAccessToken(token);
+
+			// init Spotify SDK and store player instance
+			initSpotifySDK();
+			window.onSpotifyWebPlaybackSDKReady = () => {
+				const player = new window.Spotify.Player({
+					name: 'Music Player',
+					getOAuthToken: cb => { cb(token); }
+				});
+				player.addListener('ready', ({ device_id }) => {
+					console.log('Connected with Device ID', device_id);
+					dispatch({ type: 'SET_DEVICE_ID', device_id })
+				});
+				player.connect().then(success => {
+					if (success) {
+						console.log('The Web Playback SDK successfully connected to Spotify!');
+						dispatch({ type: 'SET_PLAYER', player })
+					}
+				});
+			}
 
 			// store token
 			dispatch({ type: 'SET_TOKEN', token });
