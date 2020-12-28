@@ -8,11 +8,14 @@ body {
 	background: $color-darkgrey;
 	width: 100vw;
 	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
 }
 
 #app {
 	position: relative;
 	background: $color-black;
+	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
 }
 
 @include media(md) {
