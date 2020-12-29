@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PlayerContextProvider from './contexts/PlayerContext'
+import WebPlaybackContextProvider from './contexts/WebPlaybackContext'
 import AuthRoute from './components/AuthRoute'
 import Dashboard from './components/pages/Dashboard';
 import Favorites from './components/pages/Favorites';
@@ -34,52 +35,54 @@ const App = () => {
 		<Router>
 			<ScrollToTop />
 			<PlayerContextProvider>
-				<Navbar />
-				<Routes>
-					<Route path='/' >
-						<Login />
-					</Route>
-					<AuthRoute path='dashboard' >
-						<Route path='/:userId' element={<Dashboard />} />
-						<Route path='/:userId/playlists' element={<AllPlaylists />} />
-					</AuthRoute>
-					<AuthRoute path='discover' >
-						<Route path='/' element={<Discover />} />
-						<Route path='/recommended-tracks' element={<AllRecommendedTracks />} />
-						<Route path='/new-releases' element={<AllNewReleases />} />
-						<Route path='/featured-playlists' element={<AllFeaturedPlaylists />} />
-						<Route path='/categories' element={<AllCategories />} />
-						<Route path='/categories/:categoryId' element={<SingleCategory />} />
-					</AuthRoute>
-					<AuthRoute path='favorites' >
-						<Route path='/:userId' element={<Favorites />} />
-						<Route path='/:userId/top-artists' element={<AllTopArtists />} />
-						<Route path='/:userId/top-tracks' element={<AllTopTracks />} />
-					</AuthRoute>
-					<Route path='redirect' >
-						<Redirect />
-					</Route>
-					<AuthRoute path='playlist/:playlistId' >
-						<Playlist />
-					</AuthRoute>
-					<AuthRoute path='search' >
-						<Route path='/' element={<Search />} />
-						<Route path='/:searchQuery' element={<Search />} />
-						<Route path='/:searchQuery/albums' element={<AllAlbums />} />
-						<Route path='/:searchQuery/artists' element={<AllArtists />} />
-						<Route path='/:searchQuery/tracks' element={<AllTracks />} />
-					</AuthRoute>
-					<AuthRoute path='artist' >
-						<Route path='/:artistId' element={<Artist />} />
-						<Route path='/:artistId/discography' element={<AllDiscography />} />
-						<Route path='/:artistId/related' element={<AllRelatedArtists />} />
-					</AuthRoute>
-					<AuthRoute path='album' >
-						<Route path='/:albumId' element={<SingleAlbum />} />
-					</AuthRoute>
-					<Route path='*' element={<NotFound />} />
-				</Routes>
-				<NowPlayingBar />
+				<WebPlaybackContextProvider >
+					<Navbar />
+					<Routes>
+						<Route path='/' >
+							<Login />
+						</Route>
+						<AuthRoute path='dashboard' >
+							<Route path='/:userId' element={<Dashboard />} />
+							<Route path='/:userId/playlists' element={<AllPlaylists />} />
+						</AuthRoute>
+						<AuthRoute path='discover' >
+							<Route path='/' element={<Discover />} />
+							<Route path='/recommended-tracks' element={<AllRecommendedTracks />} />
+							<Route path='/new-releases' element={<AllNewReleases />} />
+							<Route path='/featured-playlists' element={<AllFeaturedPlaylists />} />
+							<Route path='/categories' element={<AllCategories />} />
+							<Route path='/categories/:categoryId' element={<SingleCategory />} />
+						</AuthRoute>
+						<AuthRoute path='favorites' >
+							<Route path='/:userId' element={<Favorites />} />
+							<Route path='/:userId/top-artists' element={<AllTopArtists />} />
+							<Route path='/:userId/top-tracks' element={<AllTopTracks />} />
+						</AuthRoute>
+						<Route path='redirect' >
+							<Redirect />
+						</Route>
+						<AuthRoute path='playlist/:playlistId' >
+							<Playlist />
+						</AuthRoute>
+						<AuthRoute path='search' >
+							<Route path='/' element={<Search />} />
+							<Route path='/:searchQuery' element={<Search />} />
+							<Route path='/:searchQuery/albums' element={<AllAlbums />} />
+							<Route path='/:searchQuery/artists' element={<AllArtists />} />
+							<Route path='/:searchQuery/tracks' element={<AllTracks />} />
+						</AuthRoute>
+						<AuthRoute path='artist' >
+							<Route path='/:artistId' element={<Artist />} />
+							<Route path='/:artistId/discography' element={<AllDiscography />} />
+							<Route path='/:artistId/related' element={<AllRelatedArtists />} />
+						</AuthRoute>
+						<AuthRoute path='album' >
+							<Route path='/:albumId' element={<SingleAlbum />} />
+						</AuthRoute>
+						<Route path='*' element={<NotFound />} />
+					</Routes>
+					<NowPlayingBar />
+				</WebPlaybackContextProvider>
 			</PlayerContextProvider>
 		</Router>
 	);
