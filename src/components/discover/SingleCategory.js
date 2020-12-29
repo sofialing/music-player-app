@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import usePagination from '../../hooks/usePagination'
 import PageHeader from '../elements/PageHeader'
 import PlaylistCard from '../elements/PlaylistCard'
 import Pagination from '../elements/Pagination'
 
 const SingleCategory = () => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const { categoryId } = useParams();
 	const [category, setCategory] = useState(null);
 	const [playlists, setPlaylists] = useState([]);

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import ArtistListItem from '../elements/ArtistListItem';
 import PageHeader from '../elements/PageHeader';
 
 const AllRelatedArtists = () => {
 	const { artistId } = useParams();
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [artist, setArtist] = useState(null);
 	const [relatedArtists, setRelatedArtists] = useState(null);
 

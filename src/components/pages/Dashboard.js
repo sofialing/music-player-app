@@ -1,10 +1,10 @@
 import DiscoverWeekly from '../dashboard/DiscoverWeekly'
 import Playlists from '../dashboard/Playlists'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 
 
 const Dashboard = () => {
-	const { discover_weekly } = usePlayer();
+	const { discover_weekly } = useAuth();
 	return (
 		<main className="dashboard-page">
 			<header>

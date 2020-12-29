@@ -1,25 +1,24 @@
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import moment from 'moment';
 import noImage from '../../assets/images/no-image.png'
-import { usePlayer } from '../../contexts/PlayerContext';
+import { usePlayback } from '../../contexts/PlaybackContext';
 
 const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 	const imageSrc = album.images.length ? album.images[album.images.length - 1]['url'] : noImage;
-	const { dispatch } = usePlayer();
+	const { dispatch } = usePlayback();
 
 	const handlePlayTrack = (e) => {
 		dispatch({
-			type: 'SET_CURRENT_TRACK', track: {
+			type: 'SET_CURRENT_TRACK', current_track: {
 				name: track.name,
 				artists: track.artists,
 				album: album.name,
 				images: album.images,
 				duration: track.duration_ms,
-				url: track.preview_url,
 				uri: track.uri
 			}
 		});
-		dispatch({ type: 'SET_PLAYING', playing: true })
+		dispatch({ type: 'SET_IS_PLAYING', is_playing: true })
 	}
 
 	return (

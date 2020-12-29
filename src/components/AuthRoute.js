@@ -1,8 +1,8 @@
 import { Route, Navigate } from 'react-router-dom'
-import { usePlayer } from '../contexts/PlayerContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const AuthRoute = (props) => {
-	const { user } = usePlayer();
+	const { user } = useAuth();
 	return (
 		user
 			? (<Route {...props} />)

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import PlaylistCard from '../elements/PlaylistCard'
 
 const FeaturedPlaylists = () => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [playlists, setPlaylists] = useState(null);
 
 	useEffect(() => {

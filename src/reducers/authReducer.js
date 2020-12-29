@@ -1,18 +1,15 @@
-export const initialState = {
-	isPlaying: false,
-	playlists: null,
+const initialState = {
+	discover_weekly: null,
+	user_playlists: null,
 	spotify: null,
 	token: null,
-	user: null,
 	top_artists: null,
 	top_tracks: null,
-	discover_weekly: null,
-	current_track: null,
-	audio: null,
+	user: null,
 }
 
-export const musicPlayerReducer = (state, action) => {
-	console.log('action', action);
+const reducer = (state, action) => {
+	console.log('auth', 'action', action);
 	switch (action.type) {
 		case 'SET_TOKEN':
 			return {
@@ -29,20 +26,10 @@ export const musicPlayerReducer = (state, action) => {
 				...state,
 				spotify: action.spotify
 			};
-		case 'SET_PLAYER':
-			return {
-				...state,
-				player: action.player
-			};
-		case 'SET_DEVICE_ID':
-			return {
-				...state,
-				device_id: action.device_id
-			};
 		case 'SET_PLAYLISTS':
 			return {
 				...state,
-				playlists: action.playlists
+				user_playlists: action.playlists
 			};
 		case 'SET_TOP_ARTISTS':
 			return {
@@ -59,22 +46,9 @@ export const musicPlayerReducer = (state, action) => {
 				...state,
 				discover_weekly: action.playlist
 			};
-		case 'SET_CURRENT_TRACK':
-			return {
-				...state,
-				current_track: action.track
-			};
-		case 'SET_AUDIO':
-			return {
-				...state,
-				audio: action.audio
-			};
-		case 'SET_PLAYING':
-			return {
-				...state,
-				isPlaying: action.playing
-			};
 		default:
 			return state;
 	}
 }
+
+export { initialState, reducer }

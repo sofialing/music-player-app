@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { usePlayer } from '../../../contexts/PlayerContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import AlbumListItem from '../../elements/AlbumListItem'
 
 const AllCompilations = ({ artistId }) => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [compilations, setCompilations] = useState(null);
 
 	useEffect(() => {

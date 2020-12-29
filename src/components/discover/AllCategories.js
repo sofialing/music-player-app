@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import usePagination from '../../hooks/usePagination'
 import PageHeader from '../elements/PageHeader'
 import CategoryCard from '../elements/CategoryCard'
 import Pagination from '../elements/Pagination'
 
 const AllCategories = () => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const { state } = useLocation();
 	const [categories, setCategories] = useState([]);
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(categories);

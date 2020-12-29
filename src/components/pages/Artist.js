@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import ArtistTopTracks from '../artist/ArtistTopTracks';
 import ArtistDiscography from '../artist/ArtistDiscography';
 import ArtistRelatedArtists from '../artist/ArtistRelatedArtists';
@@ -8,7 +8,7 @@ import ArtistHeader from '../artist/ArtistHeader';
 
 const Artist = () => {
 	const { artistId } = useParams();
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const { state } = useLocation();
 	const [artist, setArtist] = useState(null);
 

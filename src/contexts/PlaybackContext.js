@@ -1,17 +1,18 @@
-import { createContext, useContext, useState, useEffect } from 'react'
-import { usePlayer } from './PlayerContext';
+import { createContext, useContext, useEffect, useReducer, useState } from 'react'
+import { reducer, initialState } from '../reducers/playbackReducer';
+import { useAuth } from './AuthContext';
 
-const WebPlaybackContext = createContext();
 
-const useWebPlayback = () => {
-	return useContext(WebPlaybackContext);
+const PlaybackContext = createContext();
+
+const usePlayback = () => {
+	return useContext(PlaybackContext);
 }
 
-const WebPlaybackContextProvider = ({ children }) => {
-	const { token } = usePlayer();
+const PlaybackContextProvider = ({ children }) => {
+	const [state, dispatch] = useReducer(reducer, initialState);
 	const [scriptLoaded, setScriptLoaded] = useState(false);
-	const [player, setPlayer] = useState(null);
-	const [deviceId, setDeviceId] = useState(null);
+	const { token } = useAuth();
 
 	const initSpotifySDK = () => {
 		const script = document.createElement('script');
@@ -47,20 +48,20 @@ const WebPlaybackContextProvider = ({ children }) => {
 			// Ready
 			player.addListener('ready', ({ device_id }) => {
 				console.log('Ready with Device ID', device_id);
-				setDeviceId(device_id);
+				dispatch({ type: 'SET_DEVICE_ID', device_id })
 			});
 
 			// Not Ready
 			player.addListener('not_ready', ({ device_id }) => {
 				console.log('Device ID has gone offline', device_id);
-				setDeviceId(null);
+				dispatch({ type: 'SET_DEVICE_ID', device_id: null })
 			});
 
 			// Connect to the player!
 			player.connect().then(success => {
 				if (success) {
 					console.log('The Web Playback SDK successfully connected to Spotify!');
-					setPlayer(player);
+					dispatch({ type: 'SET_PLAYER', player })
 				}
 			});
 		};
@@ -68,10 +69,10 @@ const WebPlaybackContextProvider = ({ children }) => {
 	}, [token, scriptLoaded])
 
 	return (
-		<WebPlaybackContext.Provider value={{ deviceId, player }}>
+		<PlaybackContext.Provider value={{ ...state, dispatch }}>
 			{children}
-		</WebPlaybackContext.Provider>
+		</PlaybackContext.Provider>
 	)
 }
 
-export { useWebPlayback, WebPlaybackContext, WebPlaybackContextProvider as default }
+export { usePlayback, PlaybackContext, PlaybackContextProvider as default }

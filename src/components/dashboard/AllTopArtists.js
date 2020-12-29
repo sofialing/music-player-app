@@ -1,9 +1,9 @@
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import ArtistListItem from '../elements/ArtistListItem';
 import PageHeader from '../elements/PageHeader';
 
 const AllTopArtists = () => {
-	const { top_artists } = usePlayer();
+	const { top_artists } = useAuth();
 
 	return (
 		<main className="top-artists-page">

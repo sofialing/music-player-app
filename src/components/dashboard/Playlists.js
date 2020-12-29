@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import PlaylistItem from '../elements/PlaylistItem';
 
 const Playlists = () => {
-	const { playlists } = usePlayer();
+	const { user_playlists } = useAuth();
 
 	return (
 		<section className="playlists">
@@ -15,7 +15,7 @@ const Playlists = () => {
 				<ChevronRightIcon />
 			</header>
 			<ul>
-				{playlists && playlists.items.slice(0, 5).map((playlist, index) => <PlaylistItem playlist={playlist} key={index} />)}
+				{user_playlists && user_playlists.items.slice(0, 5).map((playlist, index) => <PlaylistItem playlist={playlist} key={index} />)}
 			</ul>
 		</section>
 	)

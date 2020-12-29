@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import TrackListItem from '../elements/TrackListItem';
 
 const TopTracks = () => {
-	const { top_tracks } = usePlayer();
+	const { top_tracks } = useAuth();
 
 	return (
 		<section className="top-tracks">

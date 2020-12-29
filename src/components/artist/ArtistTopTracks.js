@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import TrackListItem from '../elements/TrackListItem'
 
 const ArtistTopTracks = ({ artistId }) => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [topTracks, setTopTracks] = useState(null);
 
 	useEffect(() => {

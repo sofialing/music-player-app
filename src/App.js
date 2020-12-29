@@ -1,41 +1,41 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import PlayerContextProvider from './contexts/PlayerContext'
-import WebPlaybackContextProvider from './contexts/WebPlaybackContext'
+import AuthContextProvider from './contexts/AuthContext'
+import PlaybackContextProvider from './contexts/PlaybackContext'
 import AuthRoute from './components/AuthRoute'
-import Dashboard from './components/pages/Dashboard';
-import Favorites from './components/pages/Favorites';
-import Login from './components/pages/Login';
-import Redirect from './components/pages/Redirect';
-import Playlist from './components/pages/Playlist';
-import Search from './components/pages/Search';
-import SingleAlbum from './components/pages/SingleAlbum';
-import Artist from './components/pages/Artist';
-import NowPlayingBar from './components/elements/NowPlayingBar';
-import Navbar from './components/elements/Navbar';
-import './assets/sass/main.scss';
-import AllAlbums from './components/search/AllAlbums';
-import AllArtists from './components/search/AllArtists';
-import AllTracks from './components/search/AllTracks';
-import AllDiscography from './components/artist/AllDiscography';
-import AllRelatedArtists from './components/artist/AllRelatedArtists';
-import AllTopArtists from './components/dashboard/AllTopArtists';
-import AllTopTracks from './components/dashboard/AllTopTracks';
-import AllPlaylists from './components/dashboard/AllPlaylists';
-import NotFound from './components/pages/NotFound';
-import Discover from './components/pages/Discover';
-import AllRecommendedTracks from './components/discover/AllRecommendedTracks';
-import AllNewReleases from './components/discover/AllNewReleases';
-import AllFeaturedPlaylists from './components/discover/AllFeaturedPlaylists';
-import AllCategories from './components/discover/AllCategories';
-import SingleCategory from './components/discover/SingleCategory';
-import ScrollToTop from './components/ScrollToTop';
+import Dashboard from './components/pages/Dashboard'
+import Favorites from './components/pages/Favorites'
+import Login from './components/pages/Login'
+import Redirect from './components/pages/Redirect'
+import Playlist from './components/pages/Playlist'
+import Search from './components/pages/Search'
+import SingleAlbum from './components/pages/SingleAlbum'
+import Artist from './components/pages/Artist'
+import NowPlayingBar from './components/music-player/NowPlayingBar'
+import Navbar from './components/elements/Navbar'
+import './assets/sass/main.scss'
+import AllAlbums from './components/search/AllAlbums'
+import AllArtists from './components/search/AllArtists'
+import AllTracks from './components/search/AllTracks'
+import AllDiscography from './components/artist/AllDiscography'
+import AllRelatedArtists from './components/artist/AllRelatedArtists'
+import AllTopArtists from './components/dashboard/AllTopArtists'
+import AllTopTracks from './components/dashboard/AllTopTracks'
+import AllPlaylists from './components/dashboard/AllPlaylists'
+import NotFound from './components/pages/NotFound'
+import Discover from './components/pages/Discover'
+import AllRecommendedTracks from './components/discover/AllRecommendedTracks'
+import AllNewReleases from './components/discover/AllNewReleases'
+import AllFeaturedPlaylists from './components/discover/AllFeaturedPlaylists'
+import AllCategories from './components/discover/AllCategories'
+import SingleCategory from './components/discover/SingleCategory'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
 	return (
 		<Router>
 			<ScrollToTop />
-			<PlayerContextProvider>
-				<WebPlaybackContextProvider >
+			<AuthContextProvider>
+				<PlaybackContextProvider >
 					<Navbar />
 					<Routes>
 						<Route path='/' >
@@ -82,8 +82,8 @@ const App = () => {
 						<Route path='*' element={<NotFound />} />
 					</Routes>
 					<NowPlayingBar />
-				</WebPlaybackContextProvider>
-			</PlayerContextProvider>
+				</PlaybackContextProvider>
+			</AuthContextProvider>
 		</Router>
 	);
 }

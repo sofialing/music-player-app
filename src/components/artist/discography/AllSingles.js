@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { usePlayer } from '../../../contexts/PlayerContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import AlbumListItem from '../../elements/AlbumListItem'
 
 const AllSingles = ({ artistId }) => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [singles, setSingles] = useState(null);
 
 	useEffect(() => {

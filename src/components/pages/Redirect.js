@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from "spotify-web-api-js";
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { getToken } from '../../auth';
 
 const spotify = new SpotifyWebApi();
 
 const Redirect = () => {
 	const navigate = useNavigate();
-	const { dispatch } = usePlayer();
+	const { dispatch } = useAuth();
 
 	useEffect(() => {
 		const token = getToken();

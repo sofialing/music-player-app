@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import AlbumListItem from '../elements/AlbumListItem';
 import PageHeader from '../elements/PageHeader';
 import Pagination from '../elements/Pagination';
@@ -8,7 +8,7 @@ import usePagination from '../../hooks/usePagination';
 
 const AllAlbums = () => {
 	const { searchQuery } = useParams();
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [albums, setAlbums] = useState([]);
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(albums);
 

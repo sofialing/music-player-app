@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 const DiscoverWeekly = () => {
-	const { discover_weekly, user } = usePlayer();
+	const { discover_weekly, user } = useAuth();
 
 	return (
 		<section className="discover-weekly">

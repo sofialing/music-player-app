@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import SearchResults from '../search/SearchResults';
 
 const Search = () => {
 	const navigate = useNavigate();
 	const searchRef = useRef();
 	const { searchQuery } = useParams();
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [searchResults, setSearchResults] = useState(null);
 
 	const getSearchResults = async () => {

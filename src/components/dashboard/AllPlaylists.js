@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import PlaylistItem from '../elements/PlaylistItem';
 import PageHeader from '../elements/PageHeader';
 import Pagination from '../elements/Pagination';
@@ -8,12 +8,11 @@ import usePagination from '../../hooks/usePagination';
 
 const AllPlaylists = () => {
 	const { userId } = useParams();
-	const { playlists, spotify } = usePlayer();
+	const { playlists, spotify } = useAuth();
 	const [userPlaylists, setUserPlaylists] = useState(playlists);
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(userPlaylists);
 
 	useEffect(() => {
-		console.log('get playlists...')
 		spotify.getUserPlaylists(userId, { limit, offset: (currentPage - 1) * limit })
 			.then(playlists => setUserPlaylists(playlists))
 			.catch(error => console.log(error))

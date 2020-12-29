@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import CategoryCard from '../elements/CategoryCard'
 
 const Categories = () => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [categories, setCategories] = useState(null);
 
 	useEffect(() => {

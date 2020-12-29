@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 import TrackListItem from '../elements/TrackListItem';
 import PageHeader from '../elements/PageHeader';
 
 const AllTopTracks = () => {
-	const { top_tracks } = usePlayer();
+	const { top_tracks } = useAuth();
 
 	return (
 		<main className="top-tracks-page">

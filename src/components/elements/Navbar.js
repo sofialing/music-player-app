@@ -3,10 +3,10 @@ import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import SearchIcon from '@material-ui/icons/Search';
-import { usePlayer } from '../../contexts/PlayerContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Navbar = () => {
-	const { user } = usePlayer();
+	const { user } = useAuth();
 	return (
 		<nav className="navbar container">
 			<ul>

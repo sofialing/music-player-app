@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ArtistCard from '../elements/ArtistCard';
 
 const ArtistRelatedArtists = ({ artistId }) => {
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [relatedArtists, setRelatedArtists] = useState(null);
 
 	useEffect(() => {

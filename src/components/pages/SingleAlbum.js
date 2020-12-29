@@ -3,13 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom'
 import moment from 'moment';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { usePlayer } from '../../contexts/PlayerContext'
+import { useAuth } from '../../contexts/AuthContext'
 import TrackListItem from '../elements/TrackListItem';
 
 const SingleAlbum = () => {
 	const navigate = useNavigate();
 	const { albumId } = useParams();
-	const { spotify } = usePlayer();
+	const { spotify } = useAuth();
 	const [album, setAlbum] = useState(null);
 	const [tracks, setTracks] = useState(null);
 	const [duration, setDuration] = useState(null);
