@@ -12,7 +12,7 @@ const Redirect = () => {
 
 	useEffect(() => {
 		const token = getToken();
-		window.location.hash = "";
+		window.location.hash = '';
 
 		if (!token) {
 			// navigate to login page
@@ -25,7 +25,7 @@ const Redirect = () => {
 		// store token
 		dispatch({ type: 'SET_TOKEN', token });
 
-		// store spotify wrapper
+		// store spotify API wrapper
 		dispatch({ type: 'SET_SPOTIFY', spotify })
 
 		// get and store users top artists

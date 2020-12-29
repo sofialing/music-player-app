@@ -1,8 +1,9 @@
 const initialState = {
-	player: null,
-	device_id: null,
+	current_position: 0,
 	current_track: null,
+	device_id: null,
 	is_playing: false,
+	player: null,
 }
 
 const reducer = (state, action) => {
@@ -22,6 +23,11 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				current_track: action.current_track
+			};
+		case 'SET_CURRENT_POSITION':
+			return {
+				...state,
+				current_position: action.current_position
 			};
 		case 'SET_IS_PLAYING':
 			return {
