@@ -12,7 +12,7 @@ const usePlayback = () => {
 const PlaybackContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [scriptLoaded, setScriptLoaded] = useState(false);
-	const { token, spotify } = useAuth();
+	const { token } = useAuth();
 
 	const initSpotifySDK = () => {
 		const script = document.createElement('script');
@@ -43,21 +43,19 @@ const PlaybackContextProvider = ({ children }) => {
 			player.addListener('playback_error', ({ message }) => { console.error(message); });
 
 			// Playback status updates
-			player.addListener('player_state_changed', state => {
-				console.log('player_state_changed', state);
-				dispatch({ type: 'SET_CURRENT_POSITION', current_position: state.position });
-				dispatch({ type: 'SET_IS_PLAYING', is_playing: !state.paused });
+			player.addListener('player_state_changed', ({ position, paused, track_window: { current_track } }) => {
+				dispatch({ type: 'SET_CURRENT_POSITION', current_position: position });
+				dispatch({ type: 'SET_IS_PLAYING', is_playing: !paused });
+				dispatch({ type: 'SET_CURRENT_TRACK', current_track });
 			});
 
 			// Ready
 			player.addListener('ready', ({ device_id }) => {
-				console.log('Ready with Device ID', device_id);
 				dispatch({ type: 'SET_DEVICE_ID', device_id })
 			});
 
 			// Not Ready
-			player.addListener('not_ready', ({ device_id }) => {
-				console.log('Device ID has gone offline', device_id);
+			player.addListener('not_ready', () => {
 				dispatch({ type: 'SET_DEVICE_ID', device_id: null })
 			});
 
@@ -69,20 +67,8 @@ const PlaybackContextProvider = ({ children }) => {
 				}
 			});
 		};
-
-	}, [token, scriptLoaded])
-
-	useEffect(() => {
-		if (!state.current_track) {
-			return;
-		};
-
-		spotify.play({
-			device_id: state.device_id,
-			uris: [state.current_track.uri]
-		});
-
-	}, [spotify, state.current_track, state.device_id])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [token])
 
 	return (
 		<PlaybackContext.Provider value={{ ...state, dispatch }}>

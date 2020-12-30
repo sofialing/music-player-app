@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from "spotify-web-api-js";
 import { useAuth } from '../../contexts/AuthContext';
-import { getToken } from '../../auth';
+import { getToken } from '../../spotify/login';
 
 const spotify = new SpotifyWebApi();
 

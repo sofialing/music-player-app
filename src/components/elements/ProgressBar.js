@@ -10,7 +10,7 @@ const ProgressBar = () => {
 		if (is_playing) {
 			interval = setInterval(() => {
 				player.getCurrentState().then(({ position }) => {
-					setProgress(Math.min(1, position / current_track.duration));
+					setProgress(Math.min(1, position / current_track.duration_ms));
 				})
 			}, 1000);
 		}

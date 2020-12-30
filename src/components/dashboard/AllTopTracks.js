@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext';
 import TrackListItem from '../elements/TrackListItem';
 import PageHeader from '../elements/PageHeader';

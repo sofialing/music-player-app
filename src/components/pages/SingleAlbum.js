@@ -5,11 +5,13 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useAuth } from '../../contexts/AuthContext'
 import TrackListItem from '../elements/TrackListItem';
+import usePlayer from '../../hooks/usePlayer';
 
 const SingleAlbum = () => {
 	const navigate = useNavigate();
 	const { albumId } = useParams();
 	const { spotify } = useAuth();
+	const { playContext } = usePlayer();
 	const [album, setAlbum] = useState(null);
 	const [tracks, setTracks] = useState(null);
 	const [duration, setDuration] = useState(null);
@@ -35,7 +37,7 @@ const SingleAlbum = () => {
 					<p>with {album.artists.map((artist) => artist.name).join(', ')} &middot; {album.release_date.split('-')[0]}</p>
 					<p>{album.total_tracks} tracks, {moment(duration).format('mm')} minutes</p>
 				</div>
-				<button className="playlist__play-btn">
+				<button className="playlist__play-btn" onClick={() => playContext(album.uri)}>
 					<PlaylistPlayIcon />
 					<span>Play</span>
 				</button>
