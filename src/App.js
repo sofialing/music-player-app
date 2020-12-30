@@ -11,6 +11,7 @@ import Search from './components/pages/Search'
 import SingleAlbum from './components/pages/SingleAlbum'
 import Artist from './components/pages/Artist'
 import NowPlayingBar from './components/music-player/NowPlayingBar'
+import NowPlayingModal from './components/music-player/NowPlayingModal'
 import Navbar from './components/elements/Navbar'
 import './assets/sass/main.scss'
 import AllAlbums from './components/search/AllAlbums'
@@ -81,6 +82,7 @@ const App = () => {
 						</AuthRoute>
 						<Route path='*' element={<NotFound />} />
 					</Routes>
+					<NowPlayingModal />
 					<NowPlayingBar />
 				</PlaybackContextProvider>
 			</AuthContextProvider>

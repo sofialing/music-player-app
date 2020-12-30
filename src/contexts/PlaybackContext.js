@@ -43,10 +43,11 @@ const PlaybackContextProvider = ({ children }) => {
 			player.addListener('playback_error', ({ message }) => { console.error(message); });
 
 			// Playback status updates
-			player.addListener('player_state_changed', ({ position, paused, track_window: { current_track } }) => {
+			player.addListener('player_state_changed', ({ context, position, paused, track_window: { current_track } }) => {
 				dispatch({ type: 'SET_CURRENT_POSITION', current_position: position });
 				dispatch({ type: 'SET_IS_PLAYING', is_playing: !paused });
 				dispatch({ type: 'SET_CURRENT_TRACK', current_track });
+				dispatch({ type: 'SET_CONTEXT', context });
 			});
 
 			// Ready

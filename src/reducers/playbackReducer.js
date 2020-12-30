@@ -1,9 +1,11 @@
 const initialState = {
+	context: null,
 	current_position: 0,
 	current_track: null,
 	device_id: null,
 	is_playing: false,
 	player: null,
+	display_player: true
 }
 
 const reducer = (state, action) => {
@@ -33,6 +35,16 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				is_playing: action.is_playing
+			};
+		case 'SET_DISPLAY_PLAYER':
+			return {
+				...state,
+				display_player: action.display_player
+			};
+		case 'SET_CONTEXT':
+			return {
+				...state,
+				context: action.context
 			};
 		default:
 			return state;

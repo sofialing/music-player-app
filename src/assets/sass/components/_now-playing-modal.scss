@@ -1,19 +1,27 @@
 .now-playing-modal {
+	@extend .container;
+	background: $color-black;
+	color: $color-white;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	position: fixed;
+	position: absolute;
+	padding: 3rem 3.5rem 3.5rem;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: $color-black;
-	// background: linear-gradient($color-dark, #212121);
-	z-index: 2;
-	padding-top: 3rem;
-	padding-bottom: 5rem;
+	z-index: 10;
+
 	header {
 		text-align: center;
+		position: relative;
+
+		svg {
+			position: absolute;
+			top: -1.5rem;
+			left: -2rem;
+		}
 		small {
 			display: block;
 			font-weight: 300;
@@ -23,6 +31,7 @@
 		p {
 			font-weight: 600;
 			letter-spacing: .05em;
+			line-height: 1.4;
 			margin-bottom: 0;
 		}
 	}
@@ -31,22 +40,28 @@
 	}
 	.now-playing {
 		text-align: center;
+		.album-cover {
+			margin-bottom: 1.5rem;
+		}
 		.track-title {
 			font-size: 1.5625rem;
 			margin: 0;
-			letter-spacing: .05em;
+			letter-spacing: .075em;
 		}
 		.artist {
 			font-weight: 300;
-			letter-spacing: .05em;
+			letter-spacing: 0.1em;
+			line-height: 1.6rem;
 			margin-bottom: 0;
 		}
 	}
 	.player-controls {
 		display: flex;
-		justify-content: space-around;
+		justify-content: center;
 		align-items: center;
-
+		svg {
+			margin: 0 1.5rem;
+		}
 	}
 	.progress-bar {
 		height: 4px;
