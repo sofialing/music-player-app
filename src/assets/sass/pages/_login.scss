@@ -3,15 +3,14 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	display: flex;
-	flex-direction: column;
 	height: 100%;
-	justify-content: center;
 	text-align: center;
-	p {
-		margin-bottom: 2rem;
+	padding-top: 3.5rem;
+	img {
+		margin-bottom: 3.5rem;
 	}
-	a {
-		text-transform: uppercase;
+	button {
+		margin: 0 auto;
+		font-family: $font-family;
 	}
 }
