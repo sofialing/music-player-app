@@ -11,7 +11,13 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
+	transform: translateY(100%);
+	transition: transform 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 	z-index: 10;
+
+	&.is-open {
+		transform: translateY(0);
+	}
 
 	header {
 		text-align: center;
@@ -21,6 +27,9 @@
 			position: absolute;
 			top: -1.5rem;
 			left: -2rem;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		small {
 			display: block;
@@ -61,6 +70,17 @@
 		align-items: center;
 		svg {
 			margin: 0 1.5rem;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		svg.prevIcon,
+		svg.nextIcon {
+			color: $color-grey;
+			transition: color .5s ease-in-out;
+			&:hover {
+				color: $color-white;
+			}
 		}
 	}
 	.progress-bar {

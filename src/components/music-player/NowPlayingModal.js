@@ -43,8 +43,8 @@ const NowPlayingModal = () => {
 		player.togglePlay();
 	}
 
-	return display_player && current_track && (
-		<section className="now-playing-modal">
+	return current_track && (
+		<section className={`now-playing-modal ${display_player ? 'is-open' : ''}`}>
 			<header>
 				<ExpandMoreIcon onClick={() => dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: false })} />
 				<small>Now playing</small>
@@ -56,12 +56,12 @@ const NowPlayingModal = () => {
 				<p className="artist">{current_track.artists.map((artist) => artist.name).join(', ')}</p>
 			</div>
 			<div className="player-controls">
-				<SkipPreviousIcon style={{ fontSize: 40 }} onClick={prevTrack} />
+				<SkipPreviousIcon className="prevIcon" style={{ fontSize: 40 }} onClick={prevTrack} />
 				{is_playing
 					? <PauseCircleOutlineIcon style={{ fontSize: 65 }} onClick={togglePlay} />
 					: <PlayCircleOutlineIcon style={{ fontSize: 65 }} onClick={togglePlay} />
 				}
-				<SkipNextIcon style={{ fontSize: 40 }} onClick={nextTrack} />
+				<SkipNextIcon className="nextIcon" style={{ fontSize: 40 }} onClick={nextTrack} />
 			</div>
 			<footer className="playback-bar">
 				<div className="progress-bar">
