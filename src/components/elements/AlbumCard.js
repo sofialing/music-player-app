@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import noImage from '../../assets/images/no-image.png'
+import { getYear } from '../../utils'
 
 const AlbumCard = ({ album }) => {
 	const imageSrc = album.images.length ? album.images[album.images.length - 1]['url'] : noImage;
@@ -11,7 +12,7 @@ const AlbumCard = ({ album }) => {
 				</header>
 				<div className="album-card__body">
 					<h3>{album.name}</h3>
-					<p>{album.release_date.split('-')[0]} &middot; {album.album_type} </p>
+					<p>{getYear(album.release_date)} &middot; {album.album_type} </p>
 				</div>
 			</li>
 		</Link>

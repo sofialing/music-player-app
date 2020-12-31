@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import TrackListItem from '../elements/TrackListItem';
+import PlayButton from '../elements/PlayButton';
 import { useAuth } from '../../contexts/AuthContext';
-import usePlayer from '../../hooks/usePlayer';
+import { formatNumber } from '../../utils'
 
 const Playlist = () => {
 	const navigate = useNavigate();
 	const { playlistId } = useParams();
 	const { spotify } = useAuth();
-	const { playContext } = usePlayer();
 	const [playlist, setPlaylist] = useState(null);
 
 	useEffect(() => {
@@ -26,12 +25,9 @@ const Playlist = () => {
 					<ArrowBackIosIcon onClick={() => navigate(-1)} />
 					<img src={playlist.images[0]['url']} alt={`album cover for ${playlist.name}`} />
 					<h1>{playlist.name}</h1>
-					<p>by {playlist.owner.display_name} &middot; {playlist.tracks.total} tracks &middot; {parseInt(playlist.followers.total).toLocaleString()} followers</p>
+					<p>by {playlist.owner.display_name} &middot; {playlist.tracks.total} tracks &middot; {formatNumber(playlist.followers.total)} followers</p>
 				</div>
-				<button className="playlist-page__play-btn" onClick={() => playContext(playlist.uri)}>
-					<PlaylistPlayIcon />
-					<span>Play</span>
-				</button>
+				<PlayButton uri={playlist.uri} />
 			</header>
 			<section>
 				<ul>

@@ -4,6 +4,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import noImage from '../../assets/images/no-image.png'
 import { usePlayback } from '../../contexts/PlaybackContext';
 import ProgressBar from '../elements/ProgressBar';
+import { getArtists } from '../../utils'
 
 const NowPlayingBar = () => {
 	const { current_track, is_playing, player, dispatch } = usePlayback();
@@ -13,6 +14,10 @@ const NowPlayingBar = () => {
 		await player.togglePlay();
 	}
 
+	const openPlayer = () => {
+		dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: true })
+	}
+
 	return current_track && (
 		<footer className="now-playing-bar">
 			<ProgressBar />
@@ -20,11 +25,11 @@ const NowPlayingBar = () => {
 				<img src={imageSrc} alt="" />
 				<div className="current-track">
 					<small className="track-name">{current_track.name}</small>
-					<small className="artist">{current_track.artists.map((artist) => artist.name).join(', ')}</small>
+					<small className="artist">{getArtists(current_track.artists)}</small>
 				</div>
 				<div className="icons">
 					{is_playing ? <PauseCircleOutlineIcon onClick={togglePlay} /> : <PlayCircleOutlineIcon onClick={togglePlay} />}
-					<ExpandLessIcon onClick={() => dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: true })} />
+					<ExpandLessIcon onClick={openPlayer} />
 				</div>
 			</div>
 		</footer>

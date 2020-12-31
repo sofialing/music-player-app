@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatNumber } from '../../utils'
 import noImage from '../../assets/images/no-image.png'
 
 const ArtistCard = ({ artist }) => {
@@ -12,7 +13,7 @@ const ArtistCard = ({ artist }) => {
 				</header>
 				<div className="artist-card__body">
 					<h3>{artist.name}</h3>
-					<p>{parseInt(artist.followers.total).toLocaleString()} fans</p>
+					<p>{formatNumber(artist.followers.total)} fans</p>
 				</div>
 			</li>
 		</Link>

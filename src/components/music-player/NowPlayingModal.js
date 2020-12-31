@@ -1,4 +1,3 @@
-import moment from 'moment';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
@@ -7,6 +6,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import noImage from '../../assets/images/no-image.png'
 import { usePlayback } from '../../contexts/PlaybackContext';
 import { useEffect, useState } from 'react';
+import { formatTime, getArtists } from '../../utils'
 
 const NowPlayingModal = () => {
 	const [current, setCurrent] = useState(0);
@@ -43,17 +43,21 @@ const NowPlayingModal = () => {
 		player.togglePlay();
 	}
 
+	const closePlayer = () => {
+		dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: false })
+	}
+
 	return current_track && (
 		<section className={`now-playing-modal ${display_player ? 'is-open' : ''}`}>
 			<header>
-				<ExpandMoreIcon onClick={() => dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: false })} />
+				<ExpandMoreIcon onClick={closePlayer} />
 				<small>Now playing</small>
 				<p>{context && context.uri ? context.metadata.context_description : current_track.album.name}</p>
 			</header>
 			<div className="now-playing">
 				<img className="album-cover" src={imageSrc} alt="" />
 				<h2 className="track-title">{current_track.name}</h2>
-				<p className="artist">{current_track.artists.map((artist) => artist.name).join(', ')}</p>
+				<p className="artist">{getArtists(current_track.artists)}</p>
 			</div>
 			<div className="player-controls">
 				<SkipPreviousIcon className="prevIcon" style={{ fontSize: 40 }} onClick={prevTrack} />
@@ -71,8 +75,8 @@ const NowPlayingModal = () => {
 					</div>
 				</div>
 				<div className="progress-time">
-					<small>{moment(current).format('mm:ss')}</small>
-					<small>{moment(current_track.duration_ms).format('mm:ss')}</small>
+					<small>{formatTime(current)}</small>
+					<small>{formatTime(current_track.duration_ms)}</small>
 				</div>
 			</footer>
 		</section>

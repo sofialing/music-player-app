@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import noImage from '../../assets/images/no-image.png'
+import { getArtists, getYear, getTracks } from '../../utils'
 
 const AlbumListItem = ({ album, displayArtist = true }) => {
 	const imageSrc = album.images.length ? album.images[album.images.length - 1]['url'] : noImage;
@@ -12,10 +13,8 @@ const AlbumListItem = ({ album, displayArtist = true }) => {
 				<div className="album-list-item__details">
 					<h2>{album.name}</h2>
 					<p>
-						{displayArtist ? (
-							album.artists.map((artist) => artist.name).join(', ')
-						) : album.total_tracks > 2 ? `${album.total_tracks} tracks` : `${album.total_tracks} track`}
-						{' '} &middot; {album.release_date.split('-')[0]}
+						{displayArtist ? getArtists(album.artists) : getTracks(album.total_tracks)}
+						{' '} &middot; {getYear(album.release_date)}
 					</p>
 				</div>
 				<ChevronRightIcon />

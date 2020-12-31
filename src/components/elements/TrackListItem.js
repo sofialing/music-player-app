@@ -1,7 +1,7 @@
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import moment from 'moment';
 import noImage from '../../assets/images/no-image.png'
 import usePlayer from '../../hooks/usePlayer'
+import { formatTime, getArtists } from '../../utils'
 
 const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 	const imageSrc = album.images.length ? album.images[album.images.length - 1]['url'] : noImage;
@@ -13,8 +13,8 @@ const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 			<div className="track-list-item__details">
 				<h2>{track.name}</h2>
 				<p>
-					{track.artists.map((artist) => artist.name).join(', ')} &middot; {' '}
-					{displayAlbumTitle ? album.name : moment(track.duration_ms).format('mm:ss')}
+					{getArtists(track.artists)} &middot; {' '}
+					{displayAlbumTitle ? album.name : formatTime(track.duration_ms)}
 				</p>
 			</div>
 			<PlayCircleOutlineIcon onClick={() => playTrack(track.uri)} />

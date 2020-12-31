@@ -3,9 +3,9 @@ const initialState = {
 	current_position: 0,
 	current_track: null,
 	device_id: null,
+	display_player: false,
 	is_playing: false,
 	player: null,
-	display_player: true
 }
 
 const reducer = (state, action) => {
