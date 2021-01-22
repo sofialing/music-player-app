@@ -12,7 +12,7 @@ const usePlayback = () => {
 const PlaybackContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [scriptLoaded, setScriptLoaded] = useState(false);
-	const { token } = useAuth();
+	const { access_token } = useAuth();
 
 	const initSpotifySDK = () => {
 		const script = document.createElement('script');
@@ -27,13 +27,13 @@ const PlaybackContextProvider = ({ children }) => {
 		}
 
 		window.onSpotifyWebPlaybackSDKReady = () => {
-			if (!token) {
+			if (!access_token) {
 				return;
 			};
 
 			const player = new window.Spotify.Player({
 				name: 'React Music Player',
-				getOAuthToken: cb => { cb(token); }
+				getOAuthToken: cb => { cb(access_token); }
 			});
 
 			// Error handling
@@ -69,7 +69,7 @@ const PlaybackContextProvider = ({ children }) => {
 			});
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [token])
+	}, [access_token])
 
 	return (
 		<PlaybackContext.Provider value={{ ...state, dispatch }}>

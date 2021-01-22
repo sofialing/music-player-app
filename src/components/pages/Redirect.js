@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 import SpotifyWebApi from "spotify-web-api-js";
 import { useAuth } from '../../contexts/AuthContext';
-import { getToken } from '../../spotify/login';
-
+import { setAccessToken } from '../../services/spotifyAPI'
 const spotify = new SpotifyWebApi();
 
 const Redirect = () => {
@@ -11,19 +11,31 @@ const Redirect = () => {
 	const { dispatch } = useAuth();
 
 	useEffect(() => {
-		const token = getToken();
-		window.location.hash = '';
+		const parsedQueryString = queryString.parse(window.location.search);
+		const { access_token, refresh_token, expires_in } = parsedQueryString;
+		// const refresh_token = parsedQueryString.refresh_token;
+		// const expires_in = parsedQueryString.expires_in;
 
-		if (!token) {
+		if (!access_token) {
 			// navigate to login page
 			return navigate('/');
 		}
 
-		// set access token and store in localStorage
-		spotify.setAccessToken(token);
+		// set access token
+		spotify.setAccessToken(access_token);
 
-		// store token
-		dispatch({ type: 'SET_TOKEN', token });
+		// store access and refresh token
+		// const token = {
+		// 	access_token,
+		// 	expiresAt: (expires_in * 1000) + new Date().getTime(),
+		// 	refresh_token
+		// }
+
+		setAccessToken(access_token, expires_in, refresh_token)
+
+		// localStorage.setItem('token', JSON.stringify(token));
+		dispatch({ type: 'SET_ACCESS_TOKEN', access_token });
+		dispatch({ type: 'SET_REFRESH_TOKEN', refresh_token });
 
 		// store spotify API wrapper
 		dispatch({ type: 'SET_SPOTIFY', spotify })
@@ -58,7 +70,10 @@ const Redirect = () => {
 			navigate(`/dashboard/${user.id}`);
 		});
 	}, [dispatch, navigate])
-	return '';
+
+	return (
+		<p>Loading...</p>
+	);
 }
 
 export default Redirect;

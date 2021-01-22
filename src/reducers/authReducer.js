@@ -2,7 +2,8 @@ const initialState = {
 	discover_weekly: null,
 	user_playlists: null,
 	spotify: null,
-	token: null,
+	access_token: null,
+	refresh_token: null,
 	top_artists: null,
 	top_tracks: null,
 	user: null,
@@ -11,10 +12,15 @@ const initialState = {
 const reducer = (state, action) => {
 	console.log('auth', 'action', action);
 	switch (action.type) {
-		case 'SET_TOKEN':
+		case 'SET_ACCESS_TOKEN':
 			return {
 				...state,
-				token: action.token
+				access_token: action.access_token
+			};
+		case 'SET_REFRESH_TOKEN':
+			return {
+				...state,
+				refesh_token: action.refesh_token
 			};
 		case 'SET_USER':
 			return {
