@@ -23,7 +23,7 @@ const SingleCategory = () => {
 	}, [spotify, categoryId, currentPage, limit])
 
 	return category && playlists && (
-		<main className="single-category-page">
+		<main className="main-view single-category-page">
 			<PageHeader title={category.name} />
 			<section>
 				<ul>

@@ -28,7 +28,7 @@ const AllNewReleases = () => {
 	}, [spotify, state, currentPage, limit])
 
 	return releases && (
-		<main className="new-releases-page">
+		<main className="main-view new-releases-page">
 			<PageHeader title="New Releases" />
 			<section>
 				<ul>

@@ -19,7 +19,7 @@ const AllArtists = () => {
 	}, [searchQuery, spotify, currentPage, limit])
 
 	return (
-		<main className="search-results-page">
+		<main className="main-view search-results-page">
 			<PageHeader title={`All artists for '${searchQuery}'`} />
 			<section>
 				<ul>

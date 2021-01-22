@@ -20,7 +20,7 @@ const AllRelatedArtists = () => {
 	}, [artistId, spotify])
 
 	return (
-		<main className="related-artists-page">
+		<main className="main-view related-artists-page">
 			<PageHeader title={`Artists like ${artist}`} />
 			<section>
 				<ul>

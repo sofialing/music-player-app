@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext'
 const Dashboard = () => {
 	const { discover_weekly } = useAuth();
 	return (
-		<main className="dashboard-page">
+		<main className="main-view dashboard-page">
 			<header>
 				<h1>Your Music</h1>
 			</header>

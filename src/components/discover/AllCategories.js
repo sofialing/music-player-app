@@ -27,7 +27,7 @@ const AllCategories = () => {
 	}, [spotify, state, currentPage, limit])
 
 	return categories && (
-		<main className="categories-page">
+		<main className="main-view categories-page">
 			<PageHeader title="Genres & themes" />
 			<section>
 				<ul>

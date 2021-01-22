@@ -23,7 +23,7 @@ const SingleAlbum = () => {
 	}, [albumId, spotify])
 
 	return album && tracks && (
-		<main className="single-album-page">
+		<main className="main-view single-album-page">
 			<header className="single-album-page__header">
 				<div className="single-album-page__header__inner">
 					<ArrowBackIosIcon onClick={() => navigate(-1)} />

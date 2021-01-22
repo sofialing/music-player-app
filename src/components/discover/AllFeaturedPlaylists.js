@@ -28,7 +28,7 @@ const AllFeaturedPlaylists = () => {
 	}, [spotify, state, currentPage, limit])
 
 	return playlists && (
-		<main className="featured-playlists-page">
+		<main className="main-view featured-playlists-page">
 			<PageHeader title="Featured playlists" />
 			<section>
 				<ul>

@@ -24,7 +24,7 @@ const AllRecommendedTracks = () => {
 	}, [spotify, top_artists, top_tracks, state])
 
 	return (
-		<main className="recommendations-page">
+		<main className="main-view recommendations-page">
 			<PageHeader title="Recommended for you" />
 			<section>
 				<ul>

@@ -19,7 +19,7 @@ const AllPlaylists = () => {
 	}, [currentPage, limit, spotify, userId])
 
 	return (
-		<main className="playlists-page">
+		<main className="main-view playlists-page">
 			<PageHeader title="Playlists" />
 			<section>
 				<ul className="playlists-list">

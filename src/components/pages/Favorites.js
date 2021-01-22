@@ -3,7 +3,7 @@ import TopTracks from '../dashboard/TopTracks';
 
 const Favorites = () => {
 	return (
-		<main className="favorites-page">
+		<main className="main-view favorites-page">
 			<header>
 				<h1>Your Favorites</h1>
 			</header>

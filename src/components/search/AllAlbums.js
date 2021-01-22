@@ -19,7 +19,7 @@ const AllAlbums = () => {
 	}, [searchQuery, spotify, currentPage, limit, maxPage])
 
 	return (
-		<main className="search-results-page">
+		<main className="main-view search-results-page">
 			<PageHeader title={`All albums for '${searchQuery}'`} />
 			<section>
 				<ul>

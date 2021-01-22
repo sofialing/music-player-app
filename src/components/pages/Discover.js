@@ -5,7 +5,7 @@ import Recommendations from '../discover/Recommendations'
 
 const Discover = () => {
 	return (
-		<main className="discover-page">
+		<main className="main-view discover-page">
 			<header>
 				<h1>Discover</h1>
 			</header>

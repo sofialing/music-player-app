@@ -6,7 +6,7 @@ const AllTopTracks = () => {
 	const { top_tracks } = useAuth();
 
 	return (
-		<main className="top-tracks-page">
+		<main className="main-view top-tracks-page">
 			<PageHeader title='Top Tracks' />
 			<section>
 				<ul>

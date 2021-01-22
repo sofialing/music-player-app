@@ -19,7 +19,7 @@ const Playlist = () => {
 	}, [playlistId, spotify])
 
 	return playlist && (
-		<main className="playlist-page">
+		<main className="main-view playlist-page">
 			<header className="playlist-page__header">
 				<div className="playlist-page__header__inner">
 					<ArrowBackIosIcon onClick={() => navigate(-1)} />

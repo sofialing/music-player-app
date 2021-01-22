@@ -6,7 +6,7 @@ const AllTopArtists = () => {
 	const { top_artists } = useAuth();
 
 	return (
-		<main className="top-artists-page">
+		<main className="main-view top-artists-page">
 			<PageHeader title={'Top Artists'} />
 			<section>
 				<ul>

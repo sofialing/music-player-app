@@ -21,7 +21,7 @@ const Artist = () => {
 	}, [artistId, spotify, state])
 
 	return artist && (
-		<main className="artist-page">
+		<main className="main-view artist-page">
 			<ArtistHeader artist={artist} />
 			<ArtistTopTracks artistId={artistId} />
 			<ArtistDiscography artistId={artistId} />

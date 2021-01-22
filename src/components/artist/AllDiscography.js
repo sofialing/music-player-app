@@ -8,7 +8,7 @@ const AllDiscography = () => {
 	const { artistId } = useParams();
 
 	return (
-		<main className="discography-page">
+		<main className="main-view discography-page">
 			<PageHeader title="Discography" />
 			<AllAlbums artistId={artistId} />
 			<AllSingles artistId={artistId} />
