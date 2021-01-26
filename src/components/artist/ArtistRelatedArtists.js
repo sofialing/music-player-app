@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ArtistCard from '../elements/ArtistCard';
+import ArtistCard from '../partials/ArtistCard';
+import './ArtistRelatedArtists.scss';
 
 const ArtistRelatedArtists = ({ artistId }) => {
 	const { spotify } = useAuth();
@@ -22,7 +23,7 @@ const ArtistRelatedArtists = ({ artistId }) => {
 				<Link to='related'><h2>Related Artists</h2></Link>
 				<ChevronRightIcon />
 			</header>
-			<ul className="related-artists-grid">
+			<ul className="grid">
 				{relatedArtists.map((artist, index) => <ArtistCard artist={artist} key={index} />)}
 			</ul>
 		</section>

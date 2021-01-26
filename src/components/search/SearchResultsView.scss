@@ -1,0 +1,10 @@
+@import '../../assets/sass/utilities/variables';
+
+.search-results-view {
+	section {
+		padding: 0 1.25rem;
+		@media screen and (min-width: $md-screen) {
+			padding: 0 2.5rem;
+		}
+	}
+}

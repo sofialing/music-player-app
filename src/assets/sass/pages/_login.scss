@@ -1,48 +1,48 @@
-.login-page {
-	@extend .container;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 100%;
-	text-align: center;
-	padding-top: 3.5rem;
-	svg#headphone {
-		margin-bottom: 3.5rem;
-	}
-	button {
-		margin: 0 auto;
-		font-family: $font-family;
-	}
-}
+// .login-page {
+// 	@extend .container;
+// 	background-size: cover;
+// 	background-position: center;
+// 	background-repeat: no-repeat;
+// 	height: 100%;
+// 	text-align: center;
+// 	padding-top: 3.5rem;
+// 	svg#headphone {
+// 		margin-bottom: 3.5rem;
+// 	}
+// 	button {
+// 		margin: 0 auto;
+// 		font-family: $font-family;
+// 	}
+// }
 
-svg#headphone:not(.animated) .animable {
-	opacity: 0;
-}
-svg#headphone.animated
-#musical-notes--inject-97 {
-	animation: 1.5s Infinite  linear heartbeat;
-	animation-delay: 0s;
-}
-@keyframes heartbeat {
-	0% {
-		transform: scale(1);
-	}
-	10% {
-		transform: scale(1.1);
-	}
-	30% {
-		transform: scale(1);
-	}
-	40% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.1);
-	}
-	60% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(1);
-	}
-}
+// svg#headphone:not(.animated) .animable {
+// 	opacity: 0;
+// }
+// svg#headphone.animated
+// #musical-notes--inject-97 {
+// 	animation: 1.5s Infinite  linear heartbeat;
+// 	animation-delay: 0s;
+// }
+// @keyframes heartbeat {
+// 	0% {
+// 		transform: scale(1);
+// 	}
+// 	10% {
+// 		transform: scale(1.1);
+// 	}
+// 	30% {
+// 		transform: scale(1);
+// 	}
+// 	40% {
+// 		transform: scale(1);
+// 	}
+// 	50% {
+// 		transform: scale(1.1);
+// 	}
+// 	60% {
+// 		transform: scale(1);
+// 	}
+// 	100% {
+// 		transform: scale(1);
+// 	}
+// }

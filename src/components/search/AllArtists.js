@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext';
-import ArtistListItem from '../elements/ArtistListItem';
-import PageHeader from '../elements/PageHeader';
-import Pagination from '../elements/Pagination';
+import ArtistListItem from '../partials/ArtistListItem';
+import PageHeader from '../partials/PageHeader';
+import Pagination from '../partials/Pagination';
 import usePagination from '../../hooks/usePagination';
+import './SearchResultsView.scss';
 
 const AllArtists = () => {
 	const { searchQuery } = useParams();
@@ -19,10 +20,10 @@ const AllArtists = () => {
 	}, [searchQuery, spotify, currentPage, limit])
 
 	return (
-		<main className="main-view search-results-page">
+		<main className="main-view search-results-view">
 			<PageHeader title={`All artists for '${searchQuery}'`} />
-			<section>
-				<ul>
+			<section className="artists">
+				<ul className="list">
 					{artists.total && artists.items.map((artist, index) => <ArtistListItem artist={artist} key={index} />)}
 				</ul>
 				<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

@@ -5,30 +5,23 @@
 }
 
 body {
-	background: $color-darkgrey;
+	background: $color-black;
 	width: 100vw;
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
-}
-
-#app {
-	position: relative;
-	background: $color-black;
-	height: 100vh;
-	height: calc(var(--vh, 1vh) * 100);
 	overflow: hidden;
+    position: fixed;
 }
 
-@include media(md) {
-	body {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	#app {
-		box-shadow: 1px 4px 12px #00000072;
-		width: 414px;
-		height: 736px;
+.main-view {
+	position: relative;
+	padding-bottom: 8rem;
+	height: 100vh;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none;
 	}
 }
 
@@ -48,14 +41,25 @@ ul {
 	padding: 0;
 }
 
-main {
-	position: relative;
-	padding-bottom: 8rem;
-	height: 100%;
-	overflow-y: scroll;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	&::-webkit-scrollbar {
-		display: none;
+@include media(md) {
+	// body {
+	// 	background: $color-darkergrey;
+	// }
+	#app {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: 1fr auto;
+		grid-template-areas: "navbar main-view"
+		"now-playing-bar now-playing-bar";
+		height: 100%;
+		min-height: 100%;
+		position: relative;
+		width: 100%;
+	}
+	.main-view {
+		grid-area: main-view;
+		padding-bottom: 0;
+		width: 100%;
+		padding-bottom: 2.5rem;
 	}
 }

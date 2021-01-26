@@ -48,6 +48,20 @@
 		padding: 0;
 		margin: 1rem 0 0;
 	}
+	@include media(md) {
+		.releases__grid,
+		.categories__grid,
+		.featured-playlists__grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	@include media(lg) {
+		.releases__grid,
+		.categories__grid,
+		.featured-playlists__grid {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
 }
 
 .categories-page section,

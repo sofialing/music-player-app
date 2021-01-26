@@ -1,42 +1,50 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AllAlbums from './components/search/AllAlbums'
-import AllArtists from './components/search/AllArtists'
-import AllCategories from './components/discover/AllCategories'
-import AllDiscography from './components/artist/AllDiscography'
-import AllFeaturedPlaylists from './components/discover/AllFeaturedPlaylists'
-import AllNewReleases from './components/discover/AllNewReleases'
-import AllPlaylists from './components/dashboard/AllPlaylists'
-import AllRecommendedTracks from './components/discover/AllRecommendedTracks'
-import AllRelatedArtists from './components/artist/AllRelatedArtists'
-import AllTopArtists from './components/dashboard/AllTopArtists'
-import AllTopTracks from './components/dashboard/AllTopTracks'
-import AllTracks from './components/search/AllTracks'
-import Artist from './components/pages/Artist'
-import Dashboard from './components/pages/Dashboard'
-import Discover from './components/pages/Discover'
-import Favorites from './components/pages/Favorites'
-import Login from './components/pages/Login'
-import Navbar from './components/elements/Navbar'
-import NotFound from './components/pages/NotFound'
-import NowPlayingBar from './components/music-player/NowPlayingBar'
-import NowPlayingModal from './components/music-player/NowPlayingModal'
-import Playlist from './components/pages/Playlist'
-import Redirect from './components/pages/Redirect'
-import Search from './components/pages/Search'
-import SingleAlbum from './components/pages/SingleAlbum'
-import SingleCategory from './components/discover/SingleCategory'
-import AuthContextProvider from './contexts/AuthContext'
-import PlaybackContextProvider from './contexts/PlaybackContext'
+import { Routes, Route } from 'react-router-dom';
+// contexts
+import AuthContextProvider from './contexts/AuthContext';
+import PlaybackContextProvider from './contexts/PlaybackContext';
+import ViewportContextProvider from './contexts/ViewportContext';
+
+// layout
+import Navbar from './components/layout/navbar';
+import NowPlayingBar from './components/music-player/NowPlayingBar';
+import NowPlayingModal from './components/music-player/NowPlayingModal';
+
+// pages
+import Album from './views/album/Album';
+import Artist from './views/artist/Artist';
+import Dashboard from './views/dashboard/Dashboard';
+import Discover from './views/discover/Discover';
+import Favorites from './views/favorites/Favorites';
+import Login from './views/login/Login';
+import PageMissing from './views/page-missing/PageMissing';
+import Playlist from './views/playlist/Playlist';
+import Redirect from './views/Redirect';
+import Search from './views/search/Search';
+
+// sub pages
+import AllAlbums from './components/search/AllAlbums';
+import AllArtists from './components/search/AllArtists';
+import AllCategories from './components/discover/AllCategories';
+import AllDiscography from './components/artist/AllDiscography';
+import AllFeaturedPlaylists from './components/discover/AllFeaturedPlaylists';
+import AllNewReleases from './components/discover/AllNewReleases';
+import AllPlaylists from './components/dashboard/AllPlaylists';
+import AllRecommendedTracks from './components/discover/AllRecommendedTracks';
+import AllRelatedArtists from './components/artist/AllRelatedArtists';
+import AllTopArtists from './components/dashboard/AllTopArtists';
+import AllTopTracks from './components/dashboard/AllTopTracks';
+import AllTracks from './components/search/AllTracks';
+import SingleCategory from './components/discover/SingleCategory';
+
+// misc
 import AuthRoute from './decorators/AuthRoute'
-import ScrollToTop from './decorators/ScrollToTop'
 import './assets/sass/main.scss'
 
 const App = () => {
 	return (
-		<Router>
-			<ScrollToTop />
-			<AuthContextProvider>
-				<PlaybackContextProvider >
+		<AuthContextProvider>
+			<PlaybackContextProvider >
+				<ViewportContextProvider>
 					<Navbar />
 					<Routes>
 						<Route path='/' >
@@ -78,15 +86,15 @@ const App = () => {
 							<Route path='/:artistId/related' element={<AllRelatedArtists />} />
 						</AuthRoute>
 						<AuthRoute path='album' >
-							<Route path='/:albumId' element={<SingleAlbum />} />
+							<Route path='/:albumId' element={<Album />} />
 						</AuthRoute>
-						<Route path='*' element={<NotFound />} />
+						<Route path='*' element={<PageMissing />} />
 					</Routes>
 					<NowPlayingModal />
 					<NowPlayingBar />
-				</PlaybackContextProvider>
-			</AuthContextProvider>
-		</Router>
+				</ViewportContextProvider>
+			</PlaybackContextProvider>
+		</AuthContextProvider>
 	);
 }
 

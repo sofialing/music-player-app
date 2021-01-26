@@ -88,6 +88,40 @@
 			}
 		}
 	}
+
+	@include media(md) {
+		.discover-weekly .card {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-auto-rows: auto;
+			grid-template-areas: "image body-content" "image footer-content";
+			column-gap: 2rem;
+			&__header {
+				grid-area: image;
+				img {
+					height: 200px;
+					width: 200px;
+				}
+			}
+			&__body {
+				grid-area: body-content;
+				padding: 1.5rem 1.5rem 0 0;
+				p {
+					font-size: 1rem;
+				}
+			}
+			&__footer {
+				grid-area: footer-content;
+				padding: 0 1.5rem 1.5rem 0;
+				p {
+					font-size: 1rem;
+				}
+			}
+		}
+		.top-artists-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
 }
 
 .top-artists-page section,
@@ -95,3 +129,5 @@
 .playlists-page section {
 	@extend .container;
 }
+
+

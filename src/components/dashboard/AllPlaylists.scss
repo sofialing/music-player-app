@@ -1,0 +1,12 @@
+@import '../../assets/sass/utilities/variables';
+
+.playlists-view {
+	.playlists {
+		padding: 0 1.5rem;
+	}
+	@media screen and (min-width: $md-screen) {
+		.playlists {
+			padding: 0 2.5rem;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+@import '../../assets/sass/utilities/variables';
+
+.album-card {
+	background: $color-darkergrey;
+	height: 100%;
+	text-align: center;
+	transition: background .5s ease-in-out;
+	&:hover {
+		background: $color-darkgrey;
+		.cover-img {
+			transform: scale(1.1);
+		}
+	}
+	.header {
+		margin: 0;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		object-fit: cover;
+		.cover-img {
+			transition: transform .5s ease-in-out;
+		}
+	}
+	.body {
+		padding: 1rem;
+		.title {
+			font-size: 1rem;
+			letter-spacing: .05em;
+			margin: 0;
+		}
+		.details {
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .05em;
+			margin: 0;
+			text-transform: capitalize;
+		}
+	}
+	@media screen and (min-width: $md-screen) {
+		text-align: left;
+		.title {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+}

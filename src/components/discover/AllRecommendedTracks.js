@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import PageHeader from '../elements/PageHeader';
-import TrackListItem from '../elements/TrackListItem'
+import PageHeader from '../partials/PageHeader';
+import TrackListItem from '../partials/TrackListItem';
+import './AllRecommendedTracks.scss';
 
 const AllRecommendedTracks = () => {
 	const { spotify, top_artists, top_tracks } = useAuth();
@@ -24,10 +25,10 @@ const AllRecommendedTracks = () => {
 	}, [spotify, top_artists, top_tracks, state])
 
 	return (
-		<main className="main-view recommendations-page">
+		<main className="main-view recommendations-view">
 			<PageHeader title="Recommended for you" />
-			<section>
-				<ul>
+			<section className="tracks">
+				<ul className="list">
 					{recommendations && recommendations.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 				</ul>
 			</section>
@@ -35,4 +36,4 @@ const AllRecommendedTracks = () => {
 	)
 }
 
-export default AllRecommendedTracks
+export default AllRecommendedTracks;

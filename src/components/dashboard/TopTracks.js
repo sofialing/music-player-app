@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from '../../contexts/AuthContext';
-import TrackListItem from '../elements/TrackListItem';
+import TrackListItem from '../partials/TrackListItem';
+import './TopTracks.scss';
 
 const TopTracks = () => {
 	const { top_tracks } = useAuth();
 
 	return (
 		<section className="top-tracks">
-			<header>
+			<header className="header">
 				<Link to='top-tracks'>
-					<h2>Top Tracks</h2>
+					<h2 className="title">Top Tracks</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul>
+			<ul className="list">
 				{top_tracks && top_tracks.items.slice(0, 5).map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 			</ul>
 		</section>

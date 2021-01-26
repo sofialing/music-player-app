@@ -1,0 +1,50 @@
+@import '../../../assets/sass/utilities/variables';
+
+.navbar-mobile {
+	background: $color-darkergrey;
+	border-top: 1px solid $color-black;
+	height: 80px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 1rem 1.25rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	.menu {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		justify-content: space-between;
+		a {
+			color: $color-lightgrey;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			svg {
+				color: #fff;
+				transition: transform .5s ease-in-out;
+			}
+			span {
+				font-size: .75rem;
+				letter-spacing: .1em;
+				font-weight: 300;
+				margin-top: .5rem;
+				text-transform: uppercase;
+			}
+			&.active {
+				span {
+					color: #fff;
+				}
+			}
+			&:hover svg {
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+

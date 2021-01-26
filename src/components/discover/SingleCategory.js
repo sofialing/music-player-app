@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import usePagination from '../../hooks/usePagination'
-import PageHeader from '../elements/PageHeader'
-import PlaylistCard from '../elements/PlaylistCard'
-import Pagination from '../elements/Pagination'
+import PageHeader from '../partials/PageHeader'
+import PlaylistCard from '../partials/PlaylistCard'
+import Pagination from '../partials/Pagination'
+import './SingleCategory.scss';
 
 const SingleCategory = () => {
 	const { spotify } = useAuth();
@@ -23,10 +24,10 @@ const SingleCategory = () => {
 	}, [spotify, categoryId, currentPage, limit])
 
 	return category && playlists && (
-		<main className="main-view single-category-page">
+		<main className="main-view single-category-view">
 			<PageHeader title={category.name} />
-			<section>
-				<ul>
+			<section className="categories">
+				<ul className="grid">
 					{playlists.total && playlists.items.map((playlist, index) => <PlaylistCard playlist={playlist} key={index} />)}
 				</ul>
 				<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

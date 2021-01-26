@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { useAuth } from '../../contexts/AuthContext'
-import PlaylistCard from '../elements/PlaylistCard'
+import PlaylistCard from '../partials/PlaylistCard'
+import './FeaturedPlaylists.scss';
 
 const FeaturedPlaylists = () => {
 	const { spotify } = useAuth();
@@ -17,14 +18,14 @@ const FeaturedPlaylists = () => {
 	}, [spotify])
 
 	return playlists && (
-		<section>
-			<header>
+		<section className="featured-playlists">
+			<header className="header">
 				<Link to='featured-playlists' state={{ playlists }}>
-					<h2>Featured Playlists</h2>
+					<h2 className="title">Featured playlists</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul className="featured-playlists__grid">
+			<ul className="grid">
 				{playlists && playlists.items.slice(0, 6).map((playlist, index) => <PlaylistCard playlist={playlist} key={index} />)}
 			</ul>
 		</section>

@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from '../../contexts/AuthContext';
+import './DiscoverWeekly.scss';
 
 const DiscoverWeekly = () => {
 	const { discover_weekly, user } = useAuth();
 
 	return (
 		<section className="discover-weekly">
-			<header>
+			<header className="header">
 				<Link to={`/playlist/${discover_weekly.id}`}>
-					<h2>{discover_weekly.name}</h2>
+					<h2 className="title">{discover_weekly.name}</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
@@ -28,4 +29,4 @@ const DiscoverWeekly = () => {
 	)
 }
 
-export default DiscoverWeekly
+export default DiscoverWeekly;

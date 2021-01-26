@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from '../../contexts/AuthContext'
-import TrackListItem from '../elements/TrackListItem'
+import TrackListItem from '../partials/TrackListItem'
+import './Recommendations.scss';
 
 const Recommendations = () => {
 	const { spotify, top_artists, top_tracks } = useAuth();
@@ -20,14 +21,14 @@ const Recommendations = () => {
 	}, [spotify, top_artists, top_tracks])
 
 	return recommendations && (
-		<section>
-			<header>
+		<section className="recommendations">
+			<header className="header">
 				<Link to='recommended-tracks' state={{ recommendations }}>
-					<h2>Recommended for you</h2>
+					<h2 className="title">Recommended for you</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul>
+			<ul className="list">
 				{recommendations.slice(0, 5).map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 			</ul>
 		</section>

@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import usePagination from '../../hooks/usePagination'
-import PageHeader from '../elements/PageHeader'
-import AlbumCard from '../elements/AlbumCard'
-import Pagination from '../elements/Pagination'
+import PageHeader from '../partials/PageHeader'
+import AlbumCard from '../partials/AlbumCard'
+import Pagination from '../partials/Pagination'
+import './AllNewReleases.scss';
 
 const AllNewReleases = () => {
 	const { spotify } = useAuth();
@@ -28,10 +29,10 @@ const AllNewReleases = () => {
 	}, [spotify, state, currentPage, limit])
 
 	return releases && (
-		<main className="main-view new-releases-page">
+		<main className="main-view new-releases-view">
 			<PageHeader title="New Releases" />
-			<section>
-				<ul>
+			<section className="releases">
+				<ul className="grid">
 					{releases.total && releases.items.map((album, index) => <AlbumCard album={album} key={index} />)}
 				</ul>
 				<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

@@ -3,7 +3,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import noImage from '../../assets/images/no-image.png'
 import { usePlayback } from '../../contexts/PlaybackContext';
-import ProgressBar from '../elements/ProgressBar';
+import ProgressBar from '../partials/ProgressBar';
 import { getArtists } from '../../utils'
 
 const NowPlayingBar = () => {

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext';
-import ArtistListItem from '../elements/ArtistListItem';
-import PageHeader from '../elements/PageHeader';
+import ArtistListItem from '../partials/ArtistListItem';
+import PageHeader from '../partials/PageHeader';
 
 const AllRelatedArtists = () => {
 	const { artistId } = useParams();

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { useAuth } from '../../contexts/AuthContext'
-import CategoryCard from '../elements/CategoryCard'
+import CategoryCard from '../partials/CategoryCard'
+import './Categories.scss';
 
 const Categories = () => {
 	const { spotify } = useAuth();
@@ -17,14 +18,14 @@ const Categories = () => {
 	}, [spotify])
 
 	return categories && (
-		<section>
-			<header>
+		<section className="categories">
+			<header className="header">
 				<Link to='categories' state={{ categories }}>
-					<h2>Genres & themes</h2>
+					<h2 className="title">Genres & themes</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul className="categories__grid">
+			<ul className="grid">
 				{categories && categories.items.slice(0, 6).map((category, index) => <CategoryCard category={category} key={index} />)}
 			</ul>
 		</section>

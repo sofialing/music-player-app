@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import TrackListItem from '../elements/TrackListItem'
+import TrackListItem from '../partials/TrackListItem'
 
 const ArtistTopTracks = ({ artistId }) => {
 	const { spotify } = useAuth();

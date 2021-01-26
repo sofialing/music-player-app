@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import PageHeader from '../elements/PageHeader'
+import PageHeader from '../partials/PageHeader'
 import AllAlbums from './discography/AllAlbums';
 import AllCompilations from './discography/AllCompilations';
 import AllSingles from './discography/AllSingles';

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from '../../contexts/AuthContext'
-import AlbumCard from '../elements/AlbumCard'
+import AlbumCard from '../partials/AlbumCard'
+import './NewReleases.scss';
 
 const NewReleases = () => {
 	const { spotify } = useAuth();
@@ -17,14 +18,14 @@ const NewReleases = () => {
 	}, [spotify])
 
 	return releases && (
-		<section>
-			<header>
+		<section className="new-releases">
+			<header className="header">
 				<Link to='new-releases' state={{ releases }}>
-					<h2>New Releases</h2>
+					<h2 className="title">New releases</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
-			<ul className="releases__grid">
+			<ul className="grid">
 				{releases && releases.items.slice(0, 4).map((album, index) => <AlbumCard album={album} key={index} />)}
 			</ul>
 		</section>
