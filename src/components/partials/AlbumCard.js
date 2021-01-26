@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
-import noImage from '../../assets/images/no-image.png'
-import { getYear } from '../../utils'
+import { Link } from 'react-router-dom';
+import noImage from 'assets/images/no-image.png';
+import { getYear } from 'utils';
 import './AlbumCard.scss';
+
 const AlbumCard = ({ album }) => {
 	const imageSrc = album.images.length ? album.images[0]['url'] : noImage;
 	return (
@@ -19,4 +20,4 @@ const AlbumCard = ({ album }) => {
 	)
 }
 
-export default AlbumCard
+export default AlbumCard;

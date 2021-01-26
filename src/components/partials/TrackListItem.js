@@ -1,7 +1,7 @@
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import noImage from '../../assets/images/no-image.png'
-import usePlayer from '../../hooks/usePlayer'
-import { formatTime, getArtists } from '../../utils'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import noImage from 'assets/images/no-image.png';
+import usePlayer from 'hooks/usePlayer';
+import { formatTime, getArtists } from 'utils';
 import './TrackListItem.scss';
 
 const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
@@ -23,4 +23,4 @@ const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 	)
 }
 
-export default TrackListItem
+export default TrackListItem;

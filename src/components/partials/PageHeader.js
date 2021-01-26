@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import './PageHeader.scss';
 
@@ -12,4 +12,4 @@ const PageHeader = ({ title }) => {
 	)
 }
 
-export default PageHeader
+export default PageHeader;

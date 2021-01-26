@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { useAuth } from '../../contexts/AuthContext'
-import AlbumCard from '../partials/AlbumCard'
+import { useAuth } from 'contexts/AuthContext';
+import AlbumCard from 'components/partials/AlbumCard';
 import './NewReleases.scss';
 
 const NewReleases = () => {
@@ -32,4 +32,4 @@ const NewReleases = () => {
 	)
 }
 
-export default NewReleases
+export default NewReleases;

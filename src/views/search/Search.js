@@ -1,9 +1,9 @@
-import './Search.scss';
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
-import { useAuth } from '../../contexts/AuthContext';
-import SearchResults from '../../components/search/SearchResults';
+import { useAuth } from 'contexts/AuthContext';
+import SearchResults from 'components/search/SearchResults';
+import './Search.scss';
 
 const Search = () => {
 	const navigate = useNavigate();

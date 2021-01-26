@@ -1,11 +1,11 @@
-import './Playlist.scss';
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import TrackListItem from '../../components/partials/TrackListItem';
-import PlayButton from '../../components/partials/PlayButton';
-import { useAuth } from '../../contexts/AuthContext';
-import { formatNumber } from '../../utils'
+import TrackListItem from 'components/partials/TrackListItem';
+import PlayButton from 'components/partials/PlayButton';
+import { useAuth } from 'contexts/AuthContext';
+import { formatNumber } from 'utils';
+import './Playlist.scss';
 
 const Playlist = () => {
 	const navigate = useNavigate();
@@ -43,4 +43,4 @@ const Playlist = () => {
 	)
 }
 
-export default Playlist
+export default Playlist;

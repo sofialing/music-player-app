@@ -1,9 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumListItem from '../partials/AlbumListItem';
-import ArtistListItem from '../partials/ArtistListItem';
-import TrackListItem from '../partials/TrackListItem';
+import AlbumListItem from 'components/partials/AlbumListItem';
+import ArtistListItem from 'components/partials/ArtistListItem';
+import TrackListItem from 'components/partials/TrackListItem';
 import './SearchResults.scss';
 
 const SearchResults = ({ searchResults, search }) => {
@@ -63,4 +62,4 @@ const SearchResults = ({ searchResults, search }) => {
 	)
 }
 
-export default SearchResults
+export default SearchResults;

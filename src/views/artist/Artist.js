@@ -1,11 +1,11 @@
-import './Artist.scss';
 import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthContext'
-import ArtistTopTracks from '../../components/artist/ArtistTopTracks';
-import ArtistDiscography from '../../components/artist/ArtistDiscography';
-import ArtistRelatedArtists from '../../components/artist/ArtistRelatedArtists';
-import ArtistHeader from '../../components/artist/ArtistHeader';
+import { useAuth } from 'contexts/AuthContext'
+import ArtistTopTracks from 'components/artist/ArtistTopTracks';
+import ArtistDiscography from 'components/artist/ArtistDiscography';
+import ArtistRelatedArtists from 'components/artist/ArtistRelatedArtists';
+import ArtistHeader from 'components/artist/ArtistHeader';
+import './Artist.scss';
 
 const Artist = () => {
 	const { artistId } = useParams();
@@ -31,4 +31,4 @@ const Artist = () => {
 	)
 }
 
-export default Artist
+export default Artist;

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { formatNumber } from '../../utils'
-import noImage from '../../assets/images/no-image.png'
+import { Link } from 'react-router-dom';
+import { formatNumber } from 'utils';
+import noImage from 'assets/images/no-image.png';
 import './ArtistCard.scss';
 
 const ArtistCard = ({ artist }) => {
@@ -21,4 +21,4 @@ const ArtistCard = ({ artist }) => {
 	)
 }
 
-export default ArtistCard
+export default ArtistCard;

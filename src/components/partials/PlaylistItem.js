@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import noImage from '../../assets/images/no-image.png'
+import noImage from 'assets/images/no-image.png';
 import './PlaylistItem.scss';
 
 const PlaylistItem = ({ playlist }) => {
-	const imageSrc = playlist.images.length ? playlist.images[playlist.images.length - 1]['url'] : noImage;
+	const imageSrc = playlist.images.length ? playlist.images[0]['url'] : noImage;
 	return (
 		<Link to={`/playlist/${playlist.id}`}>
 			<li className="playlist-item">
@@ -19,4 +19,4 @@ const PlaylistItem = ({ playlist }) => {
 	)
 }
 
-export default PlaylistItem
+export default PlaylistItem;

@@ -1,11 +1,11 @@
-import './Album.scss';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import TrackListItem from '../../components/partials/TrackListItem';
-import PlayButton from '../../components/partials/PlayButton';
-import { useAuth } from '../../contexts/AuthContext'
-import { getArtists, getYear, getAlbumLength, getTracks } from '../../utils'
+import TrackListItem from 'components/partials/TrackListItem';
+import PlayButton from 'components/partials/PlayButton';
+import { useAuth } from 'contexts/AuthContext';
+import { getArtists, getYear, getAlbumLength, getTracks } from 'utils';
+import './Album.scss';
 
 const Album = () => {
 	const navigate = useNavigate();

@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { useAuth } from '../../contexts/AuthContext'
-import PlaylistCard from '../partials/PlaylistCard'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { useAuth } from 'contexts/AuthContext';
+import PlaylistCard from 'components/partials/PlaylistCard';
 import './FeaturedPlaylists.scss';
 
 const FeaturedPlaylists = () => {
@@ -32,4 +32,4 @@ const FeaturedPlaylists = () => {
 	)
 }
 
-export default FeaturedPlaylists
+export default FeaturedPlaylists;

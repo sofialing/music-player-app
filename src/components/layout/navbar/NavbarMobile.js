@@ -3,7 +3,7 @@ import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import SearchIcon from '@material-ui/icons/Search';
-import { useAuth } from '../../../contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 import './NavbarMobile.scss';
 
 const NavbarMobile = () => {

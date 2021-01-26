@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import noImage from '../../assets/images/no-image.png';
+import noImage from 'assets/images/no-image.png';
 import './PlaylistCard.scss';
 
 const PlaylistCard = ({ playlist }) => {

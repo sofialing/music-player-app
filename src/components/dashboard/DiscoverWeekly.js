@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 import './DiscoverWeekly.scss';
 
 const DiscoverWeekly = () => {

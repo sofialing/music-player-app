@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import PlayButton from '../partials/PlayButton';
-import { formatNumber } from '../../utils'
+import PlayButton from 'components/partials/PlayButton';
+import { formatNumber } from 'utils'
 import './ArtistHeader.scss';
 
 const ArtistHeader = ({ artist }) => {
@@ -21,4 +21,4 @@ const ArtistHeader = ({ artist }) => {
 	)
 }
 
-export default ArtistHeader
+export default ArtistHeader;

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { useAuth } from '../../../contexts/AuthContext'
-import AlbumListItem from '../../partials/AlbumListItem'
+import { useState, useEffect } from 'react';
+import { useAuth } from 'contexts/AuthContext';
+import AlbumListItem from 'components/partials/AlbumListItem';
 
 const AllCompilations = ({ artistId }) => {
 	const { spotify } = useAuth();
@@ -18,13 +18,13 @@ const AllCompilations = ({ artistId }) => {
 
 
 	return compilations && (
-		<section>
-			<h2>Compilations</h2>
-			<ul>
+		<section className="compilations">
+			<h2 className="title">Compilations</h2>
+			<ul className="list">
 				{compilations.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
 			</ul>
 		</section>
 	)
 }
 
-export default AllCompilations
+export default AllCompilations;

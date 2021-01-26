@@ -1,8 +1,8 @@
+import NewReleases from 'components/discover/NewReleases';
+import FeaturedPlaylists from 'components/discover/FeaturedPlaylists';
+import Categories from 'components/discover/Categories';
+import Recommendations from 'components/discover/Recommendations';
 import './Discover.scss';
-import NewReleases from '../../components/discover/NewReleases'
-import FeaturedPlaylists from '../../components/discover/FeaturedPlaylists'
-import Categories from '../../components/discover/Categories'
-import Recommendations from '../../components/discover/Recommendations'
 
 const Discover = () => {
 	return (
@@ -18,4 +18,4 @@ const Discover = () => {
 	)
 }
 
-export default Discover
+export default Discover;

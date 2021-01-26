@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import noImage from '../../assets/images/no-image.png'
-import { formatNumber } from '../../utils'
+import { Link } from 'react-router-dom';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import noImage from 'assets/images/no-image.png';
+import { formatNumber } from 'utils';
 import './ArtistListItem.scss';
 
 const ArtistListItem = ({ artist }) => {
-	const imageSrc = artist.images.length ? artist.images[artist.images.length - 1]['url'] : noImage;
+	const imageSrc = artist.images.length ? artist.images[0]['url'] : noImage;
 
 	return (
 		<Link to={`/artist/${artist.id}`}>
@@ -21,4 +21,4 @@ const ArtistListItem = ({ artist }) => {
 	)
 }
 
-export default ArtistListItem
+export default ArtistListItem;

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
-import TrackListItem from '../partials/TrackListItem'
+import { useState, useEffect } from 'react';
+import { useAuth } from 'contexts/AuthContext';
+import TrackListItem from 'components/partials/TrackListItem';
 
 const ArtistTopTracks = ({ artistId }) => {
 	const { spotify } = useAuth();
@@ -16,14 +16,14 @@ const ArtistTopTracks = ({ artistId }) => {
 
 	return topTracks && (
 		<section className="top-tracks">
-			<header>
-				<h2>Top Tracks</h2>
+			<header className="header">
+				<h2 className="title">Top Tracks</h2>
 			</header>
-			<ul>
+			<ul className="list">
 				{topTracks.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
 			</ul>
 		</section>
 	)
 }
 
-export default ArtistTopTracks
+export default ArtistTopTracks;

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumCard from '../partials/AlbumCard';
+import { useAuth } from 'contexts/AuthContext';
+import AlbumCard from 'components/partials/AlbumCard';
 import './ArtistDiscography.scss';
 
 const ArtistDiscography = ({ artistId }) => {
@@ -19,9 +19,9 @@ const ArtistDiscography = ({ artistId }) => {
 
 	return discography && (
 		<section className="discography">
-			<header>
+			<header className="header">
 				<Link to='discography'>
-					<h2>Discography</h2>
+					<h2 className="title">Discography</h2>
 				</Link>
 				<ChevronRightIcon />
 			</header>
@@ -32,4 +32,4 @@ const ArtistDiscography = ({ artistId }) => {
 	)
 }
 
-export default ArtistDiscography
+export default ArtistDiscography;

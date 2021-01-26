@@ -1,7 +1,7 @@
-import './Login.scss';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import LoginSvg from '../../components/partials/LoginSvg'
-import { loginWithSpotify } from '../../spotify/login';
+import LoginSvg from 'components/partials/LoginSvg'
+import { loginWithSpotify } from 'spotify/login';
+import './Login.scss';
 
 const Login = () => {
 	return (

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthContext'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ArtistCard from '../partials/ArtistCard';
+import { useAuth } from 'contexts/AuthContext'
+import ArtistCard from 'components/partials/ArtistCard';
 import './ArtistRelatedArtists.scss';
 
 const ArtistRelatedArtists = ({ artistId }) => {
@@ -19,8 +19,10 @@ const ArtistRelatedArtists = ({ artistId }) => {
 
 	return relatedArtists && (
 		<section className="related-artists">
-			<header>
-				<Link to='related'><h2>Related Artists</h2></Link>
+			<header className="header">
+				<Link to='related'>
+					<h2 className="title">Related Artists</h2>
+				</Link>
 				<ChevronRightIcon />
 			</header>
 			<ul className="grid">
@@ -30,4 +32,4 @@ const ArtistRelatedArtists = ({ artistId }) => {
 	)
 }
 
-export default ArtistRelatedArtists
+export default ArtistRelatedArtists;

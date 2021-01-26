@@ -1,0 +1,12 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+#top-artists {
+	.artists {
+		padding: 0 1.5rem;
+	}
+	@media screen and (min-width: $md-screen) {
+		.artists {
+			padding: 0 2.5rem;
+		}
+	}
+}

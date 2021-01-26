@@ -1,7 +1,7 @@
+import DiscoverWeekly from 'components/dashboard/DiscoverWeekly';
+import Playlists from 'components/dashboard/Playlists';
+import { useAuth } from 'contexts/AuthContext';
 import './Dashboard.scss';
-import DiscoverWeekly from '../../components/dashboard/DiscoverWeekly';
-import Playlists from '../../components/dashboard/Playlists';
-import { useAuth } from '../../contexts/AuthContext';
 
 const Dashboard = () => {
 	const { discover_weekly } = useAuth();

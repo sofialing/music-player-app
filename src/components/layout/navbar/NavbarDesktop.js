@@ -3,8 +3,8 @@ import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import SearchIcon from '@material-ui/icons/Search';
-import { useAuth } from '../../../contexts/AuthContext';
-import logo from '../../../assets/images/logo.svg'
+import { useAuth } from 'contexts/AuthContext';
+import logo from 'assets/images/logo.svg'
 import './NavbarDesktop.scss';
 
 const NavbarDesktop = () => {

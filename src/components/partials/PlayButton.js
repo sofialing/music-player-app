@@ -1,5 +1,5 @@
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
-import usePlayer from '../../hooks/usePlayer';
+import usePlayer from 'hooks/usePlayer';
 import './PlayButton.scss';
 
 const PlayButton = ({ uri }) => {
@@ -13,4 +13,4 @@ const PlayButton = ({ uri }) => {
 	)
 }
 
-export default PlayButton
+export default PlayButton;

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { usePlayback } from '../../contexts/PlaybackContext';
+import { useEffect, useState } from 'react';
+import { usePlayback } from 'contexts/PlaybackContext';
 
 const ProgressBar = () => {
 	const [progress, setProgress] = useState(0);
@@ -30,4 +30,4 @@ const ProgressBar = () => {
 	)
 }
 
-export default ProgressBar
+export default ProgressBar;

@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { useAuth } from '../../contexts/AuthContext'
-import TrackListItem from '../partials/TrackListItem'
+import { useAuth } from 'contexts/AuthContext';
+import TrackListItem from 'components/partials/TrackListItem';
 import './Recommendations.scss';
 
 const Recommendations = () => {
@@ -35,4 +35,4 @@ const Recommendations = () => {
 	)
 }
 
-export default Recommendations
+export default Recommendations;

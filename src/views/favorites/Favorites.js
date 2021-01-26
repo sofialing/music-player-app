@@ -1,6 +1,6 @@
+import TopArtists from 'components/favorites/TopArtists';
+import TopTracks from 'components/favorites/TopTracks';
 import './Favorites.scss';
-import TopArtists from '../../components/dashboard/TopArtists';
-import TopTracks from '../../components/dashboard/TopTracks';
 
 const Favorites = () => {
 	return (

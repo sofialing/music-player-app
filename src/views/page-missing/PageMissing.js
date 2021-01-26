@@ -1,5 +1,5 @@
+import pageMissing from 'assets/images/page-missing.png';
 import './PageMissing.scss';
-import pageMissing from '../../assets/images/page-missing.png';
 
 const PageMissing = () => {
 	return (

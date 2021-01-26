@@ -1,12 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import noImage from '../../assets/images/no-image.png'
-import { getArtists, getYear, getTracks } from '../../utils'
+import noImage from 'assets/images/no-image.png';
+import { getArtists, getYear, getTracks } from 'utils';
 import './AlbumListItem.scss';
 
 const AlbumListItem = ({ album, displayArtist = true }) => {
-	const imageSrc = album.images.length ? album.images[album.images.length - 1]['url'] : noImage;
+	const imageSrc = album.images.length ? album.images[0]['url'] : noImage;
 	return (
 		<Link to={`/album/${album.id}`}>
 			<li className="album-list-item">
@@ -24,4 +23,4 @@ const AlbumListItem = ({ album, displayArtist = true }) => {
 	)
 }
 
-export default AlbumListItem
+export default AlbumListItem;

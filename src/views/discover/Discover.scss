@@ -1,6 +1,6 @@
-@import '../../assets/sass/utilities/variables';
+@import 'assets/sass/utilities/_variables.scss';
 
-.discover-view {
+#discover {
 	& > .header {
 		margin: 2.5rem 0 2rem;
 		padding: 0 1.25rem;
