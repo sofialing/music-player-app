@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import usePagination from 'hooks/usePagination';
-import PageHeader from 'components/partials/PageHeader';
+import PageHeader from 'components/layout/PageHeader';
 import CategoryCard from 'components/partials/CategoryCard';
-import Pagination from 'components/partials/Pagination';
+import Pagination from 'components/layout/Pagination';
 import './Categories.scss';
 
 const Categories = () => {

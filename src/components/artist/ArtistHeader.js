@@ -10,7 +10,7 @@ const ArtistHeader = ({ artist }) => {
 	return (
 		<header className="artist-header">
 			<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} title="Go back" />
-			<img className="cover-img" src={artist.images[1]['url']} alt={artist.name} />
+			<img className="cover-img" src={artist.images[0]['url']} alt={artist.name} />
 			<div>
 				<h2 className="sub-title">{artist.type}</h2>
 				<h1 className="title">{artist.name}</h1>

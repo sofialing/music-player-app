@@ -11,7 +11,7 @@ const NavbarDesktop = () => {
 	const { user, user_playlists } = useAuth();
 	return (
 		<nav aria-label="Main menu" className="navbar-desktop">
-			<Link className="logo" to="/">
+			<Link className="logo" to={`/dashboard/${user && user.id}`}>
 				<img src={logo} alt="logo" />
 			</Link>
 			<ul className="menu">

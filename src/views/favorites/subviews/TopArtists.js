@@ -1,6 +1,6 @@
 import { useAuth } from 'contexts/AuthContext';
-import ArtistListItem from 'components/partials/ArtistListItem';
-import PageHeader from 'components/partials/PageHeader';
+import ArtistListItem from 'components/partials/artist/ArtistListItem';
+import PageHeader from 'components/layout/PageHeader';
 import './TopArtists.scss';
 
 const AllTopArtists = () => {

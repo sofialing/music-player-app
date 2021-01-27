@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from 'contexts/AuthContext';
-import ArtistCard from 'components/partials/ArtistCard';
+import ArtistCard from 'components/partials/artist/ArtistCard';
 import './TopArtists.scss';
 
 const TopArtists = () => {

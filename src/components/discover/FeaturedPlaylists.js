@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from 'contexts/AuthContext';
-import PlaylistCard from 'components/partials/PlaylistCard';
+import PlaylistCard from 'components/partials/playlist/PlaylistCard';
 import './FeaturedPlaylists.scss';
 
 const FeaturedPlaylists = () => {

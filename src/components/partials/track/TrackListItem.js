@@ -5,7 +5,7 @@ import { formatTime, getArtists } from 'utils';
 import './TrackListItem.scss';
 
 const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
-	const imageSrc = album.images.length ? album.images[album.images.length - 1]['url'] : noImage;
+	const imageSrc = album.images.length ? album.images[0]['url'] : noImage;
 	const { playTrack } = usePlayer();
 
 	return (

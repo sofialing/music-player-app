@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import TrackListItem from 'components/partials/TrackListItem';
+import TrackListItem from 'components/partials/track/TrackListItem';
 import PlayButton from 'components/partials/PlayButton';
 import { useAuth } from 'contexts/AuthContext';
 import { formatNumber } from 'utils';

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from 'contexts/AuthContext';
-import TrackListItem from 'components/partials/TrackListItem';
+import TrackListItem from 'components/partials/track/TrackListItem';
 import './TopTracks.scss';
 
 const TopTracks = () => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
-import AlbumListItem from 'components/partials/AlbumListItem';
+import AlbumListItem from 'components/partials/album/AlbumListItem';
 
 const AllCompilations = ({ artistId }) => {
 	const { spotify } = useAuth();

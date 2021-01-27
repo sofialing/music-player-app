@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom'
-import PageHeader from 'components/partials/PageHeader'
+import { useParams } from 'react-router-dom';
+import PageHeader from 'components/layout/PageHeader';
 import AllAlbums from 'components/artist/discography/AllAlbums';
 import AllCompilations from 'components/artist/discography/AllCompilations';
 import AllSingles from 'components/artist/discography/AllSingles';

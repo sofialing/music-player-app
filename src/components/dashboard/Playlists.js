@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from 'contexts/AuthContext';
-import PlaylistItem from 'components/partials/PlaylistItem';
+import PlaylistItem from 'components/partials/playlist/PlaylistItem';
 import './Playlists.scss';
 
 const Playlists = () => {

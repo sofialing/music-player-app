@@ -6,17 +6,20 @@
 
 body {
 	background: $color-black;
-	width: 100vw;
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
+	width: 100vw;
 	overflow: hidden;
-    position: fixed;
+	// position: fixed;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .main-view {
 	position: relative;
-	padding-bottom: 8rem;
+	padding-bottom: calc(80px + 1.5rem);
 	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
 	overflow-y: scroll;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
@@ -42,9 +45,6 @@ ul {
 }
 
 @include media(md) {
-	// body {
-	// 	background: $color-darkergrey;
-	// }
 	#app {
 		display: grid;
 		grid-template-columns: auto 1fr;

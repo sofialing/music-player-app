@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumListItem from 'components/partials/AlbumListItem';
-import ArtistListItem from 'components/partials/ArtistListItem';
-import TrackListItem from 'components/partials/TrackListItem';
+import AlbumListItem from 'components/partials/album/AlbumListItem';
+import ArtistListItem from 'components/partials/artist/ArtistListItem';
+import TrackListItem from 'components/partials/track/TrackListItem';
 import './SearchResults.scss';
 
 const SearchResults = ({ searchResults, search }) => {

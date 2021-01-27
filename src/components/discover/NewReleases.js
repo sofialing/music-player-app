@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from 'contexts/AuthContext';
-import AlbumCard from 'components/partials/AlbumCard';
+import AlbumCard from 'components/partials/album/AlbumCard';
 import './NewReleases.scss';
 
 const NewReleases = () => {

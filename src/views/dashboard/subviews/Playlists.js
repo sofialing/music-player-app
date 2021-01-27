@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { useAuth } from 'contexts/AuthContext';
-import PlaylistItem from 'components/partials/PlaylistItem';
-import PageHeader from 'components/partials/PageHeader';
-import Pagination from 'components/partials/Pagination';
+import PlaylistItem from 'components/partials/playlist/PlaylistItem';
+import PageHeader from 'components/layout/PageHeader';
+import Pagination from 'components/layout/Pagination';
 import usePagination from 'hooks/usePagination';
 import './Playlists.scss';
 

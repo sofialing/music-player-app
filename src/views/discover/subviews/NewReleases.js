@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import usePagination from 'hooks/usePagination';
-import PageHeader from 'components/partials/PageHeader';
-import AlbumCard from 'components/partials/AlbumCard';
-import Pagination from 'components/partials/Pagination';
+import PageHeader from 'components/layout/PageHeader';
+import AlbumCard from 'components/partials/album/AlbumCard';
+import Pagination from 'components/layout/Pagination';
 import './NewReleases.scss';
 
 const NewReleases = () => {

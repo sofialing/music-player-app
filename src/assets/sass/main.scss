@@ -1,11 +1,3 @@
-@import-normalize; /* bring in normalize.css styles */
-
-body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-family: canada-type-gibson, sans-serif;
-}
-
 /* Utilities */
 @import 'utilities/variables';
 @import 'utilities/functions';
@@ -15,39 +7,3 @@ body {
 @import 'base/reset';
 @import 'base/global';
 @import 'base/typography';
-
-/* Layout */
-// @import 'layout/';
-
-/* Components */
-// @import 'components/buttons';
-// @import 'components/container';
-// @import 'components/navbar-mobile';
-// @import 'components/navbar-desktop';
-// @import 'components/now-playing-bar';
-// @import 'components/now-playing-modal';
-// @import 'components/playlists';
-// @import 'components/album-card';
-// @import 'components/artist-card';
-// @import 'components/category-card';
-// @import 'components/playlist-card';
-// @import 'components/track-list-item';
-// @import 'components/artist-list-item';
-// @import 'components/album-list-item';
-// @import 'components/playlist-item';
-// @import 'components/page-header';
-// @import 'components/pagination';
-// @import 'components/play-button';
-
-/* Pages */
-// @import 'pages/login';
-// @import 'pages/album';
-// @import 'pages/artist';
-// @import 'pages/dashboard';
-// @import 'pages/search';
-// @import 'pages/playlist';
-// @import 'pages/page-missing';
-// @import 'pages/discover';
-
-/* Themes */
-// @import 'themes/';

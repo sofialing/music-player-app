@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import usePagination from 'hooks/usePagination';
-import TrackListItem from 'components/partials/TrackListItem';
-import PageHeader from 'components/partials/PageHeader';
-import Pagination from 'components/partials/Pagination';
+import TrackListItem from 'components/partials/track/TrackListItem';
+import PageHeader from 'components/layout/PageHeader';
+import Pagination from 'components/layout/Pagination';
 import './SearchResults.scss';
 
 const SearchTracks = () => {

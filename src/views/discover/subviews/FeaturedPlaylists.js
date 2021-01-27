@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import usePagination from 'hooks/usePagination';
-import PageHeader from 'components/partials/PageHeader';
-import PlaylistCard from 'components/partials/PlaylistCard';
-import Pagination from 'components/partials/Pagination';
+import PageHeader from 'components/layout/PageHeader';
+import PlaylistCard from 'components/partials/playlist/PlaylistCard';
+import Pagination from 'components/layout/Pagination';
 import './FeaturedPlaylists.scss';
 
 const FeaturedPlaylists = () => {

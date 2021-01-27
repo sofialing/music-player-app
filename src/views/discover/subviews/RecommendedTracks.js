@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
-import PageHeader from 'components/partials/PageHeader';
-import TrackListItem from 'components/partials/TrackListItem';
+import PageHeader from 'components/layout/PageHeader';
+import TrackListItem from 'components/partials/track/TrackListItem';
 import './RecommendedTracks.scss';
 
 const RecommendedTracks = () => {
