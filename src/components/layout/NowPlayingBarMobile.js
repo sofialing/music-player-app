@@ -4,9 +4,10 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import noImage from 'assets/images/no-image.png'
 import { usePlayback } from 'contexts/PlaybackContext';
 import ProgressBar from 'components/partials/ProgressBar';
-import { getArtists } from 'utils'
+import { getArtists } from 'utils';
+import './NowPlayingBarMobile.scss';
 
-const NowPlayingBar = () => {
+const NowPlayingBarMobile = () => {
 	const { current_track, is_playing, player, dispatch } = usePlayback();
 	const imageSrc = current_track && current_track.album.images.length ? current_track.album.images[0]['url'] : noImage;
 
@@ -19,15 +20,15 @@ const NowPlayingBar = () => {
 	}
 
 	return current_track && (
-		<footer className="now-playing-bar">
+		<footer className="now-playing-bar mobile">
 			<ProgressBar />
 			<div className="now-playing-bar__inner">
-				<img src={imageSrc} alt="" />
+				<img src={imageSrc} alt="album cover" />
 				<div className="current-track">
-					<small className="track-name">{current_track.name}</small>
-					<small className="artist">{getArtists(current_track.artists)}</small>
+					<div className="track-name">{current_track.name}</div>
+					<div className="artist">{getArtists(current_track.artists)}</div>
 				</div>
-				<div className="icons">
+				<div className="player-controls">
 					{is_playing ? <PauseCircleOutlineIcon onClick={togglePlay} /> : <PlayCircleOutlineIcon onClick={togglePlay} />}
 					<ExpandLessIcon onClick={openPlayer} />
 				</div>
@@ -36,4 +37,4 @@ const NowPlayingBar = () => {
 	)
 }
 
-export default NowPlayingBar
+export default NowPlayingBarMobile

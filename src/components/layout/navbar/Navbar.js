@@ -3,8 +3,8 @@ import NavbarDesktop from './NavbarDesktop';
 import NavbarMobile from './NavbarMobile';
 
 const Navbar = () => {
-	const { breakpoint, width } = useViewport();
-	return width < breakpoint ? <NavbarMobile /> : <NavbarDesktop />
+	const { breakpoint_md, width } = useViewport();
+	return width < breakpoint_md ? <NavbarMobile /> : <NavbarDesktop />
 }
 
 export default Navbar;

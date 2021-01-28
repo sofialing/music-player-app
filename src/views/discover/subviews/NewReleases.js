@@ -30,7 +30,7 @@ const NewReleases = () => {
 
 	return releases && (
 		<main id="new-releases" className="main-view">
-			<PageHeader title="New Releases" />
+			<PageHeader title="New albums & singles" />
 			<section className="releases">
 				<ul className="grid">
 					{releases.total && releases.items.map((album, index) => <AlbumCard album={album} key={index} />)}

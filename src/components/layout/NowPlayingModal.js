@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import noImage from 'assets/images/no-image.png'
 import { usePlayback } from 'contexts/PlaybackContext';
 import { formatTime, getArtists } from 'utils';
+import './NowPlayingModal.scss';
 
 const NowPlayingModal = () => {
 	const [current, setCurrent] = useState(0);

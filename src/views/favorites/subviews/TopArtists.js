@@ -1,5 +1,5 @@
 import { useAuth } from 'contexts/AuthContext';
-import ArtistListItem from 'components/partials/artist/ArtistListItem';
+import ArtistCard from 'components/partials/artist/ArtistCard';
 import PageHeader from 'components/layout/PageHeader';
 import './TopArtists.scss';
 
@@ -8,10 +8,10 @@ const AllTopArtists = () => {
 
 	return (
 		<main id="top-artists" className="main-view">
-			<PageHeader title={'Top Artists'} />
+			<PageHeader title={'Your top artists'} />
 			<section className="artists">
-				<ul className="list">
-					{top_artists && top_artists.items.map((artist, index) => <ArtistListItem artist={artist} key={index} />)}
+				<ul className="grid">
+					{top_artists && top_artists.items.map((artist, index) => <ArtistCard artist={artist} key={index} />)}
 				</ul>
 			</section>
 		</main>

@@ -23,10 +23,13 @@ const Recommendations = () => {
 	return recommendations && (
 		<section className="recommendations">
 			<header className="header">
-				<Link to='recommended-tracks' state={{ recommendations }}>
-					<h2 className="title">Recommended for you</h2>
+				<h2 className="title">
+					<Link to='recommended-tracks' state={{ recommendations }}>Recommendations for you</Link>
+				</h2>
+				<Link className="view-all" to='recommended-tracks' state={{ recommendations }}>
+					<span>View all</span>
+					<ChevronRightIcon />
 				</Link>
-				<ChevronRightIcon />
 			</header>
 			<ul className="list">
 				{recommendations.slice(0, 5).map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}

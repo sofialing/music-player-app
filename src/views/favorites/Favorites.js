@@ -8,8 +8,8 @@ const Favorites = () => {
 			<header className="header">
 				<h1 className="title">Your favorite music</h1>
 			</header>
-			<TopArtists />
 			<TopTracks />
+			<TopArtists />
 		</main>
 	)
 }

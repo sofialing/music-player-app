@@ -26,7 +26,7 @@ const RecommendedTracks = () => {
 
 	return (
 		<main id="recommended-tracks" className="main-view">
-			<PageHeader title="Recommended for you" />
+			<PageHeader title="Recommendations for you" />
 			<section className="tracks">
 				<ul className="list">
 					{recommendations && recommendations.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}

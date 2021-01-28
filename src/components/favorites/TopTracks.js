@@ -10,10 +10,13 @@ const TopTracks = () => {
 	return (
 		<section className="top-tracks">
 			<header className="header">
-				<Link to='top-tracks'>
-					<h2 className="title">Top Tracks</h2>
+				<h2 className="title">
+					<Link to='top-tracks'>Your top tracks</Link>
+				</h2>
+				<Link className="view-all" to='top-tracks'>
+					<span>View all</span>
+					<ChevronRightIcon />
 				</Link>
-				<ChevronRightIcon />
 			</header>
 			<ul className="list">
 				{top_tracks && top_tracks.items.slice(0, 5).map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}

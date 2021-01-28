@@ -8,7 +8,7 @@ const TopTracks = () => {
 
 	return (
 		<main id="top-tracks" className="main-view">
-			<PageHeader title='Top Tracks' />
+			<PageHeader title='Your top tracks' />
 			<section className="tracks">
 				<ul className="list">
 					{top_tracks && top_tracks.items.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}

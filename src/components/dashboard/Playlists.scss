@@ -3,23 +3,41 @@
 .playlists {
 	padding: 0 1.25rem;
 	margin: 0 0 2.5rem;
-	.header {
+	& > .header {
 		display: flex;
-		align-items: center;
-		margin-bottom: .5rem;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-bottom: 1rem;
 		.title {
-			font-size: 1.333rem;
+			font-size: 1.5rem;
 			font-weight: 600;
 			letter-spacing: .05em;
 			margin: 0;
+			a {
+				color: $color-white;
+			}
 		}
-		svg {
-			margin-left: .5rem;
-			transition: transform .3s ease-in-out, color .3s ease-in-out;
-		}
-		a:hover + svg {
-			color: $color-white;
-			transform: translateX(.25rem);
+		.view-all {
+			display: flex;
+			align-items: center;
+			font-size: .875rem;
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: .1em;
+			text-transform: uppercase;
+			margin-left: 1rem;
+			svg {
+				margin-left: .25rem;
+				font-size: 1.25rem;
+				transition: transform .3s ease-in-out, color .3s ease-in-out;
+			}
+			&:hover {
+				color: $color-white;
+				svg {
+					color: $color-white;
+					transform: translateX(.125rem);
+				}
+			}
 		}
 	}
 	@media screen and (min-width: $md-screen) {

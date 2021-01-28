@@ -11,11 +11,14 @@ const FeaturedPlaylists = () => {
 	const { spotify } = useAuth();
 	const { state } = useLocation();
 	const [playlists, setPlaylists] = useState([]);
+	const [title, setTitle] = useState('');
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(playlists);
 
 	useEffect(() => {
 		if (state && state.playlists && currentPage === 1) {
-			return setPlaylists(state.playlists);
+			setTitle(state.title);
+			setPlaylists(state.playlists);
+			return;
 		}
 		const options = {
 			country: 'from_token',
@@ -30,7 +33,7 @@ const FeaturedPlaylists = () => {
 
 	return playlists && (
 		<main id="featured-playlists" className="main-view">
-			<PageHeader title="Featured playlists" />
+			<PageHeader title={`Featured playlists: ${title}`} />
 			<section className="playlists">
 				<ul className="grid">
 					{playlists.total && playlists.items.map((playlist, index) => <PlaylistCard playlist={playlist} key={index} />)}

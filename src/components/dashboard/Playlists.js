@@ -10,10 +10,13 @@ const Playlists = () => {
 	return (
 		<section className="playlists">
 			<header className="header">
-				<Link to='playlists'>
-					<h2 className="title">Playlists</h2>
+				<h2 className="title">
+					<Link to='playlists'>Playlists</Link>
+				</h2>
+				<Link className="view-all" to='playlists'>
+					<span>View all</span>
+					<ChevronRightIcon />
 				</Link>
-				<ChevronRightIcon />
 			</header>
 			<ul className="list">
 				{user_playlists && user_playlists.items.slice(0, 5).map((playlist, index) => <PlaylistItem playlist={playlist} key={index} />)}
