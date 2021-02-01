@@ -40,7 +40,38 @@
 			}
 		}
 	}
+	a:focus {
+		outline: none;
+		text-decoration: underline;
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		list-style: none;
+		margin: 1rem 0 0;
+		padding: 0;
+		& > * {
+			display: block;
+			max-width: 100%;
+			min-width: 0
+		}
+		a:focus {
+			outline: none;
+			box-shadow: 0 0 0 3px $color-white;
+		}
+	}
 	@media screen and (min-width: $md-screen) {
 		padding: 0 2.5rem;
+	}
+	@media screen and (min-width: $lg-screen) {
+		.grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	@media screen and (min-width: $xl-screen) {
+		.grid {
+			grid-template-columns: repeat(6, 1fr);
+		}
 	}
 }

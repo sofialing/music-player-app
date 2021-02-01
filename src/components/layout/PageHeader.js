@@ -6,8 +6,10 @@ const PageHeader = ({ title }) => {
 	const navigate = useNavigate();
 	return (
 		<header className="page-header">
-			<ArrowBackIosIcon className="back-btn" onClick={() => navigate(-1)} />
 			<h1>{title}</h1>
+			<button aria-label="Go back" className="back-btn" onClick={() => navigate(-1)} title="Go back">
+				<ArrowBackIosIcon />
+			</button>
 		</header>
 	)
 }

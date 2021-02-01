@@ -13,6 +13,7 @@
 			font-weight: 600;
 			letter-spacing: .05em;
 			margin: 0;
+			min-width: 0;
 			a {
 				color: $color-white;
 			}
@@ -20,13 +21,14 @@
 		.view-all {
 			display: flex;
 			align-items: center;
+			justify-content: flex-end;
 			font-size: .875rem;
 			font-weight: 400;
 			line-height: 1;
 			letter-spacing: .1em;
 			text-transform: uppercase;
 			margin-left: 1rem;
-
+			min-width: 100px;
 			svg {
 				margin-left: .25rem;
 				font-size: 1.25rem;

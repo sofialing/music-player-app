@@ -24,7 +24,7 @@ const Recommendations = () => {
 		<section className="recommendations">
 			<header className="header">
 				<h2 className="title">
-					<Link to='recommended-tracks' state={{ recommendations }}>Recommendations for you</Link>
+					<Link to='recommended-tracks' state={{ recommendations }}>Recommended for you</Link>
 				</h2>
 				<Link className="view-all" to='recommended-tracks' state={{ recommendations }}>
 					<span>View all</span>

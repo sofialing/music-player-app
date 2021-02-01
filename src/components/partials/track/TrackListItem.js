@@ -1,12 +1,16 @@
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import noImage from 'assets/images/no-image.png';
+import { usePlayback } from 'contexts/PlaybackContext';
 import usePlayer from 'hooks/usePlayer';
+
 import { formatTime, getArtists } from 'utils';
 import './TrackListItem.scss';
 
 const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 	const imageSrc = album.images.length ? album.images[0]['url'] : noImage;
-	const { playTrack } = usePlayer();
+	const { current_track, is_playing } = usePlayback();
+	const { pauseTrack, playTrack } = usePlayer();
 
 	return (
 		<li className="track-list-item" onDoubleClick={() => playTrack(track.uri)}>
@@ -18,7 +22,14 @@ const TrackListItem = ({ track, album, displayAlbumTitle = true }) => {
 					{displayAlbumTitle ? album.name : formatTime(track.duration_ms)}
 				</p>
 			</div>
-			<PlayCircleOutlineIcon onClick={() => playTrack(track.uri)} />
+			{current_track && is_playing && current_track.id === track.id ?
+				<button aria-label="Pause" title="Pause" type="button" onClick={() => pauseTrack(track.uri)}>
+					<PauseCircleOutlineIcon />
+				</button> :
+				<button aria-label="Play" title="Play" type="button" onClick={() => playTrack(track.uri)}>
+					<PlayCircleOutlineIcon />
+				</button>
+			}
 		</li>
 	)
 }

@@ -1,3 +1,5 @@
+import Albums from 'components/dashboard/Albums';
+import Artists from 'components/dashboard/Artists';
 import DiscoverWeekly from 'components/dashboard/DiscoverWeekly';
 import Playlists from 'components/dashboard/Playlists';
 import { useAuth } from 'contexts/AuthContext';
@@ -13,6 +15,8 @@ const Dashboard = () => {
 			</header>
 			{discover_weekly && <DiscoverWeekly />}
 			<Playlists />
+			<Artists />
+			<Albums />
 		</main>
 	);
 }

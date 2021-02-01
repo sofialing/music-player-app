@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useAuth } from 'contexts/AuthContext';
-import PlaylistItem from 'components/partials/playlist/PlaylistItem';
+import useViewport from 'hooks/useViewport';
+import PlaylistCard from 'components/partials/playlist/PlaylistCard';
 import './Playlists.scss';
 
 const Playlists = () => {
 	const { user_playlists } = useAuth();
+	const { breakpoint_lg, width } = useViewport();
+	const items = width <= breakpoint_lg ? 4 : 6;
 
 	return (
 		<section className="playlists">
@@ -18,8 +21,8 @@ const Playlists = () => {
 					<ChevronRightIcon />
 				</Link>
 			</header>
-			<ul className="list">
-				{user_playlists && user_playlists.items.slice(0, 5).map((playlist, index) => <PlaylistItem playlist={playlist} key={index} />)}
+			<ul className="grid">
+				{user_playlists && user_playlists.items.slice(0, items).map((playlist, index) => <PlaylistCard playlist={playlist} key={index} />)}
 			</ul>
 		</section>
 	)

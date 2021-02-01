@@ -12,14 +12,18 @@
 		height: 45px;
 	}
 	&__details {
-		margin-left: 1rem;
+		margin: 0 1rem;
+		min-width: 0;
 		h2, p {
 			line-height: 1.4;
-			margin: 0 !important;
+			margin: 0;
 			letter-spacing: .05em;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
 		}
 		h2 {
-			font-size: 1rem !important;
+			font-size: 1rem;
 			font-weight: 600;
 		}
 		p {
@@ -27,11 +31,20 @@
 			font-weight: 300;
 		}
 	}
-	svg {
+	button {
+		background: transparent;
+		border: none;
+		outline: none;
 		margin-left: auto;
-		margin-right: .5rem;
-		color: $color-darkgrey;
-		transition: color .5s ease-in-out;
+		svg {
+			color: $color-darkgrey;
+			margin-left: auto;
+			margin-right: .5rem;
+			transition: color .5s ease-in-out;
+		}
+		&:hover {
+			cursor: pointer;
+		}
 	}
 	&:hover {
 		background: $color-darkergrey;

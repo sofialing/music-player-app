@@ -15,7 +15,9 @@ const ArtistListItem = ({ artist }) => {
 					<h2>{artist.name}</h2>
 					<p>{formatNumber(artist.followers.total)} fans</p>
 				</div>
-				<ChevronRightIcon />
+				<button aria-label="Go to artist" title="Go to artist">
+					<ChevronRightIcon />
+				</button>
 			</li>
 		</Link>
 	)

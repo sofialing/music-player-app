@@ -13,7 +13,9 @@ const PlaylistItem = ({ playlist }) => {
 					<h2>{playlist.name}</h2>
 					<p>by {playlist.owner.display_name} &middot; {playlist.tracks.total} tracks</p>
 				</div>
-				<ChevronRightIcon />
+				<button aria-label="Go to playlist" title="Go to playlist">
+					<ChevronRightIcon />
+				</button>
 			</li>
 		</Link>
 	)

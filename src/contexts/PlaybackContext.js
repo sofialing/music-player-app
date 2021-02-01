@@ -48,6 +48,11 @@ const PlaybackContextProvider = ({ children }) => {
 				dispatch({ type: 'SET_IS_PLAYING', is_playing: !paused });
 				dispatch({ type: 'SET_CURRENT_TRACK', current_track });
 				dispatch({ type: 'SET_CONTEXT', context });
+				if (current_track) {
+					document.body.classList.add('has-playing-bar');
+				} else {
+					document.body.classList.remove('has-playing-bar');
+				}
 			});
 
 			// Ready

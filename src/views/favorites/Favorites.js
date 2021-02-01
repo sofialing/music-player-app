@@ -1,3 +1,4 @@
+import SavedTracks from 'components/favorites/SavedTracks';
 import TopArtists from 'components/favorites/TopArtists';
 import TopTracks from 'components/favorites/TopTracks';
 import './Favorites.scss';
@@ -10,6 +11,7 @@ const Favorites = () => {
 			</header>
 			<TopTracks />
 			<TopArtists />
+			<SavedTracks />
 		</main>
 	)
 }
