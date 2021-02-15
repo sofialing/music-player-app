@@ -1,0 +1,33 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+#new-releases {
+	.releases {
+		padding: 0 1.25rem;
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.5rem;
+			list-style: none;
+			padding: 0;
+			margin: 1rem 0 0;
+			& > * {
+				display: block;
+				max-width: 100%;
+				min-width: 0
+			}
+		}
+	}
+	@media screen and (min-width: $md-screen) {
+		.releases {
+			padding: 0 2.5rem;
+			.grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+	}
+	@media screen and (min-width: $xl-screen) {
+		.releases .grid {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
+}

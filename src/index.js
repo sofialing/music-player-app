@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
 import App from './App';
+import * as serviceWorker from './service-worker';
+import './assets/sass/main.scss';
 
 // Mobile full height screen fix.
 let vh = window.innerHeight * 0.01;
@@ -12,7 +15,11 @@ window.addEventListener('resize', () => {
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('app')
 );
+
+serviceWorker.register();

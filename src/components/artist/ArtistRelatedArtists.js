@@ -1,32 +1,29 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthContext'
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ArtistCard from '../elements/ArtistCard';
+import ArtistCard from 'components/partials/artist/ArtistCard';
+import useViewport from 'hooks/useViewport';
+import './ArtistRelatedArtists.scss';
 
-const ArtistRelatedArtists = ({ artistId }) => {
-	const { spotify } = useAuth();
-	const [relatedArtists, setRelatedArtists] = useState(null);
+const ArtistRelatedArtists = ({ artists }) => {
+	const { breakpoint_lg, width } = useViewport();
+	const items = width <= breakpoint_lg ? 4 : 6;
 
-	useEffect(() => {
-		async function getData() {
-			const data = await spotify.getArtistRelatedArtists(artistId);
-			setRelatedArtists(data.artists.slice(0, 4));
-		}
-		getData();
-	}, [artistId, spotify])
-
-	return relatedArtists && (
+	return artists && (
 		<section className="related-artists">
-			<header>
-				<Link to='related'><h2>Related Artists</h2></Link>
-				<ChevronRightIcon />
+			<header className="header">
+				<h2 className="title">
+					<Link to='related'>Related Artists</Link>
+				</h2>
+				<Link className="view-all" to='related'>
+					<span>View all</span>
+					<ChevronRightIcon />
+				</Link>
 			</header>
-			<ul className="related-artists-grid">
-				{relatedArtists.map((artist, index) => <ArtistCard artist={artist} key={index} />)}
+			<ul className="grid">
+				{artists.slice(0, items).map(artist => <ArtistCard artist={artist} key={artist.id} />)}
 			</ul>
 		</section>
 	)
 }
 
-export default ArtistRelatedArtists
+export default ArtistRelatedArtists;

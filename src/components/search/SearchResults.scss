@@ -1,0 +1,41 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+.results {
+	section {
+		margin: 2rem 0;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+	.title {
+		font-size: 1.5rem;
+		letter-spacing: .05em;
+		margin: 0 0 0.5rem;
+	}
+	footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem .5rem 0;
+		a {
+			font-size: .875rem;
+			letter-spacing: .1em;
+			text-transform: uppercase;
+			transition: color .5s ease-in-out;
+		}
+		svg {
+			color: $color-darkgrey;
+			margin-right: .5rem;
+			transition: transform .5s ease-in-out, color .5s ease-in-out;
+		}
+		&:hover {
+			a {
+				color: $color-white;
+			}
+			svg {
+				color: $color-white;
+				transform: translateX(.25rem);
+			}
+		}
+	}
+}

@@ -1,34 +1,29 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { useAuth } from '../../contexts/AuthContext'
-import PlaylistCard from '../elements/PlaylistCard'
+import { Link } from 'react-router-dom';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import useViewport from 'hooks/useViewport';
+import PlaylistCard from 'components/partials/playlist/PlaylistCard';
+import './FeaturedPlaylists.scss';
 
-const FeaturedPlaylists = () => {
-	const { spotify } = useAuth();
-	const [playlists, setPlaylists] = useState(null);
-
-	useEffect(() => {
-		const options = { country: 'from_token', timestamp: new Date().toISOString() };
-		spotify.getFeaturedPlaylists(options)
-			.then(({ playlists }) => setPlaylists(playlists))
-			.catch(error => console.log(error))
-
-	}, [spotify])
+const FeaturedPlaylists = ({ playlists, title }) => {
+	const { breakpoint_lg, width } = useViewport();
+	const num = width <= breakpoint_lg ? 4 : 6;
 
 	return playlists && (
-		<section>
-			<header>
-				<Link to='featured-playlists' state={{ playlists }}>
-					<h2>Featured Playlists</h2>
+		<section className="featured-playlists">
+			<header className="header">
+				<h2 className="title">
+					<Link to='featured-playlists' state={{ title, playlists }}>{title}</Link>
+				</h2>
+				<Link className="view-all" to='featured-playlists' state={{ title, playlists }}>
+					<span>View all</span>
+					<ChevronRightIcon />
 				</Link>
-				<ChevronRightIcon />
 			</header>
-			<ul className="featured-playlists__grid">
-				{playlists && playlists.items.slice(0, 6).map((playlist, index) => <PlaylistCard playlist={playlist} key={index} />)}
+			<ul className="grid">
+				{playlists.items.slice(0, num).map(playlist => <PlaylistCard playlist={playlist} key={playlist.id} />)}
 			</ul>
 		</section>
 	)
 }
 
-export default FeaturedPlaylists
+export default FeaturedPlaylists;

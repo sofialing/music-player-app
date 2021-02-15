@@ -1,0 +1,72 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+.top-artists {
+	padding: 0 1.25rem;
+	margin: 0 0 2.5rem;
+	& > .header {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+		.title {
+			font-size: 1.5rem;
+			font-weight: 600;
+			letter-spacing: .05em;
+			margin: 0;
+			min-width: 0;
+			a {
+				color: $color-white;
+			}
+		}
+		.view-all {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			font-size: .875rem;
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: .1em;
+			text-transform: uppercase;
+			margin-left: 1rem;
+			min-width: 100px;
+			svg {
+				margin-left: .25rem;
+				font-size: 1.25rem;
+				transition: transform .3s ease-in-out, color .3s ease-in-out;
+			}
+			&:hover {
+				color: $color-white;
+				svg {
+					color: $color-white;
+					transform: translateX(.125rem);
+				}
+			}
+		}
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		list-style: none;
+		margin: 1rem 0 0;
+		padding: 0;
+		& > * {
+			display: block;
+			max-width: 100%;
+			min-width: 0
+		}
+	}
+	@media screen and (min-width: $md-screen) {
+		padding: 0 2.5rem;
+	}
+	@media screen and (min-width: $lg-screen) {
+		.grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	@media screen and (min-width: $xl-screen) {
+		.grid {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
+}

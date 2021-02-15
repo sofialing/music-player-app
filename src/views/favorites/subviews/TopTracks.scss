@@ -1,0 +1,12 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+#top-tracks {
+	.tracks {
+		padding: 0 1.5rem;
+	}
+	@media screen and (min-width: $md-screen) {
+		.tracks {
+			padding: 0 2.5rem;
+		}
+	}
+}

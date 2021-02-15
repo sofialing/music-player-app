@@ -1,0 +1,32 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+.category-card {
+	height: 100%;
+	position: relative;
+	&__header {
+		margin: 0 !important;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		object-fit: cover;
+		img {
+			transition: transform .5s ease-in-out;
+		}
+	}
+	&__body {
+		position: absolute;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		padding: 1rem;
+		h3 {
+			font-size: 1rem;
+			letter-spacing: .05em;
+			margin: 0;
+			text-align: center;
+		}
+	}
+	&:hover img {
+		transform: scale(1.1);
+	}
+}

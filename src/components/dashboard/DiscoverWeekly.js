@@ -1,31 +1,31 @@
-import { Link } from 'react-router-dom'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { useAuth } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
+import noImage from 'assets/images/no-image.png';
+import './DiscoverWeekly.scss';
 
-const DiscoverWeekly = () => {
-	const { discover_weekly, user } = useAuth();
+const DiscoverWeekly = ({ playlist, user }) => {
+	const imageSrc = playlist.image_url ? playlist.image_url : noImage;
 
-	return (
+	return playlist && (
 		<section className="discover-weekly">
-			<header>
-				<Link to={`/playlist/${discover_weekly.id}`}>
-					<h2>{discover_weekly.name}</h2>
+			<div className="discover-weekly__header">
+				<Link to={`/playlist/${playlist.id}`}>
+					<img src={imageSrc} alt="playlist cover" />
 				</Link>
-				<ChevronRightIcon />
-			</header>
-			<div className="card">
-				<header className="card__header">
-					<img src={discover_weekly.images[0].url} alt={discover_weekly.name} />
-				</header>
-				<div className="card__body">
-					<p>{discover_weekly.description}</p>
-				</div>
-				<footer className="card__footer">
-					<p>Created for {user.display_name} by {discover_weekly.owner.display_name} &middot; {discover_weekly.tracks.total} tracks</p>
-				</footer>
 			</div>
+			<div className="discover-weekly__body">
+				<h3 className="sub-title">{playlist.type}</h3>
+				<h2 className="title">
+					<Link to={`/playlist/${playlist.id}`}>
+						{playlist.name}
+					</Link>
+				</h2>
+				<p>{playlist.description}</p>
+			</div>
+			<footer className="discover-weekly__footer">
+				<p>Made for {user.display_name} by {playlist.owner} &middot; {playlist.total_tracks} tracks</p>
+			</footer>
 		</section>
 	)
 }
 
-export default DiscoverWeekly
+export default DiscoverWeekly;

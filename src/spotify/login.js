@@ -4,6 +4,9 @@ const redirectUri = process.env.REACT_APP_SPOTIFY_REDIRECT_URI;
 export const loginWithSpotify = () => {
 	const scopes = [
 		'playlist-read-private',
+		'user-library-read',
+		'user-follow-modify',
+		'user-follow-read',
 		'user-read-private',
 		'user-read-currently-playing',
 		'user-read-recently-played',
@@ -11,7 +14,7 @@ export const loginWithSpotify = () => {
 		'user-top-read',
 		'user-modify-playback-state',
 		'user-read-email',
-		'streaming'
+		'streaming',
 	];
 
 	window.location = [

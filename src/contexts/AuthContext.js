@@ -10,8 +10,15 @@ const useAuth = () => {
 const AuthContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	const isValidSession = () => {
+		const current_time = new Date().getTime();
+		const { expires_in } = JSON.parse(localStorage.getItem('token'));
+
+		return current_time < expires_in;
+	}
+
 	return (
-		<AuthContext.Provider value={{ ...state, dispatch }}>
+		<AuthContext.Provider value={{ ...state, dispatch, isValidSession }}>
 			{children}
 		</AuthContext.Provider>
 	)

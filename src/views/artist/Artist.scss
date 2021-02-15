@@ -1,0 +1,35 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+#artist {
+	section {
+		margin: 3rem 0;
+		padding: 0 1.25rem;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		header {
+			display: flex;
+			align-items: center;
+			margin-bottom: .5rem;
+			h2 {
+				font-size: 1.333rem;
+				font-weight: 600;
+				letter-spacing: .05em;
+				margin: 0;
+			}
+			svg {
+				margin-left: .5rem;
+				transition: transform .3s ease-in-out, color .3s ease-in-out;
+			}
+			a:hover + svg {
+				color: $color-white;
+				transform: translateX(.25rem);
+			}
+		}
+	}
+	@media screen and (min-width: $md-screen) {
+		section {
+			padding: 0 2.5rem;
+		}
+	}
+}

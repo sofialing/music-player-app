@@ -1,34 +1,29 @@
-import { useState, useEffect } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumCard from '../elements/AlbumCard';
+import AlbumCard from 'components/partials/album/AlbumCard';
+import useViewport from 'hooks/useViewport';
+import './ArtistDiscography.scss';
 
-const ArtistDiscography = ({ artistId }) => {
-	const { spotify } = useAuth();
-	const [discography, setDiscography] = useState(null);
+const ArtistDiscography = ({ albums }) => {
+	const { breakpoint_lg, width } = useViewport();
+	const items = width <= breakpoint_lg ? 4 : 6;
 
-	useEffect(() => {
-		async function getData() {
-			const data = await spotify.getArtistAlbums(artistId, { limit: 4, country: 'from_token' });
-			setDiscography(data);
-		}
-		getData();
-	}, [artistId, spotify])
-
-	return discography && (
+	return albums && (
 		<section className="discography">
-			<header>
-				<Link to='discography'>
-					<h2>Discography</h2>
+			<header className="header">
+				<h2 className="title">
+					<Link to='discography'>Discography</Link>
+				</h2>
+				<Link className="view-all" to='discography'>
+					<span>View all</span>
+					<ChevronRightIcon />
 				</Link>
-				<ChevronRightIcon />
 			</header>
-			<ul className="discography__grid">
-				{discography.items.map((album, index) => <AlbumCard album={album} key={index} />)}
+			<ul className="grid">
+				{albums.items.slice(0, items).map((album, index) => <AlbumCard album={album} key={index} />)}
 			</ul>
 		</section>
 	)
 }
 
-export default ArtistDiscography
+export default ArtistDiscography;

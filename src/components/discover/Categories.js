@@ -1,34 +1,29 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { useAuth } from '../../contexts/AuthContext'
-import CategoryCard from '../elements/CategoryCard'
+import { Link } from 'react-router-dom';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import useViewport from 'hooks/useViewport';
+import CategoryCard from 'components/partials/CategoryCard';
+import './Categories.scss';
 
-const Categories = () => {
-	const { spotify } = useAuth();
-	const [categories, setCategories] = useState(null);
-
-	useEffect(() => {
-		const options = { country: 'from_token', timestamp: new Date().toISOString() };
-		spotify.getCategories(options)
-			.then(({ categories }) => setCategories(categories))
-			.catch(error => console.log(error))
-
-	}, [spotify])
+const Categories = ({ categories }) => {
+	const { breakpoint_lg, width } = useViewport();
+	const num = width <= breakpoint_lg ? 4 : 6;
 
 	return categories && (
-		<section>
-			<header>
-				<Link to='categories' state={{ categories }}>
-					<h2>Genres & themes</h2>
+		<section className="categories">
+			<header className="header">
+				<h2 className="title">
+					<Link to='categories' state={{ categories }}>Genres & themes</Link>
+				</h2>
+				<Link className="view-all" to='categories' state={{ categories }}>
+					<span>View all</span>
+					<ChevronRightIcon />
 				</Link>
-				<ChevronRightIcon />
 			</header>
-			<ul className="categories__grid">
-				{categories && categories.items.slice(0, 6).map((category, index) => <CategoryCard category={category} key={index} />)}
+			<ul className="grid">
+				{categories.items.slice(0, num).map(category => <CategoryCard category={category} key={category.id} />)}
 			</ul>
 		</section>
 	)
 }
 
-export default Categories
+export default Categories;

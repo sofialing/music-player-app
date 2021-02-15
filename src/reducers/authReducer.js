@@ -50,7 +50,7 @@ const reducer = (state, action) => {
 		case 'SET_DISCOVER_WEEKLY':
 			return {
 				...state,
-				discover_weekly: action.playlist
+				discover_weekly: action.discover_weekly
 			};
 		default:
 			return state;

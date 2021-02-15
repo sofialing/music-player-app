@@ -1,0 +1,93 @@
+@import 'assets/sass/utilities/_variables.scss';
+
+#album {
+	.header {
+		background-color: $color-darkergrey;
+		position: relative;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 3rem 1.25rem;
+		position: relative;
+		text-align: center;
+		.cover-img {
+			box-shadow: 1px 4px 12px #00000072;
+			max-width: 75%;
+			margin: 0 auto 2rem;
+		}
+		.title {
+			font-size: 1.333rem;
+			letter-spacing: .075em;
+			margin: 0;
+		}
+		.details,
+		.desc {
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .05em;
+			margin-bottom: 0;
+		}
+		.desc,
+		.sub-title {
+			display: none;
+		}
+		.back-btn {
+			color: #fff;
+			position: absolute;
+			top: 1.5rem;
+			left: 1.5rem;
+		}
+	}
+	.tracks {
+		margin-top: 3rem;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 0 1.25rem;
+		width: 100%;
+	}
+	@media screen and (min-width: $md-screen) {
+		.header {
+			background-color: $color-darkgrey;
+			display: flex;
+			align-items: flex-end;
+			padding: 5rem 2.5rem 2.5rem;
+			text-align: left;
+			.cover-img {
+				max-width: 225px;
+				margin: 0 2rem 0 0;
+			}
+			.title {
+				font-size: 4.5rem;
+				font-weight: 600;
+				line-height: 1.1;
+				letter-spacing: initial;
+				margin: .5rem 0;
+			}
+			.sub-title {
+				display: block;
+				font-size: .75rem;
+				letter-spacing: .1em;
+				text-transform: uppercase;
+				margin: .5rem 0;
+			}
+			.desc {
+				color: #fff;
+				display: block;
+				font-size: 1rem;
+				margin: .5rem 0;
+				max-width: 70ch;
+			}
+			.back-btn {
+				color: #fff;
+				position: absolute;
+				top: 2rem;
+				left: 2.5rem;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+		.tracks {
+			padding: 0 2.5rem;
+		}
+	}
+}
