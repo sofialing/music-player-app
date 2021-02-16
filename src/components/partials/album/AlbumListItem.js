@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import noImage from 'assets/images/no-image.png';
-import { getArtists, getYear, getTracks } from 'utils';
 import './AlbumListItem.scss';
 
 const AlbumListItem = ({ album, displayArtist = true }) => {
-	const imageSrc = album.images.length ? album.images[0]['url'] : noImage;
+	const imageSrc = album.image_url ? album.image_url : noImage;
 	return (
 		<Link to={`/album/${album.id}`}>
 			<li className="album-list-item">
@@ -13,8 +12,8 @@ const AlbumListItem = ({ album, displayArtist = true }) => {
 				<div className="album-list-item__details">
 					<h2>{album.name}</h2>
 					<p>
-						{displayArtist ? getArtists(album.artists) : getTracks(album.total_tracks)}
-						{' '} &middot; {getYear(album.release_date)}
+						{displayArtist ? album.artists : album.total_tracks + ' tracks'}
+						{' '} &middot; {album.release_date}
 					</p>
 				</div>
 				<button aria-label="Go to album" title="Go to album">

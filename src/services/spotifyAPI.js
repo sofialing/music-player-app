@@ -513,7 +513,11 @@ export const getRecommendations = async (artists, tracks) => {
 	});
 
 	const recommendations = response.tracks.map(track => ({
-		album: track.album,
+		album: {
+			name: track.album.name,
+			id: track.album.id,
+			image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
+		},
 		artists: track.artists.map((artist) => artist.name).join(', '),
 		duration_ms: track.duration_ms,
 		id: track.id,
@@ -651,6 +655,171 @@ export const getMySavedTracks = async (options = {}) => {
 			player_uri: item.track.uri
 		}))
 	}
+
+	return tracks;
+}
+
+/**
+ * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string
+ *
+ * @param {String} query The search query
+ * @param {Array} types An array of item types to search across. Valid types are: 'album', 'artist', 'playlist', and 'track'.
+ * @param {Object} options A JSON object with options that can be passed
+ */
+export const search = async (query, types, options = {}) => {
+	const response = await get('search', {
+		q: query,
+		type: types.join(','),
+		market: 'from_token',
+		...options,
+	});
+
+	console.log('search response', response);
+
+	return response;
+
+}
+
+/**
+ * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string
+ *
+ * @param {String} query The search query
+ * @param {Object} options A JSON object with options that can be passed
+ */
+export const searchAll = async (query, options = {}) => {
+	const response = await get('search', {
+		q: query,
+		type: 'album,artist,track',
+		market: 'from_token',
+		...options,
+	});
+
+	const results = {
+		albums: {
+			...response.albums,
+			items: response.albums.items.map(item => ({
+				artists: item.artists.map(artist => artist.name).join(', '),
+				id: item.id,
+				image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+				name: item.name,
+				player_uri: item.uri,
+				release_date: item.release_date.split('-')[0],
+				total_tracks: item.total_tracks,
+				type: item.album_type,
+			}))
+		},
+		artists: {
+			...response.artists,
+			items: response.artists.items.map(item => ({
+				followers: parseInt(item.followers.total).toLocaleString(),
+				genres: item.genres,
+				id: item.id,
+				image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+				name: item.name,
+				player_uri: item.uri,
+				type: item.type,
+			}))
+		},
+		tracks: {
+			...response.tracks,
+			items: response.tracks.items.map(item => ({
+				album: {
+					id: item.album.id,
+					name: item.album.name,
+					image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+				},
+				artists: item.artists.map(artist => artist.name).join(', '),
+				duration: moment(item.duration_ms).format('mm:ss'),
+				duration_ms: item.duration_ms,
+				id: item.id,
+				image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+				name: item.name,
+				player_uri: item.uri,
+				release_date: item.album.release_date,
+				type: item.type,
+			}))
+		}
+	}
+
+	return results;
+}
+
+export const searchAlbums = async (query, options = {}) => {
+	const response = await get('search', {
+		q: query,
+		type: 'album',
+		market: 'from_token',
+		...options,
+	});
+
+	const albums = {
+		...response.albums,
+		items: response.albums.items.map(item => ({
+			artists: item.artists.map(artist => artist.name).join(', '),
+			id: item.id,
+			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			name: item.name,
+			player_uri: item.uri,
+			release_date: item.release_date.split('-')[0],
+			total_tracks: item.total_tracks,
+			type: item.album_type,
+		}))
+	}
+
+	return albums;
+}
+
+export const searchArtists = async (query, options = {}) => {
+	const response = await get('search', {
+		q: query,
+		type: 'artist',
+		market: 'from_token',
+		...options,
+	});
+
+	const artists = {
+		...response.artists,
+		items: response.artists.items.map(item => ({
+			followers: parseInt(item.followers.total).toLocaleString(),
+			genres: item.genres,
+			id: item.id,
+			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			name: item.name,
+			player_uri: item.uri,
+			type: item.type,
+		}))
+	};
+
+	return artists;
+}
+
+export const searchTracks = async (query, options = {}) => {
+	const response = await get('search', {
+		q: query,
+		type: 'track',
+		market: 'from_token',
+		...options,
+	});
+
+	const tracks = {
+		...response.tracks,
+		items: response.tracks.items.map(item => ({
+			album: {
+				id: item.album.id,
+				name: item.album.name,
+				image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+			},
+			artists: item.artists.map(artist => artist.name).join(', '),
+			duration: moment(item.duration_ms).format('mm:ss'),
+			duration_ms: item.duration_ms,
+			id: item.id,
+			image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+			name: item.name,
+			player_uri: item.uri,
+			release_date: item.album.release_date,
+			type: item.type,
+		}))
+	};
 
 	return tracks;
 }

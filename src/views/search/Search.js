@@ -1,20 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
-import { useAuth } from 'contexts/AuthContext';
 import SearchResults from 'components/search/SearchResults';
+import { searchAll } from 'services/spotifyAPI';
 import './Search.scss';
 
 const Search = () => {
 	const navigate = useNavigate();
 	const searchRef = useRef();
 	const { searchQuery } = useParams();
-	const { spotify } = useAuth();
 	const [searchResults, setSearchResults] = useState(null);
 
 	const getSearchResults = async () => {
 		try {
-			const results = await spotify.search(searchQuery, ['album', 'artist', 'track'], { limit: 5 });
+			// const results = await spotify.search(searchQuery, ['album', 'artist', 'track'], { limit: 5 });
+			const results = await searchAll(searchQuery, { limit: 5 });
 			setSearchResults(results);
 		} catch (error) {
 			// TODO: handle error!
@@ -24,12 +24,7 @@ const Search = () => {
 
 	const onSubmit = e => {
 		e.preventDefault();
-
-		if (!spotify) {
-			return navigate('/');
-		} else {
-			navigate(`/search/${searchRef.current.value}`);
-		}
+		navigate(`/search/${searchRef.current.value}`);
 	}
 
 	useEffect(() => {

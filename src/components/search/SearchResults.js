@@ -15,7 +15,7 @@ const SearchResults = ({ searchResults, search }) => {
 				</header>
 				{artists.total ? (
 					<ul className="list">
-						{artists.items.map((artist, index) => <ArtistListItem artist={artist} key={index} />)}
+						{artists.items.map(artist => <ArtistListItem artist={artist} key={artist.id} />)}
 					</ul>
 				) : <p>No artists found for '{search}'.</p>}
 				{artists.next ? (
@@ -31,7 +31,7 @@ const SearchResults = ({ searchResults, search }) => {
 				</header>
 				{albums.total ? (
 					<ul className="list">
-						{albums.items.map((album, index) => <AlbumListItem album={album} key={index} />)}
+						{albums.items.map(album => <AlbumListItem album={album} key={album.id} />)}
 					</ul>
 				) : <p>No albums found for '{search}'.</p>}
 				{albums.next ? (
@@ -48,7 +48,7 @@ const SearchResults = ({ searchResults, search }) => {
 				</header>
 				{tracks.total ? (
 					<ul className="list">
-						{tracks.items.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
+						{tracks.items.map(track => <TrackListItem track={track} album={track.album} key={track.id} />)}
 					</ul>
 				) : <p>No tracks found for '{search}'.</p>}
 				{tracks.next ? (
