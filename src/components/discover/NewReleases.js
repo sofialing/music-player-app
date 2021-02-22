@@ -20,7 +20,7 @@ const NewReleases = ({ releases }) => {
 				</Link>
 			</header>
 			<ul className="grid">
-				{releases.items.slice(0, items).map((album, index) => <AlbumCard album={album} key={index} />)}
+				{releases.items.slice(0, items).map(album => <AlbumCard album={album} key={album.id} />)}
 			</ul>
 		</section>
 	)

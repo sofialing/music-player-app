@@ -13,7 +13,6 @@ const Search = () => {
 
 	const getSearchResults = async () => {
 		try {
-			// const results = await spotify.search(searchQuery, ['album', 'artist', 'track'], { limit: 5 });
 			const results = await searchAll(searchQuery, { limit: 5 });
 			setSearchResults(results);
 		} catch (error) {

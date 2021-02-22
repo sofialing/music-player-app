@@ -1,27 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from 'contexts/AuthContext';
 import AlbumListItem from 'components/partials/album/AlbumListItem';
 
-const AllCompilations = ({ artistId }) => {
-	const { spotify } = useAuth();
-	const [compilations, setCompilations] = useState(null);
-
-	useEffect(() => {
-		spotify.getArtistAlbums(artistId, { limit: 50, country: 'from_token', include_groups: 'compilation' })
-			.then((data) => {
-				if (data.total) {
-					setCompilations(data.items)
-				}
-			})
-			.catch(error => console.log(error));
-	}, [artistId, spotify])
-
-
+const AllCompilations = ({ compilations }) => {
 	return compilations && (
 		<section className="compilations">
 			<h2 className="title">Compilations</h2>
 			<ul className="list">
-				{compilations.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
+				{compilations.items.map(album => <AlbumListItem album={album} displayArtist={false} key={album.id} />)}
 			</ul>
 		</section>
 	)

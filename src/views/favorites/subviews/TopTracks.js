@@ -11,7 +11,7 @@ const TopTracks = () => {
 			<PageHeader title='Your top tracks' />
 			<section className="tracks">
 				<ul className="list">
-					{top_tracks && top_tracks.items.map((track, index) => <TrackListItem track={track} album={track.album} key={index} />)}
+					{top_tracks && top_tracks.items.map(track => <TrackListItem track={track} album={track.album} key={track.id} />)}
 				</ul>
 			</section>
 		</main>

@@ -20,7 +20,7 @@ const ArtistDiscography = ({ albums }) => {
 				</Link>
 			</header>
 			<ul className="grid">
-				{albums.items.slice(0, items).map((album, index) => <AlbumCard album={album} key={index} />)}
+				{albums.items.slice(0, items).map(album => <AlbumCard album={album} key={album.id} />)}
 			</ul>
 		</section>
 	)

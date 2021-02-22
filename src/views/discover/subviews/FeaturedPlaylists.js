@@ -31,7 +31,7 @@ const FeaturedPlaylists = () => {
 			<PageHeader title={`Featured playlists: ${title}`} />
 			<section className="playlists">
 				<ul className="grid">
-					{playlists.total && playlists.items.map((playlist, index) => <PlaylistCard playlist={playlist} key={index} />)}
+					{playlists.total && playlists.items.map(playlist => <PlaylistCard playlist={playlist} key={playlist.id} />)}
 				</ul>
 				<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />
 			</section>

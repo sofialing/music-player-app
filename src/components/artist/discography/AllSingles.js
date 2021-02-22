@@ -1,27 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from 'contexts/AuthContext';
 import AlbumListItem from 'components/partials/album/AlbumListItem';
 
-const AllSingles = ({ artistId }) => {
-	const { spotify } = useAuth();
-	const [singles, setSingles] = useState(null);
-
-	useEffect(() => {
-		spotify.getArtistAlbums(artistId, { limit: 50, country: 'from_token', include_groups: 'single' })
-			.then((data) => {
-				if (data.total) {
-					setSingles(data.items)
-				}
-			})
-			.catch(error => console.log(error));
-	}, [artistId, spotify])
-
-
+const AllSingles = ({ singles }) => {
 	return singles && (
 		<section className="singles">
 			<h2 className="title">Singles</h2>
 			<ul className="list">
-				{singles.map((album, index) => <AlbumListItem album={album} displayArtist={false} key={index} />)}
+				{singles.items.map(album => <AlbumListItem album={album} displayArtist={false} key={album.id} />)}
 			</ul>
 		</section>
 	)

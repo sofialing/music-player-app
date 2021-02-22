@@ -11,7 +11,7 @@ const AllTopArtists = () => {
 			<PageHeader title={'Your top artists'} />
 			<section className="artists">
 				<ul className="grid">
-					{top_artists && top_artists.items.map((artist, index) => <ArtistCard artist={artist} key={index} />)}
+					{top_artists && top_artists.items.map(artist => <ArtistCard artist={artist} key={artist.id} />)}
 				</ul>
 			</section>
 		</main>

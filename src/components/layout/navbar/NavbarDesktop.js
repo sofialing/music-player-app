@@ -43,8 +43,8 @@ const NavbarDesktop = () => {
 			<div className="playlists">
 				<h1>Playlists</h1>
 				<ul>
-					{user && user_playlists && user_playlists.items.map((playlist, index) => (
-						<li key={index}>
+					{user && user_playlists && user_playlists.items.map(playlist => (
+						<li key={playlist.id}>
 							<Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
 						</li>
 					))}
