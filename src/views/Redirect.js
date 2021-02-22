@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-import SpotifyWebApi from "spotify-web-api-js";
+// import SpotifyWebApi from "spotify-web-api-js";
 import { useAuth } from 'contexts/AuthContext';
 import Spinner from 'components/partials/Spinner';
 import { setToken, getTopTracks, getTopArtists, getCurrentUser, getDiscoverWeekly, getUserPlaylists } from 'services/spotifyAPI'
-const spotify = new SpotifyWebApi();
+// const spotify = new SpotifyWebApi();
 
 const Redirect = () => {
 	const navigate = useNavigate();
@@ -14,8 +14,6 @@ const Redirect = () => {
 	useEffect(() => {
 		const parsedQueryString = queryString.parse(window.location.search);
 		const { access_token, refresh_token, expires_in } = parsedQueryString;
-		// const refresh_token = parsedQueryString.refresh_token;
-		// const expires_in = parsedQueryString.expires_in;
 
 		if (!access_token) {
 			return navigate('/');
@@ -23,10 +21,7 @@ const Redirect = () => {
 
 		// store tokens in local storage
 		setToken(access_token, expires_in, refresh_token)
-
-		// set access token and store Spotify API wrapper <--- REMOVE THIS LATER
-		spotify.setAccessToken(access_token);
-		dispatch({ type: 'SET_SPOTIFY', spotify })
+		dispatch({ type: 'SET_ACCESS_TOKEN', access_token })
 
 		const FETCH_DATA = [
 			getCurrentUser(),

@@ -25,7 +25,7 @@ const setAuthHeader = () => {
 	try {
 		const { access_token } = getToken();
 		if (access_token) {
-			console.log('setting bearer token', access_token);
+			// console.log('setting bearer token', access_token);
 			axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 		}
 	} catch (error) {
@@ -36,13 +36,21 @@ const setAuthHeader = () => {
 export const get = async (endpoint, queryParams = {}) => {
 	setAuthHeader();
 	const queryStr = queryString.stringify(queryParams);
-	console.log('GET:', endpoint, queryStr);
+	// console.log('GET:', endpoint, queryStr);
 	// send request
 	const response = await axios.get(`${BASEURL}${endpoint}?${queryStr}`);
 	// return response data
 	return response.data;
 };
 
+export const put = async (endpoint, body = {}) => {
+	setAuthHeader();
+	console.log('PUT:', endpoint, body);
+	// send request
+	const response = await axios.put(`${BASEURL}${endpoint}`, body);
+	// return response status
+	return response.status;
+}
 
 /**
  * Get the current user’s top tracks
@@ -406,7 +414,7 @@ export const getArtistAlbums = async (artistId, options = {}) => {
 			player_uri: item.uri,
 			release_date: item.release_date.split('-')[0],
 			total_tracks: item.total_tracks,
-			type: item.type
+			type: item.album_type
 		}))
 	}
 
@@ -822,4 +830,24 @@ export const searchTracks = async (query, options = {}) => {
 	};
 
 	return tracks;
+}
+
+/**
+ * Play a track on the user's active device
+ *
+ * @param {Object} options A JSON object with options that can be passed.
+ */
+export const play = async (device_id, options = {}) => {
+	const response = await put(`me/player/play?device_id=${device_id}`, options);
+	return response;
+}
+
+/**
+ * Pause playback on the user’s account.
+ *
+ * @param {Object} options A JSON object with options that can be passed.
+ */
+export const pause = async (device_id, options = {}) => {
+	const response = await put('/me/player/pause', device_id, options);
+	return response;
 }
