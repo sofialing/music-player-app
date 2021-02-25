@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
 import App from './App';
-import * as serviceWorker from './service-worker';
+// import * as serviceWorker from './service-worker';
 import './assets/sass/main.scss';
 
 // Mobile full height screen fix.
@@ -22,4 +22,4 @@ ReactDOM.render(
 	document.getElementById('app')
 );
 
-serviceWorker.register();
+// serviceWorker.register();
