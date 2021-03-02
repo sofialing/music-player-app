@@ -11,6 +11,9 @@ const AuthContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const isValidSession = () => {
+		if (!localStorage.getItem('token')) {
+			return false;
+		}
 		const current_time = new Date().getTime();
 		const { expires_in } = JSON.parse(localStorage.getItem('token'));
 
