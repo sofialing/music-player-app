@@ -1,7 +1,22 @@
-import LoginSvg from 'components/partials/LoginSvg'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import LoginSvg from 'components/partials/LoginSvg';
+import { useAuth } from 'contexts/AuthContext';
 import './Login.scss';
 
 const Login = () => {
+	const navigate = useNavigate();
+	const { isValidSession } = useAuth();
+
+	useEffect(() => {
+		if (!isValidSession()) {
+			return;
+		}
+		const { access_token, refresh_token, expires_in } = JSON.parse(localStorage.getItem('token'));
+		navigate(`/redirect?access_token=${access_token}&refresh_token=${refresh_token}&expires_in=${expires_in}`);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
 	return (
 		<main id="login" className="main-view">
 			<LoginSvg />
