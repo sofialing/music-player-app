@@ -11,51 +11,39 @@ const Search = () => {
 	const { searchQuery } = useParams();
 	const [searchResults, setSearchResults] = useState(null);
 
-	const getSearchResults = async () => {
-		try {
-			const results = await searchAll(searchQuery, { limit: 5 });
-			setSearchResults(results);
-		} catch (error) {
-			// TODO: handle error!
-			console.log(error);
+	useEffect(() => {
+		searchRef.current.focus();
+	}, [])
+
+	useEffect(() => {
+		if (!searchQuery) {
+			return;
 		}
-	}
+
+		searchAll(searchQuery, { limit: 6 })
+			.then(results => setSearchResults(results))
+			.catch(error => console.log(error))
+	}, [searchQuery])
 
 	const onSubmit = e => {
 		e.preventDefault();
 		navigate(`/search/${searchRef.current.value}`);
 	}
 
-	useEffect(() => {
-		searchRef.current.focus();
-
-		if (searchQuery) {
-			getSearchResults();
-		}
-		// eslint-disable-next-line
-	}, [])
-
-	useEffect(() => {
-		if (searchQuery) {
-			getSearchResults();
-		}
-		// eslint-disable-next-line
-	}, [searchQuery])
-
 	return (
 		<main id="search" className="main-view">
-			<header className="header">
-				<h1 className="title">Search music</h1>
+			<header className="search__header">
+				<h1 className="search__header--title">Search music</h1>
 			</header>
-			<section className="search">
-				<form className="search__form" role="search" onSubmit={onSubmit}>
-					<input className="search__input" type="text" placeholder="Search for artists, songs and more" autoComplete="off" ref={searchRef} />
-					<div className="search__icon">
+			<section className="search-field">
+				<form className="search-field__form" role="search" onSubmit={onSubmit}>
+					<input className="search-field__form--input" type="text" placeholder="Search for artists, songs and tracks" autoComplete="off" ref={searchRef} />
+					<div className="search-field__form--icon">
 						<SearchIcon />
 					</div>
 				</form>
-				{searchResults && <SearchResults searchResults={searchResults} search={searchRef.current.value} />}
 			</section>
+			{searchResults && <SearchResults searchResults={searchResults} search={searchRef.current.value} />}
 		</main>
 	)
 }

@@ -4,7 +4,9 @@ import './PageMissing.scss';
 const PageMissing = () => {
 	return (
 		<main id="page-missing" className="main-view">
-			<img src={pageMissing} alt="page is missing" />
+			<a href="https://storyset.com/web">
+				<img src={pageMissing} alt="page is missing" title="Illustration by Freepik Storyset" />
+			</a>
 			<p>Oh no! Page not found.</p>
 		</main>
 	)

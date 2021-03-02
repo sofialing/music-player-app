@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ArtistCard from 'components/partials/artist/ArtistCard';
+import ArtistCard from 'components/partials/cards/ArtistCard';
 import useViewport from 'hooks/useViewport';
 import './ArtistRelatedArtists.scss';
 

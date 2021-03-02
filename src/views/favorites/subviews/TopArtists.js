@@ -1,5 +1,5 @@
 import { useAuth } from 'contexts/AuthContext';
-import ArtistCard from 'components/partials/artist/ArtistCard';
+import ArtistCard from 'components/partials/cards/ArtistCard';
 import PageHeader from 'components/layout/PageHeader';
 import './TopArtists.scss';
 

@@ -1,65 +1,45 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumListItem from 'components/partials/album/AlbumListItem';
-import ArtistListItem from 'components/partials/artist/ArtistListItem';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import useViewport from 'hooks/useViewport';
+import AlbumCard from 'components/partials/cards/AlbumCard';
+import ArtistCard from 'components/partials/cards/ArtistCard';
+import TrackCard from 'components/partials/cards/TrackCard';
 import './SearchResults.scss';
 
 const SearchResults = ({ searchResults, search }) => {
-	const { albums, artists, tracks } = searchResults;
-	return (
-		<div className="results">
-			<section className="artists">
-				<header className="header">
-					<h3 className="title">Artists</h3>
-				</header>
-				{artists.total ? (
-					<ul className="list">
-						{artists.items.map(artist => <ArtistListItem artist={artist} key={artist.id} />)}
-					</ul>
-				) : <p>No artists found for '{search}'.</p>}
-				{artists.next ? (
-					<footer>
-						<Link to={`artists`}>View all artists</Link>
-						<ChevronRightIcon />
-					</footer>
-				) : ''}
-			</section>
-			<section className="albums">
-				<header className="header">
-					<h3 className="title">Albums</h3>
-				</header>
-				{albums.total ? (
-					<ul className="list">
-						{albums.items.map(album => <AlbumListItem album={album} key={album.id} />)}
-					</ul>
-				) : <p>No albums found for '{search}'.</p>}
-				{albums.next ? (
-					<footer>
-						<Link to={`albums`}>View all albums</Link>
-						<ChevronRightIcon />
-					</footer>
+	const { breakpoint_lg, width } = useViewport();
+	const items = width <= breakpoint_lg ? 4 : 6;
 
-				) : ''}
-			</section>
-			<section className="tracks">
-				<header className="header">
-					<h3 className="title">Tracks</h3>
-				</header>
-				{tracks.total ? (
-					<ul className="list">
-						{tracks.items.map(track => <TrackListItem track={track} album={track.album} key={track.id} />)}
-					</ul>
-				) : <p>No tracks found for '{search}'.</p>}
-				{tracks.next ? (
-					<footer>
-						<Link to={`tracks`}>View all tracks</Link>
+	const renderCard = (type, item) => {
+		switch (type) {
+			case 'albums':
+				return <AlbumCard album={item} />;
+			case 'artists':
+				return <ArtistCard artist={item} />;
+			case 'tracks':
+				return <TrackCard track={item} album={item.album} />;
+			default:
+				return null;
+		}
+	}
+
+	return searchResults.map(result => (
+		<section className="search-results">
+			<header className="search-results__header">
+				<h3 className="search-results__header--title">{result.type}</h3>
+				{result.next ? (
+					<Link className="view-all" to={result.type}>
+						<span>View all {result.type}</span>
 						<ChevronRightIcon />
-					</footer>
+					</Link>
 				) : ''}
-			</section>
-		</div>
-	)
+			</header>
+			{result.total ? (
+				<ul className="search-results__grid">
+					{result.items.slice(0, items).map(item => renderCard(result.type, item))}
+				</ul>
+			) : <p>No {result.type} found for '{search}'.</p>}
+		</section>
+	))
 }
-
 export default SearchResults;

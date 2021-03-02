@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import TrackListItem from 'components/partials/lists/TrackListItem';
 import PlayButton from 'components/partials/PlayButton';
-import noImage from 'assets/images/no-image.png';
-import { getAlbum, getAlbumTracks } from 'services/spotifyAPI';
-import './Album.scss';
 import Spinner from 'components/partials/Spinner';
+import Error from 'components/partials/Error';
+import noImage from 'assets/images/no-image.png';
+import { getAlbum } from 'services/spotifyAPI';
+import './Album.scss';
 
 const Album = () => {
 	const navigate = useNavigate();
 	const { albumId } = useParams();
 	const [album, setAlbum] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
 
 	useEffect(() => {
 		getAlbum(albumId)
@@ -20,11 +22,15 @@ const Album = () => {
 				setAlbum(data);
 				setLoading(false);
 			})
-			.catch(error => console.log(error));
+			.catch(error => setError(error));
 	}, [albumId])
 
 	if (loading) {
 		return <Spinner />
+	}
+
+	if (error) {
+		return <Error />
 	}
 
 	return album && (

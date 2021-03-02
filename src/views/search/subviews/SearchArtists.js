@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import ArtistListItem from 'components/partials/artist/ArtistListItem';
+import ArtistListItem from 'components/partials/lists/ArtistListItem';
 import PageHeader from 'components/layout/PageHeader';
 import Pagination from 'components/layout/Pagination';
 import usePagination from 'hooks/usePagination';

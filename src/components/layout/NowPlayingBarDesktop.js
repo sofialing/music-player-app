@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
 import noImage from 'assets/images/no-image.png'
 import { usePlayback } from 'contexts/PlaybackContext';
 import { formatTime, getArtists } from 'utils';
@@ -64,24 +64,24 @@ const NowPlayingBarDesktop = () => {
 			<div className="now-playing-bar__center">
 				<div className="player-controls">
 					<button title="Shuffle" aria-label="Shuffle tracks">
-						<ShuffleIcon className="shuffle" />
+						<ShuffleIcon style={{ fontSize: 24 }} />
 					</button>
-					<button title="Previous" aria-label="Previous track">
-						<SkipPreviousIcon className="control" onClick={prevTrack} />
+					<button title="Previous" aria-label="Previous track" onClick={prevTrack}>
+						<SkipPreviousIcon style={{ fontSize: 32 }} />
 					</button>
 					{is_playing ?
-						<button title="Pause" aria-label="Pause">
-							<PauseCircleOutlineIcon className="pause" onClick={togglePlay} />
+						<button className="pause" title="Pause" aria-label="Pause" onClick={togglePlay}>
+							<PauseIcon style={{ fontSize: 28 }} />
 						</button> :
-						<button title="Play" aria-label="Play">
-							<PlayCircleOutlineIcon className="play" onClick={togglePlay} />
+						<button className="play" title="Play" aria-label="Play" onClick={togglePlay}>
+							<PlayArrowIcon style={{ fontSize: 28 }} />
 						</button>
 					}
-					<button title="Next" aria-label="Next track">
-						<SkipNextIcon className="control" onClick={nextTrack} />
+					<button title="Next" aria-label="Next track" onClick={nextTrack} >
+						<SkipNextIcon style={{ fontSize: 32 }} />
 					</button>
 					<button title="Activate reapeat" aria-label="Activate repeat">
-						<RepeatIcon className="repeat" />
+						<RepeatIcon style={{ fontSize: 24 }} />
 					</button>
 				</div>
 				<div className="playback-bar">
@@ -100,14 +100,12 @@ const NowPlayingBarDesktop = () => {
 				</div>
 			</div>
 			<div className="now-playing-bar__right">
-				<div className="extra-controls">
-					<button title="Add to library" aria-label="Add to library">
-						<FavoriteBorderIcon />
-					</button>
-					<button title="Expand player" aria-label="Expand player">
-						<UnfoldMoreIcon />
-					</button>
-				</div>
+				<button title="Add to library" aria-label="Add to library">
+					<FavoriteBorderIcon style={{ fontSize: 24 }} />
+				</button>
+				<button title="Expand player" aria-label="Expand player">
+					<UnfoldMoreIcon style={{ fontSize: 24 }} />
+				</button>
 			</div>
 		</footer>
 	)

@@ -1,8 +1,8 @@
 @import 'assets/sass/utilities/_variables.scss';
 
 .navbar-mobile {
-	background: $color-darkergrey;
-	border-top: 1px solid $color-black;
+	background: #0e0e0e;
+	border-top: 1px solid $color-darkgrey;
 	height: 80px;
 	margin-right: auto;
 	margin-left: auto;
@@ -47,4 +47,3 @@
 		}
 	}
 }
-

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ArtistListItem from 'components/partials/artist/ArtistListItem';
+import ArtistListItem from 'components/partials/lists/ArtistListItem';
 import PageHeader from 'components/layout/PageHeader';
 import Spinner from 'components/partials/Spinner';
 import { getArtist, getArtistRelatedArtists } from 'services/spotifyAPI';

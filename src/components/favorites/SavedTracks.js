@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import useViewport from 'hooks/useViewport';
-import TrackCard from 'components/partials/track/TrackCard';
+import TrackCard from 'components/partials/cards/TrackCard';
 import './SavedTracks.scss';
 
 const SavedTracks = ({ tracks }) => {

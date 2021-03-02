@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import usePagination from 'hooks/usePagination';
 import PageHeader from 'components/layout/PageHeader';
-import PlaylistCard from 'components/partials/playlist/PlaylistCard';
+import PlaylistCard from 'components/partials/cards/PlaylistCard';
 import Pagination from 'components/layout/Pagination';
 import { getFeaturedPlaylists } from 'services/spotifyAPI';
 import './FeaturedPlaylists.scss';

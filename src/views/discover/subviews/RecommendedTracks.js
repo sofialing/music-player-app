@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import PageHeader from 'components/layout/PageHeader';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import TrackListItem from 'components/partials/lists/TrackListItem';
 import { getRecommendations } from 'services/spotifyAPI';
 import './RecommendedTracks.scss';
 

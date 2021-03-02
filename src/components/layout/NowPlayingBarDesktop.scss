@@ -16,16 +16,20 @@
 	button {
 		background: transparent;
 		border: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 2.25rem;
+		width: 2.25rem;
 		outline: none;
 		svg {
 			color: $color-lightgrey;
-			transition: transform .3s ease-in-out, color .3s ease-in-out;
+			transition: color .3s $ease;
 		}
 		&:hover {
 			cursor: pointer;
 			svg {
-				color: #fff;
-				transform: scale(1.1);
+				color: $color-white;
 			}
 		}
 	}
@@ -68,16 +72,15 @@
 			justify-content: center;
 			line-height: 1;
 			margin-bottom: .5rem;
-			button svg  {
-				font-size: 2rem;
-				margin: 0rem .75rem;
-				&.shuffle,
-				&.repeat {
-					font-size: 1.25rem;
-				}
-				&.play,
-				&.pause {
-					color: #fff;
+			button {
+				margin: 0 .5rem;
+			}
+			button.play,
+			button.pause {
+				background-color: white;
+				border-radius: 50%;
+				svg {
+					color: #0e0e0e;
 				}
 			}
 		}
@@ -125,9 +128,11 @@
 		}
 	}
 	.now-playing-bar__right {
-		text-align: right;
-		button svg {
-			margin: 0rem .75rem;
+		display: flex;
+		justify-content: flex-end;
+		align-self: flex-start;
+		button {
+			margin-left: .5rem;
 		}
 	}
 }

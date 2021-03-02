@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import { useAuth } from 'contexts/AuthContext';
 import './NavbarMobile.scss';
@@ -13,8 +13,8 @@ const NavbarMobile = () => {
 			<ul className="menu">
 				<li>
 					<NavLink to={`/dashboard/${user && user.id}`}>
-						<LibraryMusicIcon />
-						<span>Library</span>
+						<HomeIcon />
+						<span>Dashboard</span>
 					</NavLink>
 				</li>
 				<li>

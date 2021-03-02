@@ -3,6 +3,7 @@ import Albums from 'components/dashboard/Albums';
 import Artists from 'components/dashboard/Artists';
 import DiscoverWeekly from 'components/dashboard/DiscoverWeekly';
 import Playlists from 'components/dashboard/Playlists';
+import Error from 'components/partials/Error';
 import Spinner from 'components/partials/Spinner';
 import { useAuth } from 'contexts/AuthContext';
 import { getUsersSavedAlbums, getFollowedArtists } from 'services/spotifyAPI';
@@ -13,11 +14,12 @@ const Dashboard = () => {
 	const [artists, setArtists] = useState(null);
 	const [albums, setAlbums] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
 
 	useEffect(() => {
 		const FETCH_DATA = [
 			getUsersSavedAlbums(),
-			getFollowedArtists()
+			getFollowedArtists(),
 		];
 		Promise.all(FETCH_DATA)
 			.then(data => {
@@ -26,11 +28,15 @@ const Dashboard = () => {
 				setArtists(artists);
 				setLoading(false);
 			})
-			.catch(error => console.log(error))
+			.catch(error => setError(error))
 	}, [])
 
 	if (loading) {
 		return <Spinner />;
+	}
+
+	if (error) {
+		return <Error />;
 	}
 
 	return (

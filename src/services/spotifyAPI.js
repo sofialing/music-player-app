@@ -283,43 +283,6 @@ export const getAlbum = async (albumId, options = {}) => {
 }
 
 /**
- * Get Spotify catalog information about an album’s tracks
- *
- * @param {String} albumId The id of the album
- * @param {Object} options A JSON object with options that can be passed
- * @returns {Object} Tracks object
- */
-export const getAlbumTracks = async (albumId, options = {}) => {
-	const response = await get('albums/' + albumId + '/tracks', {
-		...options,
-		market: 'from_token'
-	});
-
-	return response;
-
-	// const tracks = {
-	// 	...response,
-	// 	items: response.items.map(item => ({
-	// 		// album: {
-	// 		// 	id: item.track.album.id,
-	// 		// 	name: item.track.album.name,
-	// 		// },
-	// 		artists: item.track.artists.map((artist) => artist.name).join(', '),
-	// 		duration: moment(item.track.duration_ms).format('mm:ss'),
-	// 		duration_ms: item.track.duration_ms,
-	// 		id: item.track.id,
-	// 		// image_url: _.isEmpty(item.track.album.images) ? null : item.track.album.images[0].url,
-	// 		name: item.track.name,
-	// 		player_uri: item.track.uri,
-	// 		release_date: item.track.album.release_date,
-	// 		type: item.track.type,
-	// 	}))
-	// };
-
-	// return tracks;
-}
-
-/**
  * Get an artist from the Spotify catalog
  *
  * @param {*} artistId The id of the artist
@@ -516,6 +479,7 @@ export const getRecommendations = async (artists, tracks) => {
 	// get IDs for seed artists and tracks.
 	const seed_artists = artists.slice(0, 3).map(item => item.id).join(',');
 	const seed_tracks = tracks.slice(0, 2).map(item => item.id).join(',');
+
 	const response = await get('recommendations', {
 		market: 'from_token', seed_artists, seed_tracks
 	});
@@ -529,6 +493,7 @@ export const getRecommendations = async (artists, tracks) => {
 		artists: track.artists.map((artist) => artist.name).join(', '),
 		duration_ms: track.duration_ms,
 		id: track.id,
+		image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
 		name: track.name,
 		player_uri: track.uri,
 		type: track.type,
@@ -702,9 +667,10 @@ export const searchAll = async (query, options = {}) => {
 		...options,
 	});
 
-	const results = {
-		albums: {
+	const results = [
+		{
 			...response.albums,
+			type: 'albums',
 			items: response.albums.items.map(item => ({
 				artists: item.artists.map(artist => artist.name).join(', '),
 				id: item.id,
@@ -716,8 +682,9 @@ export const searchAll = async (query, options = {}) => {
 				type: item.album_type,
 			}))
 		},
-		artists: {
+		{
 			...response.artists,
+			type: 'artists',
 			items: response.artists.items.map(item => ({
 				followers: parseInt(item.followers.total).toLocaleString(),
 				genres: item.genres,
@@ -728,8 +695,9 @@ export const searchAll = async (query, options = {}) => {
 				type: item.type,
 			}))
 		},
-		tracks: {
+		{
 			...response.tracks,
+			type: 'tracks',
 			items: response.tracks.items.map(item => ({
 				album: {
 					id: item.album.id,
@@ -747,7 +715,7 @@ export const searchAll = async (query, options = {}) => {
 				type: item.type,
 			}))
 		}
-	}
+	]
 
 	return results;
 }

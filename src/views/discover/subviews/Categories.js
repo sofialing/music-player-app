@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import usePagination from 'hooks/usePagination';
 import PageHeader from 'components/layout/PageHeader';
-import CategoryCard from 'components/partials/CategoryCard';
+import CategoryCard from 'components/partials/cards/CategoryCard';
 import Pagination from 'components/layout/Pagination';
 import { getCategories } from 'services/spotifyAPI';
 import './Categories.scss';

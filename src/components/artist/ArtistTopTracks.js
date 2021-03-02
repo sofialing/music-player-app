@@ -1,4 +1,4 @@
-import TrackListItem from 'components/partials/track/TrackListItem';
+import TrackListItem from 'components/partials/lists/TrackListItem';
 
 const ArtistTopTracks = ({ topTracks }) => {
 	return topTracks && (

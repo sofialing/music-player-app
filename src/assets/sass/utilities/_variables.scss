@@ -19,7 +19,7 @@ $color-darkergrey: #242526;
 $color-darkgrey: #2F3031;
 $color-grey: #3A3B3C;
 $color-lightgrey: #b3b3b3;
-$color-primary: #F02849;
+$color-primary: #BA110B;
 $color-accent: #3578E5;
 $color-white: #ffff;
 // $color-primary: #CA3E47;
@@ -48,8 +48,12 @@ $breakpoints: (
 $color-black: #18191A;
 $color-gray-darkest: #242526;
 $color-gray-dark: #2F3031;
-$color-gray-mediun: #3A3B3C;
+$color-gray-medium: #3A3B3C;
 $color-gray-light: #b3b3b3;
 $color-primary: #F02849;
 $color-accent: #3578E5;
 $font-color-base: $color-gray-light;
+
+$border-radius: 1rem;
+$shadow: 0 .875rem 1.75rem rgba($color-black,.25), 0 .625rem .625rem rgba($color-black,.25);
+$ease: cubic-bezier(.57,.21,.69,1.25);

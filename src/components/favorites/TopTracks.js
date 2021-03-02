@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import useViewport from 'hooks/useViewport';
+import TrackCard from 'components/partials/cards/TrackCard'
 import './TopTracks.scss';
 
 const TopTracks = ({ tracks }) => {
+	const { breakpoint_lg, width } = useViewport();
+	const items = width <= breakpoint_lg ? 4 : 6;
 	return tracks && (
 		<section className="top-tracks">
 			<header className="header">
@@ -15,9 +18,9 @@ const TopTracks = ({ tracks }) => {
 					<ChevronRightIcon />
 				</Link>
 			</header>
-			<ul className="list">
-				{tracks.items.slice(0, 5).map(track =>
-					<TrackListItem track={track} album={track.album} key={track.id} />
+			<ul className="grid">
+				{tracks.items.slice(0, items).map(track =>
+					<TrackCard track={track} album={track.album} key={track.id} />
 				)}
 			</ul>
 		</section>

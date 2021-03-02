@@ -1,4 +1,4 @@
-import AlbumListItem from 'components/partials/album/AlbumListItem';
+import AlbumListItem from 'components/partials/lists/AlbumListItem';
 
 const AllSingles = ({ singles }) => {
 	return singles && (

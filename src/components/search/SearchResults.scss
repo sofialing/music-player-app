@@ -1,41 +1,73 @@
 @import 'assets/sass/utilities/_variables.scss';
 
-.results {
-	section {
-		margin: 2rem 0;
-		&:last-of-type {
-			margin-bottom: 0;
-		}
-	}
-	.title {
-		font-size: 1.5rem;
-		letter-spacing: .05em;
-		margin: 0 0 0.5rem;
-	}
-	footer {
+.search-results {
+	padding: 0 1.25rem;
+	margin-top: 2.5rem;
+	&__header {
 		display: flex;
+		align-items: flex-end;
 		justify-content: space-between;
-		align-items: center;
-		padding: 1rem .5rem 0;
-		a {
-			font-size: .875rem;
-			letter-spacing: .1em;
-			text-transform: uppercase;
-			transition: color .5s ease-in-out;
-		}
-		svg {
-			color: $color-darkgrey;
-			margin-right: .5rem;
-			transition: transform .5s ease-in-out, color .5s ease-in-out;
-		}
-		&:hover {
+		margin-bottom: 1rem;
+		&--title {
+			font-size: 1.5rem;
+			font-weight: 600;
+			letter-spacing: .05em;
+			margin: 0;
+			min-width: 0;
+			text-transform: capitalize;
 			a {
 				color: $color-white;
 			}
+		}
+		.view-all {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			font-size: .875rem;
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: .1em;
+			text-transform: uppercase;
+			margin-left: 1rem;
+			min-width: 100px;
 			svg {
-				color: $color-white;
-				transform: translateX(.25rem);
+				margin-left: .25rem;
+				font-size: 1.25rem;
+				transition: transform .3s ease-in-out, color .3s ease-in-out;
 			}
+			&:hover {
+				color: $color-white;
+				svg {
+					color: $color-white;
+					transform: translateX(.125rem);
+				}
+			}
+		}
+	}
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		list-style: none;
+		margin: 1rem 0 0;
+		padding: 0;
+		& > * {
+			display: block;
+			max-width: 100%;
+			min-width: 0
+		}
+	}
+	@media screen and (min-width: $md-screen) {
+		padding: 0 2.5rem;
+	}
+	@media screen and (min-width: $lg-screen) {
+		&__grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	@media screen and (min-width: $xl-screen) {
+		&__grid {
+			grid-template-columns: repeat(6, 1fr);
 		}
 	}
 }

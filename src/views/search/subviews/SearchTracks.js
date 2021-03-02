@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import usePagination from 'hooks/usePagination';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import TrackListItem from 'components/partials/lists/TrackListItem';
 import PageHeader from 'components/layout/PageHeader';
 import Pagination from 'components/layout/Pagination';
 import { searchTracks } from 'services/spotifyAPI';

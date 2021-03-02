@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import AlbumIcon from '@material-ui/icons/Album';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import { useAuth } from 'contexts/AuthContext';
-import logo from 'assets/images/logo.svg'
+import logo from 'assets/images/remusic-logo.svg';
 import './NavbarDesktop.scss';
 
 const NavbarDesktop = () => {
@@ -17,8 +17,8 @@ const NavbarDesktop = () => {
 			<ul className="menu">
 				<li>
 					<NavLink to={`/dashboard/${user && user.id}`}>
-						<LibraryMusicIcon />
-						<span>Library</span>
+						<HomeIcon />
+						<span>Dashboard</span>
 					</NavLink>
 				</li>
 				<li>
@@ -40,18 +40,19 @@ const NavbarDesktop = () => {
 					</NavLink>
 				</li>
 			</ul>
-			<div className="playlists">
+			<div className="playlists" aria-label="User playlists">
 				<h1>Playlists</h1>
-				<ul>
-					{user && user_playlists && user_playlists.items.map(playlist => (
-						<li key={playlist.id}>
-							<Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
-						</li>
-					))}
-				</ul>
-
+				{user ? (
+					<ul>
+						{user_playlists && user_playlists.total ? user_playlists.items.map(playlist => (
+							<li key={playlist.id}>
+								<Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
+							</li>
+						)) : <p>No playlists to display</p>}
+					</ul>) : (<p>Log in to view your playlists</p>)}
 			</div>
 		</nav>
 	)
 }
+
 export default NavbarDesktop;

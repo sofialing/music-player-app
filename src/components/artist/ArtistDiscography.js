@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumCard from 'components/partials/album/AlbumCard';
+import AlbumCard from 'components/partials/cards/AlbumCard';
 import useViewport from 'hooks/useViewport';
 import './ArtistDiscography.scss';
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import usePagination from 'hooks/usePagination';
 import PageHeader from 'components/layout/PageHeader';
-import AlbumCard from 'components/partials/album/AlbumCard';
+import AlbumCard from 'components/partials/cards/AlbumCard';
 import Pagination from 'components/layout/Pagination';
 import { getNewReleases } from 'services/spotifyAPI';
 import './NewReleases.scss';

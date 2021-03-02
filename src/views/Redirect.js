@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-// import SpotifyWebApi from "spotify-web-api-js";
 import { useAuth } from 'contexts/AuthContext';
 import Spinner from 'components/partials/Spinner';
 import { setToken, getTopTracks, getTopArtists, getCurrentUser, getDiscoverWeekly, getUserPlaylists } from 'services/spotifyAPI'
-// const spotify = new SpotifyWebApi();
 
 const Redirect = () => {
 	const navigate = useNavigate();

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import SavedTracks from 'components/favorites/SavedTracks';
 import TopArtists from 'components/favorites/TopArtists';
 import TopTracks from 'components/favorites/TopTracks';
+import Error from 'components/partials/Error';
 import Spinner from 'components/partials/Spinner';
 import { useAuth } from 'contexts/AuthContext';
 import { getMySavedTracks } from 'services/spotifyAPI';
@@ -30,10 +31,14 @@ const Favorites = () => {
 		return <Spinner />;
 	}
 
+	if (error) {
+		return <Error />;
+	}
+
 	return (
 		<main id="favorites" className="main-view">
 			<header className="header">
-				<h1 className="title">Your favorite music</h1>
+				<h1 className="title">Favorites</h1>
 			</header>
 			<TopTracks tracks={top_tracks} />
 			<TopArtists artists={top_artists} />

@@ -1,5 +1,5 @@
 import { useAuth } from 'contexts/AuthContext';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import TrackListItem from 'components/partials/lists/TrackListItem';
 import PageHeader from 'components/layout/PageHeader';
 import './TopTracks.scss';
 

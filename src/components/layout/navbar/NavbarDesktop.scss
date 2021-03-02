@@ -2,6 +2,7 @@
 
 .navbar-desktop {
 	background: #0e0e0e;
+	color: $color-white;
 	grid-area: navbar;
 	padding: 2rem 0;
 	position: relative;
@@ -22,17 +23,20 @@
 		padding: 0;
 		margin: 1.5rem 0;
 		li {
-			padding: 0 1.25rem;
+			padding: 0 .5rem;
 		}
 		a {
-			color: $color-lightgrey;
+			background-color: transparent;
+			border-radius: .5rem;
+			color: inherit;
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
 			flex-direction: row;
 			height: 3rem;
+			padding: 0 1.25rem;
+			transition: background-color .5s $ease;
 			svg {
-				color: #fff;
 				margin-right: 1rem;
 				font-size: 1.675rem;
 				transition: transform .5s ease-in-out;
@@ -45,9 +49,7 @@
 				text-transform: uppercase;
 			}
 			&.active {
-				span {
-					color: #fff;
-				}
+				background-color: rgba($color-gray-darkest, .5);
 			}
 			&:hover svg {
 				transform: scale(1.1);
@@ -55,9 +57,8 @@
 		}
 	}
 	.playlists {
-		padding: 0 1.25rem;
+		padding: 0 1.75rem;
 		overflow: hidden;
-
 		h1 {
 			font-size: .875rem;
 			margin-bottom: .5rem;
@@ -67,11 +68,16 @@
 		ul {
 			max-height: 450px;
 			overflow: scroll;
+			a {
+				display: block;
+				font-size: .875rem;
+				padding: .25rem 0;
+			}
 		}
-		a {
-			display: block;
+		p {
+			color: $color-lightgrey;
 			font-size: .875rem;
-			padding: .25rem 0;
+			letter-spacing: .025em;
 		}
 	}
 }

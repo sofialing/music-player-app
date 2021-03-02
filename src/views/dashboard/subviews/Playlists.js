@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import PlaylistItem from 'components/partials/playlist/PlaylistItem';
+import PlaylistItem from 'components/partials/lists/PlaylistItem';
 import PageHeader from 'components/layout/PageHeader';
 import Pagination from 'components/layout/Pagination';
 import Spinner from 'components/partials/Spinner';

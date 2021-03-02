@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import useViewport from 'hooks/useViewport';
-import CategoryCard from 'components/partials/CategoryCard';
+import CategoryCard from 'components/partials/cards/CategoryCard';
 import './Categories.scss';
 
 const Categories = ({ categories }) => {

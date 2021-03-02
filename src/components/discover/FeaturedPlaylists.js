@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import useViewport from 'hooks/useViewport';
-import PlaylistCard from 'components/partials/playlist/PlaylistCard';
+import PlaylistCard from 'components/partials/cards/PlaylistCard';
 import './FeaturedPlaylists.scss';
 
 const FeaturedPlaylists = ({ playlists, title }) => {

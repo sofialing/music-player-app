@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TrackListItem from 'components/partials/track/TrackListItem';
+import useViewport from 'hooks/useViewport';
+import TrackCard from 'components/partials/cards/TrackCard';
 import './Recommendations.scss';
 
 const Recommendations = ({ recommendations }) => {
+	const { breakpoint_lg, width } = useViewport();
+	const items = width <= breakpoint_lg ? 4 : 6;
+
 	return recommendations && (
 		<section className="recommendations">
 			<header className="header">
@@ -15,8 +19,8 @@ const Recommendations = ({ recommendations }) => {
 					<ChevronRightIcon />
 				</Link>
 			</header>
-			<ul className="list">
-				{recommendations.slice(0, 5).map(track => <TrackListItem track={track} album={track.album} key={track.id} />)}
+			<ul className="grid">
+				{recommendations.slice(0, items).map(track => <TrackCard track={track} album={track.album} key={track.id} />)}
 			</ul>
 		</section>
 	)
