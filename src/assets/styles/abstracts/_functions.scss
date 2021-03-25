@@ -1,0 +1,40 @@
+@use 'colors' as *;
+
+//  Create shades of each color and return values as map
+@function color-map($color, $values) {
+	$base:      $values;
+	$lightest:  mix(white, $values, 80%);
+	$lighter:   mix(white, $values, 20%);
+	$darker:    mix(#555, $values, 20%);
+	$darkest:   mix(black, $values, 20%);
+
+	$color-shades: (
+		#{$color}-base:       $base,
+		#{$color}-lightest:   $lightest,
+		#{$color}-lighter:    $lighter,
+		#{$color}-darker:     $darker,
+		#{$color}-darkest:    $darkest
+	);
+
+	@return $color-shades;
+}
+
+//  Set up master map for all colors
+@function color-maps($colors) {
+	$color-map: ();
+
+	@each $color, $value in $colors {
+		$map: (color-map($color, $value));
+		$color-map: map-merge($color-map, $map);
+	}
+
+	@return $color-map;
+}
+
+//  Initiate maps function to build maps
+$color-map: color-maps($colors);
+
+//  Create mixin to better call colors from map
+@function color($color, $shade) {
+	@return map-get($color-map, #{$color}-#{$shade});
+}

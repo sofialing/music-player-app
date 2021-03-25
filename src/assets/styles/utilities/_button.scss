@@ -1,0 +1,24 @@
+@use 'assets/styles/abstracts' as *;
+
+.button {
+	align-items: center;
+	background: $color-primary;
+	border-radius: 30rem;
+	border: none;
+	color: $color-white;
+	cursor: pointer;
+	display: flex;
+	font-size: .875rem;
+	justify-content: center;
+	letter-spacing: .1em;
+	line-height: 1;
+	padding: 1rem 2.75rem;
+	text-align: center;
+	text-transform: uppercase;
+	transition: transform .3s ease-in-out;
+	&:hover,
+	&:focus {
+		transform: scale(1.1);
+		outline: none;
+	}
+}

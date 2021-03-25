@@ -1,17 +1,17 @@
+$ratio: 1.250;
+
 // Typography
 $font-family: canada-type-gibson, sans-serif;
+$body-font-size: 1rem;
 
-// Font Sizes
-$font-size-base: 1rem;
-
-// Font Weight
-$font-weight-base: 400;
-$font-weight-heading: 600;
-$font-weight-bold: 700;
-
-// Line height
-$line-height-base: 1.75;
-$line-height-heading: 1.3;
+$small: $body-font-size / $ratio;
+$h6: $body-font-size * $ratio;
+$h5: $h6 * $ratio;
+$h4: $h5 * $ratio;
+$h3: $h4 * $ratio;
+$h2: $h3 * $ratio;
+$h1: $h2 * $ratio;
+$h0: $h1 * $ratio;
 
 // Colors
 $color-black: #18191A;
@@ -38,12 +38,12 @@ $xl-screen: 1280px;
 $width-site: 1366px;
 
 // A map of breakpoints.
-$breakpoints: (
-  sm: 640px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px
-);
+// $breakpoints: (
+//   sm: 640px,
+//   md: 768px,
+//   lg: 1024px,
+//   xl: 1280px
+// );
 
 $color-black: #18191A;
 $color-gray-darkest: #242526;

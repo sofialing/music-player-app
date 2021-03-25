@@ -1,0 +1,53 @@
+@use '../abstracts' as *;
+
+body {
+	background-color: color(black, darkest);
+	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
+	width: 100vw;
+	overflow: hidden;
+}
+
+#app {
+	height: 100%;
+}
+
+// main {
+// 	position: relative;
+// 	padding-bottom: calc(80px + 1.5rem) !important;
+// 	height: 100vh;
+// 	height: calc(var(--vh, 1vh) * 100);
+// 	overflow-y: scroll;
+// 	scrollbar-width: none;
+// 	-ms-overflow-style: none;
+// 	&::-webkit-scrollbar {
+// 		display: none;
+// 	}
+
+// 	@include mq(md) {
+// 		grid-area: main-view;
+// 		padding-bottom: 0;
+// 		min-height: 0;
+// 		height: auto;
+// 		width: 100%;
+// 	}
+// }
+
+a:hover {
+	text-decoration: none;
+}
+
+@include mq(lg) {
+	#app {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: 1fr auto;
+		grid-template-areas:
+			"navbar main-view"
+			"now-playing-bar now-playing-bar";
+		height: 100%;
+		width: 100%;
+		min-height: 100%;
+		position: relative;
+	}
+}

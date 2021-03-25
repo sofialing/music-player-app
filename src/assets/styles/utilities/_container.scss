@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+
+.container {
+	padding: 0 1.25rem;
+	@include mq(md) {
+		padding: 0 2.5rem;
+	}
+}
