@@ -3,6 +3,7 @@
 
 .hero {
 	background-color: $color-darkergrey;
+	background: linear-gradient(transparent, $color-black);
 	padding-top: 3rem;
 	padding-bottom: 3rem;
 	position: relative;
@@ -38,7 +39,6 @@
 		}
 	}
 	@include mq(md) {
-		background-color: $color-darkgrey;
 		padding: calc(72px + 3.5rem) 0 3.5rem;
 		text-align: left;
 		&__inner {

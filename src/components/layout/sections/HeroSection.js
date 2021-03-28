@@ -1,9 +1,22 @@
+import { useState, useEffect } from 'react';
+import FastAverageColor from 'fast-average-color';
 import noImage from 'assets/images/no-image.png';
 import PlayButton from 'components/partials/buttons/PlayButton';
 
+const fac = new FastAverageColor();
+
 const HeroSection = ({ title, subtitle, player_uri, image_url, description = null, details = null }) => {
+	const [style, setStyle] = useState(null);
+
+	useEffect(() => {
+		fac.getColorAsync(image_url)
+			.then(color => setStyle({ backgroundColor: color.rgb }))
+			.catch(e => console.log(e));
+		return () => fac.destroy();
+	}, [image_url])
+
 	return (
-		<header className="hero">
+		<header className="hero" style={style}>
 			<div className="hero__inner">
 				<img className="hero__img" src={image_url ? image_url : noImage} alt={`${subtitle} cover`} />
 				<div className="hero__content">
