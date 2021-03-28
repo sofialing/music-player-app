@@ -6,8 +6,9 @@ const useViewport = () => {
 	const breakpoint_sm = 640;
 	const breakpoint_md = 768;
 	const breakpoint_lg = 1024;
+	const gridItems = width <= breakpoint_sm ? 4 : 6;
 
-	return { breakpoint_sm, breakpoint_md, breakpoint_lg, height, width };
+	return { breakpoint_sm, breakpoint_md, breakpoint_lg, height, width, gridItems };
 }
 
 export default useViewport;

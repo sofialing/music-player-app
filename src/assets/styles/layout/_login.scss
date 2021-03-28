@@ -1,0 +1,47 @@
+#login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+#headphones {
+	margin-bottom: 1.5rem;
+	max-width: 550px;
+}
+
+svg#headphones:not(.animated) .animable {
+	opacity: 0;
+}
+
+svg#headphones.animated
+#musical-notes--inject-97 {
+	animation: 1.5s Infinite  linear heartbeat;
+	animation-delay: 0s;
+}
+@keyframes heartbeat {
+	0% {
+		transform: scale(1);
+	}
+	10% {
+		transform: scale(1.1);
+	}
+	30% {
+		transform: scale(1);
+	}
+	40% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	60% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

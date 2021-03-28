@@ -1,0 +1,73 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+
+.hero {
+	background-color: $color-darkergrey;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	position: relative;
+	text-align: center;
+	&__inner {
+		@extend .container;
+	}
+	&__img {
+		box-shadow: 1px 4px 12px #00000072;
+		margin: 0 auto 2rem;
+		max-width: 75%;
+	}
+	&__content {
+		width: 100%;
+		&--title {
+			font-size: $h5;
+			letter-spacing: .075em;
+			margin: 0;
+		}
+		&--subtitle {
+			display: none;
+			font-size: .75rem;
+			letter-spacing: .2em;
+			text-transform: uppercase;
+			margin: .5rem 0;
+		}
+		&--desc,
+		&--details {
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .05em;
+			margin: .5em 0 0;
+		}
+	}
+	@include mq(md) {
+		background-color: $color-darkgrey;
+		padding: calc(72px + 3.5rem) 0 3.5rem;
+		text-align: left;
+		&__inner {
+			display: flex;
+			align-items: flex-end;
+		}
+		&__img {
+			max-width: 225px;
+			margin: 0 2rem 0 0;
+		}
+		&__content {
+			&--title {
+				font-size: $h0;
+				line-height: 1.1;
+				letter-spacing: initial;
+			}
+			&--subtitle {
+				display: initial;
+			}
+			&--desc {
+				color: $color-white;
+				font-size: 1rem;
+				max-width: 70ch;
+			}
+		}
+	}
+	.play-btn {
+		position: absolute;
+		bottom: -1.5rem;
+		left: 2.5rem;
+	}
+}

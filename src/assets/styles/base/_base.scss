@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 body {
-	background-color: color(black, darkest);
+	background-color: $color-black;
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
 	width: 100vw;
@@ -11,27 +11,6 @@ body {
 #app {
 	height: 100%;
 }
-
-// main {
-// 	position: relative;
-// 	padding-bottom: calc(80px + 1.5rem) !important;
-// 	height: 100vh;
-// 	height: calc(var(--vh, 1vh) * 100);
-// 	overflow-y: scroll;
-// 	scrollbar-width: none;
-// 	-ms-overflow-style: none;
-// 	&::-webkit-scrollbar {
-// 		display: none;
-// 	}
-
-// 	@include mq(md) {
-// 		grid-area: main-view;
-// 		padding-bottom: 0;
-// 		min-height: 0;
-// 		height: auto;
-// 		width: 100%;
-// 	}
-// }
 
 a:hover {
 	text-decoration: none;

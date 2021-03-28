@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+
+.page-header {
+	@extend .container;
+	&__title {
+		font-size: $h3;
+		line-height: 1.2;
+		letter-spacing: .05em;
+		margin: 0 0 1.75rem;
+		@include mq(lg) {
+			margin-bottom: 2rem;
+		}
+	}
+}

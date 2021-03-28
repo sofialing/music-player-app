@@ -1,26 +1,16 @@
 import { Link } from 'react-router-dom';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import usePlayer from 'hooks/usePlayer';
 import noImage from 'assets/images/no-image.png';
-import './card.scss';
+import PlayButton from 'components/partials/buttons/PlayButton';
 
 const PlaylistCard = ({ playlist }) => {
-	const { playContext } = usePlayer();
-	const imageSrc = playlist.image_url ? playlist.image_url : noImage;
-
-	const onPlayContext = e => {
-		e.preventDefault();
-		playContext(playlist.player_uri);
-	}
+	const imgSrg = playlist.image_url ? playlist.image_url : noImage;
 
 	return (
 		<Link to={`/playlist/${playlist.id}`} aria-label={`Go to ${playlist.name}`} >
-			<li className="card card__playlist">
+			<li className="card card-playlist">
 				<header className="card__header">
-					<img className="card__header--img" src={imageSrc} alt={playlist.name} />
-					<button className="play-btn" title="Play album" aria-label="Play album" onClick={onPlayContext}>
-						<PlayArrowIcon style={{ fontSize: 32 }} />
-					</button>
+					<img src={imgSrg} alt={playlist.name} />
+					<PlayButton uri={playlist.player_uri} type="playlist" />
 				</header>
 			</li>
 		</Link>

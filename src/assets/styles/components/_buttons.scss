@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.btn {
+	background: $color-primary;
+	border: none;
+	border-radius: 30rem;
+	color: $color-white;
+	font-size: .875rem;
+	letter-spacing: .1em;
+	line-height: 1;
+	margin: 1.5rem auto;
+	padding: 1rem 2.75rem;
+	text-align: center;
+	text-transform: uppercase;
+	transition: transform .3s ease-in-out;
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.1);
+	}
+}
+
+.play-btn {
+	@extend .btn;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 3rem;
+	height: 3rem;
+	margin: 0;
+	padding: 0;
+	svg {
+		color: $color-white;
+	}
+}

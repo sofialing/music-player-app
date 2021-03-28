@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const usePagination = (data = [], limit = 20) => {
+const usePagination = (data = [], limit = 24) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const maxPage = Math.ceil(data.total / limit);
 

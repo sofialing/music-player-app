@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import './assets/sass/main.scss';
+import 'assets/styles/main.scss';
 
 // Mobile full height screen fix.
 let vh = window.innerHeight * 0.01;

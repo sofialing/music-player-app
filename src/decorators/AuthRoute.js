@@ -1,28 +1,15 @@
-import { useEffect } from 'react';
-import { Route, Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { Route, Navigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
 
 const AuthRoute = (props) => {
-	const { user, dispatch, isValidSession } = useAuth();
-	const location = useLocation();
-
-	// check if session is valid
-	useEffect(() => {
-		if (!user) {
-			return;
-		} else if (!isValidSession()) {
-			// clear state
-			dispatch({ type: 'SET_USER', user: null });
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [location.pathname])
+	const { user } = useAuth();
 
 	return (
 		user
 			? (<Route {...props} />)
-			: (<Navigate to='/' />)
+			: (<Navigate to='/login' />)
 	)
 
 }
 
-export default AuthRoute
+export default AuthRoute;

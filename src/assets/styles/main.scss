@@ -1,12 +1,4 @@
-/* Utilities */
-// @import 'utilities/variables';
-// @import 'utilities/functions';
-// @import 'utilities/mixins';
-
-// /* Base */
-// @import 'base/reset';
-// @import 'base/global';
-// @import 'base/typography';
 @use 'base';
 @use 'utilities';
-// @use 'components';
+@use 'components';
+@use 'layout';

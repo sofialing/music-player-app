@@ -1,11 +1,11 @@
 import AuthContextProvider from 'contexts/AuthContext';
 import PlaybackContextProvider from 'contexts/PlaybackContext';
 import ViewportContextProvider from 'contexts/ViewportContext';
-import Navbar from 'components/layout/navbar/Navbar';
-import NowPlayingBar from 'components/layout/NowPlayingBar';
-import NowPlayingModal from 'components/layout/NowPlayingModal';
+import Navbar from 'components/layout/navigation/Navbar';
+import NowPlayingBar from 'components/layout/now-playing/NowPlayingBar';
+import NowPlayingModal from 'components/layout/now-playing/NowPlayingModal';
 import AppRoutes from 'routes/AppRoutes';
-import 'assets/sass/main.scss';
+import TopNavbar from 'components/layout/navigation/TopNavbar';
 
 const App = () => {
 	return (
@@ -13,8 +13,9 @@ const App = () => {
 			<PlaybackContextProvider >
 				<ViewportContextProvider>
 					<Navbar />
+					<TopNavbar />
 					<AppRoutes />
-					{/* <NowPlayingModal /> */}
+					<NowPlayingModal />
 					<NowPlayingBar />
 				</ViewportContextProvider>
 			</PlaybackContextProvider>

@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+
+.search-field {
+	@extend .container;
+	margin-bottom: 2.5rem;
+	&__form {
+		position: relative;
+		&--input {
+			color: $color-black;
+			font-family: $font-family;
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .025em;
+			padding: .375rem 3rem;
+			height: 40px;
+			width: 100%;
+			border: 0;
+			border-radius: 30rem;
+			text-overflow: ellipsis;
+			position: relative;
+			&::placeholder {
+				color: $color-black;
+				font-family: $font-family;
+				font-size: .875rem;
+				font-weight: 300;
+				letter-spacing: .025em;
+			}
+			&:focus {
+				outline: none;
+				box-shadow: 0 0 0 2px $color-lightgrey;
+			}
+		}
+		&--icon {
+			display: flex;
+			align-items: center;
+			height: 40px;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			right: .75rem;
+			bottom: 0;
+			left: .75rem;
+			svg {
+				color: $color-darkgrey;
+			}
+		}
+	}
+}

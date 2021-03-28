@@ -36,7 +36,7 @@ const setAuthHeader = () => {
 export const get = async (endpoint, queryParams = {}) => {
 	setAuthHeader();
 	const queryStr = queryString.stringify(queryParams);
-	// console.log('GET:', endpoint, queryStr);
+	console.log('GET:', endpoint, queryStr);
 	// send request
 	const response = await axios.get(`${BASEURL}${endpoint}?${queryStr}`);
 	// return response data
@@ -276,6 +276,8 @@ export const getAlbum = async (albumId, options = {}) => {
 			name: item.name,
 			player_uri: item.uri,
 			type: item.type,
+			image_url: _.isEmpty(response.images) ? null : response.images[0].url,
+			album_name: response.name,
 		})),
 		type: response.album_type,
 	}
@@ -285,11 +287,11 @@ export const getAlbum = async (albumId, options = {}) => {
 /**
  * Get an artist from the Spotify catalog
  *
- * @param {*} artistId The id of the artist
+ * @param {*} artist_id The id of the artist
  * @returns {Object} Artist object
  */
-export const getArtist = async (artistId) => {
-	const response = await get('artists/' + artistId);
+export const getArtist = async (artist_id) => {
+	const response = await get('artists/' + artist_id);
 
 	const artist = {
 		followers: parseInt(response.followers.total).toLocaleString(),
@@ -307,11 +309,11 @@ export const getArtist = async (artistId) => {
 /**
  * Get a list of top tracks of an artist from the Spotify catalog, for a specific country
  *
- * @param {*} artistId The id of the artist
+ * @param {*} artist_id The id of the artist
  * @returns {Object} Track object
  */
-export const getArtistTopTracks = async (artistId) => {
-	const res = await get('artists/' + artistId + '/top-tracks', {
+export const getArtistTopTracks = async (artist_id) => {
+	const res = await get('artists/' + artist_id + '/top-tracks', {
 		market: 'from_token'
 	});
 
@@ -327,7 +329,8 @@ export const getArtistTopTracks = async (artistId) => {
 		id: track.id,
 		image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
 		name: track.name,
-		player_uri: track.uri
+		player_uri: track.uri,
+		type: 'track',
 	}))
 
 	return topTracks;
@@ -336,11 +339,11 @@ export const getArtistTopTracks = async (artistId) => {
 /**
  * Get Spotify catalog information about artists similar to a given artist
  *
- * @param {*} artistId The id of the artist
+ * @param {*} artist_id The id of the artist
  * @returns {Object} Artists object
  */
-export const getArtistRelatedArtists = async (artistId) => {
-	const response = await get('artists/' + artistId + '/related-artists');
+export const getArtistRelatedArtists = async (artist_id) => {
+	const response = await get(`artists/${artist_id}/related-artists`);
 
 	const artists = response.artists.map(item => ({
 		followers: parseInt(item.followers.total).toLocaleString(),
@@ -358,11 +361,11 @@ export const getArtistRelatedArtists = async (artistId) => {
 /**
  * Get Spotify catalog information about an artist’s albums
  *
- * @param {*} artistId The id of the artist
+ * @param {*} artist_id The id of the artist
  * @returns {Object} Albums object
  */
-export const getArtistAlbums = async (artistId, options = {}) => {
-	const response = await get('artists/' + artistId + '/albums', {
+export const getArtistAlbums = async (artist_id, options = {}) => {
+	const response = await get('artists/' + artist_id + '/albums', {
 		...options,
 		market: 'from_token'
 	});
@@ -462,6 +465,7 @@ export const getCategories = async (options = {}) => {
 			id: item.id,
 			image_url: item.icons[0].url,
 			name: item.name,
+			type: 'category'
 		}))
 	};
 
@@ -625,7 +629,8 @@ export const getMySavedTracks = async (options = {}) => {
 			id: item.track.id,
 			image_url: _.isEmpty(item.track.album.images) ? null : item.track.album.images[0].url,
 			name: item.track.name,
-			player_uri: item.track.uri
+			player_uri: item.track.uri,
+			type: 'track'
 		}))
 	}
 
@@ -646,8 +651,6 @@ export const search = async (query, types, options = {}) => {
 		market: 'from_token',
 		...options,
 	});
-
-	console.log('search response', response);
 
 	return response;
 

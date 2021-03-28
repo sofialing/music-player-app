@@ -1,30 +1,20 @@
 import { Link } from 'react-router-dom';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import usePlayer from 'hooks/usePlayer';
 import noImage from 'assets/images/no-image.png';
-import './card.scss';
+import PlayButton from 'components/partials/buttons/PlayButton';
 
 const AlbumCard = ({ album }) => {
-	const { playContext } = usePlayer();
-	const imageSrc = album.image_url ? album.image_url : noImage;
-
-	const onPlayContext = e => {
-		e.preventDefault();
-		playContext(album.player_uri);
-	}
+	const imgSrc = album.image_url ? album.image_url : noImage;
 
 	return (
 		<Link to={`/album/${album.id}`}>
-			<li className="card card__album">
+			<li className="card">
 				<header className="card__header">
-					<img className="card__header--img" src={imageSrc} alt={album.name} />
-					<button className="play-btn" title="Play album" aria-label="Play album" onClick={onPlayContext}>
-						<PlayArrowIcon style={{ fontSize: 32 }} />
-					</button>
+					<img src={imgSrc} alt={album.name} />
+					<PlayButton uri={album.player_uri} type={album.type} />
 				</header>
 				<div className="card__body">
 					<h3 className="card__body--title">{album.name}</h3>
-					<p className="card__body--details">{album.release_date} &middot; {album.type}</p>
+					<p className="card__body--desc">{album.release_date} &middot; {album.type}</p>
 				</div>
 			</li>
 		</Link>

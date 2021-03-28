@@ -1,23 +1,18 @@
 import noImage from 'assets/images/no-image.png';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import usePlayer from 'hooks/usePlayer';
-import './card.scss';
+import PlayButton from 'components/partials/buttons/PlayButton';
 
 const TrackCard = ({ track, album }) => {
-	const { playTrack } = usePlayer();
+	const imgSrc = track.image_url ? track.image_url : noImage;
 
-	const imageSrc = track.image_url ? track.image_url : noImage;
 	return (
-		<li className="card card__track">
+		<li className="card">
 			<header className="card__header">
-				<img className="card__header--img" src={imageSrc} alt={album.name} />
-				<button className="play-btn" title="Play track" aria-label="Play track" onClick={() => playTrack(track.player_uri)}>
-					<PlayArrowIcon style={{ fontSize: 32 }} />
-				</button>
+				<img src={imgSrc} alt={album.name} />
+				<PlayButton uri={track.player_uri} type="track" />
 			</header>
 			<div className="card__body">
 				<h3 className="card__body--title">{track.name}</h3>
-				<p className="card__body--details">{track.artists}</p>
+				<p className="card__body--desc">{track.artists}</p>
 			</div>
 		</li>
 	)

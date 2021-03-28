@@ -1,0 +1,30 @@
+#playlist,
+#artist,
+#album {
+	padding-top: 0;
+}
+
+#page-missing {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	img {
+		max-width: 75vh;
+	}
+}
+
+#error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	img {
+		width: 600px;
+		max-width: 75vh;
+	}
+	p {
+		margin: 1.5em 0;
+	}
+}
+

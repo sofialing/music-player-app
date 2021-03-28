@@ -1,0 +1,184 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+
+.card {
+	background-color: $color-darkergrey;
+	border-radius: $border-radius;
+	box-shadow: $shadow;
+	height: 100%;
+	position: relative;
+	transition: background-color .5s $ease;
+	&__header {
+		border-radius: $border-radius $border-radius 0 0 ;
+		margin: 0;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		position: relative;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			object-position: center;
+			transition: transform .5s $ease;
+		}
+		button {
+			position: absolute;
+			bottom: 1rem;
+			right: 1rem;
+			opacity: 0;
+			transform: translateY(1rem);
+			transition: opacity .5s $ease, transform .5s $ease;
+		}
+		&:hover button {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	&__body {
+		padding: 1rem;
+		&--title,
+		&--desc {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		&--title {
+			font-size: 1rem;
+			letter-spacing: .05em;
+		}
+		&--desc {
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .05em;
+			margin: 0;
+			text-transform: capitalize;
+		}
+	}
+	&:hover {
+		background-color: $color-darkgrey;
+		img {
+			transform: scale(1.1);
+		}
+	}
+}
+
+.card-artist {
+	padding: 1rem 1rem 0;
+	.card__header {
+		border-radius: 50%;
+		margin: 0;
+		position: relative;
+		&::after {
+			content: "";
+			display: block;
+			padding-bottom: 100%;
+		}
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	.card__body {
+		text-align: center
+	}
+}
+
+.card-playlist,
+.card-category {
+	.card__header {
+		border-radius: $border-radius;
+	}
+}
+
+.card-category {
+	.card__body {
+		position: absolute;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		text-align: center;
+	}
+}
+
+.card-discover {
+	@extend .container;
+	height: initial;
+	@include mq(md) {
+		display: flex;
+	}
+	.card__header {
+		@include mq(md) {
+			border-radius: $border-radius 0 0 $border-radius;
+			display: flex;
+			flex-grow: 1;
+		}
+		@include mq(xl) {
+			flex-grow: 0;
+			flex-basis: 320px;
+		}
+	}
+	.card__body {
+		padding: 1.5rem 1.25rem 1.25rem;
+		&--title {
+			font-size: $h5;
+			letter-spacing: .075em;
+			margin: .25em 0 0;
+		}
+		&--subtitle {
+			font-size: .75rem;
+			letter-spacing: .2em;
+			margin: 0;
+			text-transform: uppercase;
+		}
+		&--desc,
+		&--details {
+			font-size: .875rem;
+			font-weight: 300;
+			letter-spacing: .075em;
+			margin: .75em 0 0;
+			text-transform: initial;
+		}
+		&--desc {
+			color: $color-white;
+			overflow: initial;
+			text-overflow: initial;
+			white-space: initial;
+		}
+		@include mq(md) {
+			border-radius: 0 $border-radius $border-radius 0;
+			display: flex;
+			flex-grow: 1;
+			flex-flow: column;
+			justify-content: flex-end;
+			padding: 2rem;
+			&--title {
+				font-size: $h3;
+				line-height: 1.2;
+				margin: .5rem 0 0;
+			}
+			&--desc {
+				font-size: 1rem;
+				max-width: 65ch;
+			}
+		}
+		@include mq(lg) {
+			padding: 2.5rem;
+			&--title  {
+				font-size: $h2;
+				line-height: 1.1;
+			}
+			&--details {
+				margin-top: 1.25em;
+			}
+		}
+		@include mq(xl) {
+			padding: 3rem;
+			&--title  {
+				font-size: $h1;
+			}
+		}
+	}
+}

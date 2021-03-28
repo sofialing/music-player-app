@@ -52,6 +52,8 @@ const reducer = (state, action) => {
 				...state,
 				discover_weekly: action.discover_weekly
 			};
+		case 'RESET_STATE':
+			return initialState;
 		default:
 			return state;
 	}

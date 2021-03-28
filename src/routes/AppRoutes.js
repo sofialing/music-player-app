@@ -1,55 +1,60 @@
 import { Routes, Route } from 'react-router-dom';
 import AuthRoute from 'decorators/AuthRoute'
 
-// views
-import Album from 'views/album/Album';
-import Artist from 'views/artist/Artist';
-import Dashboard from 'views/dashboard/Dashboard';
-import Discover from 'views/discover/Discover';
-import Favorites from 'views/favorites/Favorites';
-import Login from 'views/login/Login';
-import PageMissing from 'views/page-missing/PageMissing';
-import Playlist from 'views/playlist/Playlist';
-import Redirect from 'views/Redirect';
-import Search from 'views/search/Search';
+// pages
+import Album from 'pages/album/Album';
+import Artist from 'pages/artist/Artist';
+import Dashboard from 'pages/dashboard/Dashboard';
+import Discover from 'pages/discover/Discover';
+import Favorites from 'pages/favorites/Favorites';
+import Login from 'pages/login/Login';
+import PageMissing from 'pages/page-missing/PageMissing';
+import Playlist from 'pages/playlist/Playlist';
+import Redirect from 'pages/Redirect';
+import Search from 'pages/search/Search';
 
-// subviews
-import Categories from 'views/discover/subviews/Categories';
-import Category from 'views/discover/subviews/Category';
-import Discography from 'views/artist/subviews/Discography';
-import FeaturedPlaylists from 'views/discover/subviews/FeaturedPlaylists';
-import NewReleases from 'views/discover/subviews/NewReleases';
-import Playlists from 'views/dashboard/subviews/Playlists';
-import RecommendedTracks from 'views/discover/subviews/RecommendedTracks';
-import RelatedArtists from 'views/artist/subviews/RelatedArtists';
-import SearchAlbums from 'views/search/subviews/SearchAlbums';
-import SearchArtists from 'views/search/subviews/SearchArtists';
-import SearchTracks from 'views/search/subviews/SearchTracks';
-import TopArtists from 'views/favorites/subviews/TopArtists';
-import TopTracks from 'views/favorites/subviews/TopTracks';
+// subpages
+import Categories from 'pages/discover/subpages/Categories';
+import Category from 'pages/discover/subpages/Category';
+import Discography from 'pages/artist/subpages/Discography';
+import FeaturedPlaylists from 'pages/discover/subpages/FeaturedPlaylists';
+import NewReleases from 'pages/discover/subpages/NewReleases';
+import UserPlaylists from 'pages/dashboard/subpages/UserPlaylists';
+import FollowedArtists from 'pages/dashboard/subpages/FollowedArtists';
+import Recommendations from 'pages/discover/subpages/Recommendations';
+import RelatedArtists from 'pages/artist/subpages/RelatedArtists';
+import SearchResults from 'pages/search/subpages/SearchResults';
+import TopArtists from 'pages/favorites/subpages/TopArtists';
+import TopTracks from 'pages/favorites/subpages/TopTracks';
+import SavedAlbums from 'pages/dashboard/subpages/SavedAlbums';
 
 const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route path='/' >
+			<Route path='/login' >
 				<Login />
 			</Route>
+			<AuthRoute path='/' >
+				<Dashboard />
+			</AuthRoute>
 			<AuthRoute path='dashboard' >
-				<Route path='/:userId' element={<Dashboard />} />
-				<Route path='/:userId/playlists' element={<Playlists />} />
+				<Route path='/' element={<Dashboard />} />
+				<Route path='/playlists' element={<UserPlaylists />} />
+				<Route path='/artists' element={<FollowedArtists />} />
+				<Route path='/albums' element={<SavedAlbums />} />
 			</AuthRoute>
 			<AuthRoute path='discover' >
 				<Route path='/' element={<Discover />} />
-				<Route path='/recommended-tracks' element={<RecommendedTracks />} />
+				<Route path='/recommendations' element={<Recommendations />} />
 				<Route path='/new-releases' element={<NewReleases />} />
 				<Route path='/featured-playlists' element={<FeaturedPlaylists />} />
 				<Route path='/categories' element={<Categories />} />
 				<Route path='/categories/:categoryId' element={<Category />} />
 			</AuthRoute>
 			<AuthRoute path='favorites' >
-				<Route path='/:userId' element={<Favorites />} />
-				<Route path='/:userId/top-artists' element={<TopArtists />} />
-				<Route path='/:userId/top-tracks' element={<TopTracks />} />
+				<Route path='/' element={<Favorites />} />
+				<Route path='/top-artists' element={<TopArtists />} />
+				<Route path='/top-tracks' element={<TopTracks />} />
 			</AuthRoute>
 			<Route path='redirect' >
 				<Redirect />
@@ -60,9 +65,9 @@ const AppRoutes = () => {
 			<AuthRoute path='search' >
 				<Route path='/' element={<Search />} />
 				<Route path='/:searchQuery' element={<Search />} />
-				<Route path='/:searchQuery/albums' element={<SearchAlbums />} />
-				<Route path='/:searchQuery/artists' element={<SearchArtists />} />
-				<Route path='/:searchQuery/tracks' element={<SearchTracks />} />
+				<Route path='/:searchQuery/albums' element={<SearchResults type="albums" />} />
+				<Route path='/:searchQuery/artists' element={<SearchResults type="artists" />} />
+				<Route path='/:searchQuery/tracks' element={<SearchResults type="tracks" />} />
 			</AuthRoute>
 			<AuthRoute path='artist' >
 				<Route path='/:artistId' element={<Artist />} />
