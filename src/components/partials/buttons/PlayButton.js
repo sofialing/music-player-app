@@ -5,7 +5,7 @@ const PlayButton = ({ uri, type }) => {
 	const { playContext } = usePlayer();
 
 	return (
-		<button className="play-btn" title={`Play ${type}`} aria-label={`Play ${type}`} onClick={() => playContext(uri)}>
+		<button className="play-btn" aria-label={`Play ${type}`} onClick={() => playContext(uri)}>
 			<PlayArrowIcon style={{ fontSize: 32 }} />
 		</button>
 	)

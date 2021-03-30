@@ -24,7 +24,6 @@ const Category = () => {
 		];
 		Promise.all(FETCH_DATA)
 			.then(([category, playlists]) => {
-				document.title = process.env.REACT_APP_PAGE_TITLE + category.name;
 				setCategory(category);
 				setPlaylists(playlists);
 				setLoading(false);
@@ -44,7 +43,7 @@ const Category = () => {
 	}
 
 	return (
-		<MainView id="category">
+		<MainView id="category" pageTitle={category.name}>
 			<PageHeader title={category.name} />
 			<GridSection items={playlists.items} limit={playlists.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

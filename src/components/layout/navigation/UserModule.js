@@ -17,7 +17,7 @@ const UserModule = ({ user, logout }) => {
 				</button>
 				<ul className="user-settings__menu" aria-hidden={!toggle}>
 					<li className="user-settings__menu--item"><Link to="/profile">Profile</Link></li>
-					<li className="user-settings__menu--item"><button onClick={logout}>Logga ut</button></li>
+					<li className="user-settings__menu--item"><button onClick={logout}>Log out</button></li>
 				</ul>
 			</div>
 		</div>

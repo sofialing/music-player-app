@@ -17,10 +17,6 @@ const Discover = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Discover';
-	}, [])
-
-	useEffect(() => {
 		const FETCH_DATA = [
 			getRecommendations(top_artists.items, top_tracks.items),
 			getNewReleases(),
@@ -50,7 +46,7 @@ const Discover = () => {
 	}
 
 	return (
-		<MainView id="discover">
+		<MainView id="discover" pageTitle="Discover">
 			<PageHeader title="Discover new music" />
 			<GridSection title="Recommended For You" link="recommendations" items={recommendations} />
 			<GridSection title="New albums & singles" link="new-releases" items={releases.items} />

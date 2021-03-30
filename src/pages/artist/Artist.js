@@ -27,7 +27,6 @@ const Artist = () => {
 		Promise.all(FETCH_DATA)
 			.then(data => {
 				const [artist, topTracks, relatedArtists, albums] = data;
-				document.title = process.env.REACT_APP_PAGE_TITLE + artist.name;
 				setArtist(artist);
 				setTopTracks(topTracks);
 				setRelatedArtists(relatedArtists);
@@ -49,7 +48,7 @@ const Artist = () => {
 	}
 
 	return (
-		<MainView id="artist" >
+		<MainView id="artist" pageTitle={artist.name}>
 			<HeroSection
 				title={artist.name}
 				subtitle={artist.type}

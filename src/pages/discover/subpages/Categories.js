@@ -15,10 +15,6 @@ const Categories = () => {
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(categories);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Genres & themes';
-	}, [])
-
-	useEffect(() => {
 		getCategories({ limit, offset: (currentPage - 1) * limit })
 			.then(categories => {
 				setCategories(categories);
@@ -40,7 +36,7 @@ const Categories = () => {
 	}
 
 	return (
-		<MainView id="categories">
+		<MainView id="categories" pageTitle="Genres & themes">
 			<PageHeader title="Genres & themes" />
 			<GridSection items={categories.items} limit={categories.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

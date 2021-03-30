@@ -21,7 +21,6 @@ const Playlist = () => {
 		];
 		Promise.all(FETCH_DATA)
 			.then(([playlist, tracks]) => {
-				document.title = process.env.REACT_APP_PAGE_TITLE + playlist.name;
 				setPlaylist(playlist);
 				setTracks(tracks);
 				setLoading(false);
@@ -41,7 +40,7 @@ const Playlist = () => {
 	}
 
 	return (
-		<MainView id="playlist">
+		<MainView id="playlist" pageTitle={playlist.name}>
 			<HeroSection
 				title={playlist.name}
 				subtitle={playlist.type}

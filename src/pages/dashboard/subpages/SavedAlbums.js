@@ -15,10 +15,6 @@ const SavedAlbums = () => {
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(savedAlbums);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Dashboard';
-	}, [])
-
-	useEffect(() => {
 		getUsersSavedAlbums({ limit, offset: (currentPage - 1) * limit })
 			.then(artists => {
 				setSavedAlbums(artists);
@@ -39,7 +35,7 @@ const SavedAlbums = () => {
 	}
 
 	return (
-		<MainView id="user-albums">
+		<MainView id="user-albums" pageTitle="Dashboard">
 			<PageHeader title="Albums" />
 			<GridSection items={savedAlbums.items} limit={savedAlbums.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

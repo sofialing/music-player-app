@@ -6,7 +6,7 @@ const Error = () => {
 	const navigate = useNavigate();
 
 	return (
-		<MainView id="error">
+		<MainView id="error" pageTitle="Oh no!">
 			<a href="https://storyset.com/web">
 				<img src={imgSrc} alt="Bug fixing Cartoon" title="Illustration by Freepik Storyset" />
 			</a>

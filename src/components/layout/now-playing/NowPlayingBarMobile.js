@@ -1,36 +1,25 @@
-import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import noImage from 'assets/images/no-image.png'
 import { usePlayback } from 'contexts/PlaybackContext';
-import ProgressBar from 'components/partials/ProgressBar';
-import { getArtists } from 'utils';
+import CurrentTrack from './partials/CurrentTrack';
+import PlayerControls from './partials/PlayerControls';
+import PlaybackBar from './partials/PlaybackBar';
 
-const NowPlayingBarMobile = () => {
-	const { current_track, is_playing, player, dispatch } = usePlayback();
-	const imageSrc = current_track && current_track.album.images.length ? current_track.album.images[0]['url'] : noImage;
+const NowPlayingBarMobile = ({ currentPosition, progress }) => {
+	const { current_track, is_playing, dispatch } = usePlayback();
 
-	const togglePlay = async () => {
-		await player.togglePlay();
-	}
-
-	const openPlayer = () => {
+	const expandPlayer = () => {
 		dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: true })
 	}
 
-	return current_track && (
-		<footer className="now-playing-bar">
-			<ProgressBar />
+	return (
+		<footer className="now-playing-bar mobile">
+			<PlaybackBar currentPosition={currentPosition} progress={progress} duration={current_track.duration_ms} />
 			<div className="now-playing-bar__inner">
-				<img src={imageSrc} alt="album cover" />
-				<div className="now-playing-bar__current">
-					<div className="now-playing-bar__current--track">{current_track.name}</div>
-					<div className="now-playing-bar__current--artist">{getArtists(current_track.artists)}</div>
-				</div>
-				<div className="now-playing-bar__controls">
-					{is_playing ? <PauseCircleOutlineIcon onClick={togglePlay} /> : <PlayCircleOutlineIcon onClick={togglePlay} />}
-					<ExpandLessIcon onClick={openPlayer} />
-				</div>
+				<CurrentTrack track={current_track} />
+				<PlayerControls is_playing={is_playing} />
+				<button className="expand" aria-label="Expand player" onClick={expandPlayer}>
+					<ExpandLessIcon />
+				</button>
 			</div>
 		</footer>
 	)

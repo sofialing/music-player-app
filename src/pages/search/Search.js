@@ -35,7 +35,7 @@ const Search = () => {
 	}
 
 	return (
-		<MainView id="search">
+		<MainView id="search" pageTitle={searchQuery ? `Search: ${searchQuery}` : 'Search'}>
 			<PageHeader title="Search music" />
 			<SearchField searchRef={searchRef} onSubmit={onSubmit} />
 			{searchResults && searchResults.map(result => (

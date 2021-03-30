@@ -22,7 +22,6 @@ const RelatedArtists = () => {
 		Promise.all(FETCH_DATA)
 			.then(data => {
 				const [artist, relatedArtists] = data;
-				document.title = process.env.REACT_APP_PAGE_TITLE + 'Related artists';
 				setArtist(artist);
 				setRelatedArtists(relatedArtists);
 				setLoading(false);
@@ -42,7 +41,7 @@ const RelatedArtists = () => {
 	}
 
 	return (
-		<MainView id="related-artists">
+		<MainView id="related-artists" pageTitle={artist.name}>
 			<PageHeader title={`Artists like ${artist.name}`} />
 			<GridSection items={relatedArtists} limit={18} />
 		</MainView>

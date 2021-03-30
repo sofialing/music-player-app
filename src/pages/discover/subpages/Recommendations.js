@@ -14,10 +14,6 @@ const Recommendations = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Recommendations';
-	}, [])
-
-	useEffect(() => {
 		getRecommendations(top_artists.items, top_tracks.items)
 			.then(tracks => {
 				setRecommendations(tracks);
@@ -39,7 +35,7 @@ const Recommendations = () => {
 	}
 
 	return (
-		<MainView id="recommendations">
+		<MainView id="recommendations" pageTitle="Recommendations">
 			<PageHeader title="Recommended for you" />
 			<ListSection items={recommendations} />
 		</MainView>

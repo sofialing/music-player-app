@@ -18,7 +18,6 @@ const FeaturedPlaylists = () => {
 	useEffect(() => {
 		getFeaturedPlaylists({ limit, offset: (currentPage - 1) * limit })
 			.then(({ message, playlists }) => {
-				document.title = process.env.REACT_APP_PAGE_TITLE + message;
 				setTitle(message);
 				setPlaylists(playlists);
 				setLoading(false);
@@ -37,7 +36,7 @@ const FeaturedPlaylists = () => {
 	}
 
 	return (
-		<MainView id="featured-playlists">
+		<MainView id="featured-playlists" pageTitle={title}>
 			<PageHeader title={title} />
 			<GridSection items={playlists.items} limit={playlists.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

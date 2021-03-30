@@ -25,7 +25,6 @@ const Discography = () => {
 		Promise.all(FETCH_DATA)
 			.then(data => {
 				const [albums, compilations, singles] = data;
-				document.title = process.env.REACT_APP_PAGE_TITLE + 'Discography';
 				setAlbums(albums);
 				setCompilations(compilations);
 				setSingles(singles);
@@ -46,7 +45,7 @@ const Discography = () => {
 	}
 
 	return (
-		<MainView id="artist-discography">
+		<MainView id="artist-discography" pageTitle="Discography">
 			<PageHeader title="Discography" />
 			{albums.total && <ListSection items={albums.items} title="Albums" />}
 			{singles.total && <ListSection items={singles.items} title="Singles" />}

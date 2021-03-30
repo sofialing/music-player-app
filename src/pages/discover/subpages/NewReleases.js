@@ -15,10 +15,6 @@ const NewReleases = () => {
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(releases, 24);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'New releases';
-	}, [])
-
-	useEffect(() => {
 		getNewReleases({ limit, offset: (currentPage - 1) * limit })
 			.then(releases => {
 				setReleases(releases);
@@ -41,7 +37,7 @@ const NewReleases = () => {
 	}
 
 	return (
-		<MainView id="new-releases">
+		<MainView id="new-releases" pageTitle="New releases">
 			<PageHeader title="New albums & singles" />
 			<GridSection items={releases.items} limit={releases.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

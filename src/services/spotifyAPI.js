@@ -822,3 +822,23 @@ export const pause = async (device_id, options = {}) => {
 	const response = await put('/me/player/pause', device_id, options);
 	return response;
 }
+
+/**
+ * Skips to next track in the user’s queue.
+ *
+ * @param {Object} options A JSON object with options that can be passed.
+ */
+export const next = async (device_id, options = {}) => {
+	const response = await put('me/player/next', device_id, options);
+	return response;
+}
+
+/**
+ * Skips to previous track in the user’s queue.
+ *
+ * @param {Object} options A JSON object with options that can be passed.
+ */
+export const previous = async (device_id, options = {}) => {
+	const response = await put('me/player/previous', device_id, options);
+	return response;
+}

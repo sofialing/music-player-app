@@ -16,10 +16,6 @@ const Dashboard = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Dashboard';
-	}, [])
-
-	useEffect(() => {
 		const FETCH_DATA = [
 			getUsersSavedAlbums(),
 			getFollowedArtists(),
@@ -45,7 +41,7 @@ const Dashboard = () => {
 	}
 
 	return (
-		<MainView id="dashboard">
+		<MainView id="dashboard" pageTitle="Dashboard">
 			<PageHeader title="Your music" />
 			<DiscoverCard playlist={discover_weekly} user={user} />
 			<GridSection title="Playlists" link="playlists" items={user_playlists.items} />

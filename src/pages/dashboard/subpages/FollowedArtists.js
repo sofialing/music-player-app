@@ -15,10 +15,6 @@ const FollowedArtists = () => {
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(followedArtists);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Dashboard';
-	}, [])
-
-	useEffect(() => {
 		getFollowedArtists({ limit, offset: (currentPage - 1) * limit })
 			.then(artists => {
 				setFollowedArtists(artists);
@@ -39,7 +35,7 @@ const FollowedArtists = () => {
 	}
 
 	return (
-		<MainView id="user-artists">
+		<MainView id="user-artists" pageTitle="Dashboard">
 			<PageHeader title="Artists" />
 			<GridSection items={followedArtists.items} limit={followedArtists.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

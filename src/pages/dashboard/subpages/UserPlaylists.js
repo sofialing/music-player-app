@@ -15,10 +15,6 @@ const UserPlaylists = () => {
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(userPlaylists);
 
 	useEffect(() => {
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Dashboard';
-	}, [])
-
-	useEffect(() => {
 		getUserPlaylists({ limit, offset: (currentPage - 1) * limit })
 			.then(playlists => {
 				setUserPlaylists(playlists);
@@ -39,7 +35,7 @@ const UserPlaylists = () => {
 	}
 
 	return (
-		<MainView id="user-playlists">
+		<MainView id="user-playlists" pageTitle="Dashboard">
 			<PageHeader title="Playlists" />
 			<GridSection items={userPlaylists.items} limit={userPlaylists.limit} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

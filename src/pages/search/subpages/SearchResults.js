@@ -55,7 +55,7 @@ const SearchResults = ({ type }) => {
 	}
 
 	return (
-		<MainView>
+		<MainView pageTitle={`Search: ${searchQuery}`}>
 			<PageHeader title={`All ${type} for '${searchQuery}'`} />
 			<ListSection type={type} items={results.items} />
 			<Pagination currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} maxPage={maxPage} />

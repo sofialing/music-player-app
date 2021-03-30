@@ -10,9 +10,9 @@ const usePlayback = () => {
 }
 
 const PlaybackContextProvider = ({ children }) => {
+	const { access_token } = useAuth();
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [scriptLoaded, setScriptLoaded] = useState(false);
-	const { access_token } = useAuth();
 
 	const initSpotifySDK = () => {
 		const script = document.createElement('script');
@@ -46,6 +46,7 @@ const PlaybackContextProvider = ({ children }) => {
 			player.addListener('player_state_changed', (state) => {
 				if (!state) {
 					dispatch({ type: 'SET_IS_PLAYING', is_playing: false });
+					dispatch({ type: 'SET_CURRENT_TRACK', current_track: null });
 					document.body.classList.remove('has-playing-bar');
 					return;
 				}

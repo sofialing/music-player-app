@@ -16,7 +16,6 @@ const Album = () => {
 	useEffect(() => {
 		getAlbum(albumId)
 			.then(data => {
-				document.title = process.env.REACT_APP_PAGE_TITLE + data.name;
 				setAlbum(data);
 				setLoading(false);
 			})
@@ -32,7 +31,7 @@ const Album = () => {
 	}
 
 	return (
-		<MainView id="album">
+		<MainView id="album" pageTitle={album.name}>
 			<HeroSection
 				title={album.name}
 				subtitle={album.type}
