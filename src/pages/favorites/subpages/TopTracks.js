@@ -1,7 +1,7 @@
 import { useAuth } from 'contexts/AuthContext';
-import MainView from 'components/layout/views/MainView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import ListSection from 'components/layout/sections/ListSection';
+import MainView from 'components/views/MainView';
+import PageHeader from 'components/sections/PageHeader';
+import ListSection from 'components/sections/ListSection';
 
 const TopTracks = () => {
 	const { top_tracks } = useAuth();

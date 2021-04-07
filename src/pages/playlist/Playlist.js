@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPlaylist, getPlaylistTracks } from 'services/spotifyAPI'
-import ErrorView from 'components/layout/views/ErrorView';
-import LoadingView from 'components/layout/views/LoadingView';
-import MainView from 'components/layout/views/MainView';
-import ListSection from 'components/layout/sections/ListSection';
-import HeroSection from 'components/layout/sections/HeroSection';
+import ErrorView from 'components/views/ErrorView';
+import LoadingView from 'components/views/LoadingView';
+import MainView from 'components/views/MainView';
+import ListSection from 'components/sections/ListSection';
+import HeroSection from 'components/sections/HeroSection';
 
 const Playlist = () => {
 	const { playlistId } = useParams();

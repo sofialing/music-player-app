@@ -2,14 +2,14 @@
 @import url('https://use.typekit.net/rml1yom.css');
 
 body {
-	color: color(black, lightest);
+	color: $c-white;
 	font-family: canada-type-gibson, sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
 }
 
 h1, h2, h3, h4, h5 {
-	color: white;
+	color: $c-white;
 	font-weight: 600;
 	line-height: 1.3;
 	letter-spacing: .025em;

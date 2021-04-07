@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PlayButton from 'components/partials/buttons/PlayButton';
+import PlayButton from 'components/buttons/PlayButton';
 import noImage from 'assets/images/no-image.png';
 
 const DiscoverCard = ({ playlist, user }) => {

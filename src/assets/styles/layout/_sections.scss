@@ -31,9 +31,9 @@
 				transition: transform .3s ease-in-out, color .3s ease-in-out;
 			}
 			&:hover {
-				color: $color-white;
+				color: $c-white;
 				svg {
-					color: $color-white;
+					color: $c-white;
 					transform: translateX(.125rem);
 				}
 			}
@@ -64,7 +64,7 @@
 		}
 		a:focus {
 			outline: none;
-			box-shadow: 0 0 0 3px $color-white;
+			box-shadow: 0 0 0 3px $c-white;
 		}
 		@include mq(md) {
 			gap: 1.5rem;

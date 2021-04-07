@@ -1,5 +1,5 @@
 import imgSrc from 'assets/images/page-missing.png';
-import MainView from 'components/layout/views/MainView';
+import MainView from 'components/views/MainView';
 
 const PageMissing = () => {
 	return (

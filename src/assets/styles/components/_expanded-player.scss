@@ -1,8 +1,9 @@
 @use '../abstracts' as *;
 
 .expanded-player {
-	background: $color-black;
-	color: $color-white;
+	background-color: $c-black;
+	background: linear-gradient(transparent, $c-black);
+	color: $c-white;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -46,7 +47,7 @@
 		width: 100%;
 		text-align: center;
 		&__cover {
-			box-shadow: 1px 4px 12px #00000072;
+			box-shadow: 1px 4px 12px $c-gray-10;
 			margin: 0 auto 1.5rem;
 		}
 		&__details {

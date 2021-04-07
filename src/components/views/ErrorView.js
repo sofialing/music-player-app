@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import imgSrc from 'assets/images/error.svg';
-import MainView from 'components/layout/views/MainView';
+import MainView from 'components/views/MainView';
 
 const Error = () => {
 	const navigate = useNavigate();

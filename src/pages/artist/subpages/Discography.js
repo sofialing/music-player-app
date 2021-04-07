@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArtistAlbums } from 'services/spotifyAPI';
-import ErrorView from 'components/layout/views/ErrorView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import ListSection from 'components/layout/sections/ListSection';
-import MainView from 'components/layout/views/MainView';
-import LoadingView from 'components/layout/views/LoadingView';
+import ErrorView from 'components/views/ErrorView';
+import PageHeader from 'components/sections/PageHeader';
+import ListSection from 'components/sections/ListSection';
+import MainView from 'components/views/MainView';
+import LoadingView from 'components/views/LoadingView';
 
 
 const Discography = () => {

@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { searchAlbums, searchArtists, searchTracks } from 'services/spotifyAPI';
 import usePagination from 'hooks/usePagination';
-import MainView from 'components/layout/views/MainView';
-import Pagination from 'components/layout/navigation/Pagination';
-import PageHeader from 'components/layout/sections/PageHeader';
-import ListSection from 'components/layout/sections/ListSection';
-import ErrorView from 'components/layout/views/ErrorView';
-import LoadingView from 'components/layout/views/LoadingView';
+import MainView from 'components/views/MainView';
+import Pagination from 'components/navigation/Pagination';
+import PageHeader from 'components/sections/PageHeader';
+import ListSection from 'components/sections/ListSection';
+import ErrorView from 'components/views/ErrorView';
+import LoadingView from 'components/views/LoadingView';
 
 const SearchResults = ({ type }) => {
 	const { searchQuery } = useParams();

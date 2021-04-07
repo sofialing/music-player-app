@@ -1,7 +1,7 @@
 import { useAuth } from 'contexts/AuthContext';
-import MainView from 'components/layout/views/MainView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import GridSection from 'components/layout/sections/GridSection';
+import MainView from 'components/views/MainView';
+import PageHeader from 'components/sections/PageHeader';
+import GridSection from 'components/sections/GridSection';
 
 const TopArtists = () => {
 	const { top_artists } = useAuth();

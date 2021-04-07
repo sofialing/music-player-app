@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getUserPlaylists } from 'services/spotifyAPI';
 import usePagination from 'hooks/usePagination';
-import Pagination from 'components/layout/navigation/Pagination';
-import LoadingView from 'components/layout/views/LoadingView';
-import MainView from 'components/layout/views/MainView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import GridSection from 'components/layout/sections/GridSection';
-import ErrorView from 'components/layout/views/ErrorView';
+import Pagination from 'components/navigation/Pagination';
+import LoadingView from 'components/views/LoadingView';
+import MainView from 'components/views/MainView';
+import PageHeader from 'components/sections/PageHeader';
+import GridSection from 'components/sections/GridSection';
+import ErrorView from 'components/views/ErrorView';
 
 const UserPlaylists = () => {
 	const [userPlaylists, setUserPlaylists] = useState([]);

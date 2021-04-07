@@ -1,6 +1,6 @@
 import noImage from 'assets/images/no-image.png';
 import usePlayer from 'hooks/usePlayer';
-import ToggleButton from 'components/partials/buttons/ToggleButton';
+import ToggleButton from 'components/buttons/ToggleButton';
 
 const TrackListItem = ({ track, displayAlbumTitle = true }) => {
 	const imgSrc = track.image_url ? track.image_url : noImage;

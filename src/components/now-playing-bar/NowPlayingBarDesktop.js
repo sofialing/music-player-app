@@ -22,7 +22,7 @@ const NowPlayingBarDesktop = ({ currentPosition, progress }) => {
 				<PlaybackBar currentPosition={currentPosition} progress={progress} duration={current_track.duration_ms} />
 			</div>
 			<div className="now-playing-bar__column">
-				<button class="expand" aria-label="Expand player" onClick={expandPlayer}>
+				<button className="expand" aria-label="Expand player" onClick={expandPlayer}>
 					<UnfoldMoreIcon />
 				</button>
 			</div>

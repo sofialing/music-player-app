@@ -7,7 +7,7 @@
 	&__form {
 		position: relative;
 		&--input {
-			color: $color-black;
+			color: $c-black;
 			font-family: $font-family;
 			font-size: .875rem;
 			font-weight: 300;
@@ -20,7 +20,7 @@
 			text-overflow: ellipsis;
 			position: relative;
 			&::placeholder {
-				color: $color-black;
+				color: $c-black;
 				font-family: $font-family;
 				font-size: .875rem;
 				font-weight: 300;
@@ -28,7 +28,7 @@
 			}
 			&:focus {
 				outline: none;
-				box-shadow: 0 0 0 2px $color-lightgrey;
+				box-shadow: 0 0 0 2px $c-gray-50;
 			}
 		}
 		&--icon {
@@ -42,7 +42,7 @@
 			bottom: 0;
 			left: .75rem;
 			svg {
-				color: $color-darkgrey;
+				color: $c-gray-20;
 			}
 		}
 	}

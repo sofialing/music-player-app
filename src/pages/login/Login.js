@@ -1,5 +1,5 @@
 import Headphones from 'pages/login/Headphones';
-import MainView from 'components/layout/views/MainView';
+import MainView from 'components/views/MainView';
 
 const Login = () => {
 	const redirect = () => window.location.href = process.env.REACT_APP_BACKEND_URI;

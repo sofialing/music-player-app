@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AlbumCard from 'components/partials/cards/AlbumCard';
-import TrackCard from 'components/partials/cards/TrackCard';
-import ArtistCard from 'components/partials/cards/ArtistCard';
-import PlaylistCard from 'components/partials/cards/PlaylistCard';
-import CategoryCard from 'components/partials/cards/CategoryCard';
+import AlbumCard from 'components/cards/AlbumCard';
+import TrackCard from 'components/cards/TrackCard';
+import ArtistCard from 'components/cards/ArtistCard';
+import PlaylistCard from 'components/cards/PlaylistCard';
+import CategoryCard from 'components/cards/CategoryCard';
 import useViewport from 'hooks/useViewport';
 
 const GridSection = ({ items, title = null, link = null, limit = null }) => {
@@ -36,7 +36,10 @@ const GridSection = ({ items, title = null, link = null, limit = null }) => {
 				{link && <Link className="grid-section__header--link" to={link}><span>View all</span><ChevronRightIcon /></Link>}
 			</header>
 			<ul className="grid-section__grid">
-				{items.slice(0, limit || gridItems).map(item => renderCard(item.type, item))}
+				{items.length
+					? (items.slice(0, limit || gridItems).map(item => renderCard(item.type, item)))
+					: <li>Nothing to display.</li>
+				}
 			</ul>
 		</section>
 	)

@@ -3,8 +3,6 @@
 .main-view {
 	position: relative;
 	padding: 2.25rem 0 calc(80px + 2.5rem);
-	// padding: 2.25rem 1.25rem;
-	// padding-bottom: calc(80px + 2.5rem);
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
 	overflow-y: scroll;
@@ -18,21 +16,16 @@
 	}
 	@include mq(md) {
 		padding: 2.5rem 0 calc(80px + 3rem);
-		// padding: 2.5rem;
-		// padding-bottom: calc(80px + 3rem);
 		section + section {
 			margin-top: 2.5rem;
 		}
 	}
 	@include mq(lg) {
 		grid-area: main-view;
-		padding-top: calc(72px + 2.5rem);
-
-		// padding: 2.5rem;
-		// padding-top: calc(72px + 2.5rem);
-		min-height: 0;
 		height: auto;
+		min-height: 0;
 		width: 100%;
+		padding-top: calc(72px + 2.5rem);
 		section {
 			margin-top: 2.5rem;
 		}

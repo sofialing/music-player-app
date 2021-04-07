@@ -1,10 +1,10 @@
 import AuthContextProvider from 'contexts/AuthContext';
 import PlaybackContextProvider from 'contexts/PlaybackContext';
 import ViewportContextProvider from 'contexts/ViewportContext';
-import Navbar from 'components/layout/navigation/Navbar';
-import NowPlayingBar from 'components/layout/now-playing/NowPlayingBar';
+import Navbar from 'components/navigation/Navbar';
+import NowPlayingBar from 'components/now-playing-bar/NowPlayingBar';
 import AppRoutes from 'routes/AppRoutes';
-import TopNavbar from 'components/layout/navigation/TopNavbar';
+import TopNavbar from 'components/navigation/TopNavbar';
 
 const App = () => {
 	return (

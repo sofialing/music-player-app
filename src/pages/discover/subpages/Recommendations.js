@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { getRecommendations } from 'services/spotifyAPI';
-import ErrorView from 'components/layout/views/ErrorView';
-import LoadingView from 'components/layout/views/LoadingView';
-import MainView from 'components/layout/views/MainView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import ListSection from 'components/layout/sections/ListSection';
+import ErrorView from 'components/views/ErrorView';
+import LoadingView from 'components/views/LoadingView';
+import MainView from 'components/views/MainView';
+import PageHeader from 'components/sections/PageHeader';
+import ListSection from 'components/sections/ListSection';
 
 const Recommendations = () => {
 	const { top_artists, top_tracks } = useAuth();

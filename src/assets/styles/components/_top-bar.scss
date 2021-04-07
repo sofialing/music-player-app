@@ -2,8 +2,7 @@
 @use '../utilities' as *;
 
 .top-bar {
-	background-color: rgba($color-black, .75);
-	grid-area: main-view;
+	background-color: rgba($c-gray-5, .75);
 	position: sticky;
 	height: 72px;
 	z-index: 5;
@@ -19,7 +18,7 @@
 		display: flex;
 		&--prev,
 		&--forward {
-			background-color: $color-darkergrey;
+			background-color: $c-gray-10;
 			border-radius: 50%;
 			border: none;
 			cursor: pointer;
@@ -30,9 +29,12 @@
 			align-items: center;
 			margin-right: 1rem;
 			svg {
-				color: $color-white;
+				color: $c-white;
 			}
 		}
+	}
+	@include mq(lg) {
+		grid-area: main-view;
 	}
 }
 
@@ -41,10 +43,10 @@
 		position: relative;
 	}
 	&__btn {
-		background-color: $color-darkergrey;
+		background-color: $c-gray-10;
 		border: none;
 		border-radius: $border-radius;
-		color: $color-white;
+		color: $c-white;
 		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
@@ -55,7 +57,7 @@
 		transition: background-color .5s $ease;
 		&:hover,
 		&:focus {
-			background-color: $color-darkgrey;
+			background-color: $c-gray-15;
 			outline: none;
 		}
 		&--img {
@@ -94,7 +96,7 @@
 		}
 	}
 	&__menu {
-		background-color: $color-darkergrey;
+		background-color: $c-gray-10;
 		border-radius: 4px;
 		border: 1px solid rgba(0,0,0,.1);
 		box-shadow: 0 4px 4px rgba(0,0,0,.7);
@@ -116,12 +118,12 @@
 			font-size: .875rem;
 			line-height: 2rem;
 			letter-spacing: .04em;
-			color: $color-white;
+			color: $c-white;
 			width: 100%;
 			padding: .25em .75em;
 			transition: background-color .3s ease-in-out;
 			&:hover {
-				background-color: $color-darkgrey;
+				background-color: $c-gray-15;
 			}
 		}
 		&--item button {
@@ -138,7 +140,7 @@
 			display: block;
 		}
 		&--item + &--item {
-			border-top: 1px solid $color-grey;
+			border-top: 1px solid $c-gray-15;
 		}
 	}
 }

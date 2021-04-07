@@ -3,14 +3,10 @@
 $side-padding: 1.75rem;
 
 .navbar {
-	@extend .container;
-	background: #0e0e0e;
-	border-top: 1px solid $color-darkgrey;
+	background: $c-gray-15;
+	border-top: 1px solid $c-gray-10;
 	height: 80px;
-	margin-right: auto;
-	margin-left: auto;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding: .875rem 1rem .875rem;
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -19,21 +15,23 @@ $side-padding: 1.75rem;
 	z-index: 1;
 	&__menu {
 		display: flex;
-		list-style: none;
+		align-items: flex-end;
 		justify-content: space-between;
+		height: 100%;
+		list-style: none;
 		margin: 0;
 		padding: 0;
 		&--item {
 			flex-basis: 100%;
 		}
 		&--item a {
-			color: $color-white;
+			color: $c-white;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
 			svg {
-				color: #fff;
+				color: $c-white;
 				transition: transform .5s ease-in-out;
 			}
 			span {
@@ -67,7 +65,7 @@ $side-padding: 1.75rem;
 		&--list {
 			list-style: none;
 			margin: .5rem 0 0;
-			max-height: 450px;
+			max-height: 400px;
 			padding: 0;
 			overflow: scroll;
 		}
@@ -82,12 +80,14 @@ $side-padding: 1.75rem;
 			letter-spacing: .0375em;
 		}
 		p {
-			color: $color-lightgrey;
+			color: $c-gray-95;
+			margin-top: .625rem;
 		}
 	}
 	@include mq(lg) {
 		&__menu {
 			display: block;
+			height: auto;
 			margin: 1.5rem 0;
 			&--item {
 				padding: 0 .5rem;
@@ -113,7 +113,7 @@ $side-padding: 1.75rem;
 					transition: transform .5s ease-in-out;
 				}
 				&:hover {
-					background-color: color(black, darker);
+					background-color: $c-gray-10;
 					text-decoration: none;
 					svg {
 						transform: scale(1.1);
@@ -125,11 +125,11 @@ $side-padding: 1.75rem;
 }
 
 .navbar-desktop {
-	background: color(black, darkest);
+	background: $c-black;
 	border: none;
 	grid-area: navbar;
 	height: initial;
 	width: 250px;
-	padding: 2rem 0;
+	padding: 2rem 0 calc(95px + 2rem);
 	position: initial;
 }

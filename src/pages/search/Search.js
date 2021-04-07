@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { searchAll } from 'services/spotifyAPI';
-import PageHeader from 'components/layout/sections/PageHeader';
-import GridSection from 'components/layout/sections/GridSection';
-import MainView from 'components/layout/views/MainView';
-import SearchField from 'components/partials/SearchField';
+import PageHeader from 'components/sections/PageHeader';
+import GridSection from 'components/sections/GridSection';
+import MainView from 'components/views/MainView';
+import SearchField from 'components/SearchField';
 
 const Search = () => {
 	const navigate = useNavigate();

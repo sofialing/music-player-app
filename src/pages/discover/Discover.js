@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { getFeaturedPlaylists, getNewReleases, getCategories, getRecommendations } from 'services/spotifyAPI';
-import LoadingView from 'components/layout/views/LoadingView';
-import ErrorView from 'components/layout/views/ErrorView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import MainView from 'components/layout/views/MainView';
-import GridSection from 'components/layout/sections/GridSection';
+import LoadingView from 'components/views/LoadingView';
+import ErrorView from 'components/views/ErrorView';
+import PageHeader from 'components/sections/PageHeader';
+import MainView from 'components/views/MainView';
+import GridSection from 'components/sections/GridSection';
 
 const Discover = () => {
 	const { top_artists, top_tracks } = useAuth();

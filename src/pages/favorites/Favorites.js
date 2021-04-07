@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { getMySavedTracks } from 'services/spotifyAPI';
-import ErrorView from 'components/layout/views/ErrorView';
-import LoadingView from 'components/layout/views/LoadingView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import MainView from 'components/layout/views/MainView';
-import GridSection from 'components/layout/sections/GridSection';
+import ErrorView from 'components/views/ErrorView';
+import LoadingView from 'components/views/LoadingView';
+import PageHeader from 'components/sections/PageHeader';
+import MainView from 'components/views/MainView';
+import GridSection from 'components/sections/GridSection';
 
 const Favorites = () => {
 	const { top_artists, top_tracks } = useAuth();

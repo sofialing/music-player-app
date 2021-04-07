@@ -1,5 +1,5 @@
 import noImage from 'assets/images/no-image.png';
-import PlayButton from 'components/partials/buttons/PlayButton';
+import PlayButton from 'components/buttons/PlayButton';
 
 const TrackCard = ({ track, album }) => {
 	const imgSrc = track.image_url ? track.image_url : noImage;

@@ -1,6 +1,11 @@
+@use 'sass:map';
+@use 'colors' as *;
+@use 'functions' as *;
+
+/* Type scale ratio*/
 $ratio: 1.250;
 
-// Typography
+/* Typography */
 $font-family: canada-type-gibson, sans-serif;
 $body-font-size: 1rem;
 
@@ -13,47 +18,29 @@ $h2: $h3 * $ratio;
 $h1: $h2 * $ratio;
 $h0: $h1 * $ratio;
 
-// Colors
-$color-black: #18191A;
-$color-darkergrey: #242526;
-$color-darkgrey: #2F3031;
-$color-grey: #3A3B3C;
-$color-lightgrey: #b3b3b3;
-$color-primary: #BA110B;
-$color-accent: #3578E5;
-$color-white: #ffff;
-// $color-primary: #CA3E47;
-// $color-dark: #313131;
-// $color-medium: #414141;
-// $color-light: #525252;
-// $color-white: #ffff;
+/* Colors */
+$c-primary: map.get($colors, 'primary');
+$c-secondary: map.get($colors, 'secondary');
+$c-black: gray(0);
+$c-gray-5: gray(5);
+$c-gray-10: gray(10);
+$c-gray-15: gray(15);
+$c-gray-20: gray(20);
+$c-gray-25: gray(25);
+$c-gray-30: gray(30);
+$c-gray-40: gray(40);
+$c-gray-50: gray(50);
+$c-gray-75: gray(75);
+$c-gray-95: gray(95);
+$c-white: gray(100);
 
-// Breakpoints
+/* Breakpoints */
 $sm-screen: 640px;
 $md-screen: 768px;
 $lg-screen: 1024px;
 $xl-screen: 1280px;
 
-// Widths
-$width-site: 1366px;
-
-// A map of breakpoints.
-// $breakpoints: (
-//   sm: 640px,
-//   md: 768px,
-//   lg: 1024px,
-//   xl: 1280px
-// );
-
-$color-black: #18191A;
-$color-gray-darkest: #242526;
-$color-gray-dark: #2F3031;
-$color-gray-medium: #3A3B3C;
-$color-gray-light: #b3b3b3;
-$color-primary: #F02849;
-$color-accent: #3578E5;
-$font-color-base: $color-gray-light;
-
+/* Misc */
 $border-radius: 1rem;
-$shadow: 0 .875rem 1.75rem rgba($color-black,.25), 0 .625rem .625rem rgba($color-black,.25);
+$shadow: 0 .875rem 1.75rem rgba($c-black,.25), 0 .625rem .625rem rgba($c-black,.25);
 $ease: cubic-bezier(.57,.21,.69,1.25);

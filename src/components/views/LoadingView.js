@@ -1,4 +1,4 @@
-import MainView from 'components/layout/views/MainView';
+import MainView from 'components/views/MainView';
 
 const LoadingView = () => {
 	return (

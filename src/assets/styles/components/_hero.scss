@@ -2,8 +2,8 @@
 @use '../utilities' as *;
 
 .hero {
-	background-color: $color-darkergrey;
-	background: linear-gradient(transparent, $color-black);
+	background-color: $c-gray-5;
+	background: linear-gradient(transparent, $c-gray-5);
 	padding-top: 3rem;
 	padding-bottom: 3rem;
 	position: relative;
@@ -12,7 +12,7 @@
 		@extend .container;
 	}
 	&__img {
-		box-shadow: 1px 4px 12px #00000072;
+		box-shadow: 1px 4px 12px $c-gray-5;
 		margin: 0 auto 2rem;
 		max-width: 75%;
 	}
@@ -59,7 +59,7 @@
 				display: initial;
 			}
 			&--desc {
-				color: $color-white;
+				color: $c-white;
 				font-size: 1rem;
 				max-width: 70ch;
 			}

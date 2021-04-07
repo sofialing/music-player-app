@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { getUsersSavedAlbums, getFollowedArtists } from 'services/spotifyAPI';
-import DiscoverCard from 'components/partials/cards/DiscoverCard';
-import ErrorView from 'components/layout/views/ErrorView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import GridSection from 'components/layout/sections/GridSection';
-import MainView from 'components/layout/views/MainView';
-import LoadingView from 'components/layout/views/LoadingView';
+import DiscoverCard from 'components/cards/DiscoverCard';
+import ErrorView from 'components/views/ErrorView';
+import PageHeader from 'components/sections/PageHeader';
+import GridSection from 'components/sections/GridSection';
+import MainView from 'components/views/MainView';
+import LoadingView from 'components/views/LoadingView';
 
 const Dashboard = () => {
 	const { discover_weekly, user_playlists, user } = useAuth();

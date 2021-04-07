@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { useAuth } from 'contexts/AuthContext';
-import LoadingView from 'components/layout/views/LoadingView';
+import LoadingView from 'components/views/LoadingView';
 import { setToken, getTopTracks, getTopArtists, getCurrentUser, getDiscoverWeekly, getUserPlaylists } from 'services/spotifyAPI'
 
 const Redirect = () => {

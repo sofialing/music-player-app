@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCategory, getCategoryPlaylists } from 'services/spotifyAPI';
 import usePagination from 'hooks/usePagination';
-import Pagination from 'components/layout/navigation/Pagination';
-import ErrorView from 'components/layout/views/ErrorView';
-import LoadingView from 'components/layout/views/LoadingView';
-import MainView from 'components/layout/views/MainView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import GridSection from 'components/layout/sections/GridSection';
+import Pagination from 'components/navigation/Pagination';
+import ErrorView from 'components/views/ErrorView';
+import LoadingView from 'components/views/LoadingView';
+import MainView from 'components/views/MainView';
+import PageHeader from 'components/sections/PageHeader';
+import GridSection from 'components/sections/GridSection';
 
 const Category = () => {
 	const { categoryId } = useParams();

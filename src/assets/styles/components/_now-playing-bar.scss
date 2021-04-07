@@ -1,16 +1,15 @@
 @use '../abstracts' as *;
 @use '../utilities' as *;
 
-.now-playing-bar.mobile {
-	background: $color-darkgrey;
-	height: auto;
+.now-playing-bar {
+	background: $c-gray-15;
 	position: absolute;
 	right: 0;
 	bottom: 80px;
 	left: 0;
 	width: 100%;
 	z-index: 2;
-	.now-playing-bar__inner {
+	&__inner {
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: center;
@@ -19,6 +18,7 @@
 	}
 	.currently-playing {
 		display: flex;
+		align-items: center;
 		&__cover {
 			width: 45px;
 		}
@@ -26,7 +26,7 @@
 			margin-left: .75rem;
 			&--track,
 			&--artist {
-				color: $color-white;
+				color: $c-white;
 				display: block;
 				font-size: .75rem;
 				line-height: 1.5;
@@ -42,8 +42,8 @@
 			}
 		}
 	}
-	.playback-bar {
-		background-color: $color-grey;
+	&:not(.desktop) .playback-bar {
+		background-color: transparent;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -54,39 +54,12 @@
 		}
 		&__progress {
 			border-radius: 0;
+			background-color: $c-gray-25;
 			height: 3px;
 			margin: 0;
 			&--bar {
-				background-color: $color-white;
+				background-color: $c-white;
 				border-radius: 0;
-			}
-		}
-	}
-}
-
-.now-playing-bar {
-	.currently-playing {
-		display: flex;
-		&__cover {
-			width: 45px;
-		}
-		&__details {
-			margin-left: .75rem;
-			&--track,
-			&--artist {
-				color: $color-white;
-				display: block;
-				font-size: .75rem;
-				line-height: 1.5;
-				letter-spacing: .05em;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				max-width: 120px;
-			}
-			&--track {
-				font-size: .875rem;
-				font-weight: 600;
 			}
 		}
 	}
@@ -97,7 +70,7 @@
 			width: 2.25rem;
 			margin: 0 0 0 .5rem;
 			svg {
-				color: $color-white;
+				color: $c-white;
 				font-size: 1.75rem;
 			}
 		}
@@ -107,11 +80,11 @@
 			width: 2.25rem;
 			svg {
 				font-size: 1.5rem;
-				color: $color-darkgrey;
+				color: $c-gray-20;
 			}
 		}
 	}
-	button.expand {
+	.expand {
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
@@ -119,70 +92,65 @@
 		justify-content: center;
 		align-items: center;
 		svg {
-			color: $color-white;
+			color: $c-white;
 		}
 		&:focus,
 		&:hover {
 			outline: none;
 		}
 	}
-}
-
-.now-playing-bar.desktop {
-	background: #0e0e0e;
-	border-top: 1px solid $color-darkgrey;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	grid-area: now-playing-bar;
-	width: 100%;
-	padding: 1rem;
-	height: 95px;
-	.now-playing-bar__column {
-		display: flex;
-		flex-wrap: wrap;
-		flex-basis: 100%;
-		flex: 1;
-		&:not(:first-of-type) {
-			margin-left: 2rem;
+	@include mq(lg) {
+		&.desktop {
+			background: $c-black;
+			border-top: 1px solid $c-gray-20;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem 1.75rem;
+			position: fixed;
+			bottom: 0;
 		}
-	}
-	.currently-playing {
-		align-items: center;
-		&__cover {
-			width: 55px;
-			height: 55px;
-		}
-		&__details--track,
-		&__details--artist {
-			max-width: 20vw;
-		}
-	}
-	.expand {
-		margin-left: auto;
-		svg {
-			font-size: 1.75rem;
-		}
-	}
-	.player-controls,
-	.playback-bar {
-		flex-basis: 100%;
-	}
-	.player-controls {
-		margin-bottom: .25rem;
-		button {
-			width: 2.25rem;
-			height: 2.25rem;
-			svg {
-				color: $color-lightgrey;
+		&__column {
+			display: flex;
+			flex-wrap: wrap;
+			flex-basis: 100%;
+			flex: 1;
+			&:not(:first-of-type) {
+				margin-left: 2rem;
 			}
 		}
-		button.play,
-		button.pause  {
-			width: 2.5rem;
-			height: 2.5rem;
+		.currently-playing {
+			&__cover {
+				width: 55px;
+				height: 55px;
+			}
+			&__details--track,
+			&__details--artist {
+				max-width: 20vw;
+			}
+		}
+		.player-controls,
+		.playback-bar {
+			flex-basis: 100%;
+		}
+		.player-controls {
+			margin-bottom: .25rem;
+			button svg {
+				color: $c-gray-75;
+			}
+			button.play,
+			button.pause  {
+				width: 2.5rem;
+				height: 2.5rem;
+				svg {
+					color: #0e0e0e;
+					font-size: 1.75rem;
+				}
+			}
+		}
+		.expand {
+			margin-left: auto;
 			svg {
-				color: #0e0e0e;
 				font-size: 1.75rem;
 			}
 		}

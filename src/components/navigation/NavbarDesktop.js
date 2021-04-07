@@ -40,7 +40,7 @@ const NavbarDesktop = () => {
 			</ul>
 			<div className="navbar__playlists" aria-label="User playlists">
 				<h1 className="navbar__playlists--title">Playlists</h1>
-				{user ? <UserPlaylists user_playlists={user_playlists} /> : <p>Log in to view your playlists</p>}
+				{user ? <UserPlaylists user_playlists={user_playlists} /> : <p>Log in to view your playlists.</p>}
 			</div>
 		</nav>
 	)

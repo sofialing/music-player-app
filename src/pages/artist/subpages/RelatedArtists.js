@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArtist, getArtistRelatedArtists } from 'services/spotifyAPI';
-import ErrorView from 'components/layout/views/ErrorView';
-import PageHeader from 'components/layout/sections/PageHeader';
-import MainView from 'components/layout/views/MainView';
-import LoadingView from 'components/layout/views/LoadingView';
-import GridSection from 'components/layout/sections/GridSection';
+import ErrorView from 'components/views/ErrorView';
+import PageHeader from 'components/sections/PageHeader';
+import MainView from 'components/views/MainView';
+import LoadingView from 'components/views/LoadingView';
+import GridSection from 'components/sections/GridSection';
 
 const RelatedArtists = () => {
 	const { artistId } = useParams();

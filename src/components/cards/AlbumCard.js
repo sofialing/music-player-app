@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import noImage from 'assets/images/no-image.png';
-import PlayButton from 'components/partials/buttons/PlayButton';
+import PlayButton from 'components/buttons/PlayButton';
 
 const AlbumCard = ({ album }) => {
 	const imgSrc = album.image_url ? album.image_url : noImage;

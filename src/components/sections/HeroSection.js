@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import FastAverageColor from 'fast-average-color';
 import noImage from 'assets/images/no-image.png';
-import PlayButton from 'components/partials/buttons/PlayButton';
+import PlayButton from 'components/buttons/PlayButton';
 
 const fac = new FastAverageColor();
 
