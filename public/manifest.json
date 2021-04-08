@@ -1,12 +1,7 @@
 {
-	"name": "Re:Music | PWA Music Player",
+	"name": "Re:music – Music Player",
 	"short_name": "Re:music",
 	"icons": [
-		{
-			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
-		},
 		{
 			"src": "/android-chrome-192x192.png",
 			"sizes": "192x192",
@@ -16,10 +11,18 @@
 			"src": "/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
+		},
+		{
+			"src": "/maskable_icon.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
 		}
 	],
-	"start_url": ".",
-	"display": "standalone",
-	"theme_color": "#f02849",
-	"background_color": "#f02849"
+	"orientation": "portrait",
+	"scope": "/",
+	"start_url": "/",
+	"display": "fullscreen",
+	"theme_color": "#0d0d0d",
+	"background_color": "#0d0d0d"
 }
