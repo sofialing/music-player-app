@@ -6,6 +6,7 @@
 	border-radius: 30rem;
 	color: $c-white;
 	font-size: .875rem;
+	font-weight: 500;
 	letter-spacing: .1em;
 	line-height: 1;
 	margin: 1.5rem auto;
@@ -16,6 +17,7 @@
 	&:hover {
 		cursor: pointer;
 		transform: scale(1.1);
+		text-decoration: none;
 	}
 }
 
