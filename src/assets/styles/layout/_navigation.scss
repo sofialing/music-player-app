@@ -3,8 +3,8 @@
 $side-padding: 1.75rem;
 
 .navbar {
-	background: $c-gray-15;
-	border-top: 1px solid $c-gray-10;
+	background: $gray-700;
+	border-top: 1px solid $gray-500;
 	height: 80px;
 	padding: .875rem 1rem .875rem;
 	position: absolute;
@@ -22,16 +22,20 @@ $side-padding: 1.75rem;
 		margin: 0;
 		padding: 0;
 		&--item {
-			flex-basis: 100%;
+			flex-grow: 1;
+			& + & {
+				margin-left: .25em;
+			}
 		}
 		&--item a {
-			color: $c-white;
+			color: $white;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
+			padding: .25em;
 			svg {
-				color: $c-white;
+				color: $white;
 				transition: transform .5s ease-in-out;
 			}
 			span {
@@ -80,7 +84,7 @@ $side-padding: 1.75rem;
 			letter-spacing: .0375em;
 		}
 		p {
-			color: $c-gray-95;
+			color: $gray-100;
 			margin-top: .625rem;
 		}
 	}
@@ -113,7 +117,7 @@ $side-padding: 1.75rem;
 					transition: transform .5s ease-in-out;
 				}
 				&:hover {
-					background-color: $c-gray-10;
+					background-color: $gray-700;
 					text-decoration: none;
 					svg {
 						transform: scale(1.1);
@@ -125,7 +129,7 @@ $side-padding: 1.75rem;
 }
 
 .navbar-desktop {
-	background: $c-black;
+	background: $black;
 	border: none;
 	grid-area: navbar;
 	height: initial;

@@ -2,7 +2,7 @@
 @use '../utilities' as *;
 
 .now-playing-bar {
-	background: $c-gray-15;
+	background: $gray-700;
 	position: absolute;
 	right: 0;
 	bottom: 80px;
@@ -26,7 +26,7 @@
 			margin-left: .75rem;
 			&--track,
 			&--artist {
-				color: $c-white;
+				color: $white;
 				display: block;
 				font-size: .75rem;
 				line-height: 1.5;
@@ -54,11 +54,11 @@
 		}
 		&__progress {
 			border-radius: 0;
-			background-color: $c-gray-25;
+			background-color: $gray-500;
 			height: 3px;
 			margin: 0;
 			&--bar {
-				background-color: $c-white;
+				background-color: $white;
 				border-radius: 0;
 			}
 		}
@@ -70,7 +70,7 @@
 			width: 2.25rem;
 			margin: 0 0 0 .5rem;
 			svg {
-				color: $c-white;
+				color: $white;
 				font-size: 1.75rem;
 			}
 		}
@@ -80,7 +80,7 @@
 			width: 2.25rem;
 			svg {
 				font-size: 1.5rem;
-				color: $c-gray-20;
+				color: $gray-700;
 			}
 		}
 	}
@@ -92,7 +92,7 @@
 		justify-content: center;
 		align-items: center;
 		svg {
-			color: $c-white;
+			color: $white;
 		}
 		&:focus,
 		&:hover {
@@ -101,8 +101,8 @@
 	}
 	@include mq(lg) {
 		&.desktop {
-			background: $c-black;
-			border-top: 1px solid $c-gray-20;
+			background: $black;
+			border-top: 1px solid $gray-600;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -136,14 +136,14 @@
 		.player-controls {
 			margin-bottom: .25rem;
 			button svg {
-				color: $c-gray-75;
+				color: $gray-200;
 			}
 			button.play,
 			button.pause  {
 				width: 2.5rem;
 				height: 2.5rem;
 				svg {
-					color: #0e0e0e;
+					color: $black;
 					font-size: 1.75rem;
 				}
 			}

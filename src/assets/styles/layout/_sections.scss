@@ -10,30 +10,38 @@
 		justify-content: space-between;
 		margin-bottom: 1rem;
 		&--title {
-			font-size: $h5;
+			flex-grow: 1;
+			font-size: $h6;
 			font-weight: 600;
 			letter-spacing: .05em;
 			margin: 0;
-			text-transform: capitalize;
+			@include mq(md) {
+				font-size: $h5;
+				margin-right: .5em;
+			}
 		}
 		&--link {
 			display: flex;
+			justify-content: flex-end;
 			align-items: center;
 			font-size: .875rem;
 			font-weight: 400;
 			line-height: 1;
 			letter-spacing: .1em;
 			text-transform: uppercase;
-			margin-left: 1rem;
+			span {
+				text-align: right;
+				min-width: 10ch;
+			}
 			svg {
 				margin-left: .25rem;
 				font-size: 1.25rem;
 				transition: transform .3s ease-in-out, color .3s ease-in-out;
 			}
 			&:hover {
-				color: $c-white;
+				color: $white;
 				svg {
-					color: $c-white;
+					color: $white;
 					transform: translateX(.125rem);
 				}
 			}
@@ -64,7 +72,7 @@
 		}
 		a:focus {
 			outline: none;
-			box-shadow: 0 0 0 3px $c-white;
+			box-shadow: 0 0 0 3px $white;
 		}
 		@include mq(md) {
 			gap: 1.5rem;

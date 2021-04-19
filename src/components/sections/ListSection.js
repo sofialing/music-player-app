@@ -16,7 +16,7 @@ const ListSection = ({ items, title = null }) => {
 				return <ArtistListItem artist={item} key={item.id} />;
 			case 'track':
 			case 'episode':
-				return <TrackListItem track={item} album={item.album} key={item.id} />;
+				return <TrackListItem track={item} key={item.id} />;
 			case 'playlist':
 				return <PlaylistItem playlist={item} key={item.id} />;
 			default:

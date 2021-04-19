@@ -19,20 +19,20 @@ $h1: $h2 * $ratio;
 $h0: $h1 * $ratio;
 
 /* Colors */
-$c-primary: map.get($colors, 'primary');
-$c-secondary: map.get($colors, 'secondary');
-$c-black: gray(0);
-$c-gray-5: gray(5);
-$c-gray-10: gray(10);
-$c-gray-15: gray(15);
-$c-gray-20: gray(20);
-$c-gray-25: gray(25);
-$c-gray-30: gray(30);
-$c-gray-40: gray(40);
-$c-gray-50: gray(50);
-$c-gray-75: gray(75);
-$c-gray-95: gray(95);
-$c-white: gray(100);
+$primary: map.get($colors, 'primary');
+$secondary: map.get($colors, 'secondary');
+$black: color(0);
+$gray-900: color(5);
+$gray-800: color(7);
+$gray-700: color(10);
+$gray-650: color(12.5);
+$gray-600: color(15);
+$gray-500: color(20);
+$gray-400: color(25);
+$gray-300: color(50);
+$gray-200: color(75);
+$gray-100: color(95);
+$white: color(100);
 
 /* Breakpoints */
 $sm-screen: 640px;
@@ -42,5 +42,6 @@ $xl-screen: 1280px;
 
 /* Misc */
 $border-radius: 1rem;
-$shadow: 0 .875rem 1.75rem rgba($c-black,.25), 0 .625rem .625rem rgba($c-black,.25);
+$border-radius-sm: .5rem;
+$shadow: 0 .875rem 1.75rem rgba($black,.25), 0 .625rem .625rem rgba($black,.25);
 $ease: cubic-bezier(.57,.21,.69,1.25);

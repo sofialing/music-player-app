@@ -16,13 +16,13 @@
 		align-items: center;
 		margin: 0 1.5rem;
 		svg {
-			color: $c-white;
+			color: $white;
 			font-size: 2.5rem;
 			transition: color .5s $ease;
 		}
 		&:hover svg,
 		&:focus svg {
-			color: $c-white;
+			color: $white;
 		}
 		&:focus {
 			outline: none;
@@ -30,12 +30,12 @@
 	}
 	button.play,
 	button.pause {
-		background-color: $c-white;
+		background-color: $white;
 		border-radius: 50%;
 		width: 3rem;
 		height: 3rem;
 		svg {
-			color: $c-black;
+			color: $black;
 			font-size: 2.25rem;
 		}
 	}

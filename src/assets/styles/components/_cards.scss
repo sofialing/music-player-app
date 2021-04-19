@@ -2,14 +2,14 @@
 @use '../utilities' as *;
 
 .card {
-	background-color: $c-gray-10;
-	border-radius: $border-radius;
+	background-color: $gray-650;
+	border-radius: $border-radius-sm;
 	box-shadow: $shadow;
 	height: 100%;
 	position: relative;
 	transition: background-color .5s $ease;
 	&__header {
-		border-radius: $border-radius $border-radius 0 0 ;
+		border-radius: $border-radius-sm $border-radius-sm 0 0 ;
 		margin: 0;
 		width: 100%;
 		height: auto;
@@ -29,6 +29,13 @@
 			opacity: 0;
 			transform: translateY(1rem);
 			transition: opacity .5s $ease, transform .5s $ease;
+			&.is-active {
+				opacity: 1;
+				transform: translateY(0);
+				svg {
+					font-size: 1.75rem;
+				}
+			}
 		}
 		&:hover button {
 			opacity: 1;
@@ -56,9 +63,15 @@
 		}
 	}
 	&:hover {
-		background-color: $c-gray-15;
+		background-color: $gray-600;
 		img {
 			transform: scale(1.1);
+		}
+	}
+	@include mq(md) {
+		border-radius: $border-radius;
+		&__header {
+			border-radius: $border-radius $border-radius 0 0 ;
 		}
 	}
 }
@@ -99,7 +112,10 @@
 .card-playlist,
 .card-category {
 	.card__header {
-		border-radius: $border-radius;
+		border-radius: $border-radius-sm;
+		@include mq(md) {
+			border-radius: $border-radius;
+		}
 	}
 }
 
@@ -152,7 +168,7 @@
 			text-transform: initial;
 		}
 		&--desc {
-			color: $c-white;
+			color: $white;
 			overflow: initial;
 			text-overflow: initial;
 			white-space: initial;

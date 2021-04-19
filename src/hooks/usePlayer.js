@@ -4,8 +4,8 @@ import { play, pause } from 'services/spotifyAPI';
 const usePlayer = () => {
 	const { device_id, player } = usePlayback();
 
-	const pauseTrack = uri => {
-		return pause({ device_id, uris: [uri] });
+	const pausePlayback = () => {
+		return pause(device_id);
 	}
 
 	const playTrack = uri => {
@@ -31,7 +31,7 @@ const usePlayer = () => {
 		return player.disconnect();
 	}
 
-	return { pauseTrack, playTrack, playContext, nextTrack, prevTrack, togglePlay, disconnectPlayer }
+	return { pausePlayback, playTrack, playContext, nextTrack, prevTrack, togglePlay, disconnectPlayer }
 }
 
 export default usePlayer;

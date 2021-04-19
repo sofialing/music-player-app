@@ -2,9 +2,12 @@
 @use '../utilities' as *;
 
 .top-bar {
-	background-color: rgba($c-gray-5, .75);
-	position: sticky;
+	background-color: rgba($gray-800, .75);
+	position: absolute;
 	height: 72px;
+	top: 0;
+	right: 0;
+	left: 0;
 	z-index: 5;
 	&__inner {
 		@extend .container;
@@ -18,7 +21,7 @@
 		display: flex;
 		&--prev,
 		&--forward {
-			background-color: $c-gray-10;
+			background-color: $gray-600;
 			border-radius: 50%;
 			border: none;
 			cursor: pointer;
@@ -28,8 +31,16 @@
 			justify-content: center;
 			align-items: center;
 			margin-right: 1rem;
+			transition: background-color .3s ease-in-out;
 			svg {
-				color: $c-white;
+				color: $white;
+			}
+			&:hover {
+				background-color: $gray-500;
+			}
+			&:focus {
+				outline: none;
+				box-shadow: 0 0 0 2px $white;
 			}
 		}
 	}
@@ -43,10 +54,10 @@
 		position: relative;
 	}
 	&__btn {
-		background-color: $c-gray-10;
+		background-color: $gray-600;
 		border: none;
 		border-radius: $border-radius;
-		color: $c-white;
+		color: $white;
 		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
@@ -57,7 +68,7 @@
 		transition: background-color .5s $ease;
 		&:hover,
 		&:focus {
-			background-color: $c-gray-15;
+			background-color: $gray-500;
 			outline: none;
 		}
 		&--img {
@@ -96,7 +107,7 @@
 		}
 	}
 	&__menu {
-		background-color: $c-gray-10;
+		background-color: $gray-700;
 		border-radius: 4px;
 		border: 1px solid rgba(0,0,0,.1);
 		box-shadow: 0 4px 4px rgba(0,0,0,.7);
@@ -118,12 +129,12 @@
 			font-size: .875rem;
 			line-height: 2rem;
 			letter-spacing: .04em;
-			color: $c-white;
+			color: $white;
 			width: 100%;
 			padding: .25em .75em;
 			transition: background-color .3s ease-in-out;
 			&:hover {
-				background-color: $c-gray-15;
+				background-color: $gray-600;
 			}
 		}
 		&--item button {
@@ -140,7 +151,7 @@
 			display: block;
 		}
 		&--item + &--item {
-			border-top: 1px solid $c-gray-15;
+			border-top: 1px solid $gray-800;
 		}
 	}
 }

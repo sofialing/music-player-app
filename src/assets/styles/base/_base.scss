@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 body {
-	background-color: $c-gray-5;
+	background-color: $gray-800;
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
 	width: 100vw;

@@ -2,6 +2,9 @@
 #artist,
 #album {
 	padding-top: 0;
+	.hero {
+		padding-top: calc(72px + 2rem);
+	}
 }
 
 #page-missing {

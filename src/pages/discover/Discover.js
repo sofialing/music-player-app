@@ -48,7 +48,7 @@ const Discover = () => {
 	return (
 		<MainView id="discover" pageTitle="Discover">
 			<PageHeader title="Discover new music" />
-			<GridSection title="Recommended For You" link="recommendations" items={recommendations} />
+			<GridSection title="Recommended for you" link="recommendations" items={recommendations} />
 			<GridSection title="New albums & singles" link="new-releases" items={releases.items} />
 			<GridSection title={featured.message} link="featured-playlists" items={featured.playlists.items} />
 			<GridSection title="Genres & themes" link="categories" items={categories.items} />

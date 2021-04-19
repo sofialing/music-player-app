@@ -19,7 +19,7 @@ const GridSection = ({ items, title = null, link = null, limit = null }) => {
 			case 'artist':
 				return <ArtistCard artist={item} key={item.id} />;
 			case 'track':
-				return <TrackCard track={item} album={item.album} key={item.id} />;
+				return <TrackCard track={item} key={item.id} />;
 			case 'playlist':
 				return <PlaylistCard playlist={item} key={item.id} />;
 			case 'category':

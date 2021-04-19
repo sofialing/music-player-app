@@ -1,18 +1,21 @@
 @use '../abstracts' as *;
 @use '../utilities' as *;
 
+$spacing: 3rem;
+
 .hero {
-	background-color: $c-gray-5;
-	background: linear-gradient(transparent, $c-gray-5);
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	background-color: $gray-800;
+	background: linear-gradient(transparent, $gray-800);
+	margin-bottom: $spacing;
+	padding-top: $spacing;
+	padding-bottom: $spacing;
 	position: relative;
 	text-align: center;
 	&__inner {
 		@extend .container;
 	}
 	&__img {
-		box-shadow: 1px 4px 12px $c-gray-5;
+		box-shadow: 1px 4px 12px $gray-900;
 		margin: 0 auto 2rem;
 		max-width: 75%;
 	}
@@ -59,15 +62,30 @@
 				display: initial;
 			}
 			&--desc {
-				color: $c-white;
+				color: $white;
 				font-size: 1rem;
 				max-width: 70ch;
 			}
 		}
 	}
 	.play-btn {
+		border-radius: 30rem;
+		margin: 0 auto;
 		position: absolute;
-		bottom: -1.5rem;
-		left: 2.5rem;
+		right: 0;
+		bottom: calc(-#{$spacing} / 2);
+		left: 0;
+		padding: .675rem 1.75rem;
+		width: initial;
+		height: initial;
+		svg {
+			font-size: 2rem;
+			height: .75em;
+			width: .75em;
+		}
+		span {
+			display: block;
+			margin: 0 .5rem;
+		}
 	}
 }

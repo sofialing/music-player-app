@@ -2,6 +2,6 @@
 @use 'colors' as *;
 
 /* Grayscale Function */
-@function gray($level) {
+@function color($level) {
 	@return lighten(map.get($colors, 'base'), $level * 1%);
 }

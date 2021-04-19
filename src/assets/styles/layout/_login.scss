@@ -1,15 +1,22 @@
+@use '../abstracts' as *;
+
 #login {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: center;
+	padding: 0 1.25rem;
 	small a:hover {
 		text-decoration: underline;
+	}
+	@include mq(lg) {
+		padding: 2.5rem 0;
 	}
 }
 
 #headphones {
 	margin-bottom: 1.5rem;
+	width: 100%;
 	max-width: 550px;
 }
 
