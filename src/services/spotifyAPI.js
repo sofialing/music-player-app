@@ -225,11 +225,7 @@ export const getPlaylistTracks = async (playlistId, options = {}) => {
 	const tracks = {
 		...response,
 		items: response.items.map(item => ({
-			album: {
-				id: item.track.album.id,
-				name: item.track.album.name,
-				image_url: _.isEmpty(item.track.album.images) ? null : item.track.album.images[0].url,
-			},
+			album_name: item.track.album.name,
 			artists: item.track.artists.map((artist) => artist.name).join(', '),
 			duration: moment(item.track.duration_ms).format('mm:ss'),
 			duration_ms: item.track.duration_ms,
@@ -318,11 +314,7 @@ export const getArtistTopTracks = async (artist_id) => {
 	});
 
 	const topTracks = res.tracks.map(track => ({
-		album: {
-			name: track.album.name,
-			id: track.album.id,
-			image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
-		},
+		album_name: track.album.name,
 		artists: track.artists.map((artist) => artist.name).join(', '),
 		duration: moment(track.duration_ms).format('mm:ss'),
 		duration_ms: track.duration_ms,
@@ -362,6 +354,7 @@ export const getArtistRelatedArtists = async (artist_id) => {
  * Get Spotify catalog information about an artist’s albums
  *
  * @param {*} artist_id The id of the artist
+ * @param {Object} options A JSON object with options that can be passed
  * @returns {Object} Albums object
  */
 export const getArtistAlbums = async (artist_id, options = {}) => {
@@ -390,6 +383,7 @@ export const getArtistAlbums = async (artist_id, options = {}) => {
 /**
  * Get a list of Spotify featured playlists
  *
+ * @param {Object} options A JSON object with options that can be passed
  * @returns {Object} Playlists object
  */
 export const getFeaturedPlaylists = async (options = {}) => {
@@ -423,6 +417,7 @@ export const getFeaturedPlaylists = async (options = {}) => {
 /**
  * Get a list of new album releases featured in Spotify
  *
+ * @param {Object} options A JSON object with options that can be passed
  * @returns {Object} Albums object
  */
 export const getNewReleases = async (options = {}) => {
@@ -451,6 +446,7 @@ export const getNewReleases = async (options = {}) => {
 /**
  * Get a list of categories used to tag items in Spotify
  *
+ * @param {Object} options A JSON object with options that can be passed
  * @returns {Object} Categories object
  */
 export const getCategories = async (options = {}) => {
@@ -489,11 +485,7 @@ export const getRecommendations = async (artists, tracks) => {
 	});
 
 	const recommendations = response.tracks.map(track => ({
-		album: {
-			name: track.album.name,
-			id: track.album.id,
-			image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
-		},
+		album_name: track.album.name,
 		artists: track.artists.map((artist) => artist.name).join(', '),
 		duration_ms: track.duration_ms,
 		id: track.id,
@@ -523,6 +515,7 @@ export const getCategory = async (categoryId) => {
  * Get a list of Spotify playlists tagged with a particular category
  *
  * @param {String} categoryId The id of the category
+ * @param {Object} options A JSON object with options that can be passed
  * @returns {Object} Playlists object
  */
 export const getCategoryPlaylists = async (categoryId, options = {}) => {
@@ -551,6 +544,7 @@ export const getCategoryPlaylists = async (categoryId, options = {}) => {
 /**
  * Get a list of the albums saved in the current Spotify user's library
  *
+ * @param {Object} options A JSON object with options that can be passed
  * @returns {Object} Albums object
  */
 export const getUsersSavedAlbums = async (options = {}) => {
@@ -606,8 +600,10 @@ export const getFollowedArtists = async () => {
 }
 
 /**
- * Fetches current user's saved tracks
+ * Get current user's saved tracks
  *
+ * @param {Object} options A JSON object with options that can be passed
+ * @returns {Object} Tracks object
  */
 export const getMySavedTracks = async (options = {}) => {
 	const response = await get('me/tracks', {
@@ -618,11 +614,7 @@ export const getMySavedTracks = async (options = {}) => {
 	const tracks = {
 		...response,
 		items: response.items.map(item => ({
-			album: {
-				name: item.track.album.name,
-				id: item.track.album.id,
-				image_url: _.isEmpty(item.track.album.images) ? null : item.track.album.images[0].url,
-			},
+			album_name: item.track.album.name,
 			artists: item.track.artists.map(artist => artist.name).join(', '),
 			duration: moment(item.track.duration_ms).format('mm:ss'),
 			duration_ms: item.track.duration_ms,
@@ -641,26 +633,8 @@ export const getMySavedTracks = async (options = {}) => {
  * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string
  *
  * @param {String} query The search query
- * @param {Array} types An array of item types to search across. Valid types are: 'album', 'artist', 'playlist', and 'track'.
  * @param {Object} options A JSON object with options that can be passed
- */
-export const search = async (query, types, options = {}) => {
-	const response = await get('search', {
-		q: query,
-		type: types.join(','),
-		market: 'from_token',
-		...options,
-	});
-
-	return response;
-
-}
-
-/**
- * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string
- *
- * @param {String} query The search query
- * @param {Object} options A JSON object with options that can be passed
+ * @returns {Object} Search results object
  */
 export const searchAll = async (query, options = {}) => {
 	const response = await get('search', {
@@ -702,11 +676,7 @@ export const searchAll = async (query, options = {}) => {
 			...response.tracks,
 			type: 'tracks',
 			items: response.tracks.items.map(item => ({
-				album: {
-					id: item.album.id,
-					name: item.album.name,
-					image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
-				},
+				album_name: item.album.name,
 				artists: item.artists.map(artist => artist.name).join(', '),
 				duration: moment(item.duration_ms).format('mm:ss'),
 				duration_ms: item.duration_ms,
@@ -723,6 +693,13 @@ export const searchAll = async (query, options = {}) => {
 	return results;
 }
 
+/**
+ * Get albums from the Spotify catalog according to a query.
+ *
+ * @param {String} query The search query
+ * @param {Object} options A JSON object with options that can be passed
+ * @returns {Object} Search results object
+ */
 export const searchAlbums = async (query, options = {}) => {
 	const response = await get('search', {
 		q: query,
@@ -748,6 +725,13 @@ export const searchAlbums = async (query, options = {}) => {
 	return albums;
 }
 
+/**
+ * Get artists from the Spotify catalog according to a query.
+ *
+ * @param {String} query The search query
+ * @param {Object} options A JSON object with options that can be passed
+ * @returns {Object} Search results object
+ */
 export const searchArtists = async (query, options = {}) => {
 	const response = await get('search', {
 		q: query,
@@ -772,6 +756,13 @@ export const searchArtists = async (query, options = {}) => {
 	return artists;
 }
 
+/**
+ * Get tracks from the Spotify catalog according to a query.
+ *
+ * @param {String} query The search query
+ * @param {Object} options A JSON object with options that can be passed
+ * @returns {Object} Search results object
+ */
 export const searchTracks = async (query, options = {}) => {
 	const response = await get('search', {
 		q: query,
@@ -783,11 +774,7 @@ export const searchTracks = async (query, options = {}) => {
 	const tracks = {
 		...response.tracks,
 		items: response.tracks.items.map(item => ({
-			album: {
-				id: item.album.id,
-				name: item.album.name,
-				image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
-			},
+			album_name: item.album.name,
 			artists: item.artists.map(artist => artist.name).join(', '),
 			duration: moment(item.duration_ms).format('mm:ss'),
 			duration_ms: item.duration_ms,
@@ -806,6 +793,7 @@ export const searchTracks = async (query, options = {}) => {
 /**
  * Play a track on the user's active device
  *
+ * @param {String} device_id The id of the user’s currently active device.
  * @param {Object} options A JSON object with options that can be passed.
  */
 export const play = async (device_id, options = {}) => {
@@ -816,29 +804,29 @@ export const play = async (device_id, options = {}) => {
 /**
  * Pause playback on the user’s account.
  *
- * @param {Object} options A JSON object with options that can be passed.
+ * @param {String} device_id The id of the user’s currently active device.
  */
-export const pause = async (device_id, options = {}) => {
-	const response = await put('/me/player/pause', device_id, options);
+export const pause = async (device_id) => {
+	const response = await put('me/player/pause', device_id);
 	return response;
 }
 
 /**
  * Skips to next track in the user’s queue.
  *
- * @param {Object} options A JSON object with options that can be passed.
+ * @param {String} device_id The id of the user’s currently active device.
  */
-export const next = async (device_id, options = {}) => {
-	const response = await put('me/player/next', device_id, options);
+export const next = async (device_id) => {
+	const response = await put('me/player/next', device_id);
 	return response;
 }
 
 /**
  * Skips to previous track in the user’s queue.
  *
- * @param {Object} options A JSON object with options that can be passed.
+ * @param {String} device_id The id of the user’s currently active device.
  */
-export const previous = async (device_id, options = {}) => {
-	const response = await put('me/player/previous', device_id, options);
+export const previous = async (device_id) => {
+	const response = await put('me/player/previous', device_id);
 	return response;
 }
