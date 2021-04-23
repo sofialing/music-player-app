@@ -1,10 +1,10 @@
 import { useLocation } from 'react-router-dom';
 import noImage from 'assets/images/no-image.png';
-import usePlayer from 'hooks/usePlayer';
+import usePlayerControls from 'hooks/usePlayerControls';
 import ToggleButton from 'components/buttons/ToggleButton';
 
 const TrackListItem = ({ track }) => {
-	const { playTrack } = usePlayer();
+	const { playTrack } = usePlayerControls();
 	const { pathname } = useLocation();
 	const imgSrc = track.image_url ? track.image_url : noImage;
 

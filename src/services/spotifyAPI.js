@@ -25,7 +25,6 @@ const setAuthHeader = () => {
 	try {
 		const { access_token } = getToken();
 		if (access_token) {
-			// console.log('setting bearer token', access_token);
 			axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 		}
 	} catch (error) {
@@ -816,7 +815,7 @@ export const pause = async (device_id) => {
  *
  * @param {String} device_id The id of the user’s currently active device.
  */
-export const next = async (device_id) => {
+export const skipToNext = async (device_id) => {
 	const response = await put('me/player/next', device_id);
 	return response;
 }
@@ -826,7 +825,38 @@ export const next = async (device_id) => {
  *
  * @param {String} device_id The id of the user’s currently active device.
  */
-export const previous = async (device_id) => {
+export const skipToPrevious = async (device_id) => {
 	const response = await put('me/player/previous', device_id);
 	return response;
+}
+
+/**
+ * Set the repeat mode for the user’s playback.
+ *
+ * @param {String} device_id The id of the user’s currently active device.
+ * @param {String} state A string set to 'track', 'context' or 'off'.
+ * @returns
+ */
+export const setRepeat = async (device_id, state) => {
+	return await put(`me/player/repeat?device_id=${device_id}&state=${state}`);
+}
+
+
+/**
+ * Toggle shuffle on or off for user’s playback.
+ *
+ * @param {String} device_id The id of the user’s currently active device.
+ * @param {Boolean} state Whether or not to shuffle user's playback.
+ */
+export const setShuffle = async (device_id, state) => {
+	return await put(`me/player/shuffle?device_id=${device_id}&state=${state}`);
+}
+
+/**
+ * Get information about the user’s current playback state, including track, track progress, and active device.
+ *
+ * @returns {Object} Information about the current playback.
+ */
+export const getCurrentPlaybackState = async () => {
+	return await get('me/player', { market: 'from_token' });
 }

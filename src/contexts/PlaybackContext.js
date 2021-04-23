@@ -44,21 +44,28 @@ const PlaybackContextProvider = ({ children }) => {
 
 			// Playback status updates
 			player.addListener('player_state_changed', (state) => {
+				// check of state is null
 				if (!state) {
-					dispatch({ type: 'SET_IS_PLAYING', is_playing: false });
-					dispatch({ type: 'SET_CURRENT_TRACK', current_track: null });
-					document.body.classList.remove('has-playing-bar');
-					return;
+					document.body.classList.remove('has-now-playing-bar');
+					return dispatch({ type: 'SET_PLAYBACK_STATE', playback_state: initialState.playback_state });
 				}
-				const { context, position, paused, track_window: { current_track } } = state;
-				dispatch({ type: 'SET_CURRENT_POSITION', current_position: position });
-				dispatch({ type: 'SET_IS_PLAYING', is_playing: !paused });
-				dispatch({ type: 'SET_CURRENT_TRACK', current_track });
-				dispatch({ type: 'SET_CONTEXT', context });
-				if (current_track) {
-					document.body.classList.add('has-playing-bar');
-				} else {
-					document.body.classList.remove('has-playing-bar');
+				// console.log('player_state_changed', state);
+				dispatch({
+					type: 'SET_PLAYBACK_STATE', playback_state: {
+						context: state.context,
+						current_position: state.position,
+						is_playing: !state.paused,
+						current_track: state.track_window.current_track,
+						next_tracks: state.track_window.next_tracks,
+						prev_tracks: state.track_window.previous_tracks,
+						shuffle_mode: state.shuffle,
+						repeat_mode: state.repeat_mode
+					}
+				});
+
+				// if current track, add class to body tag
+				if (state.track_window.current_track) {
+					document.body.classList.add('has-now-playing-bar');
 				}
 			});
 

@@ -72,7 +72,9 @@
 		}
 		a:focus {
 			outline: none;
-			box-shadow: 0 0 0 3px $white;
+			& > * {
+				box-shadow: 0 0 0 2px $gray-500;
+			}
 		}
 		@include mq(md) {
 			gap: 1.5rem;

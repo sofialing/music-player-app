@@ -1,11 +1,11 @@
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
-import usePlayer from 'hooks/usePlayer';
+import usePlayerControls from 'hooks/usePlayerControls';
 import { usePlayback } from 'contexts/PlaybackContext';
 
 const PlayButton = ({ uri, type }) => {
-	const { context, is_playing, current_track } = usePlayback();
-	const { playContext, playTrack, pausePlayback } = usePlayer();
+	const { playback_state: { context, current_track, is_playing } } = usePlayback();
+	const { playContext, playTrack, pausePlayback } = usePlayerControls();
 
 	const handlePlay = (e) => {
 		e.preventDefault();

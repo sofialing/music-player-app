@@ -45,6 +45,9 @@ $side-padding: 1.75rem;
 				margin-top: .5rem;
 				text-transform: uppercase;
 			}
+			&:focus {
+				text-decoration: none;
+			}
 			&:hover svg {
 				transform: scale(1.1);
 			}
@@ -96,6 +99,9 @@ $side-padding: 1.75rem;
 			&--item {
 				padding: 0 .5rem;
 			}
+			&--item + &--item {
+				margin-left: 0;
+			}
 			&--item a {
 				background-color: transparent;
 				border-radius: .5rem;
@@ -122,6 +128,9 @@ $side-padding: 1.75rem;
 					svg {
 						transform: scale(1.1);
 					}
+				}
+				&.active {
+					background-color: $gray-700;
 				}
 			}
 		}

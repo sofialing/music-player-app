@@ -66,12 +66,14 @@
 		}
 	}
 	.player-controls {
-		button.pause,
-		button.play {
-			height: 3.5rem;
-			width: 3.5rem;
+		button.toggle-play {
+			padding: .75em;
+			margin: 0 1rem;
 			svg {
 				font-size: 2.5rem;
+			}
+			&:hover svg {
+				transform: scale(1);
 			}
 		}
 	}

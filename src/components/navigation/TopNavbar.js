@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import usePlayer from 'hooks/usePlayer';
+import usePlayerControls from 'hooks/usePlayerControls';
 import UserModule from './UserModule';
 const TopNavbar = () => {
 	const { user, dispatch } = useAuth();
-	const { disconnectPlayer } = usePlayer();
+	const { disconnectPlayer } = usePlayerControls();
 	const navigate = useNavigate();
 
 	const logout = () => {

@@ -5,8 +5,8 @@ import CurrentTrack from './partials/CurrentTrack';
 import PlaybackBar from './partials/PlaybackBar';
 
 
-const NowPlayingBarDesktop = ({ currentPosition, progress }) => {
-	const { current_track, is_playing, dispatch } = usePlayback();
+const NowPlayingBarDesktop = ({ currentState }) => {
+	const { dispatch, playback_state: { current_track } } = usePlayback();
 
 	const expandPlayer = () => {
 		dispatch({ type: 'SET_DISPLAY_PLAYER', display_player: true })
@@ -18,8 +18,8 @@ const NowPlayingBarDesktop = ({ currentPosition, progress }) => {
 				<CurrentTrack track={current_track} />
 			</div>
 			<div className="now-playing-bar__column">
-				<PlayerControls is_playing={is_playing} is_desktop={true} />
-				<PlaybackBar currentPosition={currentPosition} progress={progress} duration={current_track.duration_ms} />
+				<PlayerControls />
+				<PlaybackBar currentState={currentState} duration={current_track.duration_ms} />
 			</div>
 			<div className="now-playing-bar__column">
 				<button className="expand" aria-label="Expand player" onClick={expandPlayer}>

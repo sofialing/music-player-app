@@ -10,7 +10,7 @@ const initialState = {
 }
 
 const reducer = (state, action) => {
-	console.log('auth', 'action', action);
+	// console.log('auth', 'action', action);
 	switch (action.type) {
 		case 'SET_ACCESS_TOKEN':
 			return {

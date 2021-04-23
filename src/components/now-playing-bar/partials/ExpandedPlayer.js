@@ -8,8 +8,8 @@ import CurrentTrack from './CurrentTrack';
 
 const fac = new FastAverageColor();
 
-const ExpandedPlayer = ({ currentPosition, progress }) => {
-	const { display_player, current_track, is_playing, context, dispatch } = usePlayback();
+const ExpandedPlayer = ({ currentState }) => {
+	const { display_player, dispatch, playback_state: { current_track, context } } = usePlayback();
 	const [style, setStyle] = useState(null);
 
 	useEffect(() => {
@@ -29,11 +29,11 @@ const ExpandedPlayer = ({ currentPosition, progress }) => {
 			<header className="expanded-player__header">
 				<ExpandMoreIcon onClick={closePlayer} />
 				<small>Now playing</small>
-				<p>{context && context.uri ? context.metadata.context_description : current_track.album.name}</p>
+				<p>{context?.uri ? context.metadata.context_description : current_track.album.name}</p>
 			</header>
 			<CurrentTrack track={current_track} />
-			<PlayerControls is_playing={is_playing} />
-			<PlaybackBar currentPosition={currentPosition} progress={progress} duration={current_track.duration_ms} />
+			<PlayerControls />
+			<PlaybackBar currentState={currentState} duration={current_track.duration_ms} />
 		</aside>
 	)
 }

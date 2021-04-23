@@ -1,15 +1,20 @@
 const initialState = {
-	context: null,
-	current_position: 0,
-	current_track: null,
 	device_id: null,
 	display_player: false,
-	is_playing: false,
 	player: null,
+	playback_state: {
+		context: null,
+		current_position: null,
+		is_playing: false,
+		current_track: null,
+		next_tracks: [],
+		prev_tracks: [],
+		shuffle_mode: false,
+		repeat_mode: false
+	}
 }
 
 const reducer = (state, action) => {
-	console.log('playback', 'action', action);
 	switch (action.type) {
 		case 'SET_PLAYER':
 			return {
@@ -21,30 +26,15 @@ const reducer = (state, action) => {
 				...state,
 				device_id: action.device_id
 			};
-		case 'SET_CURRENT_TRACK':
-			return {
-				...state,
-				current_track: action.current_track
-			};
-		case 'SET_CURRENT_POSITION':
-			return {
-				...state,
-				current_position: action.current_position
-			};
-		case 'SET_IS_PLAYING':
-			return {
-				...state,
-				is_playing: action.is_playing
-			};
 		case 'SET_DISPLAY_PLAYER':
 			return {
 				...state,
 				display_player: action.display_player
 			};
-		case 'SET_CONTEXT':
+		case 'SET_PLAYBACK_STATE':
 			return {
 				...state,
-				context: action.context
+				playback_state: action.playback_state
 			};
 		default:
 			return state;

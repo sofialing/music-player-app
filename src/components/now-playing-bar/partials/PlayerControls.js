@@ -4,33 +4,30 @@ import ShuffleIcon from '@material-ui/icons/Shuffle';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
-import usePlayer from 'hooks/usePlayer';
+import { usePlayback } from 'contexts/PlaybackContext';
+import usePlayerControls from 'hooks/usePlayerControls';
 
-const PlayerControls = ({ is_playing, is_desktop = false }) => {
-	const { togglePlay, nextTrack, prevTrack } = usePlayer();
+const PlayerControls = () => {
+	const { playback_state: { is_playing, prev_tracks, next_tracks, shuffle_mode, repeat_mode } } = usePlayback();
+	const { togglePlay, skipToNext, skipToPrev, repeat, shuffle } = usePlayerControls();
 
 	return (
 		<div className="player-controls">
-			{is_desktop && <button aria-label="Shuffle tracks">
+			<button aria-label="Enable shuffle" className={shuffle_mode ? 'is-active' : ''} onClick={() => shuffle(!shuffle_mode)}>
 				<ShuffleIcon />
-			</button>}
-			<button aria-label="Previous track" onClick={prevTrack}>
+			</button>
+			<button aria-label="Previous track" className="prev" disabled={!prev_tracks.length} onClick={skipToPrev}>
 				<SkipPreviousIcon />
 			</button>
-			{is_playing ?
-				<button className="pause" aria-label="Pause" onClick={togglePlay}>
-					<PauseIcon />
-				</button> :
-				<button className="play" aria-label="Play" onClick={togglePlay}>
-					<PlayArrowIcon />
-				</button>
-			}
-			<button aria-label="Next track" onClick={nextTrack} >
+			<button className="toggle-play" aria-label={is_playing ? 'Pause' : 'Play'} onClick={togglePlay}>
+				{is_playing ? <PauseIcon /> : <PlayArrowIcon />}
+			</button>
+			<button aria-label="Next track" className="next" disabled={!next_tracks.length} onClick={skipToNext}>
 				<SkipNextIcon />
 			</button>
-			{is_desktop && <button aria-label="Activate repeat">
-				<RepeatIcon style={{ fontSize: 24 }} />
-			</button>}
+			<button aria-label="Enable repeat" className={repeat_mode ? 'is-active' : ''} onClick={() => repeat(repeat_mode ? 'off' : 'context')}>
+				<RepeatIcon />
+			</button>
 		</div>
 	)
 }
