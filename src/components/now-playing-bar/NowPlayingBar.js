@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { usePlayback } from 'contexts/PlaybackContext';
-import useViewport from 'hooks/useViewport'
+import { useViewport } from 'contexts/ViewportContext';
 import NowPlayingBarMobile from './NowPlayingBarMobile';
 import NowPlayingBarDesktop from './NowPlayingBarDesktop';
 import ExpandedPlayer from './partials/ExpandedPlayer';
 
 const NowPlayingBar = () => {
-	const { breakpoint_md, width } = useViewport();
+	const { isMobile } = useViewport();
 	const { playback_state: { current_track, is_playing }, player } = usePlayback();
 	const [currentState, setCurrentState] = useState({ position: 0, progress: 0 });
 	const [prevTrack, setPrevTrack] = useState(null);
@@ -48,10 +48,9 @@ const NowPlayingBar = () => {
 	return (
 		<>
 			<ExpandedPlayer currentState={currentState} />
-			{
-				width < breakpoint_md
-					? <NowPlayingBarMobile currentState={currentState} />
-					: <NowPlayingBarDesktop currentState={currentState} />
+			{ isMobile
+				? <NowPlayingBarMobile currentState={currentState} />
+				: <NowPlayingBarDesktop currentState={currentState} />
 			}
 		</>
 	)

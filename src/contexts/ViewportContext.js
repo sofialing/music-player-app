@@ -1,26 +1,35 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { throttle } from 'lodash';
+import breakpoints from 'utils/breakpoints';
 
 const ViewportContext = createContext();
 
-const ViewportContextProvider = ({ children }) => {
-	const [height, setHeight] = useState(window.innerHeight);
-	const [width, setWidth] = useState(window.innerWidth);
+const useViewport = () => {
+	return useContext(ViewportContext);
+}
 
-	const handleWindowResize = () => {
-		setHeight(window.innerHeight);
-		setWidth(window.innerWidth);
-	}
+const ViewportContextProvider = ({ children }) => {
+	const [windowSize, setWindowSize] = useState(window.innerWidth);
+	const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoints.lg);
+	const [gridItems, setGridItems] = useState(window.innerWidth < breakpoints.md ? 4 : 6)
+
+	const handleResize = throttle(() => {
+		setGridItems(window.innerWidth < breakpoints.md ? 4 : 6);
+		setIsMobile(window.innerWidth < breakpoints.lg)
+		setWindowSize(window.innerWidth);
+	}, 100);
 
 	useEffect(() => {
-		window.addEventListener('resize', handleWindowResize);
-		return () => window.removeEventListener('resize', handleWindowResize);
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
-		<ViewportContext.Provider value={{ height, width }} >
+		<ViewportContext.Provider value={{ isMobile, gridItems, windowSize }} >
 			{children}
 		</ViewportContext.Provider>
 	);
 }
 
-export { ViewportContext, ViewportContextProvider as default }
+export { useViewport, ViewportContext, ViewportContextProvider as default }

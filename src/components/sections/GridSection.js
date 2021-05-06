@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useViewport } from 'contexts/ViewportContext';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AlbumCard from 'components/cards/AlbumCard';
 import TrackCard from 'components/cards/TrackCard';
 import ArtistCard from 'components/cards/ArtistCard';
 import PlaylistCard from 'components/cards/PlaylistCard';
 import CategoryCard from 'components/cards/CategoryCard';
-import useViewport from 'hooks/useViewport';
 
 const GridSection = ({ items, title = null, link = null, limit = null }) => {
 	const { gridItems } = useViewport();

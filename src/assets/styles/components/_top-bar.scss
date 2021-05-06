@@ -123,9 +123,10 @@
 		&[aria-hidden="false"] {
 			display: initial;
 		}
-		&--item a,
+		&--item span,
 		&--item button {
 			background-color: transparent;
+			display: block;
 			font-size: .875rem;
 			line-height: 2rem;
 			letter-spacing: .04em;

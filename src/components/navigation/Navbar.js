@@ -1,10 +1,11 @@
-import useViewport from 'hooks/useViewport'
+import { useViewport } from 'contexts/ViewportContext';
 import NavbarDesktop from './NavbarDesktop';
 import NavbarMobile from './NavbarMobile';
 
 const Navbar = () => {
-	const { breakpoint_lg, width } = useViewport();
-	return width < breakpoint_lg ? <NavbarMobile /> : <NavbarDesktop />
+	const { isMobile } = useViewport();
+
+	return isMobile ? <NavbarMobile /> : <NavbarDesktop />
 }
 
 export default Navbar;

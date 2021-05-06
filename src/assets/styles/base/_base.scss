@@ -1,15 +1,10 @@
 @use '../abstracts' as *;
 
-body {
+html, body {
 	background-color: $gray-800;
-	height: 100vh;
-	height: calc(var(--vh, 1vh) * 100);
-	width: 100vw;
-	overflow: hidden;
-}
-
-#app {
 	height: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
 a:hover {

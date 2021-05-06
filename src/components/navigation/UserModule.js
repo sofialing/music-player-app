@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import { Link } from 'react-router-dom';
 
 const UserModule = ({ user, logout }) => {
 	const [toggle, setToggle] = useState(false);
@@ -16,8 +15,12 @@ const UserModule = ({ user, logout }) => {
 					<ArrowDropDownIcon />
 				</button>
 				<ul className="user-settings__menu" aria-hidden={!toggle}>
-					<li className="user-settings__menu--item"><Link to="/profile">Profile</Link></li>
-					<li className="user-settings__menu--item"><button onClick={logout}>Log out</button></li>
+					<li className="user-settings__menu--item">
+						<span className={user.is_premium ? 'is-premium' : 'is-free'}>{user.is_premium ? 'Premium user' : 'Free account'}</span>
+					</li>
+					<li className="user-settings__menu--item">
+						<button onClick={logout}>Log out</button>
+					</li>
 				</ul>
 			</div>
 		</div>

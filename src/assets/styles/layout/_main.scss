@@ -1,11 +1,11 @@
 @use '../abstracts' as *;
 
 .main-view {
-	position: relative;
-	padding: calc(72px + 2rem) 0 calc(80px + 2.5rem);
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
 	overflow-y: scroll;
+	padding: calc(72px + 2rem) 0 2.5rem;
+	position: relative;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	&::-webkit-scrollbar {
@@ -15,7 +15,7 @@
 		margin-top: 2.25rem;
 	}
 	@include mq(md) {
-		padding: calc(72px + 2.5rem) 0 calc(80px + 3rem);
+		padding: calc(72px + 2.5rem) 0 3.5rem;
 		section + section {
 			margin-top: 2.5rem;
 		}
@@ -32,11 +32,24 @@
 	}
 }
 
+.has-now-playing-bar .main-view {
+	padding-bottom: calc(80px + 2.5rem);
+	@include mq(md) {
+		padding-bottom: calc(100px + 3.5rem);
+	}
+}
+
 @-moz-document url-prefix() {
 	.main-view > :last-child {
 		margin-bottom: calc(80px + 2.5rem);
 	 	@include mq(md) {
-			margin-bottom: calc(95px + 3rem);
+			margin-bottom: 3.5rem;
+		}
+	}
+	.has-now-playing-bar .main-view > :last-child {
+		margin-bottom: calc(80px + 70px + 2.5rem);
+	 	@include mq(md) {
+			margin-bottom: calc(100px + 3.5rem);
 		}
 	}
 }

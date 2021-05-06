@@ -6,11 +6,17 @@
 	align-items: center;
 	justify-content: center;
 	padding: 0 1.25rem;
+	> :last-child {
+		margin-bottom: 80px;
+	}
 	small a:hover {
 		text-decoration: underline;
 	}
 	@include mq(lg) {
 		padding: 2.5rem 0;
+		> :last-child {
+			margin-bottom: initial;
+		}
 	}
 }
 
