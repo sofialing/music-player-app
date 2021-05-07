@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { useAuth } from 'contexts/AuthContext';
 import LoadingView from 'components/views/LoadingView';
-import { setToken, getTopTracks, getTopArtists, getCurrentUser, getDiscoverWeekly, getUserPlaylists } from 'services/spotifyAPI'
+import { getTopTracks, getTopArtists, getCurrentUser, getDiscoverWeekly, getUserPlaylists } from 'services/spotifyAPI'
+import { setToken } from 'utils';
 
 const Redirect = () => {
 	const navigate = useNavigate();

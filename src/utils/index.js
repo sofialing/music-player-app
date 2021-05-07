@@ -34,3 +34,15 @@ export const getAlbumLength = tracks => {
 export const getTracks = total => {
 	return total > 2 ? `${total} tracks` : `${total} track`
 }
+
+export const setToken = (access_token, expires_in, refresh_token) => {
+	return localStorage.setItem('token', JSON.stringify({
+		access_token,
+		refresh_token,
+		expires_in: (expires_in * 1000) + new Date().getTime()
+	}))
+}
+
+export const getToken = () => {
+	return JSON.parse(localStorage.getItem('token'));
+}

@@ -1,52 +1,30 @@
 /**
  * Spotify API services
  */
-import axios from 'axios';
-import queryString from 'query-string';
-import moment from 'moment';
 import _ from 'lodash'
+import moment from 'moment';
+import axios from 'utils/axios';
 
-
-const BASEURL = 'https://api.spotify.com/v1/';
-
-export const setToken = (access_token, expires_in, refresh_token) => {
-	return localStorage.setItem('token', JSON.stringify({
-		access_token,
-		refresh_token,
-		expires_in: (expires_in * 1000) + new Date().getTime()
-	}))
-}
-
-export const getToken = () => {
-	return JSON.parse(localStorage.getItem('token'));
-}
-
-const setAuthHeader = () => {
-	try {
-		const { access_token } = getToken();
-		if (access_token) {
-			axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-		}
-	} catch (error) {
-		console.log('Error setting auth', error);
-	}
-};
-
-export const get = async (endpoint, queryParams = {}) => {
-	setAuthHeader();
-	const queryStr = queryString.stringify(queryParams);
-	console.log('GET:', endpoint, queryStr);
-	// send request
-	const response = await axios.get(`${BASEURL}${endpoint}?${queryStr}`);
+/**
+ * HTTP GET request
+ *
+ * @param {String} endpoint API endpoint that will be used for the request
+ * @param {Object} params URL parameters to be sent with the request
+ */
+const get = async (endpoint, params = {}) => {
+	const response = await axios.get(endpoint, { params });
 	// return response data
 	return response.data;
 };
 
-export const put = async (endpoint, body = {}) => {
-	setAuthHeader();
-	console.log('PUT:', endpoint, body);
-	// send request
-	const response = await axios.put(`${BASEURL}${endpoint}`, body);
+/**
+ * HTTP PUT request
+ *
+ * @param {String} endpoint API endpoint that will be used for the request
+ * @param {Object} body the data to be sent as the request body
+ */
+const put = async (endpoint, body = {}) => {
+	const response = await axios.put(endpoint, body);
 	// return response status
 	return response.status;
 }
