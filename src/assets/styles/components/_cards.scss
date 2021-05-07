@@ -67,14 +67,14 @@
 			text-transform: capitalize;
 		}
 	}
-	&:hover {
-		background-color: $gray-600;
-		img {
-			transform: scale(1.1);
-		}
-	}
 	@include mq(md) {
 		border-radius: $border-radius;
+		&:hover {
+			background-color: $gray-600;
+			img {
+				transform: scale(1.1);
+			}
+		}
 		&__header {
 			border-radius: $border-radius $border-radius 0 0 ;
 		}
