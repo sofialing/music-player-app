@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import { reducer, initialState } from '../reducers/playbackReducer';
 import { useAuth } from './AuthContext';
-
+import { getToken, hasValidAccessToken } from 'utils';
+import axios from 'utils/axios';
 
 const PlaybackContext = createContext();
 
@@ -10,11 +11,11 @@ const usePlayback = () => {
 }
 
 const PlaybackContextProvider = ({ children }) => {
-	const { access_token } = useAuth();
-	const [state, dispatch] = useReducer(reducer, initialState);
 	const [scriptLoaded, setScriptLoaded] = useState(false);
+	const [state, dispatch] = useReducer(reducer, initialState);
+	const { user } = useAuth();
 
-	const initSpotifySDK = () => {
+	const loadSpotifyScript = () => {
 		const script = document.createElement('script');
 		script.src = 'https://sdk.scdn.co/spotify-player.js';
 		document.body.appendChild(script);
@@ -22,25 +23,42 @@ const PlaybackContextProvider = ({ children }) => {
 	}
 
 	useEffect(() => {
-		if (!scriptLoaded) {
-			initSpotifySDK();
+		if (user && !scriptLoaded) {
+			loadSpotifyScript();
 		}
 
 		window.onSpotifyWebPlaybackSDKReady = () => {
-			if (!access_token) {
-				return;
-			};
-
+			// initialize new player instance
 			const player = new window.Spotify.Player({
-				name: 'React Music Player',
-				getOAuthToken: cb => { cb(access_token); }
+				name: 'Re:music',
+				getOAuthToken: callback => {
+					if (!hasValidAccessToken()) {
+						console.log('token now valid, trigger refresh token!');
+						return axios.get('me').then(res => {
+							if (res.status === 200) {
+								const { access_token } = getToken();
+								callback(access_token);
+							}
+						});
+					}
+					const { access_token } = getToken();
+					callback(access_token);
+				}
 			});
 
 			// Error handling
-			player.addListener('initialization_error', ({ message }) => { console.error(message); });
-			player.addListener('authentication_error', ({ message }) => { console.error(message); });
-			player.addListener('account_error', ({ message }) => { console.error(message); });
-			player.addListener('playback_error', ({ message }) => { console.error(message); });
+			player.addListener('initialization_error', ({ message }) => {
+				console.error('Failed to initialize', message);
+			});
+			player.addListener('authentication_error', ({ message }) => {
+				console.error('Failed to authenticate', message);
+			});
+			player.addListener('account_error', ({ message }) => {
+				console.error('Failed to validate Spotify account', message);
+			});
+			player.addListener('playback_error', ({ message }) => {
+				console.error('Failed to perform playback', message);
+			});
 
 			// Playback status updates
 			player.addListener('player_state_changed', (state) => {
@@ -69,17 +87,13 @@ const PlaybackContextProvider = ({ children }) => {
 				}
 			});
 
-			// Ready
+			// Player ready and device connected
 			player.addListener('ready', ({ device_id }) => {
+				console.log('Connected with Device ID', device_id);
 				dispatch({ type: 'SET_DEVICE_ID', device_id })
 			});
 
-			// Not Ready
-			player.addListener('not_ready', () => {
-				dispatch({ type: 'SET_DEVICE_ID', device_id: null })
-			});
-
-			// Connect to the player!
+			// Connect the Web Playback SDK instance to Spotify
 			player.connect().then(success => {
 				if (success) {
 					console.log('The Web Playback SDK successfully connected to Spotify!');
@@ -88,7 +102,11 @@ const PlaybackContextProvider = ({ children }) => {
 			});
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [access_token])
+	}, [user])
+
+	useEffect(() => {
+
+	}, [])
 
 	return (
 		<PlaybackContext.Provider value={{ ...state, dispatch }}>

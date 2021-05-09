@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCategory, getCategoryPlaylists } from 'services/spotifyAPI';
+import { getCategoryDetails } from 'services/spotifyAPI';
 import usePagination from 'hooks/usePagination';
 import Pagination from 'components/navigation/Pagination';
 import ErrorView from 'components/views/ErrorView';
@@ -18,11 +18,7 @@ const Category = () => {
 	const { nextPage, prevPage, currentPage, maxPage, limit } = usePagination(playlists);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getCategory(categoryId),
-			getCategoryPlaylists(categoryId, { limit, offset: (currentPage - 1) * limit })
-		];
-		Promise.all(FETCH_DATA)
+		getCategoryDetails(categoryId, { limit, offset: (currentPage - 1) * limit })
 			.then(([category, playlists]) => {
 				setCategory(category);
 				setPlaylists(playlists);

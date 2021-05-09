@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
+import { removeToken } from 'utils';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import usePlayerControls from 'hooks/usePlayerControls';
 import UserModule from './UserModule';
+
 const TopNavbar = () => {
 	const { user, dispatch } = useAuth();
 	const { disconnectPlayer } = usePlayerControls();
@@ -14,6 +16,8 @@ const TopNavbar = () => {
 		dispatch({ type: 'SET_USER', user: null });
 		// close current session Web Playback SDK has with Spotify
 		disconnectPlayer();
+		// remove tokens from local storage
+		removeToken();
 	};
 
 	return user && (

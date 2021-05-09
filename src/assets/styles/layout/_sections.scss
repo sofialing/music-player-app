@@ -15,6 +15,7 @@
 			font-weight: 600;
 			letter-spacing: .05em;
 			margin: 0;
+			text-transform: capitalize;
 			@include mq(md) {
 				font-size: $h5;
 				margin-right: .5em;

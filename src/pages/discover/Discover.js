@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
-import { getFeaturedPlaylists, getNewReleases, getCategories, getRecommendations } from 'services/spotifyAPI';
+import { getDiscoverNewMusic } from 'services/spotifyAPI';
 import LoadingView from 'components/views/LoadingView';
 import ErrorView from 'components/views/ErrorView';
 import PageHeader from 'components/sections/PageHeader';
@@ -17,13 +17,7 @@ const Discover = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getRecommendations(top_artists.items, top_tracks.items),
-			getNewReleases(),
-			getFeaturedPlaylists(),
-			getCategories(),
-		];
-		Promise.all(FETCH_DATA)
+		getDiscoverNewMusic(top_artists.items, top_tracks.items)
 			.then(([recommendations, releases, featured, categories]) => {
 				setRecommendations(recommendations);
 				setReleases(releases);

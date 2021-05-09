@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getArtist, getArtistTopTracks, getArtistRelatedArtists, getArtistAlbums } from 'services/spotifyAPI';
+import { getArtistDetails } from 'services/spotifyAPI';
 import ErrorView from 'components/views/ErrorView';
 import GridSection from 'components/sections/GridSection';
 import HeroSection from 'components/sections/HeroSection';
@@ -18,13 +18,7 @@ const Artist = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getArtist(artistId),
-			getArtistTopTracks(artistId),
-			getArtistRelatedArtists(artistId),
-			getArtistAlbums(artistId)
-		];
-		Promise.all(FETCH_DATA)
+		getArtistDetails(artistId)
 			.then(data => {
 				const [artist, topTracks, relatedArtists, albums] = data;
 				setArtist(artist);
@@ -57,7 +51,7 @@ const Artist = () => {
 				details={`${artist.followers} fans`} />
 			<ListSection title="Top tracks" items={topTracks.slice(0, 5)} />
 			<GridSection title='Discography' link='discography' items={albums.items} />
-			<GridSection title='Related artists' link='related' items={relatedArtists} />
+			<GridSection title='Related artists' link='related' items={relatedArtists.related} />
 		</MainView>
 	)
 }

@@ -144,9 +144,10 @@
 		@include mq(md) {
 			border-radius: $border-radius 0 0 $border-radius;
 			display: flex;
+			flex-basis: calc(100% / 3);
 			flex-grow: 1;
 		}
-		@include mq(xl) {
+		@include mq(lg) {
 			flex-grow: 0;
 			flex-basis: 320px;
 		}
@@ -181,9 +182,10 @@
 		@include mq(md) {
 			border-radius: 0 $border-radius $border-radius 0;
 			display: flex;
+			flex-basis: calc(100% / 3 * 2);
 			flex-grow: 1;
 			flex-flow: column;
-			justify-content: flex-end;
+			justify-content: center;
 			padding: 2rem;
 			&--title {
 				font-size: $h3;
@@ -195,8 +197,10 @@
 				max-width: 65ch;
 			}
 		}
-		@include mq(lg) {
+		@include mq(xl) {
 			padding: 2.5rem;
+			justify-content: flex-end;
+			flex-basis: auto;
 			&--title  {
 				font-size: $h2;
 				line-height: 1.1;

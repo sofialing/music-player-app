@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPlaylist, getPlaylistTracks } from 'services/spotifyAPI'
+import { getPlaylistDetails } from 'services/spotifyAPI'
 import ErrorView from 'components/views/ErrorView';
 import LoadingView from 'components/views/LoadingView';
 import MainView from 'components/views/MainView';
@@ -15,11 +15,7 @@ const Playlist = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getPlaylist(playlistId),
-			getPlaylistTracks(playlistId)
-		];
-		Promise.all(FETCH_DATA)
+		getPlaylistDetails(playlistId)
 			.then(([playlist, tracks]) => {
 				setPlaylist(playlist);
 				setTracks(tracks);

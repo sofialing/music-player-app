@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArtistAlbums } from 'services/spotifyAPI';
+import { getArtistDiscography } from 'services/spotifyAPI';
 import ErrorView from 'components/views/ErrorView';
 import PageHeader from 'components/sections/PageHeader';
 import ListSection from 'components/sections/ListSection';
@@ -17,12 +17,7 @@ const Discography = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getArtistAlbums(artistId, { include_groups: 'album' }),
-			getArtistAlbums(artistId, { include_groups: 'compilation' }),
-			getArtistAlbums(artistId, { include_groups: 'single' }),
-		];
-		Promise.all(FETCH_DATA)
+		getArtistDiscography(artistId)
 			.then(data => {
 				const [albums, compilations, singles] = data;
 				setAlbums(albums);

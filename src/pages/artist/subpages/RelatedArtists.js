@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArtist, getArtistRelatedArtists } from 'services/spotifyAPI';
+import { getArtistRelatedArtists } from 'services/spotifyAPI';
 import ErrorView from 'components/views/ErrorView';
 import PageHeader from 'components/sections/PageHeader';
 import MainView from 'components/views/MainView';
@@ -15,15 +15,10 @@ const RelatedArtists = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getArtist(artistId),
-			getArtistRelatedArtists(artistId),
-		];
-		Promise.all(FETCH_DATA)
-			.then(data => {
-				const [artist, relatedArtists] = data;
+		getArtistRelatedArtists(artistId)
+			.then(({ artist, related }) => {
 				setArtist(artist);
-				setRelatedArtists(relatedArtists);
+				setRelatedArtists(related);
 				setLoading(false);
 			})
 			.catch(error => {
@@ -41,8 +36,8 @@ const RelatedArtists = () => {
 	}
 
 	return (
-		<MainView id="related-artists" pageTitle={artist.name}>
-			<PageHeader title={`Artists like ${artist.name}`} />
+		<MainView id="related-artists" pageTitle={artist}>
+			<PageHeader title={`Artists like ${artist}`} />
 			<GridSection items={relatedArtists} limit={18} />
 		</MainView>
 	)

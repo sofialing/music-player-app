@@ -35,14 +35,44 @@ export const getTracks = total => {
 	return total > 2 ? `${total} tracks` : `${total} track`
 }
 
-export const setToken = (access_token, expires_in, refresh_token) => {
-	return localStorage.setItem('token', JSON.stringify({
-		access_token,
-		refresh_token,
-		expires_in: (expires_in * 1000) + new Date().getTime()
-	}))
+/**
+ * Store tokens in local storage
+ *
+ * @param {String} access_token An access token that can be provided in subsequent calls to Spotify Web API services.
+ * @param {String} refresh_token A token that can be sent to retrieve new access token
+ */
+export const setToken = (access_token, refresh_token, expires_at) => {
+	return localStorage.setItem('token', JSON.stringify({ access_token, refresh_token, expires_at }))
 }
 
+/**
+ * Get token from local storage
+ *
+ * @returns {Object} Access token, refresh token and expires at
+ */
 export const getToken = () => {
 	return JSON.parse(localStorage.getItem('token'));
+}
+
+/**
+ * Remove token from local storage
+ */
+export const removeToken = () => {
+	return localStorage.removeItem('token');
+}
+
+/**
+ * Check for valid access token in local storage
+ *
+ * @returns {Bolean} true or false
+ */
+export const hasValidAccessToken = () => {
+	console.log('check for token');
+	if (!getToken()) {
+		return false;
+	}
+	const { expires_at, access_token } = getToken();
+	const current_time = new Date().getTime();
+
+	return access_token && expires_at > current_time;
 }

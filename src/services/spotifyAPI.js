@@ -313,8 +313,11 @@ export const getArtistTopTracks = async (artist_id) => {
  */
 export const getArtistRelatedArtists = async (artist_id) => {
 	const response = await get(`artists/${artist_id}/related-artists`);
+	const artist = await getArtist(artist_id);
 
-	const artists = response.artists.map(item => ({
+	const relatedArtists = {};
+	relatedArtists.artist = artist.name;
+	relatedArtists.related = response.artists.map(item => ({
 		followers: parseInt(item.followers.total).toLocaleString(),
 		genres: item.genres,
 		id: item.id,
@@ -324,7 +327,7 @@ export const getArtistRelatedArtists = async (artist_id) => {
 		type: item.type,
 	}))
 
-	return artists;
+	return relatedArtists;
 }
 
 /**
@@ -837,4 +840,99 @@ export const setShuffle = async (device_id, state) => {
  */
 export const getCurrentPlaybackState = async () => {
 	return await get('me/player', { market: 'from_token' });
+}
+
+/**
+ * Get all user info
+ *
+ * @returns {Object} User object
+ */
+export const getUserInfo = async () => {
+	const endpoints = [
+		getCurrentUser(),
+		getTopTracks(),
+		getTopArtists({ limit: 18 }),
+		getUserPlaylists(),
+		getDiscoverWeekly()
+	];
+
+	return await Promise.all(endpoints);
+};
+
+/**
+ * Get playlist details
+ *
+ * @param {String} playlistId The id of the playlist
+ * @returns
+ */
+export const getPlaylistDetails = async (playlistId) => {
+	const endpoints = [
+		getPlaylist(playlistId),
+		getPlaylistTracks(playlistId)
+	];
+
+	return await Promise.all(endpoints);
+}
+
+/**
+ * Get artist details
+ *
+ * @param {String} artistId The id of the artist
+ */
+export const getArtistDetails = async (artistId) => {
+	const endpoints = [
+		getArtist(artistId),
+		getArtistTopTracks(artistId),
+		getArtistRelatedArtists(artistId),
+		getArtistAlbums(artistId)
+	];
+
+	return await Promise.all(endpoints);
+}
+
+/**
+ * Get artists discography
+ *
+ * @param {String} artistId The id of the artist
+ */
+export const getArtistDiscography = async (artistId) => {
+	const endpoints = [
+		getArtistAlbums(artistId, { include_groups: 'album' }),
+		getArtistAlbums(artistId, { include_groups: 'compilation' }),
+		getArtistAlbums(artistId, { include_groups: 'single' }),
+	];
+
+	return await Promise.all(endpoints);
+}
+
+/**
+ * Get recommendations and new releases
+ *
+ * @param {*} topArtist
+ * @param {*} topTracks
+ *
+ * @returns
+ */
+export const getDiscoverNewMusic = async (topArtist, topTracks) => {
+	const endpoints = [
+		getRecommendations(topArtist, topTracks),
+		getNewReleases(),
+		getFeaturedPlaylists(),
+		getCategories(),
+	];
+
+	return await Promise.all(endpoints);
+}
+
+/**
+ *
+ * @returns
+ */
+export const getCategoryDetails = async (categoryId, options = {}) => {
+	const endpoints = [
+		getCategory(categoryId),
+		getCategoryPlaylists(categoryId, options)
+	];
+
+	return await Promise.all(endpoints);
 }
