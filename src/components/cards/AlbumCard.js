@@ -9,7 +9,7 @@ const AlbumCard = ({ album }) => {
 		<li className="card">
 			<Link to={`/album/${album.id}`} className="card__inner" aria-label={album.name}>
 				<figure className="card__image">
-					<img src={imgSrc} alt={album.name} loading="lazy" width="640" height="640" />
+					<img src={imgSrc} alt={album.name} loading="lazy" width="300" height="300" />
 					<PlayButton uri={album.player_uri} type={album.type} />
 				</figure>
 				<div className="card__body">

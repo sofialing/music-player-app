@@ -6,7 +6,7 @@ const CurrentTrack = ({ track }) => {
 
 	return (
 		<div className="currently-playing">
-			<img src={imgSrc} alt={track.album.name} className="currently-playing__cover" />
+			<img src={imgSrc} alt={track.album.name} className="currently-playing__cover" loading="lazy" width="300" height="300" />
 			<div className="currently-playing__details">
 				<div className="currently-playing__details--track">{track.name}</div>
 				<div className="currently-playing__details--artist">{track.artists.map(artist => artist.name).join(', ')}</div>

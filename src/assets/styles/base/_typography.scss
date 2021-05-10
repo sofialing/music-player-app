@@ -1,10 +1,10 @@
 @use '../abstracts' as *;
-@import url('https://use.typekit.net/rml1yom.css');
 
 body {
 	color: $white;
-	font-family: canada-type-gibson, sans-serif;
+	font-family: canada-type-gibson, Helvetica, Arial, sans-serif;
 	font-size: 1rem;
+	font-style: normal;
 	font-weight: 400;
 }
 

@@ -10,7 +10,7 @@ const TrackListItem = ({ track }) => {
 
 	return (
 		<li className="list-item track" onDoubleClick={() => playTrack(track.player_uri)}>
-			<img src={imgSrc} alt="album cover" />
+			<img src={imgSrc} alt="album cover" loading="lazy" width="300" height="300" />
 			<div className="list-item__body">
 				<h2 className="list-item__body--title">{track.name}</h2>
 				<p className="list-item__body--desc">{track.artists} &middot; {

@@ -8,7 +8,7 @@ const DiscoverCard = ({ playlist, user }) => {
 	return (
 		<section className="card card-discover">
 			<figure className="card__image">
-				<img src={imgSrc} alt={playlist.name} loading="lazy" width="640" height="640" />
+				<img src={imgSrc} alt={playlist.name} loading="lazy" width="300" height="300" />
 				<PlayButton uri={playlist.player_uri} type={playlist.type} />
 			</figure>
 			<div className="card__body">

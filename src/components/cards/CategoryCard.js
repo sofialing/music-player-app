@@ -5,7 +5,7 @@ const CategoryCard = ({ category }) => {
 		<li className="card card-category">
 			<Link to={`/discover/categories/${category.id}`} className="card__inner" aria-label={category.name} state={{ category }}>
 				<figure className="card__image">
-					<img src={category.image_url} alt={category.name} loading="lazy" width="640" height="640" />
+					<img src={category.image_url} alt={category.name} loading="lazy" width="300" height="300" />
 				</figure>
 				<div className="card__body">
 					<h3 className="card__body--title">{category.name}</h3>

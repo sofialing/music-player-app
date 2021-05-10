@@ -10,7 +10,7 @@ const ArtistCard = ({ artist }) => {
 			<Link to={`/artist/${artist.id}`} className="card__inner" aria-label={artist.name} state={{ artist }} >
 				<figure className="card__image">
 					<div>
-						<img src={imgSrc} alt={artist.name} loading="lazy" width="640" height="640" />
+						<img src={imgSrc} alt={artist.name} loading="lazy" width="300" height="300" />
 					</div>
 					<PlayButton uri={artist.player_uri} type={artist.type} />
 				</figure>

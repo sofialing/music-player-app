@@ -18,7 +18,7 @@ const HeroSection = ({ title, subtitle, player_uri, image_url, description = nul
 	return (
 		<header className="hero" style={style}>
 			<div className="hero__inner">
-				<img className="hero__img" src={image_url ? image_url : noImage} alt={`${subtitle} cover`} />
+				<img className="hero__img" src={image_url ? image_url : noImage} alt={`${subtitle} cover`} loading="lazy" width="300" height="300" />
 				<div className="hero__content">
 					<span className="hero__content--subtitle">{subtitle}</span>
 					<h1 className="hero__content--title">{title}</h1>

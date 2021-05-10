@@ -9,7 +9,7 @@ const UserModule = ({ user, logout }) => {
 			<div className="user-settings__inner">
 				<button className="user-settings__btn" aria-label="Toggle settings" aria-expanded={toggle} onClick={() => setToggle(prevState => !prevState)}>
 					<figure className="user-settings__btn--img" title={user.display_name}>
-						<img src={user.image} alt={user.display_name} aria-hidden="false" />
+						<img src={user.image} alt={user.display_name} aria-hidden="false" width="300" height="300" />
 					</figure>
 					<span className="user-settings__btn--name">{user.display_name}</span>
 					<ArrowDropDownIcon />

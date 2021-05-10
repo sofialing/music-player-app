@@ -8,12 +8,12 @@ const ArtistListItem = ({ artist }) => {
 	return (
 		<li className="list-item list-item-artist">
 			<Link to={`/artist/${artist.id}`}>
-				<img src={imgSrc} alt="" />
+				<img src={imgSrc} alt={artist.name} loading="lazy" width="300" height="300" />
 				<div className="list-item__body">
 					<h2 className="list-item__body--title">{artist.name}</h2>
 					<p className="list-item__body--desc">{artist.followers} fans</p>
 				</div>
-				<button className="list-item__btn" aria-label="Go to artist" title="Go to artist" tabindex="-1">
+				<button className="list-item__btn" aria-label="Go to artist" title="Go to artist" tabIndex="-1">
 					<ChevronRightIcon />
 				</button>
 			</Link>

@@ -9,7 +9,7 @@ const PlaylistCard = ({ playlist }) => {
 		<li className="card card-playlist">
 			<Link to={`/playlist/${playlist.id}`} className="card__inner" aria-label={playlist.name}>
 				<figure className="card__image">
-					<img src={imgSrg} alt={playlist.name} loading="lazy" width="640" height="640" />
+					<img src={imgSrg} alt={playlist.name} loading="lazy" width="300" height="300" />
 					<PlayButton uri={playlist.player_uri} type="playlist" />
 				</figure>
 			</Link>

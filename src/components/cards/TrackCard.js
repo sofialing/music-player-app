@@ -8,7 +8,7 @@ const TrackCard = ({ track }) => {
 		<li className="card">
 			<div className="card__inner">
 				<figure className="card__image">
-					<img src={imgSrc} alt={track.album_name} loading="lazy" width="640" height="640" />
+					<img src={imgSrc} alt={track.album_name} loading="lazy" width="300" height="300" />
 					<PlayButton uri={track.player_uri} type="track" />
 				</figure>
 				<div className="card__body">
