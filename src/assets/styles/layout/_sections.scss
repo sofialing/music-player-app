@@ -46,6 +46,10 @@
 					transform: translateX(.125rem);
 				}
 			}
+			&:focus {
+				outline: none;
+				text-decoration: underline;
+			}
 		}
 	}
 	&__title {
@@ -66,17 +70,6 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		& > * {
-			display: block;
-			max-width: 100%;
-			min-width: 0
-		}
-		a:focus {
-			outline: none;
-			& > * {
-				box-shadow: 0 0 0 2px $gray-500;
-			}
-		}
 		@include mq(md) {
 			gap: 1.5rem;
 			grid-template-columns: repeat(3, 1fr);

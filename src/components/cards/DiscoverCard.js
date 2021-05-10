@@ -7,20 +7,18 @@ const DiscoverCard = ({ playlist, user }) => {
 
 	return (
 		<section className="card card-discover">
-			{/* <div className="card__inner"> */}
-			<header className="card__header">
-				<img src={imgSrc} alt={playlist.name} />
+			<figure className="card__image">
+				<img src={imgSrc} alt={playlist.name} loading="lazy" width="640" height="640" />
 				<PlayButton uri={playlist.player_uri} type={playlist.type} />
-			</header>
+			</figure>
 			<div className="card__body">
-				<h3 className="card__body--subtitle">{playlist.type}</h3>
+				<span className="card__body--subtitle">{playlist.type}</span>
 				<h2 className="card__body--title">
 					<Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
 				</h2>
 				<p className="card__body--desc">{playlist.description}</p>
 				<p className="card__body--details">Made for {user.display_name} by {playlist.owner} &middot; {playlist.total_tracks} tracks</p>
 			</div>
-			{/* </div> */}
 		</section>
 	)
 }

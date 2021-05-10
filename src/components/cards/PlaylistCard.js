@@ -6,14 +6,14 @@ const PlaylistCard = ({ playlist }) => {
 	const imgSrg = playlist.image_url ? playlist.image_url : noImage;
 
 	return (
-		<Link to={`/playlist/${playlist.id}`} aria-label={`Go to ${playlist.name}`} >
-			<li className="card card-playlist">
-				<header className="card__header">
-					<img src={imgSrg} alt={playlist.name} />
+		<li className="card card-playlist">
+			<Link to={`/playlist/${playlist.id}`} className="card__inner" aria-label={playlist.name}>
+				<figure className="card__image">
+					<img src={imgSrg} alt={playlist.name} loading="lazy" width="640" height="640" />
 					<PlayButton uri={playlist.player_uri} type="playlist" />
-				</header>
-			</li>
-		</Link>
+				</figure>
+			</Link>
+		</li>
 	)
 }
 

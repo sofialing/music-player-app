@@ -29,6 +29,7 @@ $spacing: 3rem;
 		&--subtitle {
 			display: none;
 			font-size: .75rem;
+			font-weight: 600;
 			letter-spacing: .2em;
 			text-transform: uppercase;
 			margin: .5rem 0;
@@ -78,6 +79,7 @@ $spacing: 3rem;
 		padding: .675rem 1.75rem;
 		width: initial;
 		height: initial;
+		max-width: 150px;
 		svg {
 			font-size: 2rem;
 			height: .75em;

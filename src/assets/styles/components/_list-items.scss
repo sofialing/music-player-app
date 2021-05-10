@@ -3,10 +3,18 @@
 .list-item {
 	background-color: transparent;
 	border-bottom: 1px solid $gray-650;
-	display: flex;
-	align-items: center;
-	padding: .5rem .5rem;
 	transition: background-color .5s ease-in-out;
+	a {
+		padding: .5rem .5rem;
+		display: block;
+		display: flex;
+		align-items: center;
+		&:focus {
+			text-decoration: none;
+			outline: none;
+			box-shadow: 0 0 0 2px $white;
+		}
+	}
 	img {
 		width: 45px;
 		height: 45px;
@@ -61,4 +69,10 @@
 	&-artist img {
 		border-radius: 50%;
 	}
+}
+
+.list-item.track {
+	display: flex;
+	align-items: center;
+	padding: .5rem .5rem;
 }

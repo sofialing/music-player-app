@@ -9,7 +9,7 @@ const TrackListItem = ({ track }) => {
 	const imgSrc = track.image_url ? track.image_url : noImage;
 
 	return (
-		<li className="list-item" onDoubleClick={() => playTrack(track.player_uri)}>
+		<li className="list-item track" onDoubleClick={() => playTrack(track.player_uri)}>
 			<img src={imgSrc} alt="album cover" />
 			<div className="list-item__body">
 				<h2 className="list-item__body--title">{track.name}</h2>

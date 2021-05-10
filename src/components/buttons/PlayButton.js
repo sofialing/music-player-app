@@ -21,12 +21,12 @@ const PlayButton = ({ uri, type }) => {
 	}
 
 	return is_playing && context && (context.uri === uri || current_track.uri === uri) ? (
-		<button className="play-btn is-active" aria-label={`Pause ${type}`} onClick={handlePause}>
+		<button className="play-btn is-active" aria-label={`Pause ${type}`} onClick={handlePause} tabIndex="-1">
 			<PauseIcon />
 			<span>Pause</span>
 		</button>
 	) : (
-		<button className="play-btn" aria-label={`Play ${type}`} onClick={handlePlay}>
+		<button className="play-btn" aria-label={`Play ${type}`} onClick={handlePlay} tabIndex="-1">
 			<PlayArrowIcon />
 			<span>Play</span>
 		</button>

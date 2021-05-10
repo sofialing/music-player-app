@@ -20,7 +20,7 @@ const HeroSection = ({ title, subtitle, player_uri, image_url, description = nul
 			<div className="hero__inner">
 				<img className="hero__img" src={image_url ? image_url : noImage} alt={`${subtitle} cover`} />
 				<div className="hero__content">
-					<h2 className="hero__content--subtitle">{subtitle}</h2>
+					<span className="hero__content--subtitle">{subtitle}</span>
 					<h1 className="hero__content--title">{title}</h1>
 					{description && <p className="hero__content--desc">{description}</p>}
 					{details && <p className="hero__content--details">{details}</p>}

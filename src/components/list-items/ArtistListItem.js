@@ -6,18 +6,18 @@ const ArtistListItem = ({ artist }) => {
 	const imgSrc = artist.image_url ? artist.image_url : noImage;
 
 	return (
-		<Link to={`/artist/${artist.id}`}>
-			<li className="list-item list-item-artist">
+		<li className="list-item list-item-artist">
+			<Link to={`/artist/${artist.id}`}>
 				<img src={imgSrc} alt="" />
 				<div className="list-item__body">
 					<h2 className="list-item__body--title">{artist.name}</h2>
 					<p className="list-item__body--desc">{artist.followers} fans</p>
 				</div>
-				<button className="list-item__btn" aria-label="Go to artist" title="Go to artist">
+				<button className="list-item__btn" aria-label="Go to artist" title="Go to artist" tabindex="-1">
 					<ChevronRightIcon />
 				</button>
-			</li>
-		</Link>
+			</Link>
+		</li>
 	)
 }
 

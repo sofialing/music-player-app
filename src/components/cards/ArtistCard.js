@@ -6,20 +6,20 @@ const ArtistCard = ({ artist }) => {
 	const imgSrc = artist.image_url ? artist.image_url : noImage;
 
 	return (
-		<Link to={`/artist/${artist.id}`} state={{ artist }} >
-			<li className="card card-artist">
-				<header className="card__header">
-					<figure>
-						<img src={imgSrc} alt={artist.name} />
-					</figure>
+		<li className="card card-artist">
+			<Link to={`/artist/${artist.id}`} className="card__inner" aria-label={artist.name} state={{ artist }} >
+				<figure className="card__image">
+					<div>
+						<img src={imgSrc} alt={artist.name} loading="lazy" width="640" height="640" />
+					</div>
 					<PlayButton uri={artist.player_uri} type={artist.type} />
-				</header>
+				</figure>
 				<div className="card__body">
 					<h3 className="card__body--title">{artist.name}</h3>
 					<p className="card__body--desc">{artist.followers} fans</p>
 				</div>
-			</li>
-		</Link>
+			</Link>
+		</li>
 	)
 }
 

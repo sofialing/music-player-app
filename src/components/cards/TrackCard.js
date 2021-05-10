@@ -6,13 +6,15 @@ const TrackCard = ({ track }) => {
 
 	return (
 		<li className="card">
-			<header className="card__header">
-				<img src={imgSrc} alt={track.album_name} />
-				<PlayButton uri={track.player_uri} type="track" />
-			</header>
-			<div className="card__body">
-				<h3 className="card__body--title">{track.name}</h3>
-				<p className="card__body--desc">{track.artists}</p>
+			<div className="card__inner">
+				<figure className="card__image">
+					<img src={imgSrc} alt={track.album_name} loading="lazy" width="640" height="640" />
+					<PlayButton uri={track.player_uri} type="track" />
+				</figure>
+				<div className="card__body">
+					<h3 className="card__body--title">{track.name}</h3>
+					<p className="card__body--desc">{track.artists}</p>
+				</div>
 			</div>
 		</li>
 	)

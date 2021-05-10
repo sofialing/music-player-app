@@ -2,13 +2,23 @@
 @use '../utilities' as *;
 
 .card {
+	position: relative;
 	background-color: $gray-650;
 	border-radius: $border-radius-sm;
 	box-shadow: $shadow;
-	height: 100%;
-	position: relative;
+	min-width: 0;
+	min-height: 0;
 	transition: background-color .5s $ease;
-	&__header {
+	&__inner {
+		border-radius: inherit;
+		display: block;
+		&:focus {
+			box-shadow: 0 0 0 2px $gray-500;
+			outline: none;
+			text-decoration: none;
+		}
+	}
+	&__image {
 		border-radius: $border-radius-sm $border-radius-sm 0 0 ;
 		margin: 0;
 		width: 100%;
@@ -23,6 +33,7 @@
 			transition: transform .5s $ease;
 		}
 		button {
+			display: none;
 			position: absolute;
 			bottom: 1rem;
 			right: 1rem;
@@ -69,25 +80,33 @@
 	}
 	@include mq(md) {
 		border-radius: $border-radius;
+		&__inner {
+			border-radius: inherit;
+		}
 		&:hover {
 			background-color: $gray-600;
 			img {
 				transform: scale(1.1);
 			}
 		}
-		&__header {
+		&__image {
 			border-radius: $border-radius $border-radius 0 0 ;
+		}
+		&__image button {
+			display: initial;
 		}
 	}
 }
 
 .card-artist {
-	padding: 1rem 1rem 0;
-	.card__header {
+	.card__inner {
+		padding: 1rem 1rem 0;
+	}
+	.card__image {
 		border-radius: 0;
 		margin: 0;
 		position: relative;
-		figure {
+		div {
 			height: auto;
 			border-radius: 50%;
 			width: 100%;
@@ -106,7 +125,7 @@
 			object-fit: cover;
 		}
 		button {
-			z-index: 2;
+			z-index: 5;
 		}
 	}
 	.card__body {
@@ -116,7 +135,7 @@
 
 .card-playlist,
 .card-category {
-	.card__header {
+	.card__image {
 		border-radius: $border-radius-sm;
 		@include mq(md) {
 			border-radius: $border-radius;
@@ -140,7 +159,7 @@
 	@include mq(md) {
 		display: flex;
 	}
-	.card__header {
+	.card__image {
 		@include mq(md) {
 			border-radius: $border-radius 0 0 $border-radius;
 			display: flex;
@@ -161,6 +180,7 @@
 		}
 		&--subtitle {
 			font-size: .75rem;
+			font-weight: 600;
 			letter-spacing: .2em;
 			margin: 0;
 			text-transform: uppercase;

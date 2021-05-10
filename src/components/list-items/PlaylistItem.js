@@ -6,18 +6,18 @@ const PlaylistItem = ({ playlist }) => {
 	const imgSrc = playlist.image_url ? playlist.image_url : noImage;
 
 	return (
-		<Link to={`/playlist/${playlist.id}`}>
-			<li className="list-item">
+		<li className="list-item">
+			<Link to={`/playlist/${playlist.id}`}>
 				<img src={imgSrc} alt={playlist.name} />
 				<div className="list-item__body">
 					<h2 className="list-item__body--title">{playlist.name}</h2>
 					<p className="list-item__body--desc">by {playlist.owner_name} &middot; {playlist.tracks.total} tracks</p>
 				</div>
-				<button className="list-item__btn" aria-label="Go to playlist" title="Go to playlist">
+				<button className="list-item__btn" aria-label="Go to playlist" title="Go to playlist" tabindex="-1">
 					<ChevronRightIcon />
 				</button>
-			</li>
-		</Link>
+			</Link>
+		</li>
 	)
 }
 
