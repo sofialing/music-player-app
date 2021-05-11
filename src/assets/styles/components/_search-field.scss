@@ -9,7 +9,7 @@
 		&--input {
 			color: $gray-800;
 			font-family: $font-family;
-			font-size: .875rem;
+			font-size: 1rem;
 			font-weight: 300;
 			letter-spacing: .025em;
 			padding: .375rem 3rem;
@@ -19,12 +19,18 @@
 			border-radius: 30rem;
 			text-overflow: ellipsis;
 			position: relative;
-			&::placeholder {
-				color: $gray-800;
-				font-family: $font-family;
+			@include mq(lg) {
 				font-size: .875rem;
+			}
+			&::placeholder {
+				color: $gray-400;
+				font-family: $font-family;
+				font-size: 1rem;
 				font-weight: 300;
 				letter-spacing: .025em;
+				@include mq(lg) {
+					font-size: .875rem;
+				}
 			}
 			&:focus {
 				outline: none;

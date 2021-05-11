@@ -1,33 +1,8 @@
 /**
  * Spotify API services
  */
-import _ from 'lodash'
-import moment from 'moment';
-import axios from 'utils/axios';
-
-/**
- * HTTP GET request
- *
- * @param {String} endpoint API endpoint that will be used for the request
- * @param {Object} params URL parameters to be sent with the request
- */
-const get = async (endpoint, params = {}) => {
-	const response = await axios.get(endpoint, { params });
-	// return response data
-	return response.data;
-};
-
-/**
- * HTTP PUT request
- *
- * @param {String} endpoint API endpoint that will be used for the request
- * @param {Object} body the data to be sent as the request body
- */
-const put = async (endpoint, body = {}) => {
-	const response = await axios.put(endpoint, body);
-	// return response status
-	return response.status;
-}
+import { get, put } from 'utils/axios';
+import { joinArtists, formatDuration, formatNumber, getYear, getAlbumLength, getImageUrl } from 'utils';
 
 /**
  * Get the current user’s top tracks
@@ -44,13 +19,13 @@ export const getTopTracks = async (options = {}) => {
 			album: {
 				id: item.album.id,
 				name: item.album.name,
-				image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+				image_url: getImageUrl(item.album.images),
 			},
-			artists: item.artists.map(artist => artist.name).join(', '),
-			duration: moment(item.duration_ms).format('mm:ss'),
+			artists: joinArtists(item.artists),
+			duration: formatDuration(item.duration_ms),
 			duration_ms: item.duration_ms,
 			id: item.id,
-			image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+			image_url: getImageUrl(item.album.images),
 			name: item.name,
 			player_uri: item.uri,
 			release_date: item.album.release_date,
@@ -73,10 +48,10 @@ export const getTopArtists = async (options = {}) => {
 	const topArtists = {
 		...response,
 		items: response.items.map(item => ({
-			followers: parseInt(item.followers.total).toLocaleString(),
+			followers: formatNumber(item.followers.total),
 			genres: item.genres,
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			player_uri: item.uri,
 			type: item.type,
@@ -126,7 +101,7 @@ export const getDiscoverWeekly = async () => {
 	const discoverWeekly = {
 		description: result.description,
 		id: result.id,
-		image_url: _.isEmpty(result.images) ? null : result.images[0].url,
+		image_url: getImageUrl(result.images),
 		name: result.name,
 		owner: result.owner.display_name,
 		player_uri: result.uri,
@@ -152,7 +127,7 @@ export const getUserPlaylists = async (options = {}) => {
 		items: response.items.map(item => ({
 			description: item.description,
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			owner_name: item.owner.display_name,
 			player_uri: item.uri,
@@ -176,9 +151,9 @@ export const getPlaylist = async (playlistId, options = {}) => {
 
 	const playlist = {
 		description: response.description,
-		followers: parseInt(response.followers.total).toLocaleString(),
+		followers: formatNumber(response.followers.total),
 		id: response.id,
-		image_url: _.isEmpty(response.images) ? null : response.images[0].url,
+		image_url: getImageUrl(response.images),
 		name: response.name,
 		owner: response.owner.display_name,
 		player_uri: response.uri,
@@ -203,11 +178,11 @@ export const getPlaylistTracks = async (playlistId, options = {}) => {
 		...response,
 		items: response.items.map(item => ({
 			album_name: item.track.album.name,
-			artists: item.track.artists.map((artist) => artist.name).join(', '),
-			duration: moment(item.track.duration_ms).format('mm:ss'),
+			artists: joinArtists(item.track.artists),
+			duration: formatDuration(item.track.duration_ms),
 			duration_ms: item.track.duration_ms,
 			id: item.track.id,
-			image_url: _.isEmpty(item.track.album.images) ? null : item.track.album.images[0].url,
+			image_url: getImageUrl(item.track.album.images),
 			name: item.track.name,
 			player_uri: item.track.uri,
 			release_date: item.track.album.release_date,
@@ -232,24 +207,25 @@ export const getAlbum = async (albumId, options = {}) => {
 	});
 
 	const album = {
-		artists: response.artists.map(artist => artist.name).join(', '),
+		artists: joinArtists(response.artists),
 		genres: response.genres,
 		id: response.id,
-		image_url: _.isEmpty(response.images) ? null : response.images[0].url,
+		image_url: getImageUrl(response.images),
 		name: response.name,
 		player_uri: response.uri,
 		release_date: response.release_date,
-		total_length: moment(response.tracks.items.map(track => track.duration_ms).reduce((total, num) => total + num)).format('m'),
+		release_year: getYear(response.release_date),
+		total_length: getAlbumLength(response.tracks.items),
 		total_tracks: response.tracks.total,
 		tracks: response.tracks.items.map(item => ({
-			artists: item.artists.map(artist => artist.name).join(', '),
-			duration: moment(item.duration_ms).format('mm:ss'),
+			artists: joinArtists(item.artists),
+			duration: formatDuration(item.duration_ms),
 			duration_ms: item.duration_ms,
 			id: item.id,
 			name: item.name,
 			player_uri: item.uri,
 			type: item.type,
-			image_url: _.isEmpty(response.images) ? null : response.images[0].url,
+			image_url: getImageUrl(response.images),
 			album_name: response.name,
 		})),
 		type: response.album_type,
@@ -267,10 +243,10 @@ export const getArtist = async (artist_id) => {
 	const response = await get('artists/' + artist_id);
 
 	const artist = {
-		followers: parseInt(response.followers.total).toLocaleString(),
+		followers: formatNumber(response.followers.total),
 		genres: response.genres,
 		id: response.id,
-		image_url: _.isEmpty(response.images) ? null : response.images[0].url,
+		image_url: getImageUrl(response.images),
 		name: response.name,
 		player_uri: response.uri,
 		type: response.type,
@@ -292,11 +268,11 @@ export const getArtistTopTracks = async (artist_id) => {
 
 	const topTracks = res.tracks.map(track => ({
 		album_name: track.album.name,
-		artists: track.artists.map((artist) => artist.name).join(', '),
-		duration: moment(track.duration_ms).format('mm:ss'),
+		artists: joinArtists(track.artists),
+		duration: formatDuration(track.duration_ms),
 		duration_ms: track.duration_ms,
 		id: track.id,
-		image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
+		image_url: getImageUrl(track.album.images),
 		name: track.name,
 		player_uri: track.uri,
 		type: 'track',
@@ -318,10 +294,10 @@ export const getArtistRelatedArtists = async (artist_id) => {
 	const relatedArtists = {};
 	relatedArtists.artist = artist.name;
 	relatedArtists.related = response.artists.map(item => ({
-		followers: parseInt(item.followers.total).toLocaleString(),
+		followers: formatNumber(item.followers.total),
 		genres: item.genres,
 		id: item.id,
-		image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+		image_url: getImageUrl(item.images),
 		name: item.name,
 		player_uri: item.uri,
 		type: item.type,
@@ -346,12 +322,12 @@ export const getArtistAlbums = async (artist_id, options = {}) => {
 	const albums = {
 		...response,
 		items: response.items.map(item => ({
-			artists: item.artists.map(artist => artist.name).join(', '),
+			artists: joinArtists(item.artists),
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			player_uri: item.uri,
-			release_date: item.release_date.split('-')[0],
+			release_date: getYear(item.release_date),
 			total_tracks: item.total_tracks,
 			type: item.album_type
 		}))
@@ -380,7 +356,7 @@ export const getFeaturedPlaylists = async (options = {}) => {
 			items: response.playlists.items.map(item => ({
 				description: item.description,
 				id: item.id,
-				image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+				image_url: getImageUrl(item.images),
 				name: item.name,
 				owner: item.owner.display_name,
 				player_uri: item.uri,
@@ -410,12 +386,12 @@ export const getNewReleases = async (options = {}) => {
 	const releases = {
 		...response.albums,
 		items: response.albums.items.map(item => ({
-			artists: item.artists.map((artist) => artist.name).join(', '),
+			artists: joinArtists(item.artists),
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			player_uri: item.uri,
-			release_date: item.release_date.split('-')[0],
+			release_date: getYear(item.release_date),
 			type: item.album_type,
 		}))
 	};
@@ -466,10 +442,10 @@ export const getRecommendations = async (artists, tracks) => {
 
 	const recommendations = response.tracks.map(track => ({
 		album_name: track.album.name,
-		artists: track.artists.map((artist) => artist.name).join(', '),
+		artists: joinArtists(track.artists),
 		duration_ms: track.duration_ms,
 		id: track.id,
-		image_url: _.isEmpty(track.album.images) ? null : track.album.images[0].url,
+		image_url: getImageUrl(track.album.images),
 		name: track.name,
 		player_uri: track.uri,
 		type: track.type,
@@ -509,7 +485,7 @@ export const getCategoryPlaylists = async (categoryId, options = {}) => {
 		items: response.playlists.items.map(item => ({
 			description: item.description,
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			owner: item.owner.display_name,
 			player_uri: item.uri,
@@ -536,15 +512,15 @@ export const getUsersSavedAlbums = async (options = {}) => {
 	const albums = {
 		...response,
 		items: response.items.map(item => ({
-			artists: item.album.artists.map((artist) => artist.name).join(', '),
+			artists: joinArtists(item.album.artists),
 			genres: item.album.genres,
 			id: item.album.id,
-			image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+			image_url: getImageUrl(item.album.images),
 			name: item.album.name,
 			player_uri: item.album.uri,
-			release_date: item.album.release_date.split('-')[0],
+			release_date: getYear(item.album.release_date),
 			total_tracks: item.album.tracks.total,
-			total_length: moment(item.album.tracks.items.map(track => track.duration_ms).reduce((total, num) => total + num)).format('m'),
+			total_length: getAlbumLength(item.album.tracks.items),
 			tracks: item.album.tracks,
 			type: item.album.album_type,
 		}))
@@ -566,10 +542,10 @@ export const getFollowedArtists = async () => {
 	const artists = {
 		...response.artists,
 		items: response.artists.items.map(item => ({
-			followers: parseInt(item.followers.total).toLocaleString(),
+			followers: formatNumber(item.followers.total),
 			genres: item.genres,
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			player_uri: item.uri,
 			type: item.type,
@@ -595,11 +571,11 @@ export const getMySavedTracks = async (options = {}) => {
 		...response,
 		items: response.items.map(item => ({
 			album_name: item.track.album.name,
-			artists: item.track.artists.map(artist => artist.name).join(', '),
-			duration: moment(item.track.duration_ms).format('mm:ss'),
+			artists: joinArtists(item.track.artists),
+			duration: formatDuration(item.track.duration_ms),
 			duration_ms: item.track.duration_ms,
 			id: item.track.id,
-			image_url: _.isEmpty(item.track.album.images) ? null : item.track.album.images[0].url,
+			image_url: getImageUrl(item.track.album.images),
 			name: item.track.name,
 			player_uri: item.track.uri,
 			type: 'track'
@@ -629,12 +605,12 @@ export const searchAll = async (query, options = {}) => {
 			...response.albums,
 			type: 'albums',
 			items: response.albums.items.map(item => ({
-				artists: item.artists.map(artist => artist.name).join(', '),
+				artists: joinArtists(item.artists),
 				id: item.id,
-				image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+				image_url: getImageUrl(item.images),
 				name: item.name,
 				player_uri: item.uri,
-				release_date: item.release_date.split('-')[0],
+				release_date: getYear(item.release_date),
 				total_tracks: item.total_tracks,
 				type: item.album_type,
 			}))
@@ -643,10 +619,10 @@ export const searchAll = async (query, options = {}) => {
 			...response.artists,
 			type: 'artists',
 			items: response.artists.items.map(item => ({
-				followers: parseInt(item.followers.total).toLocaleString(),
+				followers: formatNumber(item.followers.total),
 				genres: item.genres,
 				id: item.id,
-				image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+				image_url: getImageUrl(item.images),
 				name: item.name,
 				player_uri: item.uri,
 				type: item.type,
@@ -657,11 +633,11 @@ export const searchAll = async (query, options = {}) => {
 			type: 'tracks',
 			items: response.tracks.items.map(item => ({
 				album_name: item.album.name,
-				artists: item.artists.map(artist => artist.name).join(', '),
-				duration: moment(item.duration_ms).format('mm:ss'),
+				artists: joinArtists(item.artists),
+				duration: formatDuration(item.duration_ms),
 				duration_ms: item.duration_ms,
 				id: item.id,
-				image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+				image_url: getImageUrl(item.album.images),
 				name: item.name,
 				player_uri: item.uri,
 				release_date: item.album.release_date,
@@ -691,12 +667,12 @@ export const searchAlbums = async (query, options = {}) => {
 	const albums = {
 		...response.albums,
 		items: response.albums.items.map(item => ({
-			artists: item.artists.map(artist => artist.name).join(', '),
+			artists: joinArtists(item.artists),
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			player_uri: item.uri,
-			release_date: item.release_date.split('-')[0],
+			release_date: getYear(item.release_date),
 			total_tracks: item.total_tracks,
 			type: item.album_type,
 		}))
@@ -723,10 +699,10 @@ export const searchArtists = async (query, options = {}) => {
 	const artists = {
 		...response.artists,
 		items: response.artists.items.map(item => ({
-			followers: parseInt(item.followers.total).toLocaleString(),
+			followers: formatNumber(item.followers.total),
 			genres: item.genres,
 			id: item.id,
-			image_url: _.isEmpty(item.images) ? null : item.images[0].url,
+			image_url: getImageUrl(item.images),
 			name: item.name,
 			player_uri: item.uri,
 			type: item.type,
@@ -755,11 +731,11 @@ export const searchTracks = async (query, options = {}) => {
 		...response.tracks,
 		items: response.tracks.items.map(item => ({
 			album_name: item.album.name,
-			artists: item.artists.map(artist => artist.name).join(', '),
-			duration: moment(item.duration_ms).format('mm:ss'),
+			artists: joinArtists(item.artists),
+			duration: formatDuration(item.duration_ms),
 			duration_ms: item.duration_ms,
 			id: item.id,
-			image_url: _.isEmpty(item.album.images) ? null : item.album.images[0].url,
+			image_url: getImageUrl(item.album.images),
 			name: item.name,
 			player_uri: item.uri,
 			release_date: item.album.release_date,

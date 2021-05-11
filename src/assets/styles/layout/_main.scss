@@ -4,7 +4,7 @@
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
 	overflow-y: scroll;
-	padding: calc(72px + 2rem) 0 2.5rem;
+	padding: calc(72px + 1.5rem) 0 calc(80px + 2.5rem);
 	position: relative;
 	scrollbar-width: none;
 	-ms-overflow-style: none;

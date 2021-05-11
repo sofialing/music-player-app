@@ -17,14 +17,20 @@ $spacing: 3rem;
 	&__img {
 		box-shadow: 1px 4px 12px $gray-900;
 		margin: 0 auto 2rem;
-		max-width: 75%;
+		// max-width: 75%;
 	}
 	&__content {
 		width: 100%;
 		&--title {
-			font-size: $h5;
-			letter-spacing: .075em;
-			margin: 0;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			display: -webkit-box;
+			h1 {
+				font-size: $h5;
+				letter-spacing: .075em;
+				margin: 0;
+			}
 		}
 		&--subtitle {
 			display: none;
@@ -50,14 +56,17 @@ $spacing: 3rem;
 			align-items: flex-end;
 		}
 		&__img {
-			max-width: 225px;
+			// max-width: 225px;
 			margin: 0 2rem 0 0;
 		}
 		&__content {
 			&--title {
-				font-size: $h0;
-				line-height: 1.1;
-				letter-spacing: initial;
+				-webkit-line-clamp: 2;
+				h1 {
+					font-size: $h0;
+					line-height: 1.1;
+					letter-spacing: initial;
+				}
 			}
 			&--subtitle {
 				display: initial;

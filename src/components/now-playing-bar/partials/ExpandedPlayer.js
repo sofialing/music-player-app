@@ -15,7 +15,7 @@ const ExpandedPlayer = ({ currentState }) => {
 	useEffect(() => {
 		fac.getColorAsync(current_track.album.images[0].url)
 			.then(color => setStyle({ backgroundColor: color.rgb }))
-			.catch(e => console.log(e));
+			.catch(e => setStyle({ backgroundColor: 'black' }));
 		return () => fac.destroy();
 	}, [current_track])
 

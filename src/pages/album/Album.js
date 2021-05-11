@@ -38,7 +38,7 @@ const Album = () => {
 				player_uri={album.player_uri}
 				image_url={album.image_url}
 				description={album.artists}
-				details={`${album.total_tracks} tracks · ${album.total_length} minutes`} />
+				details={`${album.release_year} · ${album.total_tracks} tracks · ${album.total_length} minutes`} />
 			<ListSection items={album.tracks} displayAlbumTitle={false} />
 		</MainView>
 	)

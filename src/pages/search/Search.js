@@ -5,16 +5,17 @@ import PageHeader from 'components/sections/PageHeader';
 import GridSection from 'components/sections/GridSection';
 import MainView from 'components/views/MainView';
 import SearchField from 'components/SearchField';
+import ErrorView from 'components/views/ErrorView';
 
 const Search = () => {
 	const navigate = useNavigate();
 	const searchRef = useRef();
 	const { searchQuery } = useParams();
 	const [searchResults, setSearchResults] = useState(null);
+	const [error, setError] = useState(false);
 
 	useEffect(() => {
 		searchRef.current.focus();
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Search';
 	}, [])
 
 	useEffect(() => {
@@ -22,11 +23,9 @@ const Search = () => {
 			return;
 		}
 
-		document.title = process.env.REACT_APP_PAGE_TITLE + 'Search: ' + searchQuery;
-
 		searchAll(searchQuery, { limit: 6 })
 			.then(results => setSearchResults(results))
-			.catch(error => console.log(error))
+			.catch(error => setError(error))
 	}, [searchQuery])
 
 	const onSubmit = e => {
@@ -34,14 +33,16 @@ const Search = () => {
 		navigate(`/search/${searchRef.current.value}`);
 	}
 
+	if (error) {
+		return <ErrorView />
+	}
+
 	return (
 		<MainView id="search" pageTitle={searchQuery ? `Search: ${searchQuery}` : 'Search'}>
 			<PageHeader title="Search music" />
 			<SearchField searchRef={searchRef} onSubmit={onSubmit} />
 			{searchResults && searchResults.map(result => (
-				<GridSection title={result.type} link={result.next ? result.type : null} items={result.items} key={result.type}>
-					{!result.total ? <p>No {result.type} found for '{searchRef.current.value}'.</p> : ''}
-				</GridSection>
+				<GridSection title={result.type} link={result.next ? result.type : null} items={result.items} key={result.type} />
 			))}
 		</MainView>
 	)

@@ -2,6 +2,7 @@
  * Helper Functions
  */
 import moment from 'moment';
+import { isEmpty } from 'lodash'
 
 export const formatNumber = number => {
 	return parseInt(number).toLocaleString();
@@ -11,11 +12,15 @@ export const formatTime = time_ms => {
 	return moment(time_ms).format('mm:ss');
 }
 
+export const formatDuration = time_ms => {
+	return moment(time_ms).format('mm:ss');
+}
+
 export const getMinutes = time_ms => {
 	return moment(time_ms).format('m');
 }
 
-export const getArtists = artist_array => {
+export const joinArtists = artist_array => {
 	return artist_array.map((artist) => artist.name).join(', ');
 }
 
@@ -23,8 +28,12 @@ export const getYear = date => {
 	return date.split('-')[0];
 }
 
+export const getImageUrl = image_array => {
+	return isEmpty(image_array) ? null : image_array[0].url
+}
+
 export const getAlbumLength = tracks => {
-	const total_ms = tracks.items
+	const total_ms = tracks
 		.map(track => track.duration_ms)
 		.reduce((total, num) => total + num);
 
@@ -67,7 +76,6 @@ export const removeToken = () => {
  * @returns {Bolean} true or false
  */
 export const hasValidAccessToken = () => {
-	console.log('check for token');
 	if (!getToken()) {
 		return false;
 	}
