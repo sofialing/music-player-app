@@ -22,5 +22,5 @@ ReactDOM.render(
 	document.getElementById('app')
 );
 
-// serviceWorkerRegistration.register();
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
+// serviceWorkerRegistration.unregister();

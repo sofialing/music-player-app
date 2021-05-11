@@ -33,7 +33,7 @@
 }
 
 .has-now-playing-bar .main-view {
-	padding-bottom: calc(80px + 2.5rem);
+	padding-bottom: calc(80px + 70px + 2.5rem);
 	@include mq(md) {
 		padding-bottom: calc(100px + 3.5rem);
 	}
