@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import breakpoints from 'utils/breakpoints';
+import { useAuth } from 'contexts/AuthContext';
 
 const ViewportContext = createContext();
 
@@ -11,7 +12,8 @@ const useViewport = () => {
 const ViewportContextProvider = ({ children }) => {
 	const [windowSize, setWindowSize] = useState(window.innerWidth);
 	const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoints.lg);
-	const [gridItems, setGridItems] = useState(window.innerWidth < breakpoints.md ? 4 : 6)
+	const [gridItems, setGridItems] = useState(window.innerWidth < breakpoints.md ? 4 : 6);
+	const { user } = useAuth();
 
 	const handleResize = throttle(() => {
 		let vh = window.innerHeight * 0.01;
@@ -27,7 +29,7 @@ const ViewportContextProvider = ({ children }) => {
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [user]);
 
 	return (
 		<ViewportContext.Provider value={{ isMobile, gridItems, windowSize }} >

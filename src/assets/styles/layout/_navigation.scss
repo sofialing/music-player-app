@@ -63,8 +63,13 @@ $side-padding: 1.75rem;
 	}
 	&__playlists {
 		padding: 0 $side-padding;
-		overflow: hidden;
+		overflow: scroll;
 		height: auto;
+		-ms-overflow-style: none;
+  		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
 		&--title {
 			font-size: .875rem;
 			text-transform: uppercase;
