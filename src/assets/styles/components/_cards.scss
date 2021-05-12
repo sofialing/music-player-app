@@ -33,7 +33,7 @@
 			transition: transform .5s $ease;
 		}
 		button {
-			display: none;
+			display: block;
 			position: absolute;
 			bottom: 1rem;
 			right: 1rem;
@@ -91,9 +91,6 @@
 		}
 		&__image {
 			border-radius: $border-radius $border-radius 0 0 ;
-		}
-		&__image button {
-			display: initial;
 		}
 	}
 }

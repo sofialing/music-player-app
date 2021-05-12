@@ -10,20 +10,20 @@ import CategoryCard from 'components/cards/CategoryCard';
 const GridSection = ({ items, title = null, link = null, limit = null }) => {
 	const { gridItems } = useViewport();
 
-	const renderCard = (type, item) => {
+	const renderCard = (type, item, i) => {
 		switch (type) {
 			case 'album':
 			case 'compilation':
 			case 'single':
-				return <AlbumCard album={item} key={item.id} />;
+				return <AlbumCard album={item} key={`${item.id}-${i}`} />;
 			case 'artist':
-				return <ArtistCard artist={item} key={item.id} />;
+				return <ArtistCard artist={item} key={`${item.id}-${i}`} />;
 			case 'track':
-				return <TrackCard track={item} key={item.id} />;
+				return <TrackCard track={item} key={`${item.id}-${i}`} />;
 			case 'playlist':
-				return <PlaylistCard playlist={item} key={item.id} />;
+				return <PlaylistCard playlist={item} key={`${item.id}-${i}`} />;
 			case 'category':
-				return <CategoryCard category={item} key={item.id} />;
+				return <CategoryCard category={item} key={`${item.id}-${i}`} />;
 			default:
 				return null;
 		}
@@ -37,7 +37,7 @@ const GridSection = ({ items, title = null, link = null, limit = null }) => {
 			</header>
 			<ul className="grid-section__grid">
 				{items.length
-					? (items.slice(0, limit || gridItems).map(item => renderCard(item.type, item)))
+					? (items.slice(0, limit || gridItems).map((item, i) => renderCard(item.type, item, i)))
 					: <li>Nothing to display</li>
 				}
 			</ul>
