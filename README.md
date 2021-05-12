@@ -1,4 +1,4 @@
-![screenshot](public/img/re-music-mockup.png)
+![screenshot](public/screenshot.png)
 
 # Music Player App
 
