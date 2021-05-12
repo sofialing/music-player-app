@@ -63,7 +63,7 @@ $side-padding: 1.75rem;
 	}
 	&__playlists {
 		padding: 0 $side-padding;
-		overflow: scroll;
+		overflow: auto;
 		height: auto;
 		-ms-overflow-style: none;
   		scrollbar-width: none;
@@ -80,7 +80,6 @@ $side-padding: 1.75rem;
 			margin: .5rem 0 0;
 			height: 100%;
 			padding: 0;
-			overflow: scroll;
 		}
 		&--list-item + &--list-item {
 			margin-top: .625rem;
