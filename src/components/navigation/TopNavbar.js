@@ -12,10 +12,12 @@ const TopNavbar = () => {
 	const navigate = useNavigate();
 
 	const logout = () => {
+		if (user.is_premium) {
+			// close current session Web Playback SDK has with Spotify
+			disconnectPlayer();
+		}
 		// remove current user from auth context
 		dispatch({ type: 'SET_USER', user: null });
-		// close current session Web Playback SDK has with Spotify
-		disconnectPlayer();
 		// remove tokens from local storage
 		removeToken();
 	};

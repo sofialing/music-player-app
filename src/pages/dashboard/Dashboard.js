@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
-import { getUsersSavedAlbums, getFollowedArtists } from 'services/spotifyAPI';
+import { getRecentlyPlayed } from 'services/spotifyAPI';
 import DiscoverCard from 'components/cards/DiscoverCard';
 import ErrorView from 'components/views/ErrorView';
 import PageHeader from 'components/sections/PageHeader';
@@ -9,25 +9,17 @@ import MainView from 'components/views/MainView';
 import LoadingView from 'components/views/LoadingView';
 
 const Dashboard = () => {
-	const { discover_weekly, user_playlists, user } = useAuth();
-	const [artists, setArtists] = useState(null);
-	const [albums, setAlbums] = useState(null);
+	const { discover_weekly, followed_artists, saved_albums, user_playlists, user } = useAuth();
+	const [recentlyPlayed, setRecentlyPlayed] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const FETCH_DATA = [
-			getUsersSavedAlbums(),
-			getFollowedArtists(),
-		];
-		Promise.all(FETCH_DATA)
-			.then(([albums, artists]) => {
-				setAlbums(albums);
-				setArtists(artists);
+		getRecentlyPlayed({ limit: 6 })
+			.then(tracks => {
+				setRecentlyPlayed(tracks);
 				setLoading(false);
-			})
-			.catch(error => {
-				console.log(error);
+			}).catch(error => {
 				setError(error);
 				setLoading(false);
 			})
@@ -44,10 +36,11 @@ const Dashboard = () => {
 	return (
 		<MainView id="dashboard" pageTitle="Dashboard">
 			<PageHeader title="Your music" />
-			<DiscoverCard playlist={discover_weekly} user={user} />
+			{discover_weekly && <DiscoverCard playlist={discover_weekly} user={user} />}
+			<GridSection title="Recently played" link={null} items={recentlyPlayed.items} />
 			<GridSection title="Playlists" link="playlists" items={user_playlists.items} />
-			<GridSection title="Artists" link="artists" items={artists.items} />
-			<GridSection title="Albums" link="albums" items={albums.items} />
+			<GridSection title="Followed artists" link="artists" items={followed_artists.items} />
+			<GridSection title="Saved albums" link="albums" items={saved_albums.items} />
 		</MainView>
 	);
 }

@@ -38,7 +38,7 @@ const Favorites = () => {
 			<PageHeader title="Favorites" />
 			<GridSection title="Your top artists" link="top-artists" items={top_artists.items} />
 			<GridSection title="Your top tracks" link="top-tracks" items={top_tracks.items} />
-			<GridSection title="Your saved tracks" link="tracks" items={tracks.items} />
+			<GridSection title="Liked tracks" link="tracks" items={tracks.items} />
 		</MainView>
 	)
 }

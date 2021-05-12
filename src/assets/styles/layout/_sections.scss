@@ -12,10 +12,9 @@
 		&--title {
 			flex-grow: 1;
 			font-size: $h6;
-			font-weight: 600;
+			font-weight: 500;
 			letter-spacing: .05em;
 			margin: 0;
-			text-transform: capitalize;
 			@include mq(md) {
 				font-size: $h5;
 				margin-right: .5em;

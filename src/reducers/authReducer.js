@@ -1,9 +1,11 @@
 const initialState = {
 	discover_weekly: null,
-	user_playlists: null,
+	followed_artists: null,
+	saved_albums: null,
 	top_artists: null,
 	top_tracks: null,
 	user: null,
+	user_playlists: null,
 }
 
 const reducer = (state, action) => {
@@ -32,6 +34,16 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				discover_weekly: action.discover_weekly
+			};
+		case 'SET_SAVED_ALBUMS':
+			return {
+				...state,
+				saved_albums: action.saved_albums
+			};
+		case 'SET_FOLLOWED_ARTISTS':
+			return {
+				...state,
+				followed_artists: action.followed_artists
 			};
 		case 'RESET_STATE':
 			return initialState;

@@ -73,7 +73,7 @@ export const getCurrentUser = async () => {
 		country: response.country,
 		display_name: response.display_name,
 		id: response.id,
-		image: response.images[0].url,
+		image: getImageUrl(response.images),
 		is_premium: response.product === 'premium',
 	};
 
@@ -432,6 +432,9 @@ export const getCategories = async (options = {}) => {
  * @returns {Object} Tracks object
  */
 export const getRecommendations = async (artists, tracks) => {
+	if (!artists.length && !tracks.length) {
+		return [];
+	}
 	// get IDs for seed artists and tracks.
 	const seed_artists = artists.slice(0, 3).map(item => item.id).join(',');
 	const seed_tracks = tracks.slice(0, 2).map(item => item.id).join(',');
@@ -566,6 +569,27 @@ export const getMySavedTracks = async (options = {}) => {
 		market: 'from_token',
 		...options,
 	});
+
+	const tracks = {
+		...response,
+		items: response.items.map(item => ({
+			album_name: item.track.album.name,
+			artists: joinArtists(item.track.artists),
+			duration: formatDuration(item.track.duration_ms),
+			duration_ms: item.track.duration_ms,
+			id: item.track.id,
+			image_url: getImageUrl(item.track.album.images),
+			name: item.track.name,
+			player_uri: item.track.uri,
+			type: 'track'
+		}))
+	}
+
+	return tracks;
+}
+
+export const getRecentlyPlayed = async (options = {}) => {
+	const response = await get('me/player/recently-played', options);
 
 	const tracks = {
 		...response,
@@ -829,7 +853,9 @@ export const getUserInfo = async () => {
 		getTopTracks(),
 		getTopArtists({ limit: 18 }),
 		getUserPlaylists(),
-		getDiscoverWeekly()
+		getDiscoverWeekly(),
+		getUsersSavedAlbums(),
+		getFollowedArtists(),
 	];
 
 	return await Promise.all(endpoints);

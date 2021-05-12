@@ -30,7 +30,7 @@ const ListSection = ({ items, title = null }) => {
 			<ul className="list-section__list">
 				{items.length
 					? items.map(item => renderList(item.type, item))
-					: <li>Nothing to display.</li>
+					: <li>Nothing to display</li>
 				}
 			</ul>
 		</section>

@@ -26,14 +26,16 @@ const Redirect = () => {
 		// get user info
 		getUserInfo()
 			.then(data => {
-				const [user, tracks, artists, playlists, discover_weekly] = data;
+				const [user, tracks, artists, playlists, discover_weekly, saved_albums, followed_artists] = data;
 
 				// dispatch and store user data in AuthContext
 				dispatch({ type: 'SET_USER', user });
 				dispatch({ type: 'SET_TOP_TRACKS', tracks });
 				dispatch({ type: 'SET_TOP_ARTISTS', artists });
 				dispatch({ type: 'SET_PLAYLISTS', playlists });
-				dispatch({ type: 'SET_DISCOVER_WEEKLY', discover_weekly })
+				dispatch({ type: 'SET_DISCOVER_WEEKLY', discover_weekly });
+				dispatch({ type: 'SET_SAVED_ALBUMS', saved_albums });
+				dispatch({ type: 'SET_FOLLOWED_ARTISTS', followed_artists });
 
 				// navigate user to dashboard
 				navigate('/dashboard');

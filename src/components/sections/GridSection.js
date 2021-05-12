@@ -38,7 +38,7 @@ const GridSection = ({ items, title = null, link = null, limit = null }) => {
 			<ul className="grid-section__grid">
 				{items.length
 					? (items.slice(0, limit || gridItems).map(item => renderCard(item.type, item)))
-					: <li>Nothing to display.</li>
+					: <li>Nothing to display</li>
 				}
 			</ul>
 		</section>
